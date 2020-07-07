@@ -1,1 +1,12 @@
-tocTab[tocTab.length] = new Array("0.1.2:1", "", "Analisi Contesto Interno", "EARoot/EA1/EA2/EA14.htm", "175.png", "8", "0", "", "Logical diagram0","{612631A9-56CD-4e64-82F7-4F7D5A4EB76B}");
+tocTab[tocTab.length] = new Array("0.1.2:1", "", "Analisi Contesto Interno", "EARoot/EA1/EA2/EA15.htm", "175.png", "8", "0", "", "Logical diagram0","{612631A9-56CD-4e64-82F7-4F7D5A4EB76B}");
+tocTab[tocTab.length] = new Array("0.1.2:2", "", "Portale", "EARoot/EA1/EA2/EA18.htm", "5.png", "E28", "0", "", "Class0","{E4F4F53B-0060-4b36-B68A-06D912DD1560}");
+tocTab[tocTab.length] = new Array("0.1.2:3", "", "Assistenza Cliente", "EARoot/EA1/EA2/EA19.htm", "5.png", "E50", "E28", "", "Class0","{84B7C4D2-6A7F-4f95-9328-8FA269917DA3}");
+tocTab[tocTab.length] = new Array("0.1.2:4", "", "«software» Gestore Pagamenti", "EARoot/EA1/EA2/EA20.htm", "5.png", "E32", "E28", "", "Class0","{4210A2D4-4ADD-4992-AAF6-7B7E627BB957}");
+tocTab[tocTab.length] = new Array("0.1.2:5", "", "Gestore Recensioni", "EARoot/EA1/EA2/EA21.htm", "5.png", "E53", "E28", "", "Class0","{4ACFC113-7D5F-477a-9E48-3E9C2A31C94E}");
+tocTab[tocTab.length] = new Array("0.1.2:6", "", "«persona» Magazziniere", "EARoot/EA1/EA2/EA22.htm", "5.png", "E33", "E28", "", "Class0","{AA3FCE7E-B463-42fd-99D4-C02CF85ACED2}");
+tocTab[tocTab.length] = new Array("0.1.2:7", "", "Resp. Acquisti", "EARoot/EA1/EA2/EA23.htm", "5.png", "E51", "E28", "", "Class0","{5AA34BA6-AFC4-4a39-ACBC-C85FE4E93CA3}");
+tocTab[tocTab.length] = new Array("0.1.2:8", "", "Resp. Amministrazione", "EARoot/EA1/EA2/EA24.htm", "5.png", "E49", "E28", "", "Class0","{D1B9EBC0-D838-4fe0-9292-DA065977FA0B}");
+tocTab[tocTab.length] = new Array("0.1.2:9", "", "«persona» Resp. Catalogo", "EARoot/EA1/EA2/EA25.htm", "5.png", "E47", "E28", "", "Class0","{42716896-A6CC-4852-89DA-7468A0885BDE}");
+tocTab[tocTab.length] = new Array("0.1.2:10", "", "Resp. Marketing", "EARoot/EA1/EA2/EA26.htm", "5.png", "E52", "E28", "", "Class0","{7A668964-EB56-4d15-B662-0BA1BD34B504}");
+tocTab[tocTab.length] = new Array("0.1.2:11", "", "«persona» Resp. Ordini", "EARoot/EA1/EA2/EA27.htm", "5.png", "E48", "E28", "", "Class0","{8146C06B-0293-4a6a-99F1-6E21BE813597}");
+tocTab[tocTab.length] = new Array("0.1.2:12", "", "Ufficio Legale", "EARoot/EA1/EA2/EA28.htm", "5.png", "E54", "E28", "", "Class0","{2BF49A4F-2DFE-472a-BBB8-1205ED0B77EC}");
