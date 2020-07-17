@@ -1,0 +1,6 @@
+tocTab[tocTab.length] = new Array("0.1.1.5:1", "", "Anagrafiche", "EARoot/EA1/EA1/EA5/EA53.htm", "180.png", "58", "0", "", "Use Case diagram0","{9CB52149-794F-476d-88F6-B605E36C6549}");
+tocTab[tocTab.length] = new Array("0.1.1.5:2", "", "Gestione Anagrafica Categorie", "EARoot/EA1/EA1/EA5/EA56.htm", "7.png", "E361", "0", "", "UseCase0","{DFD92B1B-EBC6-4160-9009-44604EC3926E}");
+tocTab[tocTab.length] = new Array("0.1.1.5:3", "", "Gestione Anagrafica Colori", "EARoot/EA1/EA1/EA5/EA57.htm", "7.png", "E359", "0", "", "UseCase0","{95C7F654-A911-4eeb-8B84-D87CCACF9E60}");
+tocTab[tocTab.length] = new Array("0.1.1.5:4", "", "Gestione Anagrafica Fornitori", "EARoot/EA1/EA1/EA5/EA58.htm", "7.png", "E360", "0", "", "UseCase0","{D2AA2370-8A15-44b7-96F0-1D52074C7B43}");
+tocTab[tocTab.length] = new Array("0.1.1.5:5", "", "Gestione Anagrafica Prodotti", "EARoot/EA1/EA1/EA5/EA59.htm", "7.png", "E357", "0", "", "UseCase0","{7F6C1442-EB7C-4032-B98E-28A6C206D7B8}");
+tocTab[tocTab.length] = new Array("0.1.1.5:6", "", "Gestione Anagrafica Taglie", "EARoot/EA1/EA1/EA5/EA60.htm", "7.png", "E358", "0", "", "UseCase0","{1E156A54-8A4A-4abb-90BF-F59EE5A4A747}");

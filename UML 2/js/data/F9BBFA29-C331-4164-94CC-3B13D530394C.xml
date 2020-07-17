@@ -1,0 +1,3 @@
+tocTab[tocTab.length] = new Array("0.1.1.3:1", "", "Magazzino", "EARoot/EA1/EA1/EA3/EA35.htm", "180.png", "64", "0", "", "Use Case diagram0","{ADBA5C04-790B-40f5-BF60-CD20ECB92731}");
+tocTab[tocTab.length] = new Array("0.1.1.3:2", "", "Carica in magazzino", "EARoot/EA1/EA1/EA3/EA38.htm", "7.png", "E376", "0", "", "UseCase0","{41B817F9-6CB6-439f-9111-F3D1F67E6CF2}");
+tocTab[tocTab.length] = new Array("0.1.1.3:3", "", "Scarica da magazzino", "EARoot/EA1/EA1/EA3/EA39.htm", "7.png", "E377", "0", "", "UseCase0","{78F279F0-CF9C-402a-BA3E-412F6960DAF1}");
