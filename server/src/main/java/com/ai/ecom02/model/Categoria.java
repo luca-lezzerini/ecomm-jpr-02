@@ -18,14 +18,14 @@ import javax.persistence.Table;
  * @author Roberto
  */
 @Entity
-@Table(name="categoria")
 public class Categoria {
-     @Id         //dico all'ID che è un identificativo, quindi che è PRIMARY KEY
-    @Column(name="id")  //dico che deve creare una colonna che si chiama ID
-    @GeneratedValue(strategy=GenerationType.IDENTITY)   //gli dico che l''ID primaryKey è AUTOINCREMENT
+
+    @Id         //dico all'ID che è un identificativo, quindi che è PRIMARY KEY
+
+    @GeneratedValue(strategy = GenerationType.AUTO)   //gli dico che l''ID primaryKey è AUTOINCREMENT
     private Long id;
-    
-    @Column(name="descrizione")                   //-> Creo le colonne della TABELLA (descrizione)
+
+    @Column                   //-> Creo le colonne della TABELLA (descrizione)
     private String descrizione;
 
     public Categoria() {
@@ -72,20 +72,12 @@ public class Categoria {
             return false;
         }
         final Categoria other = (Categoria) obj;
-        if (!Objects.equals(this.descrizione, other.descrizione)) {
-            return false;
-        }
-        if (!Objects.equals(this.id, other.id)) {
-            return false;
-        }
-        return true;
+        return (!Objects.equals(this.descrizione, other.descrizione) || !Objects.equals(this.id, other.id));
     }
 
     @Override
     public String toString() {
         return "Categoria{" + "id=" + id + ", descrizione=" + descrizione + '}';
     }
-    
-    
-   
+
 }
