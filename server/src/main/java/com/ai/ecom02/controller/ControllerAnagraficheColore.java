@@ -23,7 +23,7 @@ public class ControllerAnagraficheColore {
         return srvColore.getAll();
     }
 
-    @RequestMapping(value = ("/ColoriAdd"))
+    @RequestMapping(value = ("/Colori/Add"))
     @ResponseBody
     public void addColore(
             @RequestBody Colore colore
@@ -31,28 +31,28 @@ public class ControllerAnagraficheColore {
         srvColore.add(colore);
     }
 
-    @RequestMapping(value = ("/ColoriDelete"))
+    @RequestMapping(value = ("/Colori/Delete"))
     @ResponseBody
     public void deleteColore(
             @RequestBody Colore colore
     ) {
-         srvColore.delete(colore);
+        srvColore.delete(colore);
     }
 
-    @RequestMapping(value = ("/ColoriUpdate"))
+    @RequestMapping(value = ("/Colori/Update"))
     @ResponseBody
     public void updateColore(
             @RequestBody Colore colore
     ) {
-         srvColore.update(colore);
+        srvColore.update(colore);
     }
 
-    @RequestMapping(value = ("/ColoriFind"))
+    @RequestMapping(value = ("/Colori/Find"))
     @ResponseBody
-    public List<Colore> findColori(
-        @RequestBody Long id
+    public Colore findColori(
+            @RequestBody Colore colore
     ) {
-         srvColore.find(id);
+        return srvColore.findById(colore);
     }
 
 }
