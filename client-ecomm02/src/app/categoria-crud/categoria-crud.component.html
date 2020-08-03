@@ -1,0 +1,26 @@
+<h1>CATEGORIA</h1>
+<br>
+<input type="text" [(ngModule)]="" placeholder="categoria">
+<button (click)="searchCriteria()">Cerca</button>
+<button (click)="aggiungi()" ng-model="checked" aria-label="Toggle ngShow">Aggiungi</button>
+
+<br>
+
+<div class="check-element animate-show-hide" ng-show="checked">
+    <h3>Form dati</h3>
+    <br>
+    <input type="text" [(ngModule)]="descrizione" placeholder="descrizione">
+    <button (click)="conferma()">Conferma</button>
+    <button (click)="annulla()">Annulla</button>
+</div>
+
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Descrizione</th>
+    </tr>
+    <tr *ngFor="let c of categorie">
+        <td>{{c.id}}</td>
+        <td>{{c.descrizione}}</td>
+    </tr>
+</table>
