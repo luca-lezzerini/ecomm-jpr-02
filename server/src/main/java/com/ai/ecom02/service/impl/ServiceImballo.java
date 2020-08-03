@@ -6,13 +6,11 @@
 package com.ai.ecom02.service.impl;
 
 import com.ai.ecom02.dto.ImballoDto;
-import com.ai.ecom02.model.Colore;
 import com.ai.ecom02.model.Imballo;
 
 import com.ai.ecom02.repository.RepImballo;
 import com.ai.ecom02.service.ServiceCrud;
 import java.util.List;
-import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -37,20 +35,22 @@ public class ServiceImballo implements ServiceCrud<Imballo> {
     }
 
     @Override
+    public void upDate(Object o) {
+        if (o != null) {
+
+        }
+        repImballo.flush();
+
+    }
+
+    @Override
     public List getAll() {
         return null;
     }
 
     @Override
     public Imballo findById(Imballo o) {
-        Optional s = repImballo.findById(o.getId());
-        Imballo i = (Imballo) s.get();
-        return i;
-    }
-
-    @Override
-    public void update(Imballo o) {
-        repImballo.flush();
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }
