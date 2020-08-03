@@ -5,12 +5,26 @@
  */
 package com.ai.ecom02.service.impl;
 
+import com.ai.ecom02.model.Categoria;
+import com.ai.ecom02.repository.RepCategoria;
 import com.ai.ecom02.service.CategoriaService;
+import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 /**
  *
  * @author Roberto
  */
+@Service
 public class CategoriaServiceImpl implements CategoriaService{
+    
+    @Autowired
+    RepCategoria repCategoria;
+
+    @Override
+    public void addCategoria(Categoria categoria) {
+       repCategoria.save(categoria);
+    }
     
 }

@@ -15,22 +15,22 @@ import org.springframework.beans.factory.annotation.Autowired;
  *
  * @author Gian Marco
  */
-public class ServiceColore implements ServiceCrud<Colore>{
-    @Autowired
-    RepColore repColore;
-    
-    public void add(){
-        repColore.save(Colore colore);
-    }
-   public void delete(){
-       repColore.delete(Colore colore);
-   }
-   public void update(){
-        repColore.save(Colore colore);
-   }
-    @Override
-   public List<Colore> getAll(){
-       return repColore.findAll();
-   }
-           
-           }
+//public class ServiceColore implements ServiceCrud<Colore>{
+//    @Autowired
+//    RepColore repColore;
+//    
+//    public void add(){
+//        repColore.save(Colore colore);
+//    }
+//   public void delete(){
+//       repColore.delete(Colore colore);
+//   }
+//   public void update(){
+//        repColore.save(Colore colore);
+//   }
+//    @Override
+//   public List<Colore> getAll(){
+//       return repColore.findAll();
+//   }
+//           
+//           }
