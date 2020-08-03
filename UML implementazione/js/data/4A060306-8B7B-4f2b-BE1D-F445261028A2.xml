@@ -1,0 +1,8 @@
+tocTab[tocTab.length] = new Array("0.1.1:1", "", "Anagrafiche", "EARoot/EA1/EA1/EA5.htm", "180.png", "75", "0", "", "Use Case diagram0","{74C5ADB2-9A20-413f-9440-03505DB99CE0}");
+tocTab[tocTab.length] = new Array("0.1.1:2", "", "CRUD Colori", "EARoot/EA1/EA1/EA8.htm", "7.png", "E434", "0", "", "UseCase0","{5A067E4F-4CDB-4685-9192-5D252386CA09}");
+tocTab[tocTab.length] = new Array("0.1.1:3", "", "CRUD Imballi", "EARoot/EA1/EA1/EA9.htm", "7.png", "E437", "0", "", "UseCase0","{1AB741AA-D175-441e-B11D-68C408C009C3}");
+tocTab[tocTab.length] = new Array("0.1.1:4", "", "CRUD Offerte", "EARoot/EA1/EA1/EA10.htm", "7.png", "E436", "0", "", "UseCase0","{0C46E074-F9C6-41e6-AEC0-05B26C4E6673}");
+tocTab[tocTab.length] = new Array("0.1.1:5", "", "CRUD Prodotti", "EARoot/EA1/EA1/EA11.htm", "7.png", "E432", "0", "", "UseCase0","{D32F5D9A-465A-4ddb-8080-66E98E2422D1}");
+tocTab[tocTab.length] = new Array("0.1.1:6", "", "CRUD Spedizioni", "EARoot/EA1/EA1/EA12.htm", "7.png", "E435", "0", "", "UseCase0","{3BEE388B-56BE-4b56-AFF6-1AD962E30BA9}");
+tocTab[tocTab.length] = new Array("0.1.1:7", "", "CRUD Taglie", "EARoot/EA1/EA1/EA13.htm", "7.png", "E433", "0", "", "UseCase0","{A21E874A-E18B-404d-94F1-DD83B8B52D71}");
+tocTab[tocTab.length] = new Array("0.1.1:8", "", "Operatore", "EARoot/EA1/EA1/EA14.htm", "6.png", "E431", "0", "", "Actor0","{B3E52169-A51D-426e-BF57-8703E2D7E10B}");

@@ -1,0 +1,11 @@
+tocTab[tocTab.length] = new Array("0.5.1.4:1", "", "Attori", "EARoot/EA5/EA1/EA4/EA114.htm", "180.png", "63", "0", "", "Use Case diagram0","{03D05F0F-F2E0-4c3e-BD29-EF95FFA925F8}");
+tocTab[tocTab.length] = new Array("0.5.1.4:2", "", "Cliente", "EARoot/EA5/EA1/EA4/EA117.htm", "6.png", "E366", "0", "", "Actor0","{C79D065A-34A2-47eb-9F32-A899F9BA31AB}");
+tocTab[tocTab.length] = new Array("0.5.1.4:3", "", "Loggato", "EARoot/EA5/EA1/EA4/EA118.htm", "6.png", "E368", "0", "", "Actor0","{FD8E2BA0-0927-4bf1-BF57-7CDEF13044E3}");
+tocTab[tocTab.length] = new Array("0.5.1.4:4", "", "Magazziniere", "EARoot/EA5/EA1/EA4/EA119.htm", "6.png", "E364", "0", "", "Actor0","{47E85523-030F-42d6-B923-13AFA9D94C39}");
+tocTab[tocTab.length] = new Array("0.5.1.4:5", "", "Non Loggato", "EARoot/EA5/EA1/EA4/EA120.htm", "6.png", "E365", "0", "", "Actor0","{637096C5-0522-4895-8C7F-13719AFDEC47}");
+tocTab[tocTab.length] = new Array("0.5.1.4:6", "", "Non Registrato", "EARoot/EA5/EA1/EA4/EA121.htm", "6.png", "E369", "0", "", "Actor0","{2CFF12E6-7FC6-4b90-8106-BED85CC27306}");
+tocTab[tocTab.length] = new Array("0.5.1.4:7", "", "R. Catalogo", "EARoot/EA5/EA1/EA4/EA122.htm", "6.png", "E370", "0", "", "Actor0","{127AA133-BA1C-492b-978D-330085EA15FA}");
+tocTab[tocTab.length] = new Array("0.5.1.4:8", "", "R. Marketing", "EARoot/EA5/EA1/EA4/EA123.htm", "6.png", "E372", "0", "", "Actor0","{F512849D-04AD-46fb-A4D3-1526895DBBE9}");
+tocTab[tocTab.length] = new Array("0.5.1.4:9", "", "R. Ordini", "EARoot/EA5/EA1/EA4/EA124.htm", "6.png", "E373", "0", "", "Actor0","{9206BB88-4D44-4c35-AA92-293E205B1CC6}");
+tocTab[tocTab.length] = new Array("0.5.1.4:10", "", "Registrato", "EARoot/EA5/EA1/EA4/EA125.htm", "6.png", "E367", "0", "", "Actor0","{5E7459F4-CC42-4824-A8BF-4A5536CF30F3}");
+tocTab[tocTab.length] = new Array("0.5.1.4:11", "", "U. Acquisti", "EARoot/EA5/EA1/EA4/EA126.htm", "6.png", "E371", "0", "", "Actor0","{3F30DAC5-0B8E-45bb-9352-A843CAC1D79F}");

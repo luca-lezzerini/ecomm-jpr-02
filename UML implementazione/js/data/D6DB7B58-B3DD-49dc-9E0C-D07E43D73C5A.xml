@@ -1,0 +1,12 @@
+tocTab[tocTab.length] = new Array("0.2.2:1", "", "Interfacce Utente", "EARoot/EA2/EA2/EA24.htm", "188.png", "73", "0", "", "Custom diagram0","{C81B8997-696A-48c0-B904-D6A063E4D740}");
+tocTab[tocTab.length] = new Array("0.2.2:2", "", "«WireframeWebsite» Webpage1", "EARoot/EA2/EA2/EA29.htm", "11.png", "E400", "0", "", "Screen0","{E6E7A426-14EB-4435-BB54-16E63AF3D126}");
+tocTab[tocTab.length] = new Array("0.2.2:3", "", "«WireframeButton» Aggiungi", "EARoot/EA2/EA2/EA30.htm", "16.png", "E406", "E400", "", "GUIElement0","{34D854B0-5EB5-4195-AF4C-CC174C014367}");
+tocTab[tocTab.length] = new Array("0.2.2:4", "", "«WireframeButton» Cerca", "EARoot/EA2/EA2/EA31.htm", "16.png", "E405", "E400", "", "GUIElement0","{640D2F8D-90F4-4969-A30A-E7C1797512C9}");
+tocTab[tocTab.length] = new Array("0.2.2:5", "", "«WireframeClientArea» ClientArea", "EARoot/EA2/EA2/EA32.htm", "16.png", "E401", "E400", "", "GUIElement0","{F904C7BC-A5DD-4455-88D8-C55A4DCA8E9C}");
+tocTab[tocTab.length] = new Array("0.2.2:6", "", "«WireframeButton» Modifica", "EARoot/EA2/EA2/EA33.htm", "16.png", "E411", "E400", "", "GUIElement0","{A15CF3E8-D927-4dec-AD91-09020FC8673F}");
+tocTab[tocTab.length] = new Array("0.2.2:7", "", "«WireframeButton» Rimuovi", "EARoot/EA2/EA2/EA34.htm", "16.png", "E412", "E400", "", "GUIElement0","{CD28F429-908D-4dde-8D72-BB4B0E471096}");
+tocTab[tocTab.length] = new Array("0.2.2:8", "", "«WireframeTextField» searchCriteria", "EARoot/EA2/EA2/EA35.htm", "16.png", "E404", "E400", "", "GUIElement0","{6ACF66C7-9274-4110-94C5-0190691B160C}");
+tocTab[tocTab.length] = new Array("0.2.2:9", "", "«WireframeTable» Table", "EARoot/EA2/EA2/EA36.htm", "16.png", "E408", "E400", "", "GUIElement0","{A11263AF-7C95-4b96-A1C0-F69548AC1478}");
+tocTab[tocTab.length] = new Array("0.2.2:10", "", "«WireframeLabel» Titolo della pagina", "EARoot/EA2/EA2/EA37.htm", "16.png", "E402", "E400", "", "GUIElement0","{EE090288-8FFD-4d5b-9C0E-8CC03D436E1C}");
+tocTab[tocTab.length] = new Array("0.2.2:11", "", "«WireframeButton» Annulla", "EARoot/EA2/EA2/EA38.htm", "16.png", "E410", "E401", "", "GUIElement0","{86214BD4-47D8-498d-B508-2EE20D316908}");
+tocTab[tocTab.length] = new Array("0.2.2:12", "", "«WireframeButton» Conferma", "EARoot/EA2/EA2/EA39.htm", "16.png", "E409", "E401", "", "GUIElement0","{1371CE4B-B73E-45bb-91BB-1281EDBC655F}");

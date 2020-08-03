@@ -1,0 +1,5 @@
+tocTab[tocTab.length] = new Array("0.1", "1", "Casi d&#39;uso", "EARoot/EA1/EA3.htm", "31.png", "", "", "{2F2502ED-CBC0-4f5f-8AAD-EFDD195A8A33}", "Package");
+tocTab[tocTab.length] = new Array("0.2", "1", "CRUD", "EARoot/EA2/EA17.htm", "31.png", "", "", "{885DDAF3-B36A-467d-99C4-BDDB15E8A0B4}", "Package");
+tocTab[tocTab.length] = new Array("0.3", "1", "Entità", "EARoot/EA3/EA60.htm", "31.png", "", "", "{569F240D-2942-4ed0-8409-541230086303}", "Package");
+tocTab[tocTab.length] = new Array("0.4", "1", "Interfacce Utente", "EARoot/EA4/EA74.htm", "31.png", "", "", "{20B8C323-A081-4d09-ABDF-8C83FB94F954}", "Package");
+tocTab[tocTab.length] = new Array("0.5", "1", "Analisi", "EARoot/EA5/EA77.htm", "31.png", "", "", "{148EEC41-FCEC-46d6-8E3F-837B2193E436}", "Package");
