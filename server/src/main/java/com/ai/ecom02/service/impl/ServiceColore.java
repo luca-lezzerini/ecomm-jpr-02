@@ -9,7 +9,6 @@ import com.ai.ecom02.model.Colore;
 import com.ai.ecom02.repository.RepColore;
 import com.ai.ecom02.service.ServiceCrud;
 import java.util.List;
-import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 
 /**
