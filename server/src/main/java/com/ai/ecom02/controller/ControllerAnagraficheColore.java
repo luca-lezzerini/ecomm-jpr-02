@@ -49,7 +49,7 @@ public class ControllerAnagraficheColore {
 
     @RequestMapping(value = ("/Colori/Find"))
     @ResponseBody
-    public Colore findColore(
+    public Colore findColori(
             @RequestBody Colore colore
     ) {
         return srvColore.findById(colore);
