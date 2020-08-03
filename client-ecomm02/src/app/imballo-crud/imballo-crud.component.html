@@ -1,0 +1,29 @@
+
+<h1>IMBALLO</h1>
+<br>
+<input type="text" [(ngModule)]="" placeholder="imballo">
+<button (click)="searchCriteria()">Cerca</button>
+<button (click)="aggiungi()" >Aggiungi</button>
+
+<br>
+
+<div  >
+    <h3>Form dati</h3>
+    <br>
+    <input type="text" [(ngModule)]="descrizione" placeholder="descrizione">
+    <button (click)="conferma()">Conferma</button>
+    <button (click)="annulla()">Annulla</button>
+</div>
+
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Descrizione</th>
+        <th>Cost</th>
+    </tr>
+    <tr *ngFor="let i of imballi">
+        <td>{{i.id}}</td>
+        <td>{{i.descrizione}}</td>
+        <td>{{i.cost}}</td>
+    </tr>
+</table>
