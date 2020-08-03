@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RestController;
     @RestController
     public class ControllerAnagrafiche {
 
+        @Autowired
+        ServiceColore srvColore;
         @RequestMapping(value = ("/Colori"))
         @ResponseBody
         public List<Colore> colori() {
