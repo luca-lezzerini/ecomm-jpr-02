@@ -1,1 +1,14 @@
-<p>lista-colore works!</p>
+<table>
+    <thead>
+  <th>Colore</th>
+  <th></th>
+  <th></th>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of colori">
+      <td>{{item.descrizione}}</td>
+      <td><button (click)="modifica(item.id)">Modifica</button></td>
+      <td><button (click)="rimuovi(item.id)">Rimuovi</button></td>
+    </tr>
+  </tbody>
+  </table>
