@@ -1,4 +1,4 @@
-import { ColoreCrudComponent } from './colore-crud/colore-crud.component';
+import { ColoreCrudComponent } from './Componet-Colore/colore-crud/colore-crud.component';
 import { CategoriaCRUDComponent } from './categoria-crud/categoria-crud.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
