@@ -4,10 +4,12 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
+import { ColoreCrudComponent } from './colore-crud/colore-crud.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ColoreCrudComponent
   ],
   imports: [
     BrowserModule,
