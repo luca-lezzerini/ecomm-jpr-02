@@ -6,13 +6,19 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
+import { ListaColoreComponent } from './Componet-Colore/lista-colore/lista-colore.component';
+import { DatiColoreComponent } from './Componet-Colore/dati-colore/dati-colore.component';
+import { RicercaColoreComponent } from './Componet-Colore/ricerca-colore/ricerca-colore.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     ColoreCrudComponent,
-    CategoriaCRUDComponent
+    CategoriaCRUDComponent,
+    ListaColoreComponent,
+    DatiColoreComponent,
+    RicercaColoreComponent
   ],
   imports: [
     BrowserModule,
