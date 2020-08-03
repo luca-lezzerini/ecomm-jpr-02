@@ -5,6 +5,7 @@
  */
 package com.ai.ecom02.service.impl;
 
+import com.ai.ecom02.model.Colore;
 import com.ai.ecom02.repository.RepColore;
 import com.ai.ecom02.service.ServiceCrud;
 import java.util.List;
@@ -15,22 +16,29 @@ import org.springframework.beans.factory.annotation.Autowired;
  *
  * @author Gian Marco
  */
-public class ServiceColore implements ServiceCrud<Colore>{
+public class ServiceColore implements ServiceCrud<Colore> {
+
     @Autowired
     RepColore repColore;
-    
-    public void add(){
-        repColore.save(Colore colore);
-    }
-   public void delete(){
-       repColore.delete(Colore colore);
-   }
-   public void update(){
-        repColore.save(Colore colore);
-   }
+
     @Override
-   public List<Colore> getAll(){
-       return repColore.findAll();
-   }
-           
-           }
+    public void add(Colore o) {
+        repColore.save(o);
+    }
+
+    @Override
+    public void delete(Colore o) {
+        repColore.delete(o);
+    }
+
+    @Override
+    public void update(Colore o) {
+        repColore.save(o);
+    }
+
+    @Override
+    public List<Colore> getAll() {
+        return repColore.findAll();
+    }
+
+}
