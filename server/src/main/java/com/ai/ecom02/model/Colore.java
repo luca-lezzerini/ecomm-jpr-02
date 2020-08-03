@@ -1,6 +1,7 @@
 
 package com.ai.ecom02.model;
 
+import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -12,7 +13,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "colore")
-public class Colore {
+public class Colore implements Serializable{
 
  
 
