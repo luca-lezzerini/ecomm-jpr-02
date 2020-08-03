@@ -5,15 +5,18 @@
  */
 package com.ai.ecom02.repository;
 
-import com.ai.ecom02.model.Colore;
-import java.util.List;
-import java.util.Optional;
+import com.ai.ecom02.dto.ImballoDto;
+import com.ai.ecom02.model.Imballo;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+/**
+ *
+ * @author Francesco
+ */
+
 @Repository
-public interface RepColore extends JpaRepository <Colore, Long>{
+public interface RepImballo extends JpaRepository<Imballo, Long>{
     
     
-    public List<Colore> findByDescrizione(String descrizione);
 }

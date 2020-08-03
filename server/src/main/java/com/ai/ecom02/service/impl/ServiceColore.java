@@ -5,6 +5,7 @@
  */
 package com.ai.ecom02.service.impl;
 
+import com.ai.ecom02.model.Colore;
 import com.ai.ecom02.repository.RepColore;
 import com.ai.ecom02.service.ServiceCrud;
 import java.util.List;
@@ -15,22 +16,45 @@ import org.springframework.beans.factory.annotation.Autowired;
  *
  * @author Gian Marco
  */
-//public class ServiceColore implements ServiceCrud<Colore>{
-//    @Autowired
-//    RepColore repColore;
-//    
-//    public void add(){
-//        repColore.save(Colore colore);
-//    }
-//   public void delete(){
-//       repColore.delete(Colore colore);
-//   }
-//   public void update(){
-//        repColore.save(Colore colore);
-//   }
-//    @Override
-//   public List<Colore> getAll(){
-//       return repColore.findAll();
-//   }
-//           
-//           }
+public class ServiceColore implements ServiceCrud<Colore> {
+
+    @Autowired
+    RepColore repColore;
+
+    @Override
+    public void add(Colore o) {
+        repColore.save(o);
+    }
+
+    @Override
+    public void delete(Colore o) {
+        repColore.delete(o);
+    }
+
+    @Override
+    public void update(Colore o) {
+        repColore.save(o);
+    }
+
+    @Override
+    public List<Colore> getAll() {
+        return repColore.findAll();
+    }
+
+    public List<Colore> findByDescrizione(String descrizione) {
+//        List<Colore> lista = new ArrayList<>();
+        if (descrizione.length() > 0) {
+            return repColore.findByDescrizione(descrizione);
+        } else {
+            return repColore.findAll();
+        }
+    }
+
+    @Override
+    public Colore findById(Colore colore) {
+      Optional s = repColore.findById(colore.getId());
+      Colore c = (Colore) s.get();
+      return c;
+        
+    }
+}
