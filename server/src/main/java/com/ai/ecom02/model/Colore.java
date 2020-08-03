@@ -24,8 +24,8 @@ public class Colore implements Serializable{
 
  
 
-    @Column(name = "descrizione")
-    private String Descrizione;
+    @Column(name = "colore")
+    private String colore;
 
  
 
@@ -34,9 +34,9 @@ public class Colore implements Serializable{
 
  
 
-    public Colore(long id, String Descrizione) {
+    public Colore(long id, String colore) {
         this.id = id;
-        this.Descrizione = Descrizione;
+        this.colore = colore;
     }
 
  
@@ -53,14 +53,14 @@ public class Colore implements Serializable{
 
  
 
-    public String getDescrizione() {
-        return Descrizione;
+    public String getColore() {
+        return colore;
     }
 
  
 
-    public void setDescrizione(String Descrizione) {
-        this.Descrizione = Descrizione;
+    public void setDescrizione(String colore) {
+        this.colore = colore;
     }
 
  

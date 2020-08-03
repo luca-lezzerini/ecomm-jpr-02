@@ -1,5 +1,5 @@
+import { ColoreCrudComponent } from './colore-crud/colore-crud.component';
 import { CategoriaCRUDComponent } from './categoria-crud/categoria-crud.component';
-import { ColoreCrudComponent } from './Anagrafe-colori/colore-crud/colore-crud.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';

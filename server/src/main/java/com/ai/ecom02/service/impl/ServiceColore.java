@@ -41,10 +41,10 @@ public class ServiceColore implements ColoreServiceCrud {
         return repColore.findAll();
     }
 
-    public List<Colore> findByDescrizione(String descrizione) {
+    public List<Colore> findByColore(String colore) {
 //        List<Colore> lista = new ArrayList<>();
-        if (descrizione.length() > 0) {
-            return repColore.findByDescrizione(descrizione);
+        if (colore.length() > 0) {
+            return repColore.findByColore(colore);
         } else {
             return repColore.findAll();
         }
