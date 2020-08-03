@@ -21,5 +21,6 @@ public class ControllerAnagrafiche {
     public List<Colore> colori() {
         return srvColore.getAll();
     }
+    
 
-}
+  }

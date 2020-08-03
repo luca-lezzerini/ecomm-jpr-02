@@ -6,10 +6,14 @@
 package com.ai.ecom02.repository;
 
 import com.ai.ecom02.model.Colore;
+import java.util.List;
+import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
 public interface RepColore extends JpaRepository <Colore, Long>{
     
+    
+    public List<Colore> findByDescrizione(String descrizione);
 }

@@ -8,6 +8,7 @@ package com.ai.ecom02.service.impl;
 import com.ai.ecom02.model.Colore;
 import com.ai.ecom02.repository.RepColore;
 import com.ai.ecom02.service.ServiceCrud;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,4 +42,20 @@ public class ServiceColore implements ServiceCrud<Colore> {
         return repColore.findAll();
     }
 
+    public List<Colore> findByDescrizione(String descrizione) {
+//        List<Colore> lista = new ArrayList<>();
+        if (descrizione.length() > 0) {
+            return repColore.findByDescrizione(descrizione);
+        } else {
+            return repColore.findAll();
+        }
+    }
+
+    @Override
+    public Colore findById(Colore colore) {
+      Optional s = repColore.findById(colore.getId());
+      Colore c = (Colore) s.get();
+      return c;
+        
+    }
 }
