@@ -1,3 +1,4 @@
+import { CategoriaCRUDComponent } from './categoria-crud/categoria-crud.component';
 import { ColoreCrudComponent } from './Anagrafe-colori/colore-crud/colore-crud.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -10,7 +11,8 @@ import { FormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
-    ColoreCrudComponent
+    ColoreCrudComponent,
+    CategoriaCRUDComponent
   ],
   imports: [
     BrowserModule,

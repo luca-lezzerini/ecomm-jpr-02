@@ -1,10 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.ai.ecom02.model;
 
+import java.io.Serializable;
 import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -15,25 +11,35 @@ import javax.persistence.Table;
 
 /**
  *
- * @author Roberto
+ * @author Francesco
  */
+
 @Entity
-public class Categoria {
+@Table(name = "imballo")
+public class Imballo implements Serializable{
 
-    @Id         //dico all'ID che è un identificativo, quindi che è PRIMARY KEY
-
-    @GeneratedValue(strategy = GenerationType.AUTO)   //gli dico che l''ID primaryKey è AUTOINCREMENT
+    @Id
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column                   //-> Creo le colonne della TABELLA (descrizione)
+    @Column(name = "descrizione")
     private String descrizione;
 
-    public Categoria() {
-    }
+    @Column(name = "costo")
+    private Double costo;
 
-    public Categoria(Long id, String descrizione) {
+    public Imballo(Long id, String descrizione, Double costo) {
         this.id = id;
         this.descrizione = descrizione;
+        this.costo = costo;
+    }
+
+    public Imballo(Long id) {
+        this.id = id;
+    }
+
+    public Imballo() {
     }
 
     public Long getId() {
@@ -52,11 +58,23 @@ public class Categoria {
         this.descrizione = descrizione;
     }
 
+    public Double getCosto() {
+        return costo;
+    }
+
+    public void setCosto(Double costo) {
+        this.costo = costo;
+    }
+
+    @Override
+    public String toString() {
+        return "Imballo{" + "descrizione=" + descrizione + ", costo=" + costo + '}';
+    }
+
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 41 * hash + Objects.hashCode(this.id);
-        hash = 41 * hash + Objects.hashCode(this.descrizione);
+        int hash = 5;
+        hash = 83 * hash + Objects.hashCode(this.id);
         return hash;
     }
 
@@ -71,13 +89,12 @@ public class Categoria {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final Categoria other = (Categoria) obj;
-        return (!Objects.equals(this.descrizione, other.descrizione) || !Objects.equals(this.id, other.id));
-    }
-
-    @Override
-    public String toString() {
-        return "Categoria{" + "id=" + id + ", descrizione=" + descrizione + '}';
+        final Imballo other = (Imballo) obj;
+        if (!Objects.equals(this.id, other.id)) {
+            return false;
+        }
+        return true;
     }
 
 }
+
