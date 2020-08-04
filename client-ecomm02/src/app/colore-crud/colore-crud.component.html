@@ -42,7 +42,7 @@
         </thead>
         <tbody>
             <tr *ngFor="let item of listaColori">
-                <td>{{item.colore}}</td>
+                <td (click)="visualizza(item)">{{item.colore}}</td>
                 <td><button (click)="chiediModifica(item)">Modifica</button></td>
                 <td><button (click)="chiediElimina(item)">Rimuovi</button></td>
             </tr>
