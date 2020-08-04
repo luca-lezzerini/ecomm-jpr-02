@@ -15,5 +15,5 @@ public interface RepColore extends JpaRepository<Colore, Long> {
 
     Colore findByColore(String colore);
 
-    public List<Colore> findByColoreLike(String colore);
+    List<Colore> findByColoreLike(String colore);
 }
