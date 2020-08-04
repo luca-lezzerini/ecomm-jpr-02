@@ -10,8 +10,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface RepColore extends JpaRepository <Colore, Long>{
-    
-       
+public interface RepColore extends JpaRepository<Colore, Long> {
     public Colore findByColore(String colore);
 }
