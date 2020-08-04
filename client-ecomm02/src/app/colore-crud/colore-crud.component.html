@@ -1,1 +1,54 @@
-<p>colore-crud works!</p>
+<h1>Gestione Anagrafe Colori</h1>
+<div>
+    <span *ngIf= "state =='ricerca'"> 
+        <input type="text" [(ngModel)]="colore.colore">
+        <button (click)="cerca()">Cerca</button>
+        <button (click)="nuovo()">Aggiungi</button>
+    </span>
+    <span *ngIf= "state !='ricerca'"> 
+        <input type="text" [(ngModel)]="colore.colore" disabled>
+        <button (click)="cerca()">Cerca</button disabled>
+        <button (click)="nuovo()">Aggiungi</button disabled>
+    </span>
+</div>
+<div *ngIf= "state == 'ricerca'"></div>
+<div *ngIf= "state == 'visualizza'">
+ <input type="text" [(ngModel)]="coloreForm.colore" readonly>
+ <button (click)="chiudi()">Chiudi</button>
+</div>
+<div *ngIf= "state == 'elimina'">
+    <input type="text" [(ngModel)]="coloreForm.colore" readonly>
+    <button (click)="conferma()">Conferma</button>
+    <button (click)="chiudi()">Annulla</button>
+   </div>
+   <div *ngIf= "state == 'aggiungi'">
+    <input type="text" [(ngModel)]="coloreForm.colore">
+    <button (click)="conferma()">Conferma</button>
+    <button (click)="chiudi()">Annulla</button>
+   </div>
+   <div *ngIf= "state == 'modifica'">
+    <input type="text" [(ngModel)]="coloreForm.colore">
+    <button (click)="conferma()">Conferma</button>
+    <button (click)="chiudi()">Annulla</button>
+   </div>
+   <div>
+    <table>
+        <thead>
+            <tr>
+                <th>Colore</th>
+                <th></th>
+                <th></th>
+            </tr>  
+        </thead>
+        <tbody>
+            <tr *ngFor= "let item of listaColori">
+            <td>{{item.colore}}</td>
+            <td><button (click)= "chiediModifica(item)">Modifica</button></td>
+            <td><button (click)= "chiediElimina(item)">Rimuovi</button></td>
+        </tr>
+        </tbody>
+    </table>   
+   </div>
+
+
+
