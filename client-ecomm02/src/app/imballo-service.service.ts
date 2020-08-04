@@ -1,4 +1,4 @@
-import { Imballo } from './module/imballo';
+import { Imballo } from './model/imballo';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
