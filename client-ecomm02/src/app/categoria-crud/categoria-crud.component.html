@@ -20,10 +20,10 @@
         <th>ID</th>
         <th>Descrizione</th>
     </tr>
-    <tr *ngFor="let c of categorie">
+    <tr *ngFor="let c of mem.categorie">
         <td>{{c.id}}</td>
         <td>{{c.descrizione}}</td>
-        <td><button (click)="modifica(c.id)">Modifica</button></td>
+        <td><button (click)="modifica(c.descrizione)">Modifica</button></td>
         <td><button (click)="rimuovi(c.id)">Rimuovi</button></td>
     </tr>
 </table>

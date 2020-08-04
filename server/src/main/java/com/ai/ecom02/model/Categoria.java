@@ -18,7 +18,7 @@ import javax.persistence.Id;
  * @author Roberto
  */
 @Entity
-public class Categoria implements Serializable{
+public class Categoria implements Serializable {
 
     @Id         //dico all'ID che è un identificativo, quindi che è PRIMARY KEY
 

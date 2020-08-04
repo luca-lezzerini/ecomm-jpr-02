@@ -14,6 +14,7 @@ import org.springframework.stereotype.Repository;
  * @author Roberto
  */
 @Repository
-public interface RepCategoria extends JpaRepository<Categoria, Long>{
-    
+public interface RepCategoria extends JpaRepository<Categoria, Long> {
+
+    Categoria findByDescrizioneLike(String descrizione);
 }

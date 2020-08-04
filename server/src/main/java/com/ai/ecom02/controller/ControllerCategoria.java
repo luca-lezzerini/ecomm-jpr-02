@@ -10,11 +10,11 @@ import com.ai.ecom02.service.CategoriaService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
-
 
 /**
  *
@@ -23,30 +23,41 @@ import org.springframework.web.bind.annotation.RestController;
 @CrossOrigin("*")
 @RestController
 public class ControllerCategoria {
-    
+
     @Autowired
     CategoriaService categoriaService;
-    
-    @RequestMapping(value={"/aggiungi-categoria"})
+
+    @RequestMapping(value = {"/aggiungi-categoria"})
     @ResponseBody
-    public List<Categoria> aggiungiContatto(
+    public List<Categoria> aggiungiCategoria(
             @RequestBody Categoria categoria
-    ){
-        categoriaService.addCategoria(categoria); 
+    ) {
+        if (cercaCategoria(categoria.getDescrizione()) == null) {
+            categoriaService.addCategoria(categoria);
+        }
         return categoriaService.getLista();
     }
-    
-    @RequestMapping(value={"/lista-categorie"})
+
+    @RequestMapping(value = {"/lista-categorie"})
     @ResponseBody
-    public List<Categoria> listaContatti(){
+    public List<Categoria> listaCategoria() {
         return categoriaService.getLista();
     }
-    
-    @RequestMapping(value={"/rimuovi-categoria"})
+
+    @RequestMapping(value = {"/rimuovi-categoria/{id}"})
     @ResponseBody
     public List<Categoria> rimuoviCategoria(
-            @RequestBody Categoria categoria
-    ){
-        return null;
+            @PathVariable Long id
+    ) {
+        categoriaService.removeCat(id);
+        return categoriaService.getLista();
+    }
+
+    @RequestMapping(value = {"/cerca-categoria/{descrizione}"})
+    @ResponseBody
+    public Categoria cercaCategoria(
+            @PathVariable String descrizione
+    ) {
+        return categoriaService.findCat(descrizione);
     }
 }

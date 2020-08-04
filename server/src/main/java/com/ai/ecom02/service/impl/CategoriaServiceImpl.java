@@ -17,19 +17,30 @@ import org.springframework.stereotype.Service;
  * @author Roberto
  */
 @Service
-public class CategoriaServiceImpl implements CategoriaService{
-    
+public class CategoriaServiceImpl implements CategoriaService {
+
     @Autowired
     RepCategoria repCategoria;
 
     @Override
     public Categoria addCategoria(Categoria categoria) {
-           return repCategoria.save(categoria);
+        return repCategoria.save(categoria);
     }
 
     @Override
     public List<Categoria> getLista() {
         return repCategoria.findAll();
     }
-      
+
+    @Override
+    public List<Categoria> removeCat(Long id) {
+        repCategoria.deleteById(id);
+        return getLista();
+    }
+
+    @Override
+    public Categoria findCat(String descrizione) {
+        return repCategoria.findByDescrizioneLike(descrizione);
+    }
+
 }

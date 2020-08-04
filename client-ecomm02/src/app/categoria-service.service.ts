@@ -28,7 +28,7 @@ export class CategoriaServiceService {
 
   cerca(){
     let o: Observable<CategoriaDto> =
-    this.http.get<CategoriaDto>(this.url+'/cerca-categoria' + this.categoria)
+    this.http.get<CategoriaDto>(this.url+'/cerca-categoria' + this.categoria.descrizione)
     o.subscribe(risp => {this.categoria = risp;})
   }
 
