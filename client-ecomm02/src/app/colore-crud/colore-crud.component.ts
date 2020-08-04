@@ -63,8 +63,9 @@ export class ColoreCrudComponent implements OnInit {
 
     }
     console.log(this.urlPath + urlEnd);
-    const oss: Observable<ColoreDto> = this.http.post<ColoreDto>(this.urlPath + urlEnd, this.coloreForm);
     console.log(this.coloreForm);
+    const oss: Observable<ColoreDto> = this.http.post<ColoreDto>(this.urlPath + urlEnd, this.coloreForm);
+    const sub: Subscription = oss.subscribe(risp => { console.log(risp); });
     this.state = 'ricerca';
     this.ngOnInit();
   }

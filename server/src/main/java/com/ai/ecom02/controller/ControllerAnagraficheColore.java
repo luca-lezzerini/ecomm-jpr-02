@@ -20,6 +20,7 @@ public class ControllerAnagraficheColore {
     @RequestMapping(value = ("/lista-colori"))
     @ResponseBody
     public List<Colore> listaColori() {
+        System.out.println("lista-colori");
         return srvColore.getAll();
     }
 
@@ -36,6 +37,7 @@ public class ControllerAnagraficheColore {
     public void deleteColore(
             @RequestBody Colore colore
     ) {
+        System.out.println("colori-delete");
         srvColore.delete(colore);
     }
 
@@ -52,6 +54,7 @@ public class ControllerAnagraficheColore {
     public List<Colore> findColori(
             @RequestBody Colore colore
     ) {
+        System.out.println("find_colore");
         return srvColore.findByColoreLike(colore);
     }
 
