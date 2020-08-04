@@ -16,12 +16,28 @@ export class CategoriaServiceService {
 
   addCategoria(){
     let o: Observable<CategoriaDto[]> =
-    this.http.post<CategoriaDto[]>(this.url + "/aggiungiCategoria", this.categoria)
+    this.http.post<CategoriaDto[]>(this.url + "/aggiungi-categoria", this.categoria)
     o.subscribe(risp => {this.categorie = risp;})
   }
 
   lista(): CategoriaDto[] {
-    let o: Observable<CategoriaDto[]> = this.http.get<CategoriaDto[]>(this.url + '/listaCategorie')
+    let o: Observable<CategoriaDto[]> = this.http.get<CategoriaDto[]>(this.url + '/lista-categorie')
+    o.subscribe(risp => { this.categorie = risp; })
+    return this.categorie
+  }
+
+  cerca(){
+    let o: Observable<CategoriaDto> =
+    this.http.get<CategoriaDto>(this.url+'/cerca-categoria' + this.categoria)
+    o.subscribe(risp => {this.categoria = risp;})
+  }
+
+  update(descrizione: string){
+
+  }
+
+  remove(id: number){
+    let o: Observable<CategoriaDto[]> = this.http.get<CategoriaDto[]>(this.url + '/rimuovi-categoria' + id)
     o.subscribe(risp => { this.categorie = risp; })
     return this.categorie
   }

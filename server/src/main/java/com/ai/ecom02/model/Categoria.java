@@ -5,20 +5,20 @@
  */
 package com.ai.ecom02.model;
 
+import java.io.Serializable;
 import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Table;
 
 /**
  *
  * @author Roberto
  */
 @Entity
-public class Categoria {
+public class Categoria implements Serializable{
 
     @Id         //dico all'ID che è un identificativo, quindi che è PRIMARY KEY
 

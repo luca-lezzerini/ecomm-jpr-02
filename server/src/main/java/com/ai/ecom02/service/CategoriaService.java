@@ -15,7 +15,8 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public interface CategoriaService {
-    public void addCategoria(Categoria categoria);  
     
-    public List<Categoria> getLista();
+    Categoria addCategoria(Categoria categoria);  
+    
+    List<Categoria> getLista();
 }

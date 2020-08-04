@@ -8,10 +8,11 @@
 
 <div class="check-element animate-show-hide" *ngIf="aggiungiState">
     <h3>Form dati</h3>
-    <input type="text" [(ngModel)]="mem.categoria" placeholder="descrizione">
+    <input type="text" [(ngModel)]="mem.categoria.descrizione" placeholder="descrizione">
     <button (click)="conferma()">Conferma</button>
     <button (click)="annulla()">Annulla</button>
 </div>
+
 <br><br><br>
 
 <table>
@@ -22,7 +23,7 @@
     <tr *ngFor="let c of categorie">
         <td>{{c.id}}</td>
         <td>{{c.descrizione}}</td>
-        <td><button (click)="modifica()">Modifica</button></td>
-        <td><button (click)="rimuovi()">Rimuovi</button></td>
+        <td><button (click)="modifica(c.id)">Modifica</button></td>
+        <td><button (click)="rimuovi(c.id)">Rimuovi</button></td>
     </tr>
 </table>

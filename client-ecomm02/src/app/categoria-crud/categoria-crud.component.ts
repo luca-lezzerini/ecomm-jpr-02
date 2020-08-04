@@ -19,7 +19,7 @@ export class CategoriaCRUDComponent implements OnInit {
   }
 
   searchCriteria(){
-    return null;
+    this.mem.cerca();
   }
 
   aggiungi(){
@@ -31,15 +31,16 @@ export class CategoriaCRUDComponent implements OnInit {
   }
 
   annulla(){
-    return null;
+    this.aggiungiState = false;
   }
 
-  modifica(){
-    return null;
+  modifica(descrizione: string){
+    this.aggiungiState = true;
+    this.mem.update(descrizione);
   }
 
-  rimuovi(){
-    return null;
+  rimuovi(id: number){
+    this.mem.remove(id);
   }
 
 }

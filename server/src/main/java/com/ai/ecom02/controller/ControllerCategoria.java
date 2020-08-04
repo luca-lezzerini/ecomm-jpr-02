@@ -27,7 +27,7 @@ public class ControllerCategoria {
     @Autowired
     CategoriaService categoriaService;
     
-    @RequestMapping(value={"/aggiungiCategoria"})
+    @RequestMapping(value={"/aggiungi-categoria"})
     @ResponseBody
     public List<Categoria> aggiungiContatto(
             @RequestBody Categoria categoria
@@ -36,9 +36,17 @@ public class ControllerCategoria {
         return categoriaService.getLista();
     }
     
-    @RequestMapping(value={"/listaCategorie"})
+    @RequestMapping(value={"/lista-categorie"})
     @ResponseBody
     public List<Categoria> listaContatti(){
         return categoriaService.getLista();
+    }
+    
+    @RequestMapping(value={"/rimuovi-categoria"})
+    @ResponseBody
+    public List<Categoria> rimuoviCategoria(
+            @RequestBody Categoria categoria
+    ){
+        return null;
     }
 }
