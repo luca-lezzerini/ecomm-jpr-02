@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class ImballoServiceService {
 
-  private url : 'http://localhost:8080/'
+  private url = 'http://localhost:8080/'
 
   
   constructor(private http : HttpClient) { }
