@@ -33,7 +33,7 @@ public class ControllerCategoria {
             @RequestBody Categoria categoria
     ) {
         if (cercaCategoria(categoria.getDescrizione()) == null) {
-            categoriaService.addCategoria(categoria);
+            categoriaService.addCat(categoria);
         }
         return categoriaService.getLista();
     }

@@ -30,10 +30,11 @@ public class ControllerAnagraficaImballo {
 
     @RequestMapping(value = {"/add-imballo"})
     @ResponseBody
-    public void aggiungiImballo(
+    public List<Imballo> aggiungiImballo(
             @RequestBody Imballo imballo
     ) {
         srvImballo.add(imballo);
+        return srvImballo.getAll();
     }
 
     @RequestMapping(value = {"/delete-imballo/{id}"})
@@ -63,7 +64,7 @@ public class ControllerAnagraficaImballo {
         srvImballo.findById(imballo);
         return imballo;
     }
-    
+
     @RequestMapping(value = {"/find-by-descrizione-imballo"})
     @ResponseBody
     public Imballo ricercaByDescrizioneImballo(
