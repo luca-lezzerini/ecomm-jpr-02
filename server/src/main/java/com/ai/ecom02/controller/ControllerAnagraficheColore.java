@@ -47,12 +47,12 @@ public class ControllerAnagraficheColore {
         srvColore.update(colore);
     }
 
-    @RequestMapping(value = ("colori-find"))
+    @RequestMapping(value = ("/colori-find"))
     @ResponseBody
-    public Colore findColori(
+    public List<Colore> findColori(
             @RequestBody Colore colore
     ) {
-        return srvColore.findById(colore);
+        return srvColore.findByColoreLike(colore);
     }
 
 }

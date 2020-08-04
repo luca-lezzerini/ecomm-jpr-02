@@ -6,6 +6,7 @@
 package com.ai.ecom02.repository;
 
 import com.ai.ecom02.model.Colore;
+import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -13,4 +14,6 @@ import org.springframework.stereotype.Repository;
 public interface RepColore extends JpaRepository<Colore, Long> {
 
     Colore findByColore(String colore);
+
+    public List<Colore> findByColoreLike(String colore);
 }

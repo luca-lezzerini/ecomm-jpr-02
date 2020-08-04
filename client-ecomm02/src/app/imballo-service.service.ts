@@ -19,32 +19,38 @@ export class ImballoServiceService {
 
   lista(): Imballo[] {
 
-    let o: Observable<Imballo[]> = this.http.get<Imballo[]>(this.url + '/listaImballi')
+    let o: Observable<Imballo[]> = this.http.get<Imballo[]>(this.url + '/list-imballo')
     o.subscribe(risp => { this.imballi = risp; })
     return this.imballi
   }
 
   addImballo (imballo : Imballo) {
 
-    let o : Observable<Imballo> = this.http.post<Imballo>(this.url + "/addImballo", imballo)
+    let o : Observable<Imballo> = this.http.post<Imballo>(this.url + "/add-imballo", imballo)
     o.subscribe(risp => {imballo = risp;})
 
   }
 
   removeImballo(id: number) {
 
- let o: Observable<Imballo> = this.http.get<Imballo>(this.url + '/deleteImballo/' + id)
+ let o: Observable<Imballo> = this.http.get<Imballo>(this.url + '/delete-imballo/' + id)
      o.subscribe(risp => { this.imballo = risp; })
    return this.imballo;
 
   }
 
-  updateImballo(id: number) {
+  updateImballo(imballo : Imballo) {
+
+    let o: Observable<Imballo> = this.http.post<Imballo>(this.url + '/update-imballo', imballo)
+    o.subscribe(risp => {imballo = risp;})
 
   }
 
-  findImballo(id: number) {
-    
+  findImballo() {
+    let o: Observable<Imballo> = this.http.get<Imballo>(this.url + "/find-imballo")
+    o.subscribe(risp => {this.imballo = risp; })
+
+
   }
 
   
