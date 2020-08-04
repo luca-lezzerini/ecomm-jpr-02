@@ -15,7 +15,7 @@ import { ColoreCrudComponent } from './colore-crud/colore-crud.component';
     CategoriaCRUDComponent
   ],
   imports: [
- 
+
   BrowserModule,
     AppRoutingModule,
     FormsModule,
