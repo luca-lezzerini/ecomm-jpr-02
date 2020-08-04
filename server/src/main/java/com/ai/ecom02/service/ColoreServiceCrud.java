@@ -5,16 +5,17 @@ import java.util.List;
 
 public interface ColoreServiceCrud {
 
-    public Colore add(Colore colore);
+    Colore add(Colore colore);
 
-    public void delete(Colore colore);
+    void delete(Colore colore);
 
-    public Colore update(Colore colore);
+    Colore update(Colore colore);
 
-    public List<Colore> getAll();
+    List<Colore> getAll();
 
-    public Colore findById(Colore colore);
+    Colore findById(Colore colore);
 
-    public Colore findByColore(Colore colore);
+    Colore findByColore(Colore colore);
 
+    List<Colore> findByColoreLike(Colore colore);
 }

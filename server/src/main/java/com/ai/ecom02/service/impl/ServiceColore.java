@@ -1,10 +1,8 @@
-
 package com.ai.ecom02.service.impl;
 
 import com.ai.ecom02.model.Colore;
 import com.ai.ecom02.repository.RepColore;
 import java.util.List;
-import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import com.ai.ecom02.service.ColoreServiceCrud;
 import org.springframework.stereotype.Service;
@@ -47,5 +45,10 @@ public class ServiceColore implements ColoreServiceCrud {
         //Colore c = s.get();
         return c;
 
+    }
+
+    @Override
+    public List<Colore> findByColoreLike(Colore colore) {
+        return repColore.findByColoreLike(colore.getColore());
     }
 }

@@ -43,7 +43,7 @@ public class Colore implements Serializable {
 
     @Override
     public String toString() {
-        return "Colore{" + "id=" + id + ", colore=" + colore + '}';
+        return  "colore: " +id + " " + colore;
     }
 
 }
