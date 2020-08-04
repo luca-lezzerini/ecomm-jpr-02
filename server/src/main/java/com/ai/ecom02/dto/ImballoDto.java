@@ -6,25 +6,23 @@ import com.ai.ecom02.model.Imballo;
  *
  * @author Francesco
  */
+public class ImballoDto extends Imballo {
 
-public class ImballoDto {
-
-    Imballo imballoDto;
-
-    public ImballoDto(Imballo imballoDto) {
-        this.imballoDto = imballoDto;
-    }
+    private ImballoDto imballoDto;
 
     public ImballoDto() {
     }
 
-    public Imballo getImballoDto() {
+    public ImballoDto(ImballoDto imballoDto) {
+        this.imballoDto = imballoDto;
+    }
+
+    public ImballoDto getImballoDto() {
         return imballoDto;
     }
 
-    public void setImballoDto(Imballo imballoDto) {
+    public void setImballoDto(ImballoDto imballoDto) {
         this.imballoDto = imballoDto;
     }
 
 }
-
