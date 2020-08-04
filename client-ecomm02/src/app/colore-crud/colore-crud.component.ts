@@ -22,8 +22,9 @@ export class ColoreCrudComponent implements OnInit {
     const sub: Subscription = oss.subscribe(risp => { this.listaColori = risp; });
   }
   cerca(): void {
-    const oss: Observable<ColoreDto[]> = this.http.get<ColoreDto[]>(this.urlPath + '/colori-find');
+    const oss: Observable<ColoreDto[]> = this.http.post<ColoreDto[]>(this.urlPath + '/colori-find', this.colore);
     const sub: Subscription = oss.subscribe(risp => { this.listaColori = risp; });
+    console.log(this.listaColori);
   }
   chiediModifica(colore: ColoreDto): void {
     this.state = 'modifica';
@@ -61,7 +62,10 @@ export class ColoreCrudComponent implements OnInit {
       }
 
     }
-    const oss: Observable<ColoreDto[]> = this.http.post<ColoreDto[]>(this.urlPath + urlEnd, this.coloreForm);
+    console.log(this.urlPath + urlEnd);
+    const oss: Observable<ColoreDto> = this.http.post<ColoreDto>(this.urlPath + urlEnd, this.coloreForm);
+    console.log(this.coloreForm);
+    this.state = 'ricerca';
     this.ngOnInit();
   }
 }
