@@ -32,7 +32,12 @@ public class ControllerCategoria {
     public void aggiungiContatto(
             @RequestBody Categoria categoria
     ){
-        categoriaService.addCategoria(categoria);
-        
+        categoriaService.addCategoria(categoria); 
+    }
+    
+    @RequestMapping(value={"/listaCategorie"})
+    @ResponseBody
+    public List<Categoria> listaContatti(){
+        return categoriaService.getLista();
     }
 }

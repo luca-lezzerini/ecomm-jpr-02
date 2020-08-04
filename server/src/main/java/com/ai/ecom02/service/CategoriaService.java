@@ -6,6 +6,7 @@
 package com.ai.ecom02.service;
 
 import com.ai.ecom02.model.Categoria;
+import java.util.List;
 import org.springframework.stereotype.Service;
 
 /**
@@ -15,4 +16,6 @@ import org.springframework.stereotype.Service;
 @Service
 public interface CategoriaService {
     public void addCategoria(Categoria categoria);  
+    
+    public List<Categoria> getLista();
 }

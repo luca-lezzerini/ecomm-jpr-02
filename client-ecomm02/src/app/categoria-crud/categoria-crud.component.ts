@@ -11,10 +11,12 @@ export class CategoriaCRUDComponent implements OnInit {
   id: number;
   descrizione: string;
   categoria: CategoriaDto;
+  categorie: CategoriaDto[] = []
   aggiungiState = false;
   constructor(public mem: CategoriaServiceService) { }
   
   ngOnInit() {
+    this.categorie = this.mem.lista()
   }
 
   searchCriteria(){

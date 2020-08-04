@@ -26,5 +26,10 @@ public class CategoriaServiceImpl implements CategoriaService{
     public void addCategoria(Categoria categoria) {
        repCategoria.save(categoria);
     }
-    
+
+    @Override
+    public List<Categoria> getLista() {
+        return repCategoria.findAll();
+    }
+      
 }

@@ -21,4 +21,11 @@ export class CategoriaServiceService {
     this.http.post<CategoriaDto>(this.url + "/aggiungiCategoria", categoria)
     o.subscribe(risp => {categoria = risp;})
   }
+
+  lista(): CategoriaDto[] {
+
+    let o: Observable<CategoriaDto[]> = this.http.get<CategoriaDto[]>(this.url + '/listaCategorie')
+    o.subscribe(risp => { this.categorie = risp; })
+    return this.categorie
+  }
 }
