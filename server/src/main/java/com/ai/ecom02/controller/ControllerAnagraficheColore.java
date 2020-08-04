@@ -17,13 +17,13 @@ public class ControllerAnagraficheColore {
     @Autowired
     ServiceColore srvColore;
 
-    @RequestMapping(value = ("/Colori"))
+    @RequestMapping(value = ("/lista-colori"))
     @ResponseBody
-    public List<Colore> colori() {
+    public List<Colore> listaColori() {
         return srvColore.getAll();
     }
 
-    @RequestMapping(value = ("/Colori/Add"))
+    @RequestMapping(value = ("/colori-add"))
     @ResponseBody
     public void addColore(
             @RequestBody Colore colore
@@ -31,7 +31,7 @@ public class ControllerAnagraficheColore {
         srvColore.add(colore);
     }
 
-    @RequestMapping(value = ("/Colori/Delete"))
+    @RequestMapping(value = ("/colori-delete"))
     @ResponseBody
     public void deleteColore(
             @RequestBody Colore colore
@@ -39,7 +39,7 @@ public class ControllerAnagraficheColore {
         srvColore.delete(colore);
     }
 
-    @RequestMapping(value = ("/Colori/Update"))
+    @RequestMapping(value = ("/colori-update"))
     @ResponseBody
     public void updateColore(
             @RequestBody Colore colore
@@ -47,7 +47,7 @@ public class ControllerAnagraficheColore {
         srvColore.update(colore);
     }
 
-    @RequestMapping(value = ("/Colori/Find"))
+    @RequestMapping(value = ("colori-find"))
     @ResponseBody
     public Colore findColori(
             @RequestBody Colore colore
