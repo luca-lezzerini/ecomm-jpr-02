@@ -42,8 +42,9 @@ public class ServiceColore implements ColoreServiceCrud {
 
     @Override
     public Colore findById(Colore colore) {
-        Optional<Colore> s = repColore.findById(colore.getId());
-        Colore c = s.get();
+        Colore c = repColore.getOne(colore.getId());
+        //Optional<Colore> s = repColore.findById(colore.getId());
+        //Colore c = s.get();
         return c;
 
     }
