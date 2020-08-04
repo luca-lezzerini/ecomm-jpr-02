@@ -1,4 +1,5 @@
-import { Imballo } from './../module/imballo';
+import { Imballo } from './../model/imballo';
+
 import { ImballoServiceService } from './../imballo-service.service';
 import { HttpClientModule } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
@@ -14,6 +15,10 @@ export class ImballoCrudComponent implements OnInit {
 
  imballi : Imballo[] = []
  imballo : Imballo
+ id : number
+ descrizione : string
+ cost : number
+ msg : string
 
   constructor(private router: Router, public srvImballo: ImballoServiceService) { }
 
@@ -23,8 +28,15 @@ export class ImballoCrudComponent implements OnInit {
 
   }
 
-  addImballo(imballo) {
-   this.srvImballo.addImballo(imballo);
+  addImballo() {
+    if (this.descrizione.length> 0 && this.cost> 0) {
+      let imballo : Imballo = new Imballo(this.id, this.descrizione, this.cost)
+      this.srvImballo.addImballo(imballo)
+      this.msg = "inserito con successo!"
+    } 
+    else {
+      this.msg = "descrizione e costo non possono essere vuoti!"
+    }  
   }
 
   removeImballo(id: number) {

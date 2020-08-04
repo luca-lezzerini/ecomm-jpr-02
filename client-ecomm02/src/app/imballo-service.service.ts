@@ -14,10 +14,11 @@ export class ImballoServiceService {
   constructor(private http : HttpClient) { }
 
   imballi : Imballo[] = []
-
+  imballo : Imballo
 
 
   lista(): Imballo[] {
+
     let o: Observable<Imballo[]> = this.http.get<Imballo[]>(this.url + '/listaImballi')
     o.subscribe(risp => { this.imballi = risp; })
     return this.imballi
@@ -25,12 +26,16 @@ export class ImballoServiceService {
 
   addImballo (imballo : Imballo) {
 
- 
+    let o : Observable<Imballo> = this.http.post<Imballo>(this.url + "/addImballo", imballo)
+    o.subscribe(risp => {imballo = risp;})
 
   }
 
   removeImballo(id: number) {
 
+ let o: Observable<Imballo> = this.http.get<Imballo>(this.url + '/deleteImballo/' + id)
+     o.subscribe(risp => { this.imballo = risp; })
+   return this.imballo;
 
   }
 

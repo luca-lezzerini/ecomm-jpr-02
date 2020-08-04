@@ -1,7 +1,9 @@
 
 <h1>IMBALLO</h1>
 <br>
-<input type="text" [(ngModule)]="" placeholder="imballo">
+<h2>inserisci i dati:</h2>
+<input type="text" [(ngModule)]="descrizione" placeholder="imballo">
+<input type="text" [(ngModule)]="cost" placeholder="imballo">
 <button (click)="searchCriteria()">Cerca</button>
 <button (click)="aggiungi()" >Aggiungi</button>
 
@@ -9,8 +11,7 @@
 
 <div  >
     <h3>Form dati</h3>
-    <br>
-    <input type="text" [(ngModule)]="descrizione" placeholder="descrizione">
+    <br>    
     <button (click)="conferma()">Conferma</button>
     <button (click)="annulla()">Annulla</button>
 </div>
