@@ -1,4 +1,4 @@
-import { Imballo } from './../model/imballo';
+import { Imballo } from '../dto/imballo-dto';
 
 import { ImballoServiceService } from './../imballo-service.service';
 import { HttpClientModule } from '@angular/common/http';
