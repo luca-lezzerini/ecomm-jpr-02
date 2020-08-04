@@ -5,8 +5,8 @@
  */
 package com.ai.ecom02.repository;
 
-import com.ai.ecom02.dto.ImballoDto;
 import com.ai.ecom02.model.Imballo;
+import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -16,7 +16,7 @@ import org.springframework.stereotype.Repository;
  */
 
 @Repository
-public interface RepImballo extends JpaRepository<Imballo, Long>{
-    
-    
+public interface RepImballo extends JpaRepository<Imballo, Long> {
+
+    List<Imballo> findByDescrizioneLike(String d);
 }
