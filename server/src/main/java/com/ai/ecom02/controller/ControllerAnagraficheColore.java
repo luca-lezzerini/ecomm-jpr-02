@@ -47,7 +47,7 @@ public class ControllerAnagraficheColore {
         srvColore.update(colore);
     }
 
-    @RequestMapping(value = ("colori-find"))
+    @RequestMapping(value = ("/colori-find"))
     @ResponseBody
     public Colore findColori(
             @RequestBody Colore colore
