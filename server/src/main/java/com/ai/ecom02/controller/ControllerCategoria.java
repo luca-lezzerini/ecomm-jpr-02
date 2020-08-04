@@ -29,10 +29,11 @@ public class ControllerCategoria {
     
     @RequestMapping(value={"/aggiungiCategoria"})
     @ResponseBody
-    public void aggiungiContatto(
+    public List<Categoria> aggiungiContatto(
             @RequestBody Categoria categoria
     ){
         categoriaService.addCategoria(categoria); 
+        return categoriaService.getLista();
     }
     
     @RequestMapping(value={"/listaCategorie"})

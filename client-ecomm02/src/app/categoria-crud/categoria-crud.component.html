@@ -2,13 +2,13 @@
 <br>
 <input type="text" [(ngModel)]="descrizione" placeholder="categoria">
 <button (click)="searchCriteria()">Cerca</button>
-<button (click)="aggiungi()">Aggiungi</button>
+<button (click)="attiva()">Aggiungi</button>
 
 <br><br><br>
 
 <div class="check-element animate-show-hide" *ngIf="aggiungiState">
     <h3>Form dati</h3>
-    <input type="text" [(ngModel)]="descrizione" placeholder="descrizione">
+    <input type="text" [(ngModel)]="mem.categoria" placeholder="descrizione">
     <button (click)="aggiungi()">Conferma</button>
     <button (click)="annulla()">Annulla</button>
 </div>

@@ -8,11 +8,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./categoria-crud.component.css']
 })
 export class CategoriaCRUDComponent implements OnInit {
-  id: number;
-  descrizione: string;
-  categoria: CategoriaDto;
+  
+  
   categorie: CategoriaDto[] = []
   aggiungiState = false;
+
   constructor(public mem: CategoriaServiceService) { }
   
   ngOnInit() {
@@ -23,10 +23,12 @@ export class CategoriaCRUDComponent implements OnInit {
     return null;
   }
 
-  aggiungi(){
+  attiva(){
     this.aggiungiState = true;
-    let categoria: CategoriaDto = new CategoriaDto(this.id, this.descrizione)
-    this.mem.addCategoria(categoria);
+  }
+
+  aggiungi(){
+    this.mem.addCategoria();
   }
 
   conferma(){
