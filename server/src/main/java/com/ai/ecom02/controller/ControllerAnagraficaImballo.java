@@ -22,9 +22,9 @@ public class ControllerAnagraficaImballo {
     @Autowired
     ServiceImballo srvImballo;
 
-    @RequestMapping(value = {"/listaImballi"})
+    @RequestMapping(value = {"/lista-imballi"})
     @ResponseBody
-    public List<Imballo> imballi() {
+    public List<Imballo> listaImballi() {
         return srvImballo.getAll();
     }
 

@@ -1,10 +1,8 @@
-
 package com.ai.ecom02.service.impl;
 
 import com.ai.ecom02.model.Colore;
 import com.ai.ecom02.repository.RepColore;
 import java.util.List;
-import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import com.ai.ecom02.service.ColoreServiceCrud;
 import org.springframework.stereotype.Service;
@@ -16,8 +14,8 @@ public class ServiceColore implements ColoreServiceCrud {
     RepColore repColore;
 
     @Override
-    public void add(Colore o) {
-        repColore.save(o);
+    public Colore add(Colore o) {
+        return repColore.save(o);
     }
 
     @Override
@@ -26,8 +24,8 @@ public class ServiceColore implements ColoreServiceCrud {
     }
 
     @Override
-    public void update(Colore o) {
-        repColore.save(o);
+    public Colore update(Colore o) {
+        return repColore.save(o);
     }
 
     @Override
@@ -42,9 +40,15 @@ public class ServiceColore implements ColoreServiceCrud {
 
     @Override
     public Colore findById(Colore colore) {
-        Optional s = repColore.findById(colore.getId());
-        Colore c = (Colore) s.get();
+        Colore c = repColore.getOne(colore.getId());
+        //Optional<Colore> s = repColore.findById(colore.getId());
+        //Colore c = s.get();
         return c;
 
+    }
+
+    @Override
+    public List<Colore> findByColoreLike(Colore colore) {
+        return repColore.findByColoreLike(colore.getColore());
     }
 }
