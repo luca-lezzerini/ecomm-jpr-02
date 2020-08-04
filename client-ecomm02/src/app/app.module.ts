@@ -13,7 +13,8 @@ import { ColoreCrudComponent } from './colore-crud/colore-crud.component';
   declarations: [
     AppComponent,
     ColoreCrudComponent,
-    CategoriaCRUDComponent
+    CategoriaCRUDComponent,
+    ImballoCrudComponent
   ],
   imports: [
 

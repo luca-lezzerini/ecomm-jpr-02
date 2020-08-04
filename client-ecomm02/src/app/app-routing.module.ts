@@ -6,7 +6,7 @@ import { ColoreCrudComponent } from './colore-crud/colore-crud.component';
 
 
 const routes: Routes = [
-  { path: 'Imballo-crud', component: ImballoCrudComponent},
+  { path: 'imballo-crud', component: ImballoCrudComponent},
   { path: 'categoria-crud', component: CategoriaCRUDComponent },
   { path: 'colore-crud', component: ColoreCrudComponent},
   { path: '', redirectTo: '/categoria-crud', pathMatch: 'full'}
