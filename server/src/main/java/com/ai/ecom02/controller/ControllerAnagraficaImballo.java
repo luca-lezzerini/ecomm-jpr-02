@@ -22,13 +22,13 @@ public class ControllerAnagraficaImballo {
     @Autowired
     ServiceImballo srvImballo;
 
-    @RequestMapping(value = {"/lista-imballi"})
+    @RequestMapping(value = {"/list-imballo"})
     @ResponseBody
     public List<Imballo> listaImballi() {
         return srvImballo.getAll();
     }
 
-    @RequestMapping(value = {"/addImballo"})
+    @RequestMapping(value = {"/add-imballo"})
     @ResponseBody
     public void aggiungiImballo(
             @RequestBody Imballo imballo
@@ -36,7 +36,7 @@ public class ControllerAnagraficaImballo {
         srvImballo.add(imballo);
     }
 
-    @RequestMapping(value = {"/deleteImballo/{id}"})
+    @RequestMapping(value = {"/delete-imballo/{id}"})
     @ResponseBody
     public Imballo cancellaImballo(
             @PathVariable Long id
@@ -46,7 +46,7 @@ public class ControllerAnagraficaImballo {
         return imballo;
     }
 
-    @RequestMapping(value = {"/updateImballo"})
+    @RequestMapping(value = {"/update-imballo"})
     @ResponseBody
     public Imballo aggiornaImballo(
             @RequestBody Imballo imballo
@@ -55,12 +55,21 @@ public class ControllerAnagraficaImballo {
         return imballo;
     }
 
-    @RequestMapping(value = {"/findImballo"})
+    @RequestMapping(value = {"/find-imballo"})
     @ResponseBody
     public Imballo ricercaImballo(
             @RequestBody Imballo imballo
     ) {
         srvImballo.findById(imballo);
+        return imballo;
+    }
+    
+    @RequestMapping(value = {"/find-by-descrizione-imballo"})
+    @ResponseBody
+    public Imballo ricercaByDescrizioneImballo(
+            @RequestBody Imballo imballo
+    ) {
+        srvImballo.findByDescrizione(imballo.getDescrizione());
         return imballo;
     }
 }
