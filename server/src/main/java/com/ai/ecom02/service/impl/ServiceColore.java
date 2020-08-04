@@ -16,8 +16,8 @@ public class ServiceColore implements ColoreServiceCrud {
     RepColore repColore;
 
     @Override
-    public void add(Colore o) {
-        repColore.save(o);
+    public Colore add(Colore o) {
+        return repColore.save(o);
     }
 
     @Override
@@ -26,8 +26,8 @@ public class ServiceColore implements ColoreServiceCrud {
     }
 
     @Override
-    public void update(Colore o) {
-        repColore.save(o);
+    public Colore update(Colore o) {
+        return repColore.save(o);
     }
 
     @Override

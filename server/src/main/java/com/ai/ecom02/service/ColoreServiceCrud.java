@@ -5,11 +5,11 @@ import java.util.List;
 
 public interface ColoreServiceCrud {
 
-    public void add(Colore colore);
+    public Colore add(Colore colore);
 
     public void delete(Colore colore);
 
-    public void update(Colore colore);
+    public Colore update(Colore colore);
 
     public List<Colore> getAll();
 
