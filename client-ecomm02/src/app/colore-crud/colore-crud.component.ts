@@ -10,29 +10,29 @@ import { Observable, Subscription } from 'rxjs';
 })
 export class ColoreCrudComponent implements OnInit {
   urlPath = 'http://localhost:8080';
-colore: ColoreDto = new ColoreDto();
-coloreForm: ColoreDto = new ColoreDto();
-listaColori: ColoreDto[] = [];
-state = 'ricerca';
+  colore: ColoreDto = new ColoreDto();
+  coloreForm: ColoreDto = new ColoreDto();
+  listaColori: ColoreDto[] = [];
+  state = 'ricerca';
 
   constructor(private http: HttpClient) { }
 
-  ngOnInit(): void  {
+  ngOnInit(): void {
     const oss: Observable<ColoreDto[]> = this.http.get<ColoreDto[]>(this.urlPath + '/lista-colori');
-    const sub: Subscription = oss.subscribe(risp => {this.listaColori = risp});
+    const sub: Subscription = oss.subscribe(risp => { this.listaColori = risp; });
   }
   cerca(): void {
     const oss: Observable<ColoreDto[]> = this.http.get<ColoreDto[]>(this.urlPath + '/colori-find');
-    const sub: Subscription = oss.subscribe(risp => {this.listaColori = risp});
+    const sub: Subscription = oss.subscribe(risp => { this.listaColori = risp; });
   }
-  chiediModifica(colore:ColoreDto): void {
+  chiediModifica(colore: ColoreDto): void {
     this.state = 'modifica';
-    this.coloreForm = Object.assign({},colore);
+    this.coloreForm = Object.assign({}, colore);
 
   }
-  chiediElimina(colore:ColoreDto): void {
+  chiediElimina(colore: ColoreDto): void {
     this.state = 'elimina';
-    this.coloreForm = Object.assign({},colore);
+    this.coloreForm = Object.assign({}, colore);
 
   }
   nuovo(): void {
@@ -46,7 +46,7 @@ state = 'ricerca';
   }
   conferma(): void {
     let urlEnd: string;
-    switch(this.state){
+    switch (this.state) {
       case 'modifica': {
         urlEnd = '/colori-update';
         break;
@@ -59,8 +59,9 @@ state = 'ricerca';
         urlEnd = '/colori-add';
         break;
       }
-      const oss: Observable<ColoreDto[]> = this.http.post<ColoreDto[]>(this.urlPath + urlEnd, this.coloreForm);
-      this.ngOnInit();
+
     }
+    const oss: Observable<ColoreDto[]> = this.http.post<ColoreDto[]>(this.urlPath + urlEnd, this.coloreForm);
+    this.ngOnInit();
   }
 }
