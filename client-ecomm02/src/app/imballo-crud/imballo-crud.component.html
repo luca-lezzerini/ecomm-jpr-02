@@ -2,10 +2,13 @@
 <h1>IMBALLO</h1>
 <br>
 <h2>inserisci i dati:</h2>
-<input type="text" [(ngModule)]="descrizione" placeholder="imballo">
-<input type="text" [(ngModule)]="cost" placeholder="imballo">
+descrizione<input type="text" [(ngModel)]="descrizione" placeholder="imballo">
+costo<input type="number" [(ngModel)]="costo" placeholder="imballo">
 <button (click)="findImballo()">Cerca</button>
 <button (click)="addImballo()" >Aggiungi</button>
+<br>
+<br>
+{{msg}}
 
 <br>
 
@@ -27,4 +30,5 @@
         <td>{{i.descrizione}}</td>
         <td>{{i.cost}}</td>
     </tr>
+    
 </table>
