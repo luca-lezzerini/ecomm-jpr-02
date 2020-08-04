@@ -1,4 +1,4 @@
-import { Imballo } from './model/imballo';
+import { Imballo } from './dto/imballo-dto';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
@@ -41,6 +41,10 @@ export class ImballoServiceService {
 
   updateImballo(id: number) {
 
+  }
+
+  findImballo(id: number) {
+    
   }
 
   

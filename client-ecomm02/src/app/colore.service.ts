@@ -16,8 +16,8 @@ export class ColoreService {
   constructor(private http:HttpClient) { }
   
   colori() {
-    let o: Observable<ColoreDto> =
-    this.http.get<ColoreDto>(this.url + "/Colori")
+    let o: Observable<ColoreDto[]> =
+    this.http.get<ColoreDto[]>(this.url + "/Colori")
     o.subscribe(risp => {this.listaColori = risp;})
   }
 
