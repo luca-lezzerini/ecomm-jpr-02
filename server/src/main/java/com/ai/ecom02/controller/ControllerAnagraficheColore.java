@@ -49,10 +49,10 @@ public class ControllerAnagraficheColore {
 
     @RequestMapping(value = ("/colori-find"))
     @ResponseBody
-    public Colore findColori(
+    public List<Colore> findColori(
             @RequestBody Colore colore
     ) {
-        return srvColore.findById(colore);
+        return srvColore.findByColoreLike(colore);
     }
 
 }
