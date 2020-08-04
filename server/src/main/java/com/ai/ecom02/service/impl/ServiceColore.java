@@ -21,7 +21,6 @@ public class ServiceColore implements ColoreServiceCrud {
     @Override
     public void delete(Colore o) {
         repColore.delete(o);
-        System.out.println("Delete");
     }
 
     @Override
@@ -31,7 +30,6 @@ public class ServiceColore implements ColoreServiceCrud {
 
     @Override
     public List<Colore> getAll() {
-        System.out.println("findall");
         return repColore.findAll();
     }
 
