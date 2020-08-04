@@ -1,7 +1,7 @@
 import { Imballo } from '../dto/imballo-dto';
 
 import { ImballoServiceService } from './../imballo-service.service';
-import { HttpClientModule } from '@angular/common/http';
+
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
@@ -13,30 +13,27 @@ import { Router } from '@angular/router';
 })
 export class ImballoCrudComponent implements OnInit {
 
- imballi : Imballo[] = []
- imballo : Imballo
- id : number
- descrizione : string
- cost : number
- msg : string
+  imballi: Imballo[] = []
+
+  id: number
+  descrizione: string
+  cost: number
+  msg: string
 
   constructor(private router: Router, public srvImballo: ImballoServiceService) { }
 
   ngOnInit(): void {
-  
+
     this.imballi = this.srvImballo.lista()
 
   }
 
   addImballo() {
-    if (this.descrizione.length> 0 && this.cost> 0) {
-      let imballo : Imballo = new Imballo(this.id, this.descrizione, this.cost)
+    
+      let imballo: Imballo = new Imballo(this.id, this.descrizione, this.cost)
       this.srvImballo.addImballo(imballo)
       this.msg = "inserito con successo!"
-    } 
-    else {
-      this.msg = "descrizione e costo non possono essere vuoti!"
-    }  
+   
   }
 
   removeImballo(id: number) {
@@ -44,9 +41,15 @@ export class ImballoCrudComponent implements OnInit {
     this.srvImballo.removeImballo(id)
   }
 
-  updateImballo(id: number) {
+  updateImballo() {
+    if (this.descrizione.length > 0 && this.cost > 0) {
+      let imballo: Imballo = new Imballo(this.id, this.descrizione, this.cost)
+      this.srvImballo.updateImballo(imballo)                                   //da rivedere
+    }  
+  }
 
-    this.srvImballo.updateImballo(id)
+  findImballo() {
+    this.srvImballo.findImballo()
   }
 
 

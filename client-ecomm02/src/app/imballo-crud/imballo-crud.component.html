@@ -4,8 +4,8 @@
 <h2>inserisci i dati:</h2>
 <input type="text" [(ngModule)]="descrizione" placeholder="imballo">
 <input type="text" [(ngModule)]="cost" placeholder="imballo">
-<button (click)="searchCriteria()">Cerca</button>
-<button (click)="aggiungi()" >Aggiungi</button>
+<button (click)="findImballo()">Cerca</button>
+<button (click)="addImballo()" >Aggiungi</button>
 
 <br>
 
@@ -22,7 +22,7 @@
         <th>Descrizione</th>
         <th>Cost</th>
     </tr>
-    <tr *ngFor="let i of imballi">
+    <tr *ngFor="let i of srvImballo.imballi">
         <td>{{i.id}}</td>
         <td>{{i.descrizione}}</td>
         <td>{{i.cost}}</td>
