@@ -15,18 +15,16 @@ import javax.persistence.Table;
  */
 
 @Entity
-@Table(name = "imballo")
 public class Imballo implements Serializable{
 
     @Id
-    @Column(name = "id")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column(name = "descrizione")
+    @Column
     private String descrizione;
 
-    @Column(name = "costo")
+    @Column
     private Double costo;
 
     public Imballo(Long id, String descrizione, Double costo) {
@@ -69,31 +67,6 @@ public class Imballo implements Serializable{
     @Override
     public String toString() {
         return "Imballo{" + "descrizione=" + descrizione + ", costo=" + costo + '}';
-    }
-
-    @Override
-    public int hashCode() {
-        int hash = 5;
-        hash = 83 * hash + Objects.hashCode(this.id);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Imballo other = (Imballo) obj;
-        if (!Objects.equals(this.id, other.id)) {
-            return false;
-        }
-        return true;
     }
 
 }

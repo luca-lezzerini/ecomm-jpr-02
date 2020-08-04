@@ -24,8 +24,8 @@ public class ServiceImballo implements ImballoServiceCrud {
     RepImballo repImballo;
 
     @Override
-    public void add(Imballo o) {
-        repImballo.save(o);
+    public Imballo add(Imballo o) {
+        return repImballo.save(o);
     }
 
     @Override
@@ -40,14 +40,15 @@ public class ServiceImballo implements ImballoServiceCrud {
 
     @Override
     public Imballo findById(Imballo o) {
-        Optional s = repImballo.findById(o.getId());
-        Imballo i = (Imballo) s.get();
+        Imballo i = repImballo.getOne(o.getId());
+//        Optional<Imballo> s = repImballo.findById(o.getId());
+//        Imballo i = s.get();
         return i;
     }
 
     @Override
-    public void update(Imballo imballo) {
-        repImballo.flush();
+    public Imballo update(Imballo imballo) {
+       return repImballo.save(imballo);
     }
 
 }
