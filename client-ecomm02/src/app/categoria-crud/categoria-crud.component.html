@@ -1,15 +1,15 @@
 <h1>CATEGORIA</h1>
 <br>
-<input type="text" [(ngModel)]="descrizione" placeholder="categoria">
+<input type="text" [(ngModel)]="mem.categoria.descrizione" placeholder="categoria">
 <button (click)="searchCriteria()">Cerca</button>
-<button (click)="attiva()">Aggiungi</button>
+<button (click)="aggiungi()">Aggiungi</button>
 
 <br><br><br>
 
 <div class="check-element animate-show-hide" *ngIf="aggiungiState">
     <h3>Form dati</h3>
     <input type="text" [(ngModel)]="mem.categoria" placeholder="descrizione">
-    <button (click)="aggiungi()">Conferma</button>
+    <button (click)="conferma()">Conferma</button>
     <button (click)="annulla()">Annulla</button>
 </div>
 <br><br><br>
@@ -22,5 +22,7 @@
     <tr *ngFor="let c of categorie">
         <td>{{c.id}}</td>
         <td>{{c.descrizione}}</td>
+        <td><button (click)="modifica()">Modifica</button></td>
+        <td><button (click)="rimuovi()">Rimuovi</button></td>
     </tr>
 </table>

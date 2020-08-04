@@ -9,7 +9,6 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CategoriaCRUDComponent implements OnInit {
   
-  
   categorie: CategoriaDto[] = []
   aggiungiState = false;
 
@@ -23,19 +22,23 @@ export class CategoriaCRUDComponent implements OnInit {
     return null;
   }
 
-  attiva(){
+  aggiungi(){
     this.aggiungiState = true;
   }
 
-  aggiungi(){
+  conferma(){
     this.mem.addCategoria();
   }
 
-  conferma(){
+  annulla(){
     return null;
   }
 
-  annulla(){
+  modifica(){
+    return null;
+  }
+
+  rimuovi(){
     return null;
   }
 
