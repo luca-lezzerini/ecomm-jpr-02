@@ -1,3 +1,4 @@
+import { ImballoCrudComponent } from './imballo-crud/imballo-crud.component';
 import { CategoriaCRUDComponent } from './categoria-crud/categoria-crud.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';

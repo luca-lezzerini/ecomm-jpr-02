@@ -23,4 +23,6 @@ public interface CategoriaService {
     List<Categoria> removeCat(Long id);
 
     Categoria findCat(String descrizione);
+    
+    List<Categoria> updateCat(Categoria categoria);
 }

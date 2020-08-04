@@ -8,38 +8,48 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./categoria-crud.component.css']
 })
 export class CategoriaCRUDComponent implements OnInit {
-  
+
   categorie: CategoriaDto[] = []
   aggiungiState = false;
+  modificaState = false;
+  categoriaSelezionata: number;
+  categTemp: CategoriaDto;
 
   constructor(public mem: CategoriaServiceService) { }
-  
+
   ngOnInit() {
     this.categorie = this.mem.lista()
   }
 
-  searchCriteria(){
+  searchCriteria() {
     this.mem.cerca();
   }
 
-  aggiungi(){
+  aggiungi() {
     this.aggiungiState = true;
   }
 
-  conferma(){
-    this.mem.addCategoria();
+  conferma() {
+    if (this.aggiungiState) {
+      this.mem.addCategoria();
+    } else {
+      this.mem.categorie[this.categoriaSelezionata] = this.categTemp;
+      this.mem.update(this.categTemp);
+    }
   }
 
-  annulla(){
+  annulla() {
     this.aggiungiState = false;
   }
 
-  modifica(descrizione: string){
-    this.aggiungiState = true;
-    this.mem.update(descrizione);
+  modifica(c: CategoriaDto, i: number) {
+    this.categoriaSelezionata = i;
+    this.categTemp = Object.assign({}, c); //copio c dentro categTemp
+    this.aggiungiState = false;
+    this.modificaState = true;
   }
 
-  rimuovi(id: number){
+  rimuovi(id: number) {
     this.mem.remove(id);
   }
 

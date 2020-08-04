@@ -43,4 +43,12 @@ public class CategoriaServiceImpl implements CategoriaService {
         return repCategoria.findByDescrizioneLike(descrizione);
     }
 
+    @Override
+    public List<Categoria> updateCat(Categoria categoria) {
+        repCategoria.save(categoria);
+        return getLista();
+    }
+    
+    
+
 }

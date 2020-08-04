@@ -60,4 +60,13 @@ public class ControllerCategoria {
     ) {
         return categoriaService.findCat(descrizione);
     }
+    
+    @RequestMapping(value={"/modifica-categoria"})
+    @ResponseBody
+    public List<Categoria> modificaCategoria(
+            @RequestBody Categoria categoria
+    ){
+        categoriaService.updateCat(categoria);
+        return categoriaService.getLista();
+    }
 }

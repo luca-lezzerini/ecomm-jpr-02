@@ -12,6 +12,7 @@ export class CategoriaServiceService {
   categorie: CategoriaDto[]; 
   categoria: CategoriaDto;
   
+  
   constructor(private http:HttpClient) { }
 
   addCategoria(){
@@ -32,8 +33,10 @@ export class CategoriaServiceService {
     o.subscribe(risp => {this.categoria = risp;})
   }
 
-  update(descrizione: string){
-
+  update(categTemp: CategoriaDto){
+    let o: Observable<CategoriaDto> =
+    this.http.post<CategoriaDto>(this.url + "/modifica-categoria", categTemp)
+    o.subscribe(risp => {this.categoria = risp;})
   }
 
   remove(id: number){
