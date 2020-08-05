@@ -1,27 +1,31 @@
-
 <h1>IMBALLO</h1>
 <br>
 <h2>inserisci i dati:</h2>
 
 <span *ngIf="state =='ricerca'">
 
-descrizione<input type="text" [(ngModel)]="descrizione" placeholder="imballo">
-costo<input type="number" [(ngModel)]="costo" placeholder="imballo">
-<button (click)="findImballo()">Cerca</button>
-<button (click)="addImballo()" >Aggiungi</button>
+    descrizione<input type="text" [(ngModel)]="descrizione" placeholder="imballo">
+    costo<input type="number" [(ngModel)]="costo" placeholder="imballo">
+    <button (click)="findImballo()">Cerca</button>&nbsp;
+    <button (click)="addImballo()">Aggiungi</button>
 </span>
 <span *ngIf="state !='ricerca'">
-descrizione<input type="hidden" [(ngModel)]="descrizione" placeholder="imballo" disabled>
-costo<input type="hidden" [(ngModel)]="costo" placeholder="imballo" disabled>
+    descrizione<input type="hidden" [(ngModel)]="descrizione" placeholder="imballo" disabled>
+    costo<input type="hidden" [(ngModel)]="costo" placeholder="imballo" disabled>
 </span>
 <br>
 <br>
 <br>
 <span *ngIf="state =='aggiungi'">
-    descrizione<input type="text" [(ngModel)]="descrizione" placeholder="imballo" >
-    costo<input type="number" [(ngModel)]="costo" placeholder="imballo" >
-    <button (click)="conferma()" >Aggiungi</button>
-    </span>
+    <div>
+        <h3>Form dati</h3>
+        descrizione<input type="text" [(ngModel)]="descrizione" placeholder="imballo">
+        costo<input type="number" [(ngModel)]="costo" placeholder="imballo">
+        <br>
+        <button (click)="conferma()">Conferma</button>
+        <button (click)="chiudi()">Annulla</button>
+    </div>
+</span>
 
 <br>
 <br>
@@ -29,12 +33,8 @@ costo<input type="hidden" [(ngModel)]="costo" placeholder="imballo" disabled>
 
 <br>
 
-<div  >
-    <h3>Form dati</h3>
-    <br>    
-    <button (click)="conferma()">Conferma</button>
-    <button (click)="annulla()">Annulla</button>
-</div>
+
+
 
 <table>
     <tr>
@@ -49,5 +49,5 @@ costo<input type="hidden" [(ngModel)]="costo" placeholder="imballo" disabled>
         <td><button (click)="updateImballo()">Modifica</button></td>
         <td><button (click)="removeImballo(i.id)">Rimuovi</button></td>
     </tr>
-    
+
 </table>
