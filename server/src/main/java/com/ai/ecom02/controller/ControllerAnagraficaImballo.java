@@ -73,4 +73,12 @@ public class ControllerAnagraficaImballo {
         return srvImballo.findByDescrizione(imballo);
          
     }
+    @RequestMapping(value = {"/find-by-costo-imballo"})
+    @ResponseBody
+    public List<Imballo> ricercaByCostoImballo(
+            @RequestBody Imballo imballo
+    ) {
+        return srvImballo.findByCosto(imballo);
+         
+    }
 }
