@@ -1,3 +1,4 @@
+import { SpedizioneCRUDComponent } from './spedizione-crud/spedizione-crud.component';
 import { ImballoCrudComponent } from './imballo-crud/imballo-crud.component';
 import { CategoriaCRUDComponent } from './categoria-crud/categoria-crud.component';
 import { BrowserModule } from '@angular/platform-browser';
@@ -20,7 +21,8 @@ import { ProdottoCrudComponent } from './prodotto-crud/prodotto-crud.component';
     ImballoCrudComponent,
     HomeCRUDComponent,
     OffertaCrudComponent,
-    ProdottoCrudComponent
+    ProdottoCrudComponent,
+    SpedizioneCRUDComponent
   ],
   imports: [
 

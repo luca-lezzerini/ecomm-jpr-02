@@ -1,3 +1,4 @@
+import { SpedizioneCRUDComponent } from './spedizione-crud/spedizione-crud.component';
 import { HomeCRUDComponent } from './home-crud/home-crud.component';
 import { ImballoCrudComponent } from './imballo-crud/imballo-crud.component';
 import { CategoriaCRUDComponent } from './categoria-crud/categoria-crud.component';
@@ -11,6 +12,7 @@ const routes: Routes = [
   { path: 'imballo-crud', component: ImballoCrudComponent},
   { path: 'categoria-crud', component: CategoriaCRUDComponent },
   { path: 'colore-crud', component: ColoreCrudComponent},
+  { path: 'spedizione-crud', component: SpedizioneCRUDComponent},
   { path: '', redirectTo: '/home-crud', pathMatch: 'full'}
 ];
 

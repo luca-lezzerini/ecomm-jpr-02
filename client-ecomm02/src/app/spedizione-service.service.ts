@@ -8,45 +8,38 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class SpedizioneServiceService {
-  private url="http://localhost:8080";
-  private spedizioni: SpedizioneDto[];
-  private spedizione: SpedizioneDto;
-  
-  public getSpedizione() : SpedizioneDto {
-    return this.spedizione;
-  }
-  public getSpedizioni():SpedizioneDto[]{
-    return this.spedizioni;
-  }
+  private url = "http://localhost:8080";
+  spedizioni: SpedizioneDto[] = [];
+  spedizione: SpedizioneDto;
+  temp: SpedizioneDto = new SpedizioneDto();
 
-  constructor(private http:HttpClient) { }
-  
-  aggiungi(){
-    let obs:Observable<SpedizioneDto[]> =
-          this.http.post<SpedizioneDto[]>(this.url+"/aggiungi-spedizione",this.spedizioni);
-          obs.subscribe(risp =>{this.spedizioni=risp});
+  constructor(private http: HttpClient) { }
+
+  aggiungi() {
+    let obs: Observable<SpedizioneDto[]> =
+      this.http.post<SpedizioneDto[]>(this.url + "/aggiungi-spedizione/", this.temp);
+    obs.subscribe(risp => { this.spedizioni = risp });
   }
-  cerca():SpedizioneDto{
-    let obs:Observable<SpedizioneDto> =
-    this.http.get<SpedizioneDto>(this.url+"/cerca-spedizione"+this.spedizione.codice);
-    obs.subscribe(risp => {this.spedizione = risp});
-    return this.spedizione;
+  cerca() {
+    let obs: Observable<SpedizioneDto[]> =
+      this.http.get<SpedizioneDto[]>(this.url + "/cerca-spedizione/" + this.spedizione.codice);
+    obs.subscribe(risp => { this.spedizioni = risp });
   }
-  lista():SpedizioneDto[]{
-    let obs:Observable<SpedizioneDto[]> =
-    this.http.get<SpedizioneDto[]>(this.url+"/lista-spedizioni");
-    obs.subscribe(risp =>{this.spedizioni=risp});
+  lista(): SpedizioneDto[] {
+    let obs: Observable<SpedizioneDto[]> =
+      this.http.get<SpedizioneDto[]>(this.url + "/lista-spedizioni");
+    obs.subscribe(risp => { this.spedizioni = risp });
     return this.spedizioni;
   }
-  remove(id:number){
-    let obs: Observable<SpedizioneDto> =
-    this.http.delete<SpedizioneDto>(this.url+"/rimuovi-spedizione");
-    obs.subscribe(risp =>{this.spedizione=risp});
+  remove(id: number) {
+    let obs: Observable<SpedizioneDto[]> =
+      this.http.get<SpedizioneDto[]>(this.url + "/rimuovi-spedizione/" + id);
+    obs.subscribe(risp => { this.spedizioni = risp });
   }
-  update(spedizione:SpedizioneDto){
+  update(temp: SpedizioneDto) {
     let obs: Observable<SpedizioneDto> =
-    this.http.post<SpedizioneDto>(this.url+"/modifica-spedizione",spedizione);
-    obs.subscribe(risp =>{this.spedizione=risp});
+      this.http.post<SpedizioneDto>(this.url + "/modifica-spedizione/", temp);
+    obs.subscribe(risp => { this.spedizione = risp });
     return this.spedizione;
   }
 }

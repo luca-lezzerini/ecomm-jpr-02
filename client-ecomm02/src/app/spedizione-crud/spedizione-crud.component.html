@@ -1,15 +1,14 @@
 <h1>SPEDIZIONI</h1>
-<input type="text" [(ngModel)]="meme.spedizione.codice" placeholder="Codice">
-<!--<input type="text" [(ngModel)]="meme.spedizione.nome" placeholder="Nome">
-<input type="text" [(ngModel)]="meme.spedizione.prezzoKg" placeholder="PrezzoKg"> -->
+<input type="text" [(ngModel)]="meme.spedizione.codice" placeholder="codice">
+
 <button (click)="searchCriteria()">Cerca</button>
 <button (click)="aggiungi()">Aggiungi</button>
 <br>
-<div *ngIf="aggiungiState || modificaState">
+<div class="check-element animate-show-hide" *ngIf="aggiungiState || modificaState">
     <h1>Form Dati</h1>
-    <input type="text" [(ngModel)]="meme.qualcosa" placeholder="codice">
-    <input type="text" [(ngModel)]="meme.qualcosa" placeholder="nome">
-    <input type="text" [(ngModel)]="meme.qualcosa" placeholder="prezzoKg">
+    <input type="text" [(ngModel)]="meme.temp" placeholder="codice">
+    <input type="text" [(ngModel)]="meme.temp" placeholder="nome">
+    <input type="text" [(ngModel)]="meme.temp" placeholder="prezzoKg">
     <button (click)="conferma()">Conferma</button>
     <button (click)="annulla()">Annulla</button>
 </div>
@@ -20,11 +19,11 @@
         <th>Nome</th>
         <th>PrezzoKg</th>
     </tr>
-    <tr *ngFor="let x of y; index as i">
+    <tr *ngFor="let x of meme.spedizioni; index as i">
         <td>{{x.codice}}</td>
         <td>{{x.nome}}</td>
         <td>{{x.prezzoKg}}</td>
-        <td><button( click)="modifica(x,i)">Modifica</button></td>
-        <td><button (click)="rimuovi(x,i)">Rimuovi</button></td>
+        <td><button (click)="modifica(x,i)">Modifica</button></td>
+        <td><button (click)="rimuovi(x.id)">Rimuovi</button></td>
     </tr>
 </table>
