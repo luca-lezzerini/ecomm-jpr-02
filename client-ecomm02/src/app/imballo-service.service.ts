@@ -1,4 +1,4 @@
-import { Imballo } from './dto/imballo-dto';
+import { ImballoDto } from './dto/imballo-dto';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
@@ -13,41 +13,41 @@ export class ImballoServiceService {
   
   constructor(private http : HttpClient) { }
 
-  imballi : Imballo[] = []
-  imballo : Imballo
+  imballi : ImballoDto[] = []
+  imballo : ImballoDto
 
 
-  lista(): Imballo[] {
+  lista(): ImballoDto[] {
 
-    let o: Observable<Imballo[]> = this.http.get<Imballo[]>(this.url + '/list-imballo')
+    let o: Observable<ImballoDto[]> = this.http.get<ImballoDto[]>(this.url + '/list-imballo')
     o.subscribe(risp => { this.imballi = risp; })
     return this.imballi
   }
 
-  addImballo (imballo : Imballo) {
+  addImballo (imballo : ImballoDto) {
 
-    let o : Observable<Imballo> = this.http.post<Imballo>(this.url + "/add-imballo", imballo)
+    let o : Observable<ImballoDto> = this.http.post<ImballoDto>(this.url + "/add-imballo", imballo)
     o.subscribe(risp => {imballo = risp;})
 
   }
 
   removeImballo(id: number) {
 
- let o: Observable<Imballo> = this.http.get<Imballo>(this.url + '/delete-imballo/' + id)
+ let o: Observable<ImballoDto> = this.http.get<ImballoDto>(this.url + '/delete-imballo/' + id)
      o.subscribe(risp => { this.imballo = risp; })
    return this.imballo;
 
   }
 
-  updateImballo(imballo : Imballo) {
+  updateImballo(imballo : ImballoDto) {
 
-    let o: Observable<Imballo> = this.http.post<Imballo>(this.url + '/update-imballo', imballo)
+    let o: Observable<ImballoDto> = this.http.post<ImballoDto>(this.url + '/update-imballo', imballo)
     o.subscribe(risp => {imballo = risp;})
 
   }
 
   findImballo() {
-    let o: Observable<Imballo> = this.http.get<Imballo>(this.url + "/find-imballo")
+    let o: Observable<ImballoDto> = this.http.get<ImballoDto>(this.url + "/find-imballo")
     o.subscribe(risp => {this.imballo = risp; })
 
 
