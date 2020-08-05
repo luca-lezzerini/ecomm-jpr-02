@@ -15,6 +15,7 @@ export class ImballoServiceService {
 
   imballi: ImballoDto[] = []
   imballo: ImballoDto
+  
 
 
   lista(): ImballoDto[] {
@@ -39,10 +40,10 @@ export class ImballoServiceService {
 
   }
 
-  updateImballo(imballo: ImballoDto) {
+  updateImballo(imballoMod: ImballoDto) {
 
-    let o: Observable<ImballoDto> = this.http.post<ImballoDto>(this.url + '/update-imballo', imballo)
-    o.subscribe(risp => { imballo = risp; })
+    let o: Observable<ImballoDto> = this.http.post<ImballoDto>(this.url + '/update-imballo', imballoMod)
+    o.subscribe(risp => {this.imballo = risp; })
 
   }
 

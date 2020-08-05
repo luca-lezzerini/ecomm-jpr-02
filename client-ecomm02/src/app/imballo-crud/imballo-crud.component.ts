@@ -1,4 +1,5 @@
-import { ImballoDto } from '../dto/imballo-dto';
+import { ImballoDto } from './../dto/imballo-dto';
+
 import { ImballoServiceService } from './../imballo-service.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
@@ -13,10 +14,13 @@ export class ImballoCrudComponent implements OnInit {
 
   imballi: ImballoDto[] = []
   imballo: ImballoDto
+  imballoMod : ImballoDto 
   id: number
   descrizione: string
   costo: number
   state = 'ricerca';
+  imballoNumber : number
+  
 
   constructor(private router: Router, public srvImballo: ImballoServiceService) { }
 
@@ -37,11 +41,17 @@ export class ImballoCrudComponent implements OnInit {
     this.srvImballo.removeImballo(id)
   }
 
-  updateImballo() {
-    if (this.descrizione.length > 0 && this.costo > 0) {
-      let imballo: ImballoDto = new ImballoDto(this.id, this.descrizione, this.costo)
-      this.srvImballo.updateImballo(imballo)                                   //da rivedere
-    }
+  updateImballo(imballo : ImballoDto, i: number) {
+    this.imballoNumber = i
+    this.state = "modifica"
+    this.imballoMod = Object.assign({}, imballo)
+    
+    
+  }
+  confirmationUpdate() {
+   console.log("modifica")
+   
+    this.srvImballo.updateImballo(this.imballoMod)
   }
 
   findImballo() {
