@@ -7,6 +7,7 @@ package com.ai.ecom02.repository;
 
 
 import com.ai.ecom02.model.Offerta;
+import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -18,5 +19,11 @@ import org.springframework.stereotype.Repository;
 public interface RepOfferta extends JpaRepository<Offerta, Long> {       // vuole il tipo dell entita e il tipo della chiave primaria
 
     public Offerta findByCodice(String codice);
+
+    public List<Offerta> findByCodiceLike(String codice);
+
+    public Offerta FindByDescrizione(String descrizione);
+
+    public List<Offerta> FindByDescrizioneLike(Offerta offerta);
     
 }

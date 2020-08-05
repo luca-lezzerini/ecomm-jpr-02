@@ -48,7 +48,7 @@ public class OffertaServiceImpl implements OffertaServiceCrud {
 //       Optional<Offerta> o = repOfferta.findById(offerta.getId());
 //       Offerta off= o.get();
 
-        return repOfferta.getOne(offerta.getId());
+        return repOfferta.getOne(offerta.getId());                      // restituisce oggetto 
     }
 
     @Override
