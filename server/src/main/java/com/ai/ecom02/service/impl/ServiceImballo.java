@@ -51,7 +51,7 @@ public class ServiceImballo implements ImballoServiceCrud {
        return repImballo.save(imballo);
     }
 
-    public List<Imballo> findByDescrizione(String d){
-        return repImballo.findByDescrizioneLike(d);
+    public List<Imballo> findByDescrizione(Imballo imballo){
+        return repImballo.findByDescrizioneLike(imballo.getDescrizione());
     }
 }

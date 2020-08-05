@@ -56,8 +56,7 @@ public class ControllerCategoria {
     public List<Categoria> cercaCategoria(
             @PathVariable String descrizione
     ) {
-        categoriaService.findCat(descrizione);
-        return categoriaService.getLista();
+        return categoriaService.findCat(descrizione);
     }
     
     @RequestMapping(value={"/modifica-categoria"})

@@ -11,13 +11,13 @@ export class CategoriaServiceService {
   private url = "http://localhost:8080"
   categorie: CategoriaDto[] = []; 
   categoria: CategoriaDto = new CategoriaDto();
-  
+  categTemp: CategoriaDto = new CategoriaDto();
   
   constructor(private http:HttpClient) { }
 
   addCategoria(){
     let o: Observable<CategoriaDto[]> =
-    this.http.post<CategoriaDto[]>(this.url + "/aggiungi-categoria/", this.categoria)
+    this.http.post<CategoriaDto[]>(this.url + "/aggiungi-categoria/", this.categTemp)
     o.subscribe(risp => {this.categorie = risp;})
   }
 
@@ -28,9 +28,9 @@ export class CategoriaServiceService {
   }
 
   cerca(){
-    let o: Observable<CategoriaDto> =
-    this.http.get<CategoriaDto>(this.url+'/cerca-categoria/' + this.categoria.descrizione)
-    o.subscribe(risp => {this.categoria = risp;})
+    let o: Observable<CategoriaDto[]> =
+    this.http.get<CategoriaDto[]>(this.url+'/cerca-categoria/' + this.categoria.descrizione)
+    o.subscribe(risp => {this.categorie = risp;})
   }
 
   update(categTemp: CategoriaDto){

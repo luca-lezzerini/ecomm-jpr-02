@@ -24,7 +24,9 @@ public class CategoriaServiceImpl implements CategoriaService {
 
     @Override
     public void addCat(Categoria categoria) {
-        repCategoria.save(categoria);
+        if (!categoria.getDescrizione().equals(repCategoria.findByDescrizione(categoria.getDescrizione()))) {
+            repCategoria.save(categoria);
+        }
     }
 
     @Override
@@ -40,13 +42,14 @@ public class CategoriaServiceImpl implements CategoriaService {
 
     @Override
     public List<Categoria> findCat(String descrizione) {
-        repCategoria.findByDescrizioneLike(descrizione);
-        return getLista();
+        return repCategoria.findByDescrizioneLike(descrizione);
     }
 
     @Override
     public List<Categoria> updateCat(Categoria categoria) {
-        repCategoria.save(categoria);
+        if (!categoria.getDescrizione().equals(repCategoria.findByDescrizione(categoria.getDescrizione()))) {
+            repCategoria.save(categoria);
+        }
         return getLista();
     }
     

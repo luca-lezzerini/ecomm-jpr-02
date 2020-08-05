@@ -6,6 +6,7 @@
 package com.ai.ecom02.repository;
 
 import com.ai.ecom02.model.Categoria;
+import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -16,6 +17,8 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface RepCategoria extends JpaRepository<Categoria, Long> {
 
-    Categoria findByDescrizioneLike(String descrizione);
+    Categoria findByDescrizione(String descrizione);
+    
+    List<Categoria> findByDescrizioneLike(String descrizione);
     
 }
