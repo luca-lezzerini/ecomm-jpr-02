@@ -1,10 +1,19 @@
-
 package com.ai.ecom02.repository;
 
 import com.ai.ecom02.model.Prodotto;
+import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 
+public interface RepProdotto extends JpaRepository<Prodotto, Long> {
 
-public interface RepProdotto extends JpaRepository<Prodotto,Long> {
-    
+    Prodotto findByDescrizione(String descrizione);
+
+    List<Prodotto> findByDescrizioneLike(String descrizione);
+
+    Prodotto findByCodice(String codice);
+
+    List<Prodotto> findByCodiceLike(String codice);
+
+    List<Prodotto> findByPrezzoLike(String prezzo);
+
 }
