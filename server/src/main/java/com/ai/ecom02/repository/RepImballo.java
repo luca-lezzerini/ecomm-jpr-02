@@ -19,4 +19,6 @@ import org.springframework.stereotype.Repository;
 public interface RepImballo extends JpaRepository<Imballo, Long> {
 
     List<Imballo> findByDescrizioneLike(String descrizione);
+    
+    List<Imballo> findByCostoLike(Double costo);
 }
