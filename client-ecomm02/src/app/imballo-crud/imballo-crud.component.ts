@@ -1,4 +1,4 @@
-import { Imballo } from '../dto/imballo-dto';
+import { ImballoDto } from '../dto/imballo-dto';
 
 import { ImballoServiceService } from './../imballo-service.service';
 
@@ -13,8 +13,8 @@ import { Router } from '@angular/router';
 })
 export class ImballoCrudComponent implements OnInit {
 
-  imballi: Imballo[] = []
-  imballo: Imballo
+  imballi: ImballoDto[] = []
+  imballo: ImballoDto
   id: number
   descrizione: string
   costo: number
@@ -30,7 +30,7 @@ export class ImballoCrudComponent implements OnInit {
 
   addImballo() {
 
-    this.imballo = new Imballo(this.id, this.descrizione, this.costo)
+    this.imballo = new ImballoDto(this.id, this.descrizione, this.costo)
     this.srvImballo.addImballo(this.imballo)
     this.msg = "inserito con successo!"
 
@@ -43,7 +43,7 @@ export class ImballoCrudComponent implements OnInit {
 
   updateImballo() {
     if (this.descrizione.length > 0 && this.costo > 0) {
-      let imballo: Imballo = new Imballo(this.id, this.descrizione, this.costo)
+      let imballo: ImballoDto = new ImballoDto(this.id, this.descrizione, this.costo)
       this.srvImballo.updateImballo(imballo)                                   //da rivedere
     }
   }
