@@ -9,6 +9,7 @@ import { FormsModule } from '@angular/forms';
 import { ColoreCrudComponent } from './colore-crud/colore-crud.component';
 import { HomeCRUDComponent } from './home-crud/home-crud.component';
 import { OffertaCrudComponent } from './offerta-crud/offerta-crud.component';
+import { SpedizioneCRUDComponent } from './spedizione-crud/spedizione-crud.component';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { OffertaCrudComponent } from './offerta-crud/offerta-crud.component';
     CategoriaCRUDComponent,
     ImballoCrudComponent,
     HomeCRUDComponent,
-    OffertaCrudComponent
+    OffertaCrudComponent,
+    SpedizioneCRUDComponent
   ],
   imports: [
 

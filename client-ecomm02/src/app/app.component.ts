@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component } from '@angular/core';
 
 @Component({
@@ -6,5 +7,18 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'client-ecomm02';
+  
+  constructor(private router:Router){}
+
+  home(){
+    this.router.navigateByUrl('/home-crud')
+  }
+
+  anagrafiche(){
+    this.router.navigateByUrl('anagrafiche-crud')
+  }
+
+  carrello(){
+    this.router.navigateByUrl('carrello-crud')
+  }
 }
