@@ -1,1 +1,68 @@
-<p>offerta-crud works!</p>
+<h1> Gestione anagrafe Offerte</h1>
+
+<div>
+    <span *ngIf="state =='ricerca'">
+        <!---->
+        <input type="text" [(ngModel)]="offerta.codice" placeholder="codice">
+        <button (click)="cerca()">Cerca</button>
+        <button (click)="nuovo()">Aggiungi</button>
+    </span>
+    <span *ngIf="state !='ricerca'">
+        <input type="text" [(ngModel)]="offerta.codice" disabled>
+        <button (click)="cerca()" disabled>Cerca</button>
+        <button (click)="nuovo()" disabled>Aggiungi</button>
+    </span>
+</div>
+
+<div *ngIf="state == 'ricerca'"></div>
+<div *ngIf="state == 'visualizza'">
+    <input type="text" [(ngModel)]="offertaForm.codice" readonly>
+    <input type="text" [(ngModel)]="offertaForm.descrizione" readonly>
+    <input type="text" [(ngModel)]="offertaForm.scontoPercentuale" readonly>
+    <button (click)="chiudi()">Chiudi</button>
+</div>
+<div *ngIf="state == 'elimina'">
+    <input type="text" [(ngModel)]="offertaForm.codice" readonly>
+    <input type="text" [(ngModel)]="offertaForm.descrizione" readonly>
+    <input type="text" [(ngModel)]="offertaForm.scontoPercentuale" readonly>
+    <button (click)="conferma()">Conferma</button>
+    <button (click)="chiudi()">Annulla</button>
+</div>
+<div *ngIf="state == 'aggiungi'">
+    <input type="text" [(ngModel)]="offertaForm.codice">
+    <input type="text" [(ngModel)]="offertaForm.descrizione">
+    <input type="text" [(ngModel)]="offertaForm.scontoPercentuale">
+    <button (click)="conferma()">Conferma</button>
+    <button (click)="chiudi()">Annulla</button>
+</div>
+<div *ngIf="state == 'modifica'">
+    <input type="text" [(ngModel)]="offertaForm.codice">
+    <input type="text" [(ngModel)]="offertaForm.descrizione">
+    <input type="text" [(ngModel)]="offertaForm.scontoPercentuale">
+    <button (click)="conferma()">Conferma</button>
+    <button (click)="chiudi()">Annulla</button>
+</div>
+
+
+<div>
+    <table>
+        <thead>
+            <tr>
+                <th>Codice</th>
+                <th>Descrizione</th>
+                <th>Sconto</th>
+                <th></th>
+                <th></th>                
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of listaOfferte">
+                <td (click)="visualizza(item)">{{item.codice}}</td>
+                <td (click)="visualizza(item)">{{item.descrizione}}</td>
+                <td (click)="visualizza(item)">{{item.sconto}}%</td>
+                <td><button (click)="chiediModifica(item)">Modifica</button></td>
+                <td><button (click)="chiediElimina(item)">Rimuovi</button></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
