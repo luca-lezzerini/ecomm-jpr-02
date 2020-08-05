@@ -23,8 +23,8 @@ public class CategoriaServiceImpl implements CategoriaService {
     RepCategoria repCategoria;
 
     @Override
-    public Categoria addCat(Categoria categoria) {
-        return repCategoria.save(categoria);
+    public void addCat(Categoria categoria) {
+        repCategoria.save(categoria);
     }
 
     @Override
@@ -39,8 +39,9 @@ public class CategoriaServiceImpl implements CategoriaService {
     }
 
     @Override
-    public Categoria findCat(String descrizione) {
-        return repCategoria.findByDescrizioneLike(descrizione);
+    public List<Categoria> findCat(String descrizione) {
+        repCategoria.findByDescrizioneLike(descrizione);
+        return getLista();
     }
 
     @Override

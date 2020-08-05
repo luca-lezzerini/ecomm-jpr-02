@@ -16,13 +16,13 @@ import org.springframework.stereotype.Service;
 @Service
 public interface CategoriaService {
 
-    Categoria addCat(Categoria categoria);
+    void addCat(Categoria categoria);
 
     List<Categoria> getLista();
 
     List<Categoria> removeCat(Long id);
 
-    Categoria findCat(String descrizione);
+    List<Categoria> findCat(String descrizione);
     
     List<Categoria> updateCat(Categoria categoria);
 }

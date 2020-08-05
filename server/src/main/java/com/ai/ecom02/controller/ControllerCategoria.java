@@ -32,9 +32,7 @@ public class ControllerCategoria {
     public List<Categoria> aggiungiCategoria(
             @RequestBody Categoria categoria
     ) {
-        if (cercaCategoria(categoria.getDescrizione()) == null) {
-            categoriaService.addCat(categoria);
-        }
+        categoriaService.addCat(categoria);
         return categoriaService.getLista();
     }
 
@@ -55,10 +53,11 @@ public class ControllerCategoria {
 
     @RequestMapping(value = {"/cerca-categoria/{descrizione}"})
     @ResponseBody
-    public Categoria cercaCategoria(
+    public List<Categoria> cercaCategoria(
             @PathVariable String descrizione
     ) {
-        return categoriaService.findCat(descrizione);
+        categoriaService.findCat(descrizione);
+        return categoriaService.getLista();
     }
     
     @RequestMapping(value={"/modifica-categoria"})

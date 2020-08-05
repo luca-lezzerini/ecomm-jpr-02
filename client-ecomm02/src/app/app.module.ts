@@ -7,6 +7,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
 import { ColoreCrudComponent } from './colore-crud/colore-crud.component';
+import { HomeCRUDComponent } from './home-crud/home-crud.component';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { ColoreCrudComponent } from './colore-crud/colore-crud.component';
     AppComponent,
     ColoreCrudComponent,
     CategoriaCRUDComponent,
-    ImballoCrudComponent
+    ImballoCrudComponent,
+    HomeCRUDComponent
   ],
   imports: [
 

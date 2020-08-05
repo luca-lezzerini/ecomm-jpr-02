@@ -9,15 +9,15 @@ import { Observable } from 'rxjs';
 export class CategoriaServiceService {
 
   private url = "http://localhost:8080"
-  categorie: CategoriaDto[]; 
-  categoria: CategoriaDto;
+  categorie: CategoriaDto[] = []; 
+  categoria: CategoriaDto = new CategoriaDto();
   
   
   constructor(private http:HttpClient) { }
 
   addCategoria(){
     let o: Observable<CategoriaDto[]> =
-    this.http.post<CategoriaDto[]>(this.url + "/aggiungi-categoria", this.categoria)
+    this.http.post<CategoriaDto[]>(this.url + "/aggiungi-categoria/", this.categoria)
     o.subscribe(risp => {this.categorie = risp;})
   }
 
@@ -29,7 +29,7 @@ export class CategoriaServiceService {
 
   cerca(){
     let o: Observable<CategoriaDto> =
-    this.http.get<CategoriaDto>(this.url+'/cerca-categoria' + this.categoria.descrizione)
+    this.http.get<CategoriaDto>(this.url+'/cerca-categoria/' + this.categoria.descrizione)
     o.subscribe(risp => {this.categoria = risp;})
   }
 
@@ -40,7 +40,7 @@ export class CategoriaServiceService {
   }
 
   remove(id: number){
-    let o: Observable<CategoriaDto[]> = this.http.get<CategoriaDto[]>(this.url + '/rimuovi-categoria' + id)
+    let o: Observable<CategoriaDto[]> = this.http.get<CategoriaDto[]>(this.url + '/rimuovi-categoria/' + id)
     o.subscribe(risp => { this.categorie = risp; })
     return this.categorie
   }

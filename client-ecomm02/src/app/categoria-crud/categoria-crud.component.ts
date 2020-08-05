@@ -9,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CategoriaCRUDComponent implements OnInit {
 
-  categorie: CategoriaDto[] = []
+  
   aggiungiState = false;
   modificaState = false;
   categoriaSelezionata: number;
@@ -18,11 +18,15 @@ export class CategoriaCRUDComponent implements OnInit {
   constructor(public mem: CategoriaServiceService) { }
 
   ngOnInit() {
-    this.categorie = this.mem.lista()
+    this.mem.categorie = this.mem.lista()
   }
 
   searchCriteria() {
-    this.mem.cerca();
+    if(this.mem.categoria.descrizione != ""){
+      this.mem.cerca();
+    }else{
+      return this.mem.lista();
+    }
   }
 
   aggiungi() {
@@ -40,6 +44,7 @@ export class CategoriaCRUDComponent implements OnInit {
 
   annulla() {
     this.aggiungiState = false;
+    this.modificaState = false;
   }
 
   modifica(c: CategoriaDto, i: number) {

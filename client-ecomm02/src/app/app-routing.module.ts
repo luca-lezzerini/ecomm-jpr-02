@@ -1,3 +1,4 @@
+import { HomeCRUDComponent } from './home-crud/home-crud.component';
 import { ImballoCrudComponent } from './imballo-crud/imballo-crud.component';
 import { CategoriaCRUDComponent } from './categoria-crud/categoria-crud.component';
 import { NgModule, Component } from '@angular/core';
@@ -6,10 +7,11 @@ import { ColoreCrudComponent } from './colore-crud/colore-crud.component';
 
 
 const routes: Routes = [
+  { path: 'home-crud', component: HomeCRUDComponent},
   { path: 'imballo-crud', component: ImballoCrudComponent},
   { path: 'categoria-crud', component: CategoriaCRUDComponent },
   { path: 'colore-crud', component: ColoreCrudComponent},
-  { path: '', redirectTo: '/categoria-crud', pathMatch: 'full'}
+  { path: '', redirectTo: '/home-crud', pathMatch: 'full'}
 ];
 
 @NgModule({
