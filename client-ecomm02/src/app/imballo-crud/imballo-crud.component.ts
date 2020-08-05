@@ -1,7 +1,5 @@
 import { ImballoDto } from '../dto/imballo-dto';
-
 import { ImballoServiceService } from './../imballo-service.service';
-
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
@@ -47,7 +45,7 @@ export class ImballoCrudComponent implements OnInit {
   }
 
   findImballo() {
-    this.srvImballo.findImballo()
+    this.srvImballo.findImballo(this.imballo)
   }
 
   chiudi() {
@@ -56,7 +54,7 @@ export class ImballoCrudComponent implements OnInit {
   conferma() {
 
     this.imballo = new ImballoDto(this.id, this.descrizione, this.costo)
-    this.srvImballo.addImballo(this.imballo) 
+    this.srvImballo.addImballo(this.imballo)
   }
 
 }
