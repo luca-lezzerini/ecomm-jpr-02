@@ -34,9 +34,9 @@ export class CategoriaCRUDComponent implements OnInit {
   }
 
   conferma() {
-    if (this.aggiungiState) {
+    if (this.aggiungiState) {    
       this.mem.addCategoria();
-      this.mem.categTemp = new CategoriaDto() ;
+      this.mem.categTemp = new CategoriaDto() ;    
     } else {
       this.mem.categorie[this.categoriaSelezionata] = this.mem.categTemp;
       this.mem.update(this.mem.categTemp);
