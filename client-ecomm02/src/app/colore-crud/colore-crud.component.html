@@ -1,7 +1,7 @@
 <h1>Gestione Anagrafe Colori</h1>
 <div>
     <span *ngIf="state =='ricerca'">
-        <input type="text" [(ngModel)]="colore.colore">
+        <input type="text" [(ngModel)]="colore.colore" placeholder="Colore">
         <button (click)="cerca()">Cerca</button>
         <button (click)="nuovo()">Aggiungi</button>
     </span>
