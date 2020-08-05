@@ -1,3 +1,5 @@
+import { Router } from '@angular/router';
+import { HomeServiceService } from './../home-service.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +9,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeCRUDComponent implements OnInit {
 
-  constructor() { }
+  constructor(public mx: HomeServiceService, private router:Router) { }
 
   ngOnInit() {
   }
+
 
 }

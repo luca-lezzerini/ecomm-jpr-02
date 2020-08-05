@@ -45,16 +45,22 @@ export class ImballoCrudComponent implements OnInit {
   }
 
   findImballo() {
+    this.imballo = new ImballoDto(this.id, this.descrizione, this.costo)
     this.srvImballo.findImballo(this.imballo)
+    
   }
 
   chiudi() {
     this.state = 'ricerca';
+    this.imballi = this.srvImballo.lista()
+
   }
   conferma() {
 
     this.imballo = new ImballoDto(this.id, this.descrizione, this.costo)
     this.srvImballo.addImballo(this.imballo)
+    this.imballi = this.srvImballo.lista()
+
   }
 
 }
