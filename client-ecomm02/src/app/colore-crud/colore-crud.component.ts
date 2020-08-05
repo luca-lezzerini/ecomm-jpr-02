@@ -69,7 +69,7 @@ export class ColoreCrudComponent implements OnInit {
     this.state = 'ricerca';
     this.coloreForm = new ColoreDto();
   }
-  visualizza(colore: ColoreDto): void{
+  visualizza(colore: ColoreDto): void {
     this.coloreForm = Object.assign({}, colore);
     this.state = 'visualizza';
   }

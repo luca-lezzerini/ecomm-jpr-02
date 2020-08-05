@@ -14,7 +14,8 @@
 <div *ngIf="state == 'ricerca'"></div>
 <div *ngIf="state == 'visualizza'">
     <input type="text" [(ngModel)]="coloreForm.colore" readonly>
-    <button (click)="chiudi()">Chiudi</button>
+    <button (click)="conferma()" disabled>Conferma</button>
+    <button (click)="chiudi()">Annulla</button>
 </div>
 <div *ngIf="state == 'elimina'">
     <input type="text" [(ngModel)]="coloreForm.colore" readonly>
