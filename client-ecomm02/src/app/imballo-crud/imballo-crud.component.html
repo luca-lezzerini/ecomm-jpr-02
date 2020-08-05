@@ -2,10 +2,27 @@
 <h1>IMBALLO</h1>
 <br>
 <h2>inserisci i dati:</h2>
+
+<span *ngIf="state =='ricerca'">
+
 descrizione<input type="text" [(ngModel)]="descrizione" placeholder="imballo">
 costo<input type="number" [(ngModel)]="costo" placeholder="imballo">
 <button (click)="findImballo()">Cerca</button>
 <button (click)="addImballo()" >Aggiungi</button>
+</span>
+<span *ngIf="state !='ricerca'">
+descrizione<input type="hidden" [(ngModel)]="descrizione" placeholder="imballo" disabled>
+costo<input type="hidden" [(ngModel)]="costo" placeholder="imballo" disabled>
+</span>
+<br>
+<br>
+<br>
+<span *ngIf="state =='aggiungi'">
+    descrizione<input type="text" [(ngModel)]="descrizione" placeholder="imballo" >
+    costo<input type="number" [(ngModel)]="costo" placeholder="imballo" >
+    <button (click)="conferma()" >Aggiungi</button>
+    </span>
+
 <br>
 <br>
 {{msg}}
@@ -28,7 +45,9 @@ costo<input type="number" [(ngModel)]="costo" placeholder="imballo">
     <tr *ngFor="let i of srvImballo.imballi">
         <td>{{i.id}}</td>
         <td>{{i.descrizione}}</td>
-        <td>{{i.cost}}</td>
+        <td>{{i.costo}}</td>
+        <td><button (click)="updateImballo()">Modifica</button></td>
+        <td><button (click)="removeImballo(i.id)">Rimuovi</button></td>
     </tr>
     
 </table>
