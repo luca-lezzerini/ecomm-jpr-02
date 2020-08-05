@@ -67,10 +67,10 @@ public class ControllerAnagraficaImballo {
 
     @RequestMapping(value = {"/find-by-descrizione-imballo"})
     @ResponseBody
-    public Imballo ricercaByDescrizioneImballo(
+    public List<Imballo> ricercaByDescrizioneImballo(
             @RequestBody Imballo imballo
     ) {
-        srvImballo.findByDescrizione(imballo.getDescrizione());
-        return imballo;
+        return srvImballo.findByDescrizione(imballo);
+         
     }
 }
