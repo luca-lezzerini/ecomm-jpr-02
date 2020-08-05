@@ -13,7 +13,7 @@ export class CategoriaCRUDComponent implements OnInit {
   aggiungiState = false;
   modificaState = false;
   categoriaSelezionata: number;
-  categTemp: CategoriaDto;
+  
 
   constructor(public mem: CategoriaServiceService) { }
 
@@ -36,9 +36,11 @@ export class CategoriaCRUDComponent implements OnInit {
   conferma() {
     if (this.aggiungiState) {
       this.mem.addCategoria();
+      this.mem.categTemp = new CategoriaDto() ;
     } else {
-      this.mem.categorie[this.categoriaSelezionata] = this.categTemp;
-      this.mem.update(this.categTemp);
+      this.mem.categorie[this.categoriaSelezionata] = this.mem.categTemp;
+      this.mem.update(this.mem.categTemp);
+      this.mem.categTemp = new CategoriaDto() ;
     }
   }
 
@@ -49,7 +51,7 @@ export class CategoriaCRUDComponent implements OnInit {
 
   modifica(c: CategoriaDto, i: number) {
     this.categoriaSelezionata = i;
-    this.categTemp = Object.assign({}, c); //copio c dentro categTemp
+    this.mem.categTemp = Object.assign({}, c); //copio c dentro categTemp
     this.aggiungiState = false;
     this.modificaState = true;
   }
