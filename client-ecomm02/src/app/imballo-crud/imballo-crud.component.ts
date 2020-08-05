@@ -18,7 +18,7 @@ export class ImballoCrudComponent implements OnInit {
   id: number
   descrizione: string
   costo: number
-  msg: string
+  state = 'ricerca';
 
   constructor(private router: Router, public srvImballo: ImballoServiceService) { }
 
@@ -30,9 +30,7 @@ export class ImballoCrudComponent implements OnInit {
 
   addImballo() {
 
-    this.imballo = new ImballoDto(this.id, this.descrizione, this.costo)
-    this.srvImballo.addImballo(this.imballo)
-    this.msg = "inserito con successo!"
+    this.state = "aggiungi"
 
   }
 
@@ -50,6 +48,15 @@ export class ImballoCrudComponent implements OnInit {
 
   findImballo() {
     this.srvImballo.findImballo()
+  }
+
+  chiudi() {
+    this.state = 'ricerca';
+  }
+  conferma() {
+
+    this.imballo = new ImballoDto(this.id, this.descrizione, this.costo)
+    this.srvImballo.addImballo(this.imballo) 
   }
 
 }
