@@ -47,5 +47,12 @@ public class ControllerAnagraficaProdotti {
         srvProdotto.update(prodotto);
     }
 
-}
+    @RequestMapping(value = ("/prodotti-find"))
+    @ResponseBody
+    public List<Prodotto> findProdottiByCodice(
+            @RequestBody Prodotto prodotto
+    ) {
+        return srvProdotto.findByCodiceLike(prodotto);
+    }
 
+}

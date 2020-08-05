@@ -14,4 +14,18 @@ public interface ProdottoServiceCrud {
 
     List<Prodotto> getAll();
     
+    Prodotto findById(Prodotto prodotto);
+    
+     Prodotto findByDescrizione(Prodotto prodotto);
+
+    List<Prodotto> findByDescrizioneLike(Prodotto prodotto);
+    
+    Prodotto findByCodice(Prodotto prodotto);
+    
+    List<Prodotto> findByCodiceLike(Prodotto prodotto);
+    
+    List<Prodotto> findByPrezzoLike(Prodotto prodotto);
+    
+    
 }
+
