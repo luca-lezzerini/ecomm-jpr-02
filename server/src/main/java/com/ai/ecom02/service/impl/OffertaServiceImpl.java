@@ -62,14 +62,14 @@ public class OffertaServiceImpl implements OffertaServiceCrud {
     }
 
     @Override
-    public Offerta FindByDescrizione(Offerta offerta) { 
-       return repOfferta.FindByDescrizione(offerta.getDescrizione());
+    public Offerta findByDescrizione(Offerta offerta) { 
+       return repOfferta.findByDescrizione(offerta.getDescrizione());
     }
 
     @Override
-    public List<Offerta> FindByDescrizioneLike(Offerta offerta) {
+    public List<Offerta> findByDescrizioneLike(Offerta offerta) {
         
-        return repOfferta.FindByDescrizioneLike(offerta);
+        return repOfferta.findByDescrizioneLike(offerta);
     }
     
     

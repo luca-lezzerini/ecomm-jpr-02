@@ -28,8 +28,8 @@ public interface OffertaServiceCrud {                                 // Sto dic
 
     List<Offerta> findBycodiceLike(Offerta offerta);
 
-    Offerta FindByDescrizione(Offerta offerta);
+    Offerta findByDescrizione(Offerta offerta);
 
-    List<Offerta> FindByDescrizioneLike(Offerta offerta);
+    List<Offerta> findByDescrizioneLike(Offerta offerta);
 
 }
