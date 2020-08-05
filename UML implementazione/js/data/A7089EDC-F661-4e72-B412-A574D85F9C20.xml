@@ -1,0 +1,11 @@
+tocTab[tocTab.length] = new Array("0.4.1:1", "", "Home Page UI", "EARoot/EA4/EA1/EA80.htm", "188.png", "78", "0", "", "Custom diagram0","{A17E1691-0190-4da9-A8F2-7B9CA2B9C213}");
+tocTab[tocTab.length] = new Array("0.4.1:2", "", "«WireframeWebsite» Webpage1", "EARoot/EA4/EA1/EA89.htm", "11.png", "E452", "0", "", "Screen0","{F3031AC9-A09A-4d8f-BF5A-86AA1106FF4C}");
+tocTab[tocTab.length] = new Array("0.4.1:3", "", "«WireframeButton» Aggiungi", "EARoot/EA4/EA1/EA90.htm", "16.png", "E460", "E452", "", "GUIElement0","{58E3E3C1-6563-4784-BB4C-1EE6A4EAB848}");
+tocTab[tocTab.length] = new Array("0.4.1:4", "", "«WireframeButton» Anagrafiche", "EARoot/EA4/EA1/EA91.htm", "16.png", "E457", "E452", "", "GUIElement0","{2F0F674B-DEB7-40f4-BA1B-45A079424673}");
+tocTab[tocTab.length] = new Array("0.4.1:5", "", "«WireframeButton» Carrello", "EARoot/EA4/EA1/EA92.htm", "16.png", "E458", "E452", "", "GUIElement0","{A2BD176B-8366-4b8b-A3D9-72EDCF101233}");
+tocTab[tocTab.length] = new Array("0.4.1:6", "", "«WireframeButton» Cerca", "EARoot/EA4/EA1/EA93.htm", "16.png", "E455", "E452", "", "GUIElement0","{31906A25-E2C9-4ee1-AC19-316C6413128E}");
+tocTab[tocTab.length] = new Array("0.4.1:7", "", "«WireframeButton» Home", "EARoot/EA4/EA1/EA94.htm", "16.png", "E456", "E452", "", "GUIElement0","{7DE3EC2F-AC0D-4da5-A846-4385C7ED434A}");
+tocTab[tocTab.length] = new Array("0.4.1:8", "", "«WireframeLabel» Portale E-Commerce Zappando", "EARoot/EA4/EA1/EA95.htm", "16.png", "E453", "E452", "", "GUIElement0","{E93CB4E0-768D-4fcd-878E-8D92938A4C4E}");
+tocTab[tocTab.length] = new Array("0.4.1:9", "", "«WireframeTable» Table", "EARoot/EA4/EA1/EA96.htm", "16.png", "E459", "E452", "", "GUIElement0","{E5C6B66A-0BE6-4260-858D-9E3E59CC560F}");
+tocTab[tocTab.length] = new Array("0.4.1:10", "", "«WireframeTextField» Text", "EARoot/EA4/EA1/EA97.htm", "16.png", "E454", "E452", "", "GUIElement0","{9DD0073B-31A6-49b4-8DA4-D0543B63601E}");
+tocTab[tocTab.length] = new Array("0.4.1.1", "1", "Menu Anagrafiche", "EARoot/EA4/EA1/EA1/EA100.htm", "4.png", "", "", "{B2D87CC1-87B5-4409-8696-4807CDEF079E}", "Package");

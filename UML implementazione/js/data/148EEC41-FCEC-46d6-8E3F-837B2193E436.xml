@@ -1,4 +1,4 @@
-tocTab[tocTab.length] = new Array("0.5:1", "", "Analisi", "EARoot/EA5/EA79.htm", "176.png", "50", "0", "", "Package diagram0","{D745EB05-7063-4151-B13E-730B53F4E4AA}");
-tocTab[tocTab.length] = new Array("0.5.1", "1", "Casi d&#39;uso", "EARoot/EA5/EA1/EA87.htm", "4.png", "", "", "{A97F1737-3BCC-417c-B4F1-6F5BE1FEE408}", "Package");
-tocTab[tocTab.length] = new Array("0.5.2", "1", "Cicli di vita", "EARoot/EA5/EA2/EA154.htm", "4.png", "", "", "{4F47085F-D745-43b1-8069-C0FB3D5BCEE6}", "Package");
-tocTab[tocTab.length] = new Array("0.5.3", "1", "Concetti", "EARoot/EA5/EA3/EA206.htm", "4.png", "", "", "{E0364944-32FE-4152-9328-737B14EA7AB1}", "Package");
+tocTab[tocTab.length] = new Array("0.5:1", "", "Analisi", "EARoot/EA5/EA103.htm", "176.png", "50", "0", "", "Package diagram0","{D745EB05-7063-4151-B13E-730B53F4E4AA}");
+tocTab[tocTab.length] = new Array("0.5.1", "1", "Casi d&#39;uso", "EARoot/EA5/EA1/EA111.htm", "4.png", "", "", "{A97F1737-3BCC-417c-B4F1-6F5BE1FEE408}", "Package");
+tocTab[tocTab.length] = new Array("0.5.2", "1", "Cicli di vita", "EARoot/EA5/EA2/EA178.htm", "4.png", "", "", "{4F47085F-D745-43b1-8069-C0FB3D5BCEE6}", "Package");
+tocTab[tocTab.length] = new Array("0.5.3", "1", "Concetti", "EARoot/EA5/EA3/EA230.htm", "4.png", "", "", "{E0364944-32FE-4152-9328-737B14EA7AB1}", "Package");
