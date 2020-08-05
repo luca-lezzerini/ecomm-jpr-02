@@ -12,65 +12,59 @@ import { Router } from '@angular/router';
 })
 export class ImballoCrudComponent implements OnInit {
 
-  imballi: ImballoDto[] = []
-  imballo: ImballoDto
-  imballoMod : ImballoDto 
-  id: number
-  descrizione: string
-  costo: number
-  state = 'ricerca';
-  imballoNumber : number
-  
+  state = "ricerca"
+  imballoSelezionato: number
 
-  constructor(private router: Router, public srvImballo: ImballoServiceService) { }
+  constructor(private router: Router, public mem: ImballoServiceService) { }
 
   ngOnInit(): void {
-
-    this.imballi = this.srvImballo.lista()
-
+    this.mem.imballi = this.mem.lista();
   }
 
   addImballo() {
-
     this.state = "aggiungi"
+  }
 
+  updateImballo(imballo: ImballoDto, i: number) {
+    this.state = "modifica"
+    this.imballoSelezionato = i;
+    this.mem.imballoMod = Object.assign({}, imballo)
   }
 
   removeImballo(id: number) {
-
-    this.srvImballo.removeImballo(id)
-  }
-
-  updateImballo(imballo : ImballoDto, i: number) {
-    this.imballoNumber = i
-    this.state = "modifica"
-    this.imballoMod = Object.assign({}, imballo)
-    
-    
-  }
-  confirmationUpdate() {
-   console.log("modifica")
-   
-    this.srvImballo.updateImballo(this.imballoMod)
-  }
-
-  findImballo() {
-    this.imballo = new ImballoDto(this.id, this.descrizione, this.costo)
-    this.srvImballo.findImballo(this.imballo)
-    
-  }
-
-  chiudi() {
-    this.state = 'ricerca';
-    this.imballi = this.srvImballo.lista()
-
+    this.mem.removeImballo(id)
+    this.mem.imballi = this.mem.lista();
   }
   conferma() {
 
-    this.imballo = new ImballoDto(this.id, this.descrizione, this.costo)
-    this.srvImballo.addImballo(this.imballo)
-    this.imballi = this.srvImballo.lista()
+    if (this.state == "aggiungi") {
+      this.mem.addImballo()
+      this.mem.imballoMod = new ImballoDto()
+
+    }
+
+    else {
+      this.mem.imballi[this.imballoSelezionato] = this.mem.imballoMod;
+      this.mem.updateImballo(this.mem.imballoMod)
+      this.mem.imballoMod = new ImballoDto()
+
+
+    }
+
 
   }
+  chiudi() {
+    this.state = "ricerca"
+  }
+  findImballo() {
 
+   if (this.mem.imballo.descrizione.length > 0) {
+      this.mem.findImballo(this.mem.imballo)
+
+    } 
+    else {
+      this.mem.lista()
+    }
+  
+  }
 }
