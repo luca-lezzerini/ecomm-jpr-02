@@ -49,6 +49,6 @@ public class ServiceColore implements ColoreServiceCrud {
 
     @Override
     public List<Colore> findByColoreLike(Colore colore) {
-        return repColore.findByColoreLike(colore.getColore());
+        return repColore.findByColoreLike(colore.getColore()+"%");
     }
 }
