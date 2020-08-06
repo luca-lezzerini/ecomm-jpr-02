@@ -13,6 +13,8 @@ export class CategoriaCRUDComponent implements OnInit {
   aggiungiState = false;
   modificaState = false;
   categoriaSelezionata: number;
+  visualizza = false;
+  abilitaDescrizione=false;
   
 
   constructor(public mem: CategoriaServiceService) { }
@@ -63,5 +65,13 @@ export class CategoriaCRUDComponent implements OnInit {
   rimuovi(id: number) {
     this.mem.remove(id);
   }
-
-}
+  visualizzaDettagliCat(c:CategoriaDto, i: number){
+    this.visualizza = true;
+    this.categoriaSelezionata = i;
+    this.mem.categTemp = Object.assign({}, c); //copio c dentro categTemp
+    this.aggiungiState = false;
+    this.modificaState = true;
+    this.abilitaDescrizione = true;
+    
+    }
+  }
