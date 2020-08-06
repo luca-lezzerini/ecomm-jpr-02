@@ -17,7 +17,7 @@ const routes: Routes = [
   { path: 'colore-crud', component: ColoreCrudComponent},
   { path: 'prodotto-crud', component: ProdottoCrudComponent},
   { path: 'spedizione-crud', component: SpedizioneCRUDComponent},
-  { path: 'tagli-crud', component: TagliaCrudComponent},
+  { path: 'taglia-crud', component: TagliaCrudComponent},
   { path: 'offerta-crud', component: OffertaCrudComponent},
   { path: '', redirectTo: '/home-crud', pathMatch: 'full'}
 ];
