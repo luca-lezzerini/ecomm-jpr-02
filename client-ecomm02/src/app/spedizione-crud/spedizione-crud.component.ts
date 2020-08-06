@@ -22,6 +22,8 @@ export class SpedizioneCRUDComponent implements OnInit {
   searchCriteria() {
     if (this.meme.spedizione.codice != "") {
       this.meme.cerca();
+      this.meme.spedizione.codice="";
+      this.aggiungiStateSped = false;
     } else {
       return this.meme.lista();
     }
@@ -33,6 +35,7 @@ export class SpedizioneCRUDComponent implements OnInit {
     } else {
       this.meme.spedizioni[this.indice] = this.meme.temp;
       this.meme.update(this.meme.temp);
+      this.meme.lista();
       this.meme.temp = new SpedizioneDto();
     }
   }
@@ -46,6 +49,7 @@ export class SpedizioneCRUDComponent implements OnInit {
   modifica(x: SpedizioneDto, i: number) {
     this.indice = i;
     this.meme.temp = Object.assign({}, x)
+    this.aggiungiStateSped = false;
     this.modificaStateSped = true;
   }
   rimuovi(id: number) {

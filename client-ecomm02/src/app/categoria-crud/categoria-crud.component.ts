@@ -26,6 +26,7 @@ export class CategoriaCRUDComponent implements OnInit {
     if(this.mem.categoria.descrizione != ""){
       this.mem.cerca();
       this.mem.categoria.descrizione = "";
+      this.aggiungiState = false;
     }else{
       return this.mem.lista();
     }
