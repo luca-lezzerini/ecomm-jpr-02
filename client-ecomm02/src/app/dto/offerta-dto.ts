@@ -3,8 +3,7 @@ export class OffertaDTO {
 
     codice: string;
 
-    descrizione:string;
+    descrizione: string;
 
     scontoPercentuale: number;
-    
 }

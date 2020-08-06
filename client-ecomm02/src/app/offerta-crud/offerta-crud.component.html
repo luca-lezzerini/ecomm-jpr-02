@@ -59,7 +59,7 @@
             <tr *ngFor="let item of listaOfferte">
                 <td (click)="visualizza(item)">{{item.codice}}</td>
                 <td (click)="visualizza(item)">{{item.descrizione}}</td>
-                <td (click)="visualizza(item)">{{item.sconto}}%</td>
+                <td (click)="visualizza(item)">{{item.scontoPercentuale}}</td>
                 <td><button (click)="chiediModifica(item)">Modifica</button></td>
                 <td><button (click)="chiediElimina(item)">Rimuovi</button></td>
             </tr>

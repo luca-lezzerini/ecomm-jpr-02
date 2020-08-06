@@ -26,6 +26,8 @@ public interface ProdottoServiceCrud {
     
     List<Prodotto> findByPrezzoLike(Prodotto prodotto);
     
+  //  List<Prodotto> findByCodiceLikeOrDescrizioneLike(Prodotto prodotto);
+    
     
 }
 

@@ -63,5 +63,12 @@ public class ProdottoServiceImpl implements ProdottoServiceCrud {
     public List<Prodotto> findByPrezzoLike(Prodotto prodotto) {
     return repProdotto.findByPrezzoLike(prodotto.getPrezzo().toString());
     }
+
+   // @Override
+   // public List<Prodotto> findByCodiceLikeOrDescrizioneLike(Prodotto prodotto) {
+        
+        
+  //      return repProdotto.findByCodiceLikeOrDescrizioneLike(prodotto.getCodice());
+  //  }
     
 }
