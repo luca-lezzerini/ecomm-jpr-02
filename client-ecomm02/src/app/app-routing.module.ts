@@ -1,3 +1,4 @@
+import { TagliaCrudComponent } from './taglia-crud/taglia-crud.component';
 import { SpedizioneCRUDComponent } from './spedizione-crud/spedizione-crud.component';
 import { HomeCRUDComponent } from './home-crud/home-crud.component';
 import { ImballoCrudComponent } from './imballo-crud/imballo-crud.component';
@@ -15,6 +16,7 @@ const routes: Routes = [
   { path: 'colore-crud', component: ColoreCrudComponent},
   { path: 'prodotto-crud', component: ProdottoCrudComponent},
   { path: 'spedizione-crud', component: SpedizioneCRUDComponent},
+  { path: 'tagli-crud', component: TagliaCrudComponent},
   { path: '', redirectTo: '/home-crud', pathMatch: 'full'}
 ];
 

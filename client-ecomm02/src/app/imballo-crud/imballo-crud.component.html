@@ -4,14 +4,17 @@
 
 <span *ngIf="state =='ricerca'">
 
-    descrizione<input type="text" [(ngModel)]="mem.imballo.descrizione" placeholder="imballo">
-    costo<input type="number" [(ngModel)]="costo" placeholder="imballo">
+    descrizione<input type="text" [(ngModel)]="mem.imballo.descrizione"
+        placeholder="imballo">
+    <!-- costo<input type="number" [(ngModel)]="costo" placeholder="imballo"> -->
     <button (click)="findImballo()">Cerca</button>&nbsp;
     <button (click)="addImballo()">Aggiungi</button>
 </span>
 <span *ngIf="state !='ricerca'">
-    descrizione<input type="hidden" [(ngModel)]="mem.imballo.descrizione" placeholder="imballo" disabled>
-    costo<input type="hidden" [(ngModel)]="mem.imballo.costo" placeholder="imballo" disabled>
+    descrizione<input type="hidden" [(ngModel)]="mem.imballo.descrizione"
+        placeholder="imballo" disabled>
+    <!-- costo<input type="hidden" [(ngModel)]="mem.imballo.costo"
+        placeholder="imballo" disabled> -->
 </span>
 
 <br>
@@ -20,16 +23,20 @@
 <span *ngIf="state =='aggiungi'">
     <div>
         <h3>Form dati</h3>
-        descrizione<input type="text" [(ngModel)]="mem.imballoMod.descrizione" placeholder="descrizione">
-        costo<input type="number" [(ngModel)]="mem.imballoMod.costo" placeholder="costo">
+        descrizione<input type="text" [(ngModel)]="mem.imballoMod.descrizione"
+            placeholder="descrizione">
+        costo<input type="number" [(ngModel)]="mem.imballoMod.costo"
+            placeholder="costo">
         <br>
         <button (click)="conferma()">Conferma</button>
         <button (click)="chiudi()">Annulla</button>
     </div>
 </span>
 <div *ngIf="state == 'modifica'">
-    nuova descrizione:<input type="text" [(ngModel)]="mem.imballoMod.descrizione" placeholder="descrizione">
-    nuovo costo:<input type="number" [(ngModel)]="mem.imballoMod.costo" placeholder="costo">&nbsp;
+    nuova descrizione:<input type="text"
+        [(ngModel)]="mem.imballoMod.descrizione" placeholder="descrizione">
+    nuovo costo:<input type="number" [(ngModel)]="mem.imballoMod.costo"
+        placeholder="costo">&nbsp;
     <button (click)="conferma()">Conferma modifica</button>
     <button (click)="chiudi()">Annulla</button>
 </div>
@@ -42,7 +49,7 @@
         <th>Cost</th>
     </tr>
     <tr *ngFor="let i of mem.imballi; index as x">
-        <td>{{i.id}}</td>
+        <td>{{i.id}}</td> <!-- da eliminare nella versione definitiva -->
         <td>{{i.descrizione}}</td>
         <td>{{i.costo}}</td>
         <td><button (click)="updateImballo(i, x)">Modifica</button></td>

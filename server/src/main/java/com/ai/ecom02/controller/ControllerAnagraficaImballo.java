@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
  *
  * @author Francesco
  */
+
 @CrossOrigin("*")
 @RestController
 public class ControllerAnagraficaImballo {
@@ -70,15 +71,14 @@ public class ControllerAnagraficaImballo {
     public List<Imballo> ricercaByDescrizioneImballo(
             @RequestBody Imballo imballo
     ) {
-        return srvImballo.findByDescrizione(imballo);
-         
+        return srvImballo.findByDescrizione(imballo);         
     }
-    @RequestMapping(value = {"/find-by-costo-imballo"})
-    @ResponseBody
-    public List<Imballo> ricercaByCostoImballo(
-            @RequestBody Imballo imballo
-    ) {
-        return srvImballo.findByCosto(imballo);
-         
-    }
+    
+//    @RequestMapping(value = {"/find-by-costo-imballo"})
+//    @ResponseBody
+//    public List<Imballo> ricercaByCostoImballo(
+//            @RequestBody Imballo imballo
+//    ) {
+//        return srvImballo.findByCosto(imballo);         
+//    }
 }
