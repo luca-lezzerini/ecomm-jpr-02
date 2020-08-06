@@ -1,1 +1,59 @@
-<p>taglia-crud works!</p>
+<h1>TAGLIA</h1>
+<br>
+<h2>Inserire i dati:</h2>
+
+<span *ngIf="state =='ricerca'">
+
+    sigla <input type="text" [(ngModel)]="memT.taglia.sigla"
+        placeholder="taglia">
+    <!-- descrizione <input type="text" [(ngModel)]="memT.taglia.descrizione" placeholder="taglia"> -->
+    <button (click)="findTaglia()">Cerca</button>&nbsp;
+    <button (click)="addTaglia()">Aggiungi</button>
+</span>
+<span *ngIf="state !='ricerca'">
+    sigla <input type="hidden" [(ngModel)]="memT.taglia.sigla"
+        placeholder="taglia" disabled>
+    <!-- descrizione <input type="hidden" [(ngModel)]="memT.taglia.descrizione"
+        placeholder="taglia" disabled> -->
+</span>
+
+<br>
+<br>
+<br>
+<span *ngIf="state =='aggiungi'">
+    <div>
+        <h3>Form dati</h3>
+        descrizione <input type="text" [(ngModel)]="memT.tagliaMod.descrizione"
+            placeholder="descrizione">
+        sigla <input type="number" [(ngModel)]="memT.tagliaMod.sigla"
+            placeholder="sigla">
+        <br>
+        <button (click)="conferma()">Conferma</button>
+        <button (click)="chiudi()">Annulla</button>
+    </div>
+</span>
+<div *ngIf="state == 'modifica'">
+    nuova descrizione:<input type="text"
+        [(ngModel)]="memT.tagliaMod.descrizione" placeholder="descrizione">
+    nuova sigla:<input type="number" [(ngModel)]="memT.tagliaMod.sigla"
+        placeholder="sigla">&nbsp;
+    <button (click)="conferma()">Conferma modifica</button>
+    <button (click)="chiudi()">Annulla</button>
+</div>
+<br>
+<br>
+<table>
+    <tr>
+        <th>ID</th> <!-- da eliminare nella versione definitiva -->
+        <th>Descrizione</th>
+        <th>Sigla</th>
+    </tr>
+    <tr *ngFor="let i of memT.taglie; index as x">
+        <td>{{i.id}}</td> <!-- da eliminare nella versione definitiva -->
+        <td>{{i.descrizione}}</td>
+        <td>{{i.sigla}}</td>
+        <td><button (click)="updateTaglia(i, x)">Modifica</button></td>
+        <td><button (click)="removeTaglia(i.id)">Rimuovi</button></td>
+    </tr>
+
+</table>
