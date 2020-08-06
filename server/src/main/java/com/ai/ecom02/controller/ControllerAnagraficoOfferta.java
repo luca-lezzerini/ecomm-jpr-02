@@ -38,14 +38,14 @@ public class ControllerAnagraficoOfferta {
 
     @RequestMapping(value = ("/offerta-delete"))
     @ResponseBody
-    public void deleteOfferta(Offerta offerta) {
-
+    public void deleteOfferta(@RequestBody Offerta offerta) {
+        
         srvOfferta.delete(offerta);
     }
 
     @RequestMapping(value = ("/offerta-update"))
     @ResponseBody
-    public void updateOfferta(Offerta offerta) {
+    public void updateOfferta(@RequestBody Offerta offerta) {
 
         srvOfferta.update(offerta);
 
@@ -55,9 +55,9 @@ public class ControllerAnagraficoOfferta {
     
     @RequestMapping(value=("/offerta-find"))
     @ResponseBody
-    public void findByCodiceLike(Offerta offerta){
+    public List<Offerta> findByCodiceLike(@RequestBody Offerta offerta){
         
-        srvOfferta.findBycodiceLike(offerta);
+        return srvOfferta.findByCodiceLike(offerta);
         
     
 }

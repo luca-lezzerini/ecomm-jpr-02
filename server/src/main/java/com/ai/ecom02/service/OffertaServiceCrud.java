@@ -26,7 +26,7 @@ public interface OffertaServiceCrud {                                 // Sto dic
 
     Offerta findByCodice(Offerta offerta);
 
-    List<Offerta> findBycodiceLike(Offerta offerta);
+    List<Offerta> findByCodiceLike(Offerta offerta);
 
     Offerta findByDescrizione(Offerta offerta);
 

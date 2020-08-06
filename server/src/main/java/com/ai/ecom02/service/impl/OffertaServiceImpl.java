@@ -29,6 +29,7 @@ public class OffertaServiceImpl implements OffertaServiceCrud {
 
     @Override
     public void delete(Offerta offerta) {
+       
         repOfferta.delete(offerta);
     }
 
@@ -57,7 +58,7 @@ public class OffertaServiceImpl implements OffertaServiceCrud {
     }
 
     @Override
-    public List<Offerta> findBycodiceLike(Offerta offerta) {
+    public List<Offerta> findByCodiceLike(Offerta offerta) {
        return repOfferta.findByCodiceLike(offerta.getCodice());
     }
 

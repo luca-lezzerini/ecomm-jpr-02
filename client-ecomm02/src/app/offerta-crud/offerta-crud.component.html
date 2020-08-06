@@ -18,27 +18,27 @@
 <div *ngIf="state == 'visualizza'">
     <input type="text" [(ngModel)]="offertaForm.codice" readonly>
     <input type="text" [(ngModel)]="offertaForm.descrizione" readonly>
-    <input type="text" [(ngModel)]="offertaForm.scontoPercentuale" readonly>
+    <input type="number" [(ngModel)]="offertaForm.scontoPercentuale" readonly>
     <button (click)="chiudi()">Chiudi</button>
 </div>
 <div *ngIf="state == 'elimina'">
     <input type="text" [(ngModel)]="offertaForm.codice" readonly>
     <input type="text" [(ngModel)]="offertaForm.descrizione" readonly>
-    <input type="text" [(ngModel)]="offertaForm.scontoPercentuale" readonly>
+    <input type="number" [(ngModel)]="offertaForm.scontoPercentuale" readonly>
     <button (click)="conferma()">Conferma</button>
     <button (click)="chiudi()">Annulla</button>
 </div>
 <div *ngIf="state == 'aggiungi'">
     <input type="text" [(ngModel)]="offertaForm.codice">
     <input type="text" [(ngModel)]="offertaForm.descrizione">
-    <input type="text" [(ngModel)]="offertaForm.scontoPercentuale">
+    <input type="number" [(ngModel)]="offertaForm.scontoPercentuale">
     <button (click)="conferma()">Conferma</button>
     <button (click)="chiudi()">Annulla</button>
 </div>
 <div *ngIf="state == 'modifica'">
     <input type="text" [(ngModel)]="offertaForm.codice">
     <input type="text" [(ngModel)]="offertaForm.descrizione">
-    <input type="text" [(ngModel)]="offertaForm.scontoPercentuale">
+    <input type="numbe" [(ngModel)]="offertaForm.scontoPercentuale">
     <button (click)="conferma()">Conferma</button>
     <button (click)="chiudi()">Annulla</button>
 </div>

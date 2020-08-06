@@ -28,7 +28,6 @@ export class OffertaCrudComponent implements OnInit {
   cerca(): void {
     const oss: Observable<OffertaDTO[]> = this.http.post<OffertaDTO[]>(this.urlPath + '/offerta-find', this.offerta);
     const sub: Subscription = oss.subscribe(risp => { this.listaOfferte = risp; });
-    console.log(this.listaOfferte);
   }
 
   chiediModifica(offerta: OffertaDTO): void {
@@ -69,8 +68,6 @@ export class OffertaCrudComponent implements OnInit {
       }
 
     }
-    console.log(this.urlPath + urlEnd);
-    console.log(this.offertaForm.id  );
     const oss: Observable<OffertaDTO> = this.http.post<OffertaDTO>(this.urlPath + urlEnd, this.offertaForm);
     const sub: Subscription = oss.subscribe(risp => { this.ngOnInit(); });
     this.state = 'ricerca';
