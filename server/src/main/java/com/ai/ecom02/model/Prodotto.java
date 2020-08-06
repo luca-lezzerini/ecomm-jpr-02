@@ -1,4 +1,3 @@
-
 package com.ai.ecom02.model;
 
 import java.io.Serializable;
@@ -10,21 +9,22 @@ import javax.persistence.Id;
 
 @Entity
 public class Prodotto implements Serializable {
-@Id
-@GeneratedValue(strategy = GenerationType.IDENTITY)
-private Long id;
 
-@Column
-private String codice;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-@Column
-private String descrizione;
+    @Column
+    private String codice;
 
-@Column
-private Double peso;
+    @Column
+    private String descrizione;
 
-@Column
-private Double prezzo;
+    @Column
+    private Double peso;
+
+    @Column
+    private Double prezzo;
 
     public Prodotto() {
     }
@@ -78,8 +78,4 @@ private Double prezzo;
         return "Prodotto{" + "id=" + id + ", codice=" + codice + ", descrizione=" + descrizione + ", peso=" + peso + ", prezzo=" + prezzo + '}';
     }
 
-
-
-    
-    
 }
