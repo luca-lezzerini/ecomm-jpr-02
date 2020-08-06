@@ -5,6 +5,7 @@
  */
 package com.ai.ecom02.controller;
 
+import com.ai.ecom02.dto.RicercaDto;
 import com.ai.ecom02.model.Offerta;
 import com.ai.ecom02.service.impl.OffertaServiceImpl;
 import java.util.List;
@@ -55,9 +56,9 @@ public class ControllerAnagraficoOfferta {
     
     @RequestMapping(value=("/offerta-find"))
     @ResponseBody
-    public List<Offerta> findByCodiceLike(@RequestBody Offerta offerta){
+    public List<Offerta> findByCodiceLike(@RequestBody RicercaDto ricerca){
         
-        return srvOfferta.findByCodiceLike(offerta);
+        return srvOfferta.findByDescrizioneOrCodiceLike(ricerca);
         
     
 }

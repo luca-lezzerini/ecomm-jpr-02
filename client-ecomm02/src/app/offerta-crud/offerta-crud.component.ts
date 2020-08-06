@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { OffertaDTO } from '../dto/offerta-dto';
 import { HttpClient } from '@angular/common/http';
 import { Observable, Subscription } from 'rxjs';
+import { RicercaDto } from './../dto/ricerca-dto';
+
 
 
 @Component({
@@ -12,7 +14,7 @@ import { Observable, Subscription } from 'rxjs';
 export class OffertaCrudComponent implements OnInit {
 
   urlPath = 'http://localhost:8080';
-  offerta: OffertaDTO = new OffertaDTO();
+  ricerca: RicercaDto = new RicercaDto();
   offertaForm: OffertaDTO = new OffertaDTO();
   listaOfferte: OffertaDTO[] = [];
   state = 'ricerca';
@@ -26,8 +28,9 @@ export class OffertaCrudComponent implements OnInit {
     const sub: Subscription = oss.subscribe(risp => { this.listaOfferte = risp; });
   }
   cerca(): void {
-    const oss: Observable<OffertaDTO[]> = this.http.post<OffertaDTO[]>(this.urlPath + '/offerta-find', this.offerta);
+    const oss: Observable<OffertaDTO[]> = this.http.post<OffertaDTO[]>(this.urlPath + '/offerta-find', this.ricerca);
     const sub: Subscription = oss.subscribe(risp => { this.listaOfferte = risp; });
+    this.riceca = new RicercaDto();
   }
 
   chiediModifica(offerta: OffertaDTO): void {
@@ -48,7 +51,6 @@ export class OffertaCrudComponent implements OnInit {
 
   chiudi(): void {
     this.state = 'ricerca';
-    this.offerta = new OffertaDTO();
     this.offertaForm = new OffertaDTO();
   }
   conferma(): void {

@@ -51,4 +51,5 @@ public class ServiceColore implements ColoreServiceCrud {
     public List<Colore> findByColoreLike(Colore colore) {
         return repColore.findByColoreLike(colore.getColore()+"%");
     }
+    
 }
