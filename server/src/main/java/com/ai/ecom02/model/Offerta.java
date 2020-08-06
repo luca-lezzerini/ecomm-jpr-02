@@ -31,9 +31,8 @@ public class Offerta implements Serializable {
 
     @Column
     private double scontoPercentuale;
-    
-    // cosstruttori 
 
+    // cosstruttori 
     public Offerta() {
     }
 
@@ -43,9 +42,8 @@ public class Offerta implements Serializable {
         this.descrizione = descrizione;
         this.scontoPercentuale = scontoPercentuale;
     }
-    
-    // get e set
 
+    // get e set
     public Long getId() {
         return id;
     }
@@ -77,15 +75,11 @@ public class Offerta implements Serializable {
     public void setScontoPercentuale(double scontoPercentuale) {
         this.scontoPercentuale = scontoPercentuale;
     }
-    
-     // toString
 
+    // toString
     @Override
     public String toString() {
-        return "Offerta{"  + id + " " + codice + " " + descrizione + " " + scontoPercentuale + '}';
+        return "Offerta{" + id + " " + codice + " " + descrizione + " " + scontoPercentuale + '}';
     }
-    
-    
-    
 
 }
