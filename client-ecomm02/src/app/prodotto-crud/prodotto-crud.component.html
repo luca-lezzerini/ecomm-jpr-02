@@ -1,15 +1,68 @@
-<h1>GestioneAnagrafeProdotti</h1>
+<h1>Gestione Anagrafe Prodotti</h1>
 <div>
- <span *ngIf = "state == 'ricerca'" >
-     <input type="text" [(ngModel)] = "prodotto.codice">
-     <button (click)="cerca()">Cerca</button>
-     <button (click)="nuovo()">Aggiungi</button>
- </span>
- <span *ngIf = "state != 'ricerca'" >
-    <input type="text" [(ngModel)] = "prodotto.codice" disabled>
-    <button (click)="cerca()" disabled>Cerca</button>
-    <button (click)="nuovo()" disabled>Aggiungi</button>
-</span>    
+    <span *ngIf="state == 'ricerca'">
+        <input type="text" [(ngModel)]="prodotto.codice">
+        <button (click)="cerca()">Cerca</button>
+        <button (click)="nuovo()">Aggiungi</button>
+    </span>
+    <span *ngIf="state != 'ricerca'">
+        <input type="text" [(ngModel)]="prodotto.codice" disabled>
+        <button (click)="cerca()" disabled>Cerca</button>
+        <button (click)="nuovo()" disabled>Aggiungi</button>
+    </span>
 </div>
+<div *ngIf="state == 'ricerca'"></div>
+<div *ngIf="state == 'visualizza'">
+    <input type="text" [(ngModel)]="prodottoForm.codice" readonly>
+    <input type="text" [(ngModel)]="prodottoForm.descrizione" readonly>
+    <input type="text" [(ngModel)]="prodottoForm.peso" readonly>
+    <input type="text" [(ngModel)]="prodottoForm.prezzo" readonly>
+    <button (click)="chiudi()">Annulla</button>
+</div>
+<div *ngIf="state == 'elimina'">
+    <input type="text" [(ngModel)]="prodottoForm.codice" readonly>
+    <input type="text" [(ngModel)]="prodottoForm.descrizione" readonly>
+    <input type="text" [(ngModel)]="prodottoForm.peso" readonly>
+    <input type="text" [(ngModel)]="prodottoForm.prezzo" readonly>
+    <button (click)="conferma()">Conferma</button>
+    <button (click)="chiudi()">Annulla</button>
+</div>
+<div *ngIf="state == 'aggiungi'">
+    <input type="text" [(ngModel)]="prodottoForm.codice" placeholder="codice">
+    <input type="text" [(ngModel)]="prodottoForm.descrizione" placeholder="descrizione">
+    <input type="text" [(ngModel)]="prodottoForm.peso" placeholder="peso">
+    <input type="text" [(ngModel)]="prodottoForm.prezzo" placeholder="prezzo">
+    <button (click)="conferma()">Conferma</button>
+    <button (click)="chiudi()">Annulla</button>
+</div>
+<div *ngIf="state == 'modifica'">
+    <input type="text" [(ngModel)]="prodottoForm.codice" placeholder="codice">
+    <input type="text" [(ngModel)]="prodottoForm.descrizione" placeholder="descrizione">
+    <input type="text" [(ngModel)]="prodottoForm.peso" placeholder="peso">
+    <input type="text" [(ngModel)]="prodottoForm.prezzo" placeholder="prezzo">
+    <button (click)="conferma()">Conferma</button>
+    <button (click)="chiudi()">Annulla</button>
+</div>
+<div>
+    <table>
+        <thead>
+            <tr>
+                <th>Codice</th>
+                <th>Descrizione</th>
+                <th>Peso</th>
+                <th>Prezzo</th>
 
- 
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of listaProdotti">
+                <td (click)="visualizza(item)">{{item.codice}}</td>
+                <td (click)="visualizza(item)">{{item.descrizione}}</td>
+                <td (click)="visualizza(item)">{{item.peso}}</td>
+                <td (click)="visualizza(item)">{{item.prezzo}}</td>
+                <td><button (click)="chiediModifica(item)">Modifica</button></td>
+                <td><button (click)="chiediElimina(item)">Rimuovi</button></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
