@@ -45,10 +45,10 @@ export class ImballoServiceService {
     o.subscribe(risp => { this.imballo = risp; })
     return this.imballo;
   }
-  findImballoByCosto(imballo: ImballoDto) {
-    let o: Observable<ImballoDto[]> = this.http.post<ImballoDto[]>(this.url + "/find-by-costo-imballo", imballo)
-    o.subscribe(risp => { this.imballi = risp; })
 
-  }
+  // findImballoByCosto(imballo: ImballoDto) {
+  //   let o: Observable<ImballoDto[]> = this.http.post<ImballoDto[]>(this.url + "/find-by-costo-imballo", imballo)
+  //   o.subscribe(risp => { this.imballi = risp; })
+  // }
 
 }

@@ -35,32 +35,25 @@ export class ImballoCrudComponent implements OnInit {
     this.mem.removeImballo(id)
     this.mem.imballi = this.mem.lista();
   }
-  conferma() {
 
+  conferma() {
     if (this.state == "aggiungi") {
       this.mem.addImballo()
       this.mem.imballoMod = new ImballoDto()
-
-    }
-
-    else {
+    } else {
       this.mem.imballi[this.imballoSelezionato] = this.mem.imballoMod;
       this.mem.updateImballo(this.mem.imballoMod)
       this.mem.imballoMod = new ImballoDto()
-
-
     }
-
-
   }
+
   chiudi() {
     this.state = "ricerca"
   }
-  findImballo() {
 
+  findImballo() {
     if (this.mem.imballo.descrizione.length > 0) {
       this.mem.findImballo(this.mem.imballo)
-
     }
     else {
       this.mem.lista()

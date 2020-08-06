@@ -17,6 +17,7 @@ import org.springframework.stereotype.Service;
  *
  * @author Francesco
  */
+
 @Service
 public class ServiceImballo implements ImballoServiceCrud {
 
@@ -54,7 +55,8 @@ public class ServiceImballo implements ImballoServiceCrud {
     public List<Imballo> findByDescrizione(Imballo imballo){
         return repImballo.findByDescrizioneLike(imballo.getDescrizione());
     }
-    public List<Imballo> findByCosto(Imballo imballo){
-        return repImballo.findByCostoLike(imballo.getCosto());
-    }
+    
+//    public List<Imballo> findByCosto(Imballo imballo){
+//        return repImballo.findByCostoLike(imballo.getCosto());
+//    }
 }

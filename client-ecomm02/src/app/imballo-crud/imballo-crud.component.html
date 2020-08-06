@@ -6,15 +6,15 @@
 
     descrizione<input type="text" [(ngModel)]="mem.imballo.descrizione"
         placeholder="imballo">
-    costo<input type="number" [(ngModel)]="costo" placeholder="imballo">
+    <!-- costo<input type="number" [(ngModel)]="costo" placeholder="imballo"> -->
     <button (click)="findImballo()">Cerca</button>&nbsp;
     <button (click)="addImballo()">Aggiungi</button>
 </span>
 <span *ngIf="state !='ricerca'">
     descrizione<input type="hidden" [(ngModel)]="mem.imballo.descrizione"
         placeholder="imballo" disabled>
-    costo<input type="hidden" [(ngModel)]="mem.imballo.costo"
-        placeholder="imballo" disabled>
+    <!-- costo<input type="hidden" [(ngModel)]="mem.imballo.costo"
+        placeholder="imballo" disabled> -->
 </span>
 
 <br>
@@ -49,7 +49,7 @@
         <th>Cost</th>
     </tr>
     <tr *ngFor="let i of mem.imballi; index as x">
-        <td>{{i.id}}</td>
+        <td>{{i.id}}</td> <!-- da eliminare nella versione definitiva -->
         <td>{{i.descrizione}}</td>
         <td>{{i.costo}}</td>
         <td><button (click)="updateImballo(i, x)">Modifica</button></td>
