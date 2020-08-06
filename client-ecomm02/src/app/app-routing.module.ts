@@ -5,6 +5,7 @@ import { CategoriaCRUDComponent } from './categoria-crud/categoria-crud.componen
 import { NgModule, Component } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { ColoreCrudComponent } from './colore-crud/colore-crud.component';
+import { ProdottoCrudComponent } from './prodotto-crud/prodotto-crud.component';
 
 
 const routes: Routes = [
@@ -12,6 +13,7 @@ const routes: Routes = [
   { path: 'imballo-crud', component: ImballoCrudComponent},
   { path: 'categoria-crud', component: CategoriaCRUDComponent },
   { path: 'colore-crud', component: ColoreCrudComponent},
+  { path: 'prodotto-crud', component: ProdottoCrudComponent},
   { path: 'spedizione-crud', component: SpedizioneCRUDComponent},
   { path: '', redirectTo: '/home-crud', pathMatch: 'full'}
 ];
