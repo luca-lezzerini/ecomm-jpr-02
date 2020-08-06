@@ -34,9 +34,9 @@ export class CategoriaServiceService {
   }
 
   update(categTemp: CategoriaDto){
-    let o: Observable<CategoriaDto> =
-    this.http.post<CategoriaDto>(this.url + "/modifica-categoria", categTemp)
-    o.subscribe(risp => {this.categoria = risp;})
+    let o: Observable<CategoriaDto[]> =
+    this.http.post<CategoriaDto[]>(this.url + "/modifica-categoria", categTemp)
+    o.subscribe(risp => {this.categorie = risp;})
   }
 
   remove(id: number){

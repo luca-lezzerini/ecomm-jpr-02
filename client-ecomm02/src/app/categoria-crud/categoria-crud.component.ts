@@ -18,12 +18,14 @@ export class CategoriaCRUDComponent implements OnInit {
   constructor(public mem: CategoriaServiceService) { }
 
   ngOnInit() {
-    this.mem.categorie = this.mem.lista()
+    this.mem.categorie = this.mem.lista();
+    this.mem.categoria.descrizione = "";
   }
 
   searchCriteria() {
     if(this.mem.categoria.descrizione != ""){
       this.mem.cerca();
+      this.mem.categoria.descrizione = "";
     }else{
       return this.mem.lista();
     }
@@ -40,6 +42,7 @@ export class CategoriaCRUDComponent implements OnInit {
     } else {
       this.mem.categorie[this.categoriaSelezionata] = this.mem.categTemp;
       this.mem.update(this.mem.categTemp);
+      this.mem.lista();
       this.mem.categTemp = new CategoriaDto() ;
     }
   }

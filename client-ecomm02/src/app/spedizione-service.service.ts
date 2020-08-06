@@ -10,7 +10,7 @@ import { HttpClient } from '@angular/common/http';
 export class SpedizioneServiceService {
   private url = "http://localhost:8080";
   spedizioni: SpedizioneDto[] = [];
-  spedizione: SpedizioneDto;
+  spedizione: SpedizioneDto = new SpedizioneDto();
   temp: SpedizioneDto = new SpedizioneDto();
 
   constructor(private http: HttpClient) { }

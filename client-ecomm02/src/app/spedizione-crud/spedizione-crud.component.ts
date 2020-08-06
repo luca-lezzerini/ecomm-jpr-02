@@ -9,10 +9,10 @@ import { SpedizioneServiceService } from '../spedizione-service.service';
 })
 export class SpedizioneCRUDComponent implements OnInit {
 
-  aggiungiState = false;
-  modificaState = false;
+  aggiungiStateSped = false;
+  modificaStateSped = false;
   indice: number;
-  temp: SpedizioneDto;
+  
 
   constructor(public meme: SpedizioneServiceService) { } //da creare
 
@@ -27,7 +27,7 @@ export class SpedizioneCRUDComponent implements OnInit {
     }
   }
   conferma() {
-    if (this.aggiungiState) {
+    if (this.aggiungiStateSped) {
       this.meme.aggiungi();
       this.meme.temp = new SpedizioneDto();
     } else {
@@ -37,16 +37,16 @@ export class SpedizioneCRUDComponent implements OnInit {
     }
   }
   aggiungi() {
-    this.aggiungiState = true;
+    this.aggiungiStateSped = true;
   }
   annulla() {
-    this.aggiungiState = false;
-    this.modificaState = false;
+    this.aggiungiStateSped = false;
+    this.modificaStateSped = false;
   }
   modifica(x: SpedizioneDto, i: number) {
     this.indice = i;
-    this.temp = Object.assign({}, x)
-    this.modificaState = true;
+    this.meme.temp = Object.assign({}, x)
+    this.modificaStateSped = true;
   }
   rimuovi(id: number) {
     this.meme.remove(id);

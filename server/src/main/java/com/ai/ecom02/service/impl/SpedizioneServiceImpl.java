@@ -23,10 +23,15 @@ public class SpedizioneServiceImpl implements SpedizioneService {
     RepSpedizione repSpedizione;
 
     @Override
-    public void addSped(Spedizione spedizione) {
-        if (!spedizione.getCodice().equals(repSpedizione.findByCodice(spedizione.getCodice()).getCodice())) {
+    public void addSped(Spedizione spedizione) throws NullPointerException {
+
+        try {
             repSpedizione.save(spedizione);
+        } catch (NullPointerException ex) {
+
         }
+//        if (!spedizione.getCodice().equals(repSpedizione.findByCodice(spedizione.getCodice()).getCodice())) {   
+//        }
     }
 
     @Override
@@ -46,11 +51,17 @@ public class SpedizioneServiceImpl implements SpedizioneService {
     }
 
     @Override
-    public List<Spedizione> updateSped(Spedizione spedizione) {
-        if (!spedizione.getCodice().equals(repSpedizione.findByCodice(spedizione.getCodice()).getCodice())) {
+    public List<Spedizione> updateSped(Spedizione spedizione) throws NullPointerException {
+
+        try {
             repSpedizione.save(spedizione);
+        } catch (NullPointerException e) {
+
         }
         return getLista();
+//        if (!spedizione.getCodice().equals(repSpedizione.findByCodice(spedizione.getCodice()).getCodice())) {            
+//        }
+
     }
 
 }

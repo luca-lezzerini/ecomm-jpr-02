@@ -1,14 +1,13 @@
 <h1>SPEDIZIONI</h1>
 <input type="text" [(ngModel)]="meme.spedizione.codice" placeholder="codice">
-
 <button (click)="searchCriteria()">Cerca</button>
 <button (click)="aggiungi()">Aggiungi</button>
-<br>
-<div class="check-element animate-show-hide" *ngIf="aggiungiState || modificaState">
+<br><br><br>
+<div class="check-element animate-show-hide" *ngIf="aggiungiStateSped || modificaStateSped">
     <h1>Form Dati</h1>
-    <input type="text" [(ngModel)]="meme.temp" placeholder="codice">
-    <input type="text" [(ngModel)]="meme.temp" placeholder="nome">
-    <input type="text" [(ngModel)]="meme.temp" placeholder="prezzoKg">
+    <input type="text" [(ngModel)]="meme.temp.codice" placeholder="codice">
+    <input type="text" [(ngModel)]="meme.temp.nome" placeholder="nome">
+    <input type="text" [(ngModel)]="meme.temp.prezzoKg" placeholder="prezzoKg">
     <button (click)="conferma()">Conferma</button>
     <button (click)="annulla()">Annulla</button>
 </div>
