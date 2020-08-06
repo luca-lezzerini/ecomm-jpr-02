@@ -72,6 +72,5 @@ export class CategoriaCRUDComponent implements OnInit {
     this.aggiungiState = false;
     this.modificaState = true;
     this.abilitaDescrizione = true;
-    
     }
   }

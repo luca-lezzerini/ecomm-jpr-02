@@ -20,7 +20,7 @@
         <th>ID</th>
         <th>Descrizione</th>
     </tr>
-    <tr (click)="visualizzaDettagliCat()" class="clickable" *ngFor="let c of mem.categorie; index as i">
+    <tr (click)="visualizzaDettagliCat(c, i)" class="clickable" *ngFor="let c of mem.categorie; index as i">
         <td>{{c.id}}</td>
         <td>{{c.descrizione}}</td>
         <td><button (click)="modifica(c,i)">Modifica</button></td>
