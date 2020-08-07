@@ -1,10 +1,7 @@
+import { OffertaDto } from './../dto/offerta-dto';
 import { Component, OnInit } from '@angular/core';
-import { OffertaDTO } from '../dto/offerta-dto';
 import { HttpClient } from '@angular/common/http';
-import { Observable, Subscription } from 'rxjs';
-import { RicercaDto } from './../dto/ricerca-dto';
-
-
+import { OffertaService } from '../offerta.service';
 
 @Component({
   selector: 'app-offerta-crud',
@@ -13,78 +10,37 @@ import { RicercaDto } from './../dto/ricerca-dto';
 })
 export class OffertaCrudComponent implements OnInit {
 
-  urlPath = 'http://localhost:8080';
-  ricerca: RicercaDto = new RicercaDto();
-  offertaForm: OffertaDTO = new OffertaDTO();
-  listaOfferte: OffertaDTO[] = [];
+  offerta: OffertaDto = new OffertaDto();
   state = 'ricerca';
 
-
-
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private srvOfferta: OffertaService) { }
 
   ngOnInit(): void {
-    const oss: Observable<OffertaDTO[]> = this.http.get<OffertaDTO[]>(this.urlPath + '/lista-offerte');
-    const sub: Subscription = oss.subscribe(risp => { this.listaOfferte = risp; });
-  }
-  cerca(): void {
-    const oss: Observable<OffertaDTO[]> = this.http.post<OffertaDTO[]>(this.urlPath + '/offerta-find', this.ricerca);
-    const sub: Subscription = oss.subscribe(risp => { this.listaOfferte = risp; });
-    this.riceca = new RicercaDto();
+    this.srvOfferta.lista();
   }
 
-  chiediModifica(offerta: OffertaDTO): void {
+  chiediModifica(offerta: OffertaDto): void {
     this.state = 'modifica';
-    this.offertaForm = Object.assign({}, offerta);
+    this.srvOfferta.offertaForm = Object.assign({}, offerta);
 
   }
-  chiediElimina(offerta: OffertaDTO): void {
+  chiediElimina(offerta: OffertaDto): void {
     this.state = 'elimina';
-    this.offertaForm = Object.assign({}, offerta);
+    this.srvOfferta.offertaForm = Object.assign({}, offerta);
 
   }
   nuovo(): void {
     this.state = 'aggiungi';
-    this.offertaForm.id = 0;
+    this.srvOfferta.offertaForm.id = 0;
   }
-
-
   chiudi(): void {
     this.state = 'ricerca';
-    this.offertaForm = new OffertaDTO();
+    this.offerta = new OffertaDto();
+    this.srvOfferta.offertaForm = new OffertaDto();
   }
-  conferma(): void {
-    let urlEnd: string;
-    switch (this.state) {
-      case 'modifica': {
-        urlEnd = '/offerta-update';
-        break;
-      }
-      case 'elimina': {
-        urlEnd = '/offerta-delete';
-        break;
-      }
-      case 'aggiungi': {
-        urlEnd = '/offerta-add';
-        break;
-      }
 
-    }
-    const oss: Observable<OffertaDTO> = this.http.post<OffertaDTO>(this.urlPath + urlEnd, this.offertaForm);
-    const sub: Subscription = oss.subscribe(risp => { this.ngOnInit(); });
-    this.state = 'ricerca';
-    this.offertaForm = new OffertaDTO();
-
-  }
-  visualizza(offerta: OffertaDTO): void {
-    this.offertaForm = Object.assign({}, offerta);
+  visualizza(offerta: OffertaDto): void {
+    this.srvOfferta.offertaForm = Object.assign({}, offerta);
     this.state = 'visualizza';
   }
 }
-
-
-
-
-
-
-
