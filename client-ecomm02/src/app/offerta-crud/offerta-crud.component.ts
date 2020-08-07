@@ -1,3 +1,4 @@
+import { RicercaDto } from './../dto/ricerca-dto';
 import { OffertaDto } from './../dto/offerta-dto';
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
@@ -11,6 +12,7 @@ import { OffertaService } from '../offerta.service';
 export class OffertaCrudComponent implements OnInit {
 
   offerta: OffertaDto = new OffertaDto();
+  ricerca: RicercaDto = new RicercaDto();
   state = 'ricerca';
 
   constructor(private http: HttpClient, private srvOfferta: OffertaService) { }
