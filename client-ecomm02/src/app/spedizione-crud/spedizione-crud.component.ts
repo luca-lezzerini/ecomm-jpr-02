@@ -12,17 +12,22 @@ export class SpedizioneCRUDComponent implements OnInit {
   aggiungiStateSped = false;
   modificaStateSped = false;
   indice: number;
-  
+  disabilitaCampi = false;
+  nascondiButton = false;
+  nascostoSearch = true;
+  tabellaState = true;
+
 
   constructor(public meme: SpedizioneServiceService) { } //da creare
 
   ngOnInit() {
     this.meme.spedizioni = this.meme.lista();
+    this.meme.spedizione.codice = "";
   }
   searchCriteria() {
     if (this.meme.spedizione.codice != "") {
       this.meme.cerca();
-      this.meme.spedizione.codice="";
+      this.meme.spedizione.codice = "";
       this.aggiungiStateSped = false;
     } else {
       return this.meme.lista();
@@ -36,23 +41,45 @@ export class SpedizioneCRUDComponent implements OnInit {
       this.meme.spedizioni[this.indice] = this.meme.temp;
       this.meme.update(this.meme.temp);
       this.meme.lista();
+      this.tabellaState = true;
+      this.nascostoSearch = true;
       this.meme.temp = new SpedizioneDto();
     }
   }
   aggiungi() {
     this.aggiungiStateSped = true;
+    this.modificaStateSped = false;
+    this.meme.temp = new SpedizioneDto();
+    this.nascondiButton = false;
+    this.disabilitaCampi = false;
   }
   annulla() {
     this.aggiungiStateSped = false;
     this.modificaStateSped = false;
+    this.tabellaState = true;
+    this.nascostoSearch = true;
   }
   modifica(x: SpedizioneDto, i: number) {
     this.indice = i;
     this.meme.temp = Object.assign({}, x)
     this.aggiungiStateSped = false;
     this.modificaStateSped = true;
+    this.nascondiButton = false;
+    this.disabilitaCampi = false;
+    this.nascostoSearch = false;
+    this.tabellaState = false;
   }
   rimuovi(id: number) {
     this.meme.remove(id);
+    this.meme.temp = new SpedizioneDto();
   }
+  visualizzaDettagliSped(x: SpedizioneDto, i: number) {
+    this.indice = i;
+    this.meme.temp = Object.assign({}, x);
+    this.aggiungiStateSped = false;
+    this.modificaStateSped = true;
+    this.nascondiButton = true;
+    this.disabilitaCampi = true;
+  }
+
 }

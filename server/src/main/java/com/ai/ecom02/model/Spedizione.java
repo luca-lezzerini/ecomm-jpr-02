@@ -25,7 +25,7 @@ public class Spedizione implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)   //gli dico che l''ID primaryKey è AUTOINCREMENT
     private Long id;
 
-    @Column                   //-> Creo le colonne della TABELLA (descrizione)
+    @Column(unique=true)                   //-> Creo le colonne della TABELLA (descrizione)
     private String codice;
 
     @Column

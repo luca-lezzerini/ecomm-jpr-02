@@ -9,13 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CategoriaCRUDComponent implements OnInit {
 
-  
   aggiungiState = false;
   modificaState = false;
   categoriaSelezionata: number;
-  visualizza = false;
-  abilitaDescrizione=false;
-  
+  nascondiButton = false;
+  disabilitaDescrizione = false;
+  nascostoSearch = true;
+  tabellaState = true;
 
   constructor(public mem: CategoriaServiceService) { }
 
@@ -25,34 +25,42 @@ export class CategoriaCRUDComponent implements OnInit {
   }
 
   searchCriteria() {
-    if(this.mem.categoria.descrizione != ""){
+    if (this.mem.categoria.descrizione != "") {
       this.mem.cerca();
       this.mem.categoria.descrizione = "";
       this.aggiungiState = false;
-    }else{
+    } else {
       return this.mem.lista();
     }
   }
 
   aggiungi() {
     this.aggiungiState = true;
+    this.modificaState = false;
+    this.mem.categTemp = new CategoriaDto();
+    this.nascondiButton = false;
+    this.disabilitaDescrizione = false;
   }
 
   conferma() {
-    if (this.aggiungiState) {    
+    if (this.aggiungiState) {
       this.mem.addCategoria();
-      this.mem.categTemp = new CategoriaDto() ;    
+      this.mem.categTemp = new CategoriaDto();
     } else {
       this.mem.categorie[this.categoriaSelezionata] = this.mem.categTemp;
       this.mem.update(this.mem.categTemp);
       this.mem.lista();
-      this.mem.categTemp = new CategoriaDto() ;
+      this.tabellaState = true;
+      this.nascostoSearch = true;
+      this.mem.categTemp = new CategoriaDto();
     }
   }
 
   annulla() {
     this.aggiungiState = false;
     this.modificaState = false;
+    this.tabellaState = true;
+    this.nascostoSearch = true;
   }
 
   modifica(c: CategoriaDto, i: number) {
@@ -60,17 +68,22 @@ export class CategoriaCRUDComponent implements OnInit {
     this.mem.categTemp = Object.assign({}, c); //copio c dentro categTemp
     this.aggiungiState = false;
     this.modificaState = true;
+    this.nascondiButton = false;
+    this.disabilitaDescrizione = false;
+    this.nascostoSearch = false;
+    this.tabellaState = false;
   }
 
   rimuovi(id: number) {
     this.mem.remove(id);
+    this.mem.categTemp = new CategoriaDto();
   }
-  visualizzaDettagliCat(c:CategoriaDto, i: number){
-    this.visualizza = true;
+  visualizzaDettagliCat(c: CategoriaDto, i: number) {
     this.categoriaSelezionata = i;
     this.mem.categTemp = Object.assign({}, c); //copio c dentro categTemp
     this.aggiungiState = false;
     this.modificaState = true;
-    this.abilitaDescrizione = true;
-    }
+    this.nascondiButton = true;
+    this.disabilitaDescrizione = true;
   }
+}
