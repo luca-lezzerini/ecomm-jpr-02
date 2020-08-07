@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ColoreDto } from '../dto/colore-dto';
 import { HttpClient } from '@angular/common/http';
-import { Observable, Subscription } from 'rxjs';
 import { ColoriService } from '../colori.service';
 
 @Component({
