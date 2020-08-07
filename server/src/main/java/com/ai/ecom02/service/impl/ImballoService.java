@@ -19,7 +19,7 @@ import org.springframework.stereotype.Service;
  */
 
 @Service
-public class ServiceImballo implements ImballoServiceCrud {
+public class ImballoService implements ImballoServiceCrud {
 
     @Autowired
     RepImballo repImballo;
