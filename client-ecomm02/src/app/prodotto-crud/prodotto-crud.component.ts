@@ -1,3 +1,4 @@
+import { ProdottoService } from './../prodotto.service';
 import { Component, OnInit } from '@angular/core';
 import { ProdottoDto } from '../dto/prodotto-dto';
 import { HttpClient } from '@angular/common/http';
@@ -10,66 +11,38 @@ import { RicercaDto } from './../dto/ricerca-dto';
   styleUrls: ['./prodotto-crud.component.css']
 })
 export class ProdottoCrudComponent implements OnInit {
-  urlPath = 'http://localhost:8080';
+  prodotto: ProdottoDto = new ProdottoDto();
   ricerca: RicercaDto = new RicercaDto();
-  prodottoForm: ProdottoDto = new ProdottoDto();
-  listaProdotti: ProdottoDto[] = [];
   state = 'ricerca';
-  constructor(private http: HttpClient) { }
+ 
+ 
+  constructor(private http: HttpClient, private srvProdotto: ProdottoService) { }
 
   ngOnInit(): void {
-    const oss: Observable<ProdottoDto[]> = this.http.get<ProdottoDto[]>(this.urlPath + '/lista-prodotti');
-    const sub: Subscription = oss.subscribe(risp => { this.listaProdotti = risp; });
+    this.srvProdotto.lista();
   }
-
-  cerca(): void {
-    const oss: Observable<ProdottoDto[]> = this.http.post<ProdottoDto[]>(this.urlPath + '/prodotti-find', this.ricerca);
-    const sub: Subscription = oss.subscribe(risp => { this.listaProdotti = risp; });
-    this.ricerca = new RicercaDto();
-  }
-
   nuovo(): void {
     this.state = 'aggiungi';
-    this.prodottoForm.id = 0;
+    this.srvProdotto.prodottoForm.id = 0;
   }
   chiudi(): void {
     this.state = 'ricerca';
-    this.prodottoForm = new ProdottoDto();
+    this.prodotto = new ProdottoDto();
+    this.srvProdotto.prodottoForm = new ProdottoDto();
   }
-  conferma(): void {
-    let urlEnd: string;
-    switch (this.state) {
-      case 'modifica': {
-        urlEnd = '/prodotti-update';
-        break;
-      }
-      case 'elimina': {
-        urlEnd = '/prodotti-delete';
-        break;
-      }
-      case 'aggiungi': {
-        urlEnd = '/prodotti-add';
-        break;
-      }
 
-    }
-    const oss: Observable<ProdottoDto> = this.http.post<ProdottoDto>(this.urlPath + urlEnd, this.prodottoForm);
-    const sub: Subscription = oss.subscribe(risp => { this.ngOnInit(); });
-    this.state = 'ricerca';
-    this.prodottoForm = new ProdottoDto();
-  }
   chiediModifica(prodotto: ProdottoDto): void {
     this.state = 'modifica';
-    this.prodottoForm = Object.assign({}, prodotto);
+    this.srvProdotto.prodottoForm = Object.assign({}, prodotto);
 
   }
   chiediElimina(prodotto: ProdottoDto): void {
     this.state = 'elimina';
-    this.prodottoForm = Object.assign({}, prodotto);
+    this.srvProdotto.prodottoForm = Object.assign({}, prodotto);
 
   }
   visualizza(prodotto: ProdottoDto): void {
-    this.prodottoForm = Object.assign({}, prodotto);
+    this.srvProdotto.prodottoForm = Object.assign({}, prodotto);
     this.state = 'visualizza';
   }
 
