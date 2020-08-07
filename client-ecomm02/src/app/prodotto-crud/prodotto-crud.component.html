@@ -2,45 +2,45 @@
 <div>
     <span *ngIf="state == 'ricerca'">
         <input type="text" [(ngModel)]="ricerca.ricerca" placeholder="Ricerca">
-        <button (click)="cerca()">Cerca</button>
+        <button (click)="srvProdotto.cerca(ricerca)">Cerca</button>
         <button (click)="nuovo()">Aggiungi</button>
     </span>
     <span *ngIf="state != 'ricerca'">
         <input type="text" [(ngModel)]="ricerca.ricerca" disabled>
-        <button (click)="cerca()" disabled>Cerca</button>
+        <button (click)="srvProdotto.cerca()" disabled>Cerca</button>
         <button (click)="nuovo()" disabled>Aggiungi</button>
     </span>
 </div>
 <div *ngIf="state == 'ricerca'"></div>
 <div *ngIf="state == 'visualizza'">
-    <input type="text" [(ngModel)]="prodottoForm.codice" readonly>
-    <input type="text" [(ngModel)]="prodottoForm.descrizione" readonly>
-    <input type="text" [(ngModel)]="prodottoForm.peso" readonly>
-    <input type="text" [(ngModel)]="prodottoForm.prezzo" readonly>
+    <input type="text" [(ngModel)]="srvProdotto.prodottoForm.codice" readonly>
+    <input type="text" [(ngModel)]="srvProdotto.prodottoForm.descrizione" readonly>
+    <input type="text" [(ngModel)]="srvProdotto.prodottoForm.peso" readonly>
+    <input type="text" [(ngModel)]="srvProdotto.prodottoForm.prezzo" readonly>
     <button (click)="chiudi()">Annulla</button>
 </div>
 <div *ngIf="state == 'elimina'">
-    <input type="text" [(ngModel)]="prodottoForm.codice" readonly>
-    <input type="text" [(ngModel)]="prodottoForm.descrizione" readonly>
-    <input type="text" [(ngModel)]="prodottoForm.peso" readonly>
-    <input type="text" [(ngModel)]="prodottoForm.prezzo" readonly>
-    <button (click)="conferma()">Conferma</button>
+    <input type="text" [(ngModel)]="srvProdotto.prodottoForm.codice" readonly>
+    <input type="text" [(ngModel)]="srvProdotto.prodottoForm.descrizione" readonly>
+    <input type="text" [(ngModel)]="srvProdotto.prodottoForm.peso" readonly>
+    <input type="text" [(ngModel)]="srvProdotto.prodottoForm.prezzo" readonly>
+    <button (click)="state=srvProdotto.conferma(state)">Conferma</button>
     <button (click)="chiudi()">Annulla</button>
 </div>
 <div *ngIf="state == 'aggiungi'">
-    <input type="text" [(ngModel)]="prodottoForm.codice" placeholder="codice">
-    <input type="text" [(ngModel)]="prodottoForm.descrizione" placeholder="descrizione">
-    <input type="text" [(ngModel)]="prodottoForm.peso" placeholder="peso">
-    <input type="text" [(ngModel)]="prodottoForm.prezzo" placeholder="prezzo">
-    <button (click)="conferma()">Conferma</button>
+    <input type="text" [(ngModel)]="srvProdotto.prodottoForm.codice" placeholder="codice">
+    <input type="text" [(ngModel)]="srvProdotto.prodottoForm.descrizione" placeholder="descrizione">
+    <input type="text" [(ngModel)]="srvProdotto.prodottoForm.peso" placeholder="peso">
+    <input type="text" [(ngModel)]="srvProdotto.prodottoForm.prezzo" placeholder="prezzo">
+    <button (click)="state=srvProdotto.conferma(state)">Conferma</button>
     <button (click)="chiudi()">Annulla</button>
 </div>
 <div *ngIf="state == 'modifica'">
-    <input type="text" [(ngModel)]="prodottoForm.codice" placeholder="codice">
-    <input type="text" [(ngModel)]="prodottoForm.descrizione" placeholder="descrizione">
-    <input type="text" [(ngModel)]="prodottoForm.peso" placeholder="peso">
-    <input type="text" [(ngModel)]="prodottoForm.prezzo" placeholder="prezzo">
-    <button (click)="conferma()">Conferma</button>
+    <input type="text" [(ngModel)]="srvProdotto.prodottoForm.codice" placeholder="codice">
+    <input type="text" [(ngModel)]="srvProdotto.prodottoForm.descrizione" placeholder="descrizione">
+    <input type="text" [(ngModel)]="srvProdotto.prodottoForm.peso" placeholder="peso">
+    <input type="text" [(ngModel)]="srvProdotto.prodottoForm.prezzo" placeholder="prezzo">
+    <button (click)="state=srvProdotto.conferma(state)">Conferma</button>
     <button (click)="chiudi()">Annulla</button>
 </div>
 <div>
@@ -55,7 +55,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let item of listaProdotti">
+            <tr *ngFor="let item of srvProdotto.listaProdotti">
                 <td (click)="visualizza(item)">{{item.codice}}</td>
                 <td (click)="visualizza(item)">{{item.descrizione}}</td>
                 <td (click)="visualizza(item)">{{item.peso}}</td>
