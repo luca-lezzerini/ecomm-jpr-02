@@ -44,7 +44,6 @@ export class ColoriService {
     }
     const oss: Observable<ColoreDto> = this.http.post<ColoreDto>(this.urlPath + urlEnd, this.coloreForm);
     const sub: Subscription = oss.subscribe(risp => { this.lista(); });
-    // this.state = 'ricerca';
     this.coloreForm = new ColoreDto();
     return 'ricerca';
   }

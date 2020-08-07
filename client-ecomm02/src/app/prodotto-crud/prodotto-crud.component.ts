@@ -1,7 +1,6 @@
 import { ProdottoService } from './../prodotto.service';
 import { Component, OnInit } from '@angular/core';
 import { ProdottoDto } from '../dto/prodotto-dto';
-import { HttpClient } from '@angular/common/http';
 import { Observable, Subscription } from 'rxjs';
 import { RicercaDto } from './../dto/ricerca-dto';
 
@@ -14,9 +13,9 @@ export class ProdottoCrudComponent implements OnInit {
   prodotto: ProdottoDto = new ProdottoDto();
   ricerca: RicercaDto = new RicercaDto();
   state = 'ricerca';
- 
- 
-  constructor(private http: HttpClient, private srvProdotto: ProdottoService) { }
+
+
+  constructor(private srvProdotto: ProdottoService) { }
 
   ngOnInit(): void {
     this.srvProdotto.lista();

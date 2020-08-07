@@ -14,21 +14,21 @@ export class ProdottoService {
 
   constructor(private http: HttpClient) { }
 
-  cerca(ricerca: RicercaDto): ProdottoDto {
-    if(ricerca.ricerca == ""){
+  cerca(ricerca: RicercaDto): RicercaDto {
+    if (ricerca.ricerca == null) {
       this.lista();
-    }else{
-    const oss: Observable<ProdottoDto[]> = this.http.post<ProdottoDto[]>(this.urlPath + '/prodotti-find', ricerca);
-    const sub: Subscription = oss.subscribe(risp => { this.listaProdotti = risp; });
+    } else {
+      const oss: Observable<ProdottoDto[]> = this.http.post<ProdottoDto[]>(this.urlPath + '/prodotti-find', ricerca);
+      const sub: Subscription = oss.subscribe(risp => { this.listaProdotti = risp; });
     }
-    return new ProdottoDto();
+    return new RicercaDto();
   }
- 
+
   lista() {
     const oss: Observable<ProdottoDto[]> = this.http.get<ProdottoDto[]>(this.urlPath + '/lista-prodotti');
     const sub: Subscription = oss.subscribe(risp => { this.listaProdotti = risp; });
   }
- 
+
   conferma(state: string) {
     let urlEnd: string;
     switch (state) {
@@ -48,7 +48,6 @@ export class ProdottoService {
     }
     const oss: Observable<ProdottoDto> = this.http.post<ProdottoDto>(this.urlPath + urlEnd, this.prodottoForm);
     const sub: Subscription = oss.subscribe(risp => { this.lista(); });
-    //this.state = 'ricerca';
     this.prodottoForm = new ProdottoDto();
     return 'ricerca';
   }

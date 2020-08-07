@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ColoreDto } from '../dto/colore-dto';
-import { HttpClient } from '@angular/common/http';
 import { ColoriService } from '../colori.service';
 
 @Component({
@@ -13,7 +12,7 @@ export class ColoreCrudComponent implements OnInit {
   colore: ColoreDto = new ColoreDto();
   state = 'ricerca';
 
-  constructor(private http: HttpClient, private srvColore: ColoriService) { }
+  constructor(private srvColore: ColoriService) { }
 
   ngOnInit(): void {
     this.srvColore.lista();

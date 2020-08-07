@@ -18,14 +18,14 @@ export class OffertaService {
     const sub: Subscription = oss.subscribe(risp => { this.listaOfferte = risp; });
   }
 
-  cerca(ricerca: RicercaDto): OffertaDto {
-    if (ricerca.ricerca == "") { //se non viene inserito nulla nel campo di ricerca vengono restituite tutte le offerte
+  cerca(ricerca: RicercaDto): RicercaDto {
+    if (ricerca.ricerca == null) { // se non viene inserito nulla nel campo di ricerca vengono restituite tutte le offerte
       this.lista();
     } else {
       const oss: Observable<OffertaDto[]> = this.http.post<OffertaDto[]>(this.urlPath + '/offerta-find', ricerca);
       const sub: Subscription = oss.subscribe(risp => { this.listaOfferte = risp; });
     }
-    return new OffertaDto();
+    return new RicercaDto();
   }
   conferma(state: string): string {
     let urlEnd: string;
@@ -46,7 +46,6 @@ export class OffertaService {
     }
     const oss: Observable<OffertaDto> = this.http.post<OffertaDto>(this.urlPath + urlEnd, this.offertaForm);
     const sub: Subscription = oss.subscribe(risp => { this.lista(); });
-    // this.state = 'ricerca';
     this.offertaForm = new OffertaDto();
     return 'ricerca';
   }
