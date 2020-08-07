@@ -23,12 +23,12 @@ public class SpedizioneServiceImpl implements SpedizioneService {
     RepSpedizione repSpedizione;
 
     @Override
-    public void addSped(Spedizione spedizione){
+    public void addSped(Spedizione spedizione) {
 
         try {
             repSpedizione.save(spedizione);
         } catch (Exception ex) {
-            
+
         }
     }
 
@@ -49,7 +49,7 @@ public class SpedizioneServiceImpl implements SpedizioneService {
     }
 
     @Override
-    public List<Spedizione> updateSped(Spedizione spedizione){
+    public List<Spedizione> updateSped(Spedizione spedizione) {
 
         try {
             repSpedizione.save(spedizione);
