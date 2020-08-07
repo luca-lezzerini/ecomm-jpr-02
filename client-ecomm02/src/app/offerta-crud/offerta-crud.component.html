@@ -1,45 +1,44 @@
 <h1> Gestione anagrafe Offerte</h1>
-
 <div>
     <span *ngIf="state =='ricerca'">
-        <!---->
-        <input type="text" [(ngModel)]="offerta.codice" placeholder="codice">
-        <button (click)="cerca()">Cerca</button>
+        <input type="text" [(ngModel)]="ricerca.ricerca" placeholder="Ricerca">
+        <button (click)="srvOfferta.cerca(ricerca)">Cerca</button>
         <button (click)="nuovo()">Aggiungi</button>
     </span>
     <span *ngIf="state !='ricerca'">
-        <input type="text" [(ngModel)]="offerta.codice" disabled>
-        <button (click)="cerca()" disabled>Cerca</button>
+        <input type="text" [(ngModel)]="ricerca.ricerca" placeholder="Codice">
+        <input type="text" [(ngModel)]="ricerca.ricerca" placeholder="Descrizione">
+        <button (click)="srvOfferta.cerca()" disabled>Cerca</button>
         <button (click)="nuovo()" disabled>Aggiungi</button>
     </span>
 </div>
-
 <div *ngIf="state == 'ricerca'"></div>
 <div *ngIf="state == 'visualizza'">
-    <input type="text" [(ngModel)]="offertaForm.codice" readonly>
-    <input type="text" [(ngModel)]="offertaForm.descrizione" readonly>
-    <input type="number" [(ngModel)]="offertaForm.scontoPercentuale" readonly>
+    <input type="text" [(ngModel)]="srvOfferta.offertaForm.codice" placeholder="Codice" readonly>
+    <input type="text" [(ngModel)]="srvOfferta.offertaForm.descrizione" placeholder="Descrizione" readonly>
+    <input type="number" [(ngModel)]="srvOfferta.offertaForm.scontoPercentuale" placeholder="Sconto percentuale" readonly>
+    <button (click)="state = srvOfferta.conferma(state)" disabled>Conferma</button>
     <button (click)="chiudi()">Chiudi</button>
 </div>
 <div *ngIf="state == 'elimina'">
-    <input type="text" [(ngModel)]="offertaForm.codice" readonly>
-    <input type="text" [(ngModel)]="offertaForm.descrizione" readonly>
-    <input type="number" [(ngModel)]="offertaForm.scontoPercentuale" readonly>
-    <button (click)="conferma()">Conferma</button>
+    <input type="text" [(ngModel)]="srvOfferta.offertaForm.codice" placeholder="Codice" readonly>
+    <input type="text" [(ngModel)]="srvOfferta.offertaForm.descrizione" placeholder="Descrizione" readonly>
+    <input type="number" [(ngModel)]="srvOfferta.offertaForm.scontoPercentuale" placeholder="Sconto percentuale" readonly>
+    <button (click)="state = srvOfferta.conferma(state)">Conferma</button>
     <button (click)="chiudi()">Annulla</button>
 </div>
 <div *ngIf="state == 'aggiungi'">
-    <input type="text" [(ngModel)]="offertaForm.codice">
-    <input type="text" [(ngModel)]="offertaForm.descrizione">
-    <input type="number" [(ngModel)]="offertaForm.scontoPercentuale">
-    <button (click)="conferma()">Conferma</button>
+    <input type="text" [(ngModel)]="srvOfferta.offertaForm.codice" placeholder="Codice">
+    <input type="text" [(ngModel)]="srvOfferta.offertaForm.descrizione" placeholder="Descrizione">
+    <input type="number" [(ngModel)]="srvOfferta.offertaForm.scontoPercentuale" placeholder="Sconto percentuale">
+    <button (click)="state = srvOfferta.conferma(state)">Conferma</button>
     <button (click)="chiudi()">Annulla</button>
 </div>
 <div *ngIf="state == 'modifica'">
-    <input type="text" [(ngModel)]="offertaForm.codice">
-    <input type="text" [(ngModel)]="offertaForm.descrizione">
-    <input type="numbe" [(ngModel)]="offertaForm.scontoPercentuale">
-    <button (click)="conferma()">Conferma</button>
+    <input type="text" [(ngModel)]="srvOfferta.offertaForm.codice" placeholder="Codice">
+    <input type="text" [(ngModel)]="srvOfferta.offertaForm.descrizione" placeholder="Descrizione">
+    <input type="numbe" [(ngModel)]="srvOfferta.offertaForm.scontoPercentuale" placeholder="Sconto percentuale">
+    <button (click)="state = srvOfferta.conferma(state)">Conferma</button>
     <button (click)="chiudi()">Annulla</button>
 </div>
 
@@ -52,11 +51,11 @@
                 <th>Descrizione</th>
                 <th>Sconto</th>
                 <th></th>
-                <th></th>                
+                <th></th>
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let item of listaOfferte">
+            <tr *ngFor="let item of srvOfferta.listaOfferte">
                 <td (click)="visualizza(item)">{{item.codice}}</td>
                 <td (click)="visualizza(item)">{{item.descrizione}}</td>
                 <td (click)="visualizza(item)">{{item.scontoPercentuale}}</td>

@@ -1,5 +1,7 @@
 package com.ai.ecom02.controller;
 
+
+import com.ai.ecom02.dto.RicercaDto;
 import com.ai.ecom02.model.Prodotto;
 import com.ai.ecom02.service.impl.ProdottoServiceImpl;
 import java.util.List;
@@ -50,9 +52,9 @@ public class ControllerAnagraficaProdotti {
     @RequestMapping(value = ("/prodotti-find"))
     @ResponseBody
     public List<Prodotto> findProdottiByCodice(
-            @RequestBody Prodotto prodotto
+            @RequestBody RicercaDto ricerca
     ) {
-        return srvProdotto.findByCodiceLike(prodotto);
+        return srvProdotto.findByDescrizioneOrCodiceLike(ricerca);
     }
 
 }

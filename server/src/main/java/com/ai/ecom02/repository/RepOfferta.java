@@ -24,6 +24,6 @@ public interface RepOfferta extends JpaRepository<Offerta, Long> {       // vuol
 
     public Offerta findByDescrizione(String descrizione);
 
-    public List<Offerta> findByDescrizioneLike(Offerta offerta);
+    public List<Offerta> findByDescrizioneLike(String descrizione);
     
 }

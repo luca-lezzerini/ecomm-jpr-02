@@ -22,7 +22,7 @@ export class TagliaServiceService {
   }
 
   updateTaglia(tagliaMod: TagliaDto) {
-    let o: Observable<TagliaDto> = this.http.post<TagliaDto>(this.url + '/add-taglia', tagliaMod);
+    let o: Observable<TagliaDto> = this.http.post<TagliaDto>(this.url + '/update-taglia', tagliaMod);
     o.subscribe(risp => { this.taglia = risp; });
   }
 
