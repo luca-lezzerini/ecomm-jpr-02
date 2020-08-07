@@ -19,11 +19,11 @@ export class OffertaService {
   }
 
   cerca(ricerca: RicercaDto): OffertaDto {
-    if (ricerca == null) {
+    if (ricerca.ricerca == "") { //se non viene inserito nulla nel campo di ricerca vengono restituite tutte le offerte
       this.lista();
     } else {
-      const oss: Observable<RicercaDto[]> = this.http.post<RicercaDto[]>(this.urlPath + '/offerta-find', ricerca);
-      const sub: Subscription = oss.subscribe(risp => { this.risultatiOfferte = risp; });
+      const oss: Observable<OffertaDto[]> = this.http.post<OffertaDto[]>(this.urlPath + '/offerta-find', ricerca);
+      const sub: Subscription = oss.subscribe(risp => { this.listaOfferte = risp; });
     }
     return new OffertaDto();
   }
