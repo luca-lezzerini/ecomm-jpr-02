@@ -1,3 +1,3 @@
 export class RicercaDto {
-ricerca: string;
+    ricerca: string;
 }

@@ -9,7 +9,7 @@
     <h1>Form Dati</h1>
     <input type="text" [readonly]="disabilitaCampi" [(ngModel)]="meme.temp.codice" placeholder="codice">
     <input type="text" [readonly]="disabilitaCampi" [(ngModel)]="meme.temp.nome" placeholder="nome">
-    <input type="text" [readonly]="disabilitaCampi" [(ngModel)]="meme.temp.prezzoKg" placeholder="prezzoKg">
+    <input type="number" [readonly]="disabilitaCampi" [(ngModel)]="meme.temp.prezzoKg" placeholder="prezzoKg">
     <button (click)="conferma()" [hidden]="nascondiButton">Conferma</button>
     <button (click)="annulla()" [hidden]="nascondiButton">Annulla</button>
 </div>
