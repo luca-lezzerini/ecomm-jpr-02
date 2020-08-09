@@ -20,4 +20,6 @@ public interface RepSpedizione extends JpaRepository<Spedizione, Long> {
     Spedizione findByCodice(String codice);
 
     List<Spedizione> findByCodiceLike(String codice);
+    
+    List<Spedizione> findByCodiceLikeOrNomeLike(String codice, String nome);
 }

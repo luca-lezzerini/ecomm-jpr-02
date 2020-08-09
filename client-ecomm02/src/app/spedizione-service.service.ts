@@ -1,3 +1,4 @@
+import { RicercaDto } from './dto/ricerca-dto';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { SpedizioneDto } from './dto/spedizione-dto';
@@ -12,6 +13,7 @@ export class SpedizioneServiceService {
   spedizioni: SpedizioneDto[] = [];
   spedizione: SpedizioneDto = new SpedizioneDto();
   temp: SpedizioneDto = new SpedizioneDto();
+  ricerca: RicercaDto = new RicercaDto();
 
   constructor(private http: HttpClient) { }
 
@@ -20,10 +22,11 @@ export class SpedizioneServiceService {
       this.http.post<SpedizioneDto[]>(this.url + "/aggiungi-spedizione/", this.temp);
     obs.subscribe(risp => { this.spedizioni = risp });
   }
-  cerca() {
+  cerca(): SpedizioneDto[] {
     let obs: Observable<SpedizioneDto[]> =
-      this.http.get<SpedizioneDto[]>(this.url + "/cerca-spedizione/" + this.spedizione.codice);
+      this.http.post<SpedizioneDto[]>(this.url + "/cerca-spedizione/", this.ricerca.ricerca);
     obs.subscribe(risp => { this.spedizioni = risp });
+    return this.spedizioni;
   }
   lista(): SpedizioneDto[] {
     let obs: Observable<SpedizioneDto[]> =

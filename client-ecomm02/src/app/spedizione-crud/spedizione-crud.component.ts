@@ -22,12 +22,12 @@ export class SpedizioneCRUDComponent implements OnInit {
 
   ngOnInit() {
     this.meme.spedizioni = this.meme.lista();
-    this.meme.spedizione.codice = "";
+    this.meme.ricerca.ricerca = "";
   }
   searchCriteria() {
-    if (this.meme.spedizione.codice != "") {
+    if (this.meme.ricerca.ricerca != "") {
       this.meme.cerca();
-      this.meme.spedizione.codice = "";
+      this.meme.ricerca.ricerca = "";
       this.aggiungiStateSped = false;
     } else {
       return this.meme.lista();

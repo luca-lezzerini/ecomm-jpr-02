@@ -5,10 +5,13 @@
  */
 package com.ai.ecom02.service.impl;
 
+import com.ai.ecom02.dto.RicercaDto;
 import com.ai.ecom02.model.Spedizione;
 import com.ai.ecom02.repository.RepSpedizione;
 import com.ai.ecom02.service.SpedizioneService;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -44,8 +47,8 @@ public class SpedizioneServiceImpl implements SpedizioneService {
     }
 
     @Override
-    public List<Spedizione> findSped(String codice) {
-        return repSpedizione.findByCodiceLike(codice);
+    public List<Spedizione> findSped(String codice, String nome) {
+        return repSpedizione.findByCodiceLikeOrNomeLike("%"+codice+"%", "%"+nome+"%");
     }
 
     @Override

@@ -5,6 +5,7 @@
  */
 package com.ai.ecom02.controller;
 
+import com.ai.ecom02.dto.RicercaDto;
 import com.ai.ecom02.model.Categoria;
 import com.ai.ecom02.service.CategoriaService;
 import java.util.List;
@@ -51,12 +52,12 @@ public class CategoriaController {
         return categoriaService.getLista();
     }
 
-    @RequestMapping(value = {"/cerca-categoria/{descrizione}"})
+    @RequestMapping(value = {"/cerca-categoria"})
     @ResponseBody
     public List<Categoria> cercaCategoria(
-            @PathVariable String descrizione
+            @RequestBody RicercaDto ricerca
     ) {
-        return categoriaService.findCat(descrizione);
+        return categoriaService.findCat(ricerca);
     }
     
     @RequestMapping(value={"/modifica-categoria"})

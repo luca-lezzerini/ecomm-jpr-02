@@ -5,15 +5,15 @@
  */
 package com.ai.ecom02.service;
 
+import com.ai.ecom02.dto.RicercaDto;
 import com.ai.ecom02.model.Categoria;
 import java.util.List;
-import org.springframework.stereotype.Service;
 
 /**
  *
  * @author Roberto
  */
-@Service
+
 public interface CategoriaService {
 
     void addCat(Categoria categoria);
@@ -22,7 +22,7 @@ public interface CategoriaService {
 
     List<Categoria> removeCat(Long id);
 
-    List<Categoria> findCat(String descrizione);
+    List<Categoria> findCat(RicercaDto ricerca);
     
     List<Categoria> updateCat(Categoria categoria);
 }

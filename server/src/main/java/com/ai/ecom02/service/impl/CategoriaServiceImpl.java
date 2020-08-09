@@ -5,6 +5,7 @@
  */
 package com.ai.ecom02.service.impl;
 
+import com.ai.ecom02.dto.RicercaDto;
 import com.ai.ecom02.model.Categoria;
 import com.ai.ecom02.repository.RepCategoria;
 import com.ai.ecom02.service.CategoriaService;
@@ -29,9 +30,6 @@ public class CategoriaServiceImpl implements CategoriaService {
         } catch (Exception e) {
 
         }
-//        if (!categoria.getDescrizione().equals(repCategoria.findByDescrizione(categoria.getDescrizione()).getDescrizione())) {
-//            repCategoria.save(categoria);
-//        }
     }
 
     @Override
@@ -46,8 +44,9 @@ public class CategoriaServiceImpl implements CategoriaService {
     }
 
     @Override
-    public List<Categoria> findCat(String descrizione) {
-        return repCategoria.findByDescrizioneLike(descrizione);
+    public List<Categoria> findCat(RicercaDto ricerca) {
+        List<Categoria> c = repCategoria.findByDescrizioneLike("%" + ricerca.getRicerca() + "%");
+        return c;
     }
 
     @Override
@@ -58,10 +57,6 @@ public class CategoriaServiceImpl implements CategoriaService {
 
         }
         return getLista();
-//        if (!categoria.getDescrizione().equals(repCategoria.findByDescrizione(categoria.getDescrizione()).getDescrizione())) {
-//            repCategoria.save(categoria);
-//        }
-
     }
 
 }

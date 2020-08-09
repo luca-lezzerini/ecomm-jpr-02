@@ -1,3 +1,4 @@
+import { RicercaDto } from './dto/ricerca-dto';
 import { CategoriaDto } from './dto/categoria-dto';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
@@ -12,6 +13,8 @@ export class CategoriaServiceService {
   categorie: CategoriaDto[] = []; 
   categoria: CategoriaDto = new CategoriaDto();
   categTemp: CategoriaDto = new CategoriaDto();
+  ricerca: RicercaDto = new RicercaDto();
+  ricerche: RicercaDto[] = [];
   
   constructor(private http:HttpClient) { }
 
@@ -27,10 +30,11 @@ export class CategoriaServiceService {
     return this.categorie
   }
 
-  cerca(){
+  cerca(): RicercaDto[]{
     let o: Observable<CategoriaDto[]> =
-    this.http.get<CategoriaDto[]>(this.url+'/cerca-categoria/' + this.categoria.descrizione)
+    this.http.post<CategoriaDto[]>(this.url+'/cerca-categoria/' , this.ricerca)
     o.subscribe(risp => {this.categorie = risp;})
+    return this.ricerche;
   }
 
   update(categTemp: CategoriaDto){

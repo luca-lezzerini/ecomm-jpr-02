@@ -25,9 +25,9 @@ export class CategoriaCRUDComponent implements OnInit {
   }
 
   searchCriteria() {
-    if (this.mem.categoria.descrizione != "") {
+    if (this.mem.ricerca.ricerca != "") {
       this.mem.cerca();
-      this.mem.categoria.descrizione = "";
+      this.mem.ricerca.ricerca = "";
       this.aggiungiState = false;
     } else {
       return this.mem.lista();

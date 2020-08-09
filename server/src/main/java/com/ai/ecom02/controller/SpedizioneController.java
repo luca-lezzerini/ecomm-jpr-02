@@ -5,6 +5,7 @@
  */
 package com.ai.ecom02.controller;
 
+import com.ai.ecom02.dto.RicercaDto;
 import com.ai.ecom02.model.Spedizione;
 import com.ai.ecom02.service.SpedizioneService;
 import java.util.List;
@@ -51,12 +52,12 @@ public class SpedizioneController {
         return spedizioneService.getLista();
     }
     
-    @RequestMapping(value={"/cerca-spedizione/{codice}"})
+    @RequestMapping(value={"/cerca-spedizione"})
     @ResponseBody
     public List<Spedizione> cercaSpedizione(
-            @PathVariable String codice
+            @RequestBody String ricerca
     ){
-        return spedizioneService.findSped(codice);
+        return spedizioneService.findSped(ricerca, ricerca);
     }
     
     @RequestMapping(value={"/modifica-spedizione"})

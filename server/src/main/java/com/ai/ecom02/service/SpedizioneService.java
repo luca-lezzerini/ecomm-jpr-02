@@ -22,7 +22,7 @@ public interface SpedizioneService {
 
     List<Spedizione> removeSped(Long id);
 
-    List<Spedizione> findSped(String codice);
+    List<Spedizione> findSped(String codice, String nome);
 
     List<Spedizione> updateSped(Spedizione spedizione);
 }
