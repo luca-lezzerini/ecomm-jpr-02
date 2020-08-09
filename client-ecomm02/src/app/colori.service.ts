@@ -15,7 +15,10 @@ export class ColoriService {
     const oss: Observable<ColoreDto[]> = this.http.get<ColoreDto[]>(this.urlPath + '/lista-colori');
     const sub: Subscription = oss.subscribe(risp => { this.listaColori = risp; });
   }
-
+/* Passa al server il Dto (colorepuñ essere cercato solo per colore)contenete
+la stringa da cercare posiziona i dati nella Lista aposita,
+restituisce una istanza di ColoreDtoa per resettare il campo
+nel Tamplate*/
   cerca(colore: ColoreDto): ColoreDto {
     if (colore.colore == null) {
       this.lista();
@@ -25,6 +28,9 @@ export class ColoriService {
     }
     return new ColoreDto();
   }
+  /* in Base alla stato del componente che riceve come parametro setta url per la
+richiesta e invia al server l'istanza da trattare. restituisce la stringa
+ per ripristinare lo stato iniziale del component*/
   conferma(state: string): string {
     let urlEnd: string;
     switch (state) {

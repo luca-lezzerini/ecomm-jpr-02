@@ -54,7 +54,7 @@ public class ProdottoController {
     public List<Prodotto> findProdottiByCodice(
             @RequestBody RicercaDto ricerca
     ) {
-        return srvProdotto.findByDescrizioneOrCodiceLike(ricerca);
+        return srvProdotto.findByCodiceLikeOrDescrizioneLike(ricerca);
     }
 
 }

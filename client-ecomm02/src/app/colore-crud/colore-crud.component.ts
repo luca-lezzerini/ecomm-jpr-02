@@ -8,9 +8,10 @@ import { ColoriService } from '../colori.service';
   styleUrls: ['./colore-crud.component.css']
 })
 export class ColoreCrudComponent implements OnInit {
-
+  /* per ricuperare la chiavi di ricerca
+     direttamnte nel tamplate vieni pasata nel service e resettata.*/
   colore: ColoreDto = new ColoreDto();
-  state = 'ricerca';
+  state = 'ricerca'; // lo stato del component che influenza il tamplate e metodi
 
   constructor(private srvColore: ColoriService) { }
 
@@ -34,7 +35,6 @@ export class ColoreCrudComponent implements OnInit {
   }
   chiudi(): void {
     this.state = 'ricerca';
-    this.colore = new ColoreDto();
     this.srvColore.coloreForm = new ColoreDto();
   }
 

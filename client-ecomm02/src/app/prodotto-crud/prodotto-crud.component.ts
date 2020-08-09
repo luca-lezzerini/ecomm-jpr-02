@@ -1,7 +1,6 @@
 import { ProdottoService } from './../prodotto.service';
 import { Component, OnInit } from '@angular/core';
 import { ProdottoDto } from '../dto/prodotto-dto';
-import { Observable, Subscription } from 'rxjs';
 import { RicercaDto } from './../dto/ricerca-dto';
 
 @Component({
@@ -10,15 +9,16 @@ import { RicercaDto } from './../dto/ricerca-dto';
   styleUrls: ['./prodotto-crud.component.css']
 })
 export class ProdottoCrudComponent implements OnInit {
-  prodotto: ProdottoDto = new ProdottoDto();
+  /* per ricuperare la chiavi di ricerca
+   direttamnte nel tamplate vieni pasata nel service e resettata.*/
   ricerca: RicercaDto = new RicercaDto();
-  state = 'ricerca';
+  state = 'ricerca'; // lo stato del component che influenza il tamplate e metodi
 
 
   constructor(private srvProdotto: ProdottoService) { }
 
   ngOnInit(): void {
-    this.srvProdotto.lista();
+    this.srvProdotto.lista(); // inizializza la paggina con la lista dei prodotti
   }
   nuovo(): void {
     this.state = 'aggiungi';
@@ -26,7 +26,6 @@ export class ProdottoCrudComponent implements OnInit {
   }
   chiudi(): void {
     this.state = 'ricerca';
-    this.prodotto = new ProdottoDto();
     this.srvProdotto.prodottoForm = new ProdottoDto();
   }
 

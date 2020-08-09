@@ -2,6 +2,7 @@
 package com.ai.ecom02.service;
 
 
+import com.ai.ecom02.dto.RicercaDto;
 import com.ai.ecom02.model.Prodotto;
 import java.util.List;
 
@@ -27,7 +28,7 @@ public interface ProdottoService {
     
     List<Prodotto> findByPrezzoLike(Prodotto prodotto);
     
-  //  List<Prodotto> findByCodiceLikeOrDescrizioneLike(Prodotto prodotto);
+    List<Prodotto> findByCodiceLikeOrDescrizioneLike(RicercaDto ricerca);
     
     
 }

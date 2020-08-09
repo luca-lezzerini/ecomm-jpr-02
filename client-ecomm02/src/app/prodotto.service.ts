@@ -9,11 +9,14 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ProdottoService {
   urlPath = 'http://localhost:8080';
-  prodottoForm: ProdottoDto = new ProdottoDto();
-  listaProdotti: ProdottoDto[] = [];
+  prodottoForm: ProdottoDto = new ProdottoDto(); // memorizza l'istanza da trattare
+  listaProdotti: ProdottoDto[] = []; /* il contenitore che renderizza la tabella
+   contente le risposte dal server*/
 
   constructor(private http: HttpClient) { }
-
+/* Passa al server il RicercaDto contenete la stringa da cercare posiziona i dati 
+nella Lista aposita, restituisce una istanza di DtoRicerca per resettare il campo
+nel Tamplate*/
   cerca(ricerca: RicercaDto): RicercaDto {
     if (ricerca.ricerca == null) {
       this.lista();
@@ -28,7 +31,9 @@ export class ProdottoService {
     const oss: Observable<ProdottoDto[]> = this.http.get<ProdottoDto[]>(this.urlPath + '/lista-prodotti');
     const sub: Subscription = oss.subscribe(risp => { this.listaProdotti = risp; });
   }
-
+/* in Base alla stato del componente che riceve come parametro setta url per la
+richiesta e invia al server l'istanza da trattare. restituisce la stringa
+ per ripristinare lo stato iniziale del component*/
   conferma(state: string) {
     let urlEnd: string;
     switch (state) {
