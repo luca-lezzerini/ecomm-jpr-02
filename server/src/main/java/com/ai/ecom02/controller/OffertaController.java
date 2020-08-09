@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @CrossOrigin("*")                                                           // Accetta richieste da qualunque client 
 @RestController                                                         // risponde a richieste rest 
-public class ControllerAnagraficoOfferta {
+public class OffertaController {
 
     @Autowired
     OffertaServiceImpl srvOfferta;

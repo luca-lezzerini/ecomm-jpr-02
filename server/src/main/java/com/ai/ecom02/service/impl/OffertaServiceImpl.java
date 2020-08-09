@@ -8,19 +8,19 @@ package com.ai.ecom02.service.impl;
 import com.ai.ecom02.dto.RicercaDto;
 import com.ai.ecom02.model.Offerta;
 import com.ai.ecom02.repository.RepOfferta;
-import com.ai.ecom02.service.OffertaServiceCrud;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import com.ai.ecom02.service.OffertaService;
 
 /**
  *
  * @author Narga
  */
 @Service
-public class OffertaServiceImpl implements OffertaServiceCrud {
+public class OffertaServiceImpl implements OffertaService {
     @Autowired 
     RepOfferta repOfferta ;                                         // stiamo dicendo di autoinstanziare questa casse con tipo+ nome 
 

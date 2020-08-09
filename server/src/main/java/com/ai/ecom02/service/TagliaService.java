@@ -3,7 +3,7 @@ package com.ai.ecom02.service;
 import com.ai.ecom02.model.Taglia;
 import java.util.List;
 
-public interface TagliaServiceCrud {
+public interface TagliaService {
 
     public Taglia add(Taglia taglia);
 

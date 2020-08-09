@@ -7,10 +7,10 @@ package com.ai.ecom02.service.impl;
 
 import com.ai.ecom02.model.Taglia;
 import com.ai.ecom02.repository.RepTaglia;
-import com.ai.ecom02.service.TagliaServiceCrud;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import com.ai.ecom02.service.TagliaService;
 
 /**
  *
@@ -18,7 +18,7 @@ import org.springframework.stereotype.Service;
  */
 
 @Service
-public class TagliaService implements TagliaServiceCrud {
+public class TagliaServiceImpl implements TagliaService {
 
     @Autowired
     RepTaglia repTaglia;

@@ -3,7 +3,7 @@ package com.ai.ecom02.service;
 import com.ai.ecom02.model.Colore;
 import java.util.List;
 
-public interface ColoreServiceCrud {
+public interface ColoreService {
 
     Colore add(Colore colore);
 

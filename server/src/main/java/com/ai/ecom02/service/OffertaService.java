@@ -12,7 +12,7 @@ import java.util.List;
  *
  * @author Narga
  */
-public interface OffertaServiceCrud {                                 // Sto dichiarando i metodi che poi utilizzeremo nel Service 
+public interface OffertaService {                                 // Sto dichiarando i metodi che poi utilizzeremo nel Service 
 
     Offerta add(Offerta offerta);
 

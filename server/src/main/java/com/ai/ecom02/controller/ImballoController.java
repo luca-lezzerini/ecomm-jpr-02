@@ -1,7 +1,7 @@
 package com.ai.ecom02.controller;
 
 import com.ai.ecom02.model.Imballo;
-import com.ai.ecom02.service.impl.ImballoService;
+import com.ai.ecom02.service.impl.ImballoServiceImpl;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -18,10 +18,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 @CrossOrigin("*")
 @RestController
-public class ImballoControllerAnagrafica {
+public class ImballoController {
 
     @Autowired
-    ImballoService srvImballo;
+    ImballoServiceImpl srvImballo;
 
     @RequestMapping(value = {"/list-imballo"})
     @ResponseBody

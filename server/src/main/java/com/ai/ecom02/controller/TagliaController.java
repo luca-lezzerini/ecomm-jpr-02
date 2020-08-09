@@ -1,7 +1,7 @@
 package com.ai.ecom02.controller;
 
 import com.ai.ecom02.model.Taglia;
-import com.ai.ecom02.service.impl.TagliaService;
+import com.ai.ecom02.service.impl.TagliaServiceImpl;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class TagliaController {
 
     @Autowired
-    TagliaService srvTaglia;
+    TagliaServiceImpl srvTaglia;
 
     @RequestMapping(value = {"/list-taglia"})
     @ResponseBody

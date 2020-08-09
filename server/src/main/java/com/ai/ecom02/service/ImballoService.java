@@ -3,7 +3,7 @@ package com.ai.ecom02.service;
 import com.ai.ecom02.model.Imballo;
 import java.util.List;
 
-public interface ImballoServiceCrud {
+public interface ImballoService {
 
     public Imballo add(Imballo imballo);
 

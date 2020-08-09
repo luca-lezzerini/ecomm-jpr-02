@@ -7,11 +7,11 @@ package com.ai.ecom02.service.impl;
 
 import com.ai.ecom02.model.Imballo;
 import com.ai.ecom02.repository.RepImballo;
-import com.ai.ecom02.service.ImballoServiceCrud;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import com.ai.ecom02.service.ImballoService;
 
 /**
  *
@@ -19,7 +19,7 @@ import org.springframework.stereotype.Service;
  */
 
 @Service
-public class ImballoService implements ImballoServiceCrud {
+public class ImballoServiceImpl implements ImballoService {
 
     @Autowired
     RepImballo repImballo;

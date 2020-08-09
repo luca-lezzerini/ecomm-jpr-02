@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @CrossOrigin("*")
 @RestController
-public class ControllerSpedizione {
+public class SpedizioneController {
     
     @Autowired
     SpedizioneService spedizioneService;

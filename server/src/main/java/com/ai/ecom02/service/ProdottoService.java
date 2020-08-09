@@ -6,7 +6,7 @@ import com.ai.ecom02.model.Prodotto;
 import java.util.List;
 
 
-public interface ProdottoServiceCrud {
+public interface ProdottoService {
     Prodotto add(Prodotto prodotto);
 
     void delete(Prodotto prodotto);

@@ -4,11 +4,11 @@ import com.ai.ecom02.model.Colore;
 import com.ai.ecom02.repository.RepColore;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
-import com.ai.ecom02.service.ColoreServiceCrud;
 import org.springframework.stereotype.Service;
+import com.ai.ecom02.service.ColoreService;
 
 @Service
-public class ServiceColore implements ColoreServiceCrud {
+public class ColoreServiceImpl implements ColoreService {
 
     @Autowired
     RepColore repColore;
