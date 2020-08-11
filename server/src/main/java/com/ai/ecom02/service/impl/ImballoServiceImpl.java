@@ -57,7 +57,7 @@ public class ImballoServiceImpl implements ImballoService {
     }
     
      public List<Imballo> findImballo(String descrizione, Double costo){
-        return repImballo.findByDescrizioneLikeOrCostoLike("%"+descrizione+"%", "%"+costo.toString()+"%");
+        return repImballo.findByDescrizioneLikeOrCostoLike("%"+descrizione+"%",String.valueOf(costo));
     }
     
     
