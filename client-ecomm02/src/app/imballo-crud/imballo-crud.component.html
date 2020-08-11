@@ -4,8 +4,8 @@
 
 <span *ngIf="state =='ricerca'">
 
-    <input type="text" [(ngModel)]="mem.imballo.descrizione"
-        placeholder="imballo">
+    <input type="text" [(ngModel)]="mem.ricerca.ricerca"
+        >
     <!-- costo<input type="number" [(ngModel)]="costo" placeholder="imballo"> -->
     <button (click)="findImballo()">Cerca</button>&nbsp;
     <button (click)="addImballo()">Aggiungi</button>
