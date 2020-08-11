@@ -36,8 +36,8 @@ export class TagliaCrudComponent implements OnInit {
   }
 
   findTaglia() {
-    if (this.memT.taglia.sigla.length > 0) {
-      this.memT.findTagliaSigla(this.memT.taglia);
+    if (this.memT.ricerca.ricerca.length > 0) {
+      this.memT.findTagliaSigla();
     } else {
       this.memT.lista();
     }

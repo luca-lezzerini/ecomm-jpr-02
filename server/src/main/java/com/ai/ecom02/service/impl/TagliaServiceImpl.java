@@ -16,7 +16,6 @@ import com.ai.ecom02.service.TagliaService;
  *
  * @author Francesco
  */
-
 @Service
 public class TagliaServiceImpl implements TagliaService {
 
@@ -46,14 +45,18 @@ public class TagliaServiceImpl implements TagliaService {
 
     @Override
     public Taglia update(Taglia taglia) {
-       return repTaglia.save(taglia);
+        return repTaglia.save(taglia);
     }
 
-    public List<Taglia> findByDescrizione(Taglia taglia){
+    public List<Taglia> findByDescrizione(Taglia taglia) {
         return repTaglia.findByDescrizioneLike(taglia.getDescrizione());
     }
-    
-    public List<Taglia> findBySigla(Taglia taglia){
+
+    public List<Taglia> findBySigla(Taglia taglia) {
         return repTaglia.findBySiglaLike(taglia.getSigla());
+    }
+
+    public List<Taglia> findByDescrizioneLikeOrSiglaLike(String ricerca, String ricerca0) {
+        return repTaglia.findByDescrizioneLikeOrSiglaLike("%" + ricerca + "%", "%" + ricerca0 + "%");
     }
 }

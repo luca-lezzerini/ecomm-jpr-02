@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RestController;
  *
  * @author Francesco
  */
-
 @CrossOrigin("*")
 @RestController
 public class TagliaController {
@@ -57,28 +56,36 @@ public class TagliaController {
         return taglia;
     }
 
+//    @RequestMapping(value = {"/find-taglia-by-id"})
+//    @ResponseBody
+//    public Taglia ricercaTaglia(
+//            @RequestBody Taglia taglia
+//    ) {
+//        srvTaglia.findById(taglia);
+//        return taglia;
+//    }
+//
+//    @RequestMapping(value = {"/find-taglia-by-sigla"})
+//    @ResponseBody
+//    public List<Taglia> ricercaBySiglaTaglia(
+//            @RequestBody Taglia taglia
+//    ) {
+//        return srvTaglia.findBySigla(taglia);
+//    }
+//
+//    @RequestMapping(value = {"/find-by-descrizione-taglia"})
+//    @ResponseBody
+//    public List<Taglia> ricercaByDescrizioneTaglia(
+//            @RequestBody Taglia taglia
+//    ) {
+//        return srvTaglia.findByDescrizione(taglia);
+//    }
+
     @RequestMapping(value = {"/find-taglia"})
     @ResponseBody
-    public Taglia ricercaTaglia(
-            @RequestBody Taglia taglia
+    public List<Taglia> ricercaTaglia(
+            @RequestBody String ricerca
     ) {
-        srvTaglia.findById(taglia);
-        return taglia;
-    }
-
-    @RequestMapping(value = {"/find-taglia-by-sigla"})
-    @ResponseBody
-    public List<Taglia> ricercaBySiglaTaglia(
-            @RequestBody Taglia taglia
-    ) {
-        return srvTaglia.findBySigla(taglia);
-    }
-
-    @RequestMapping(value = {"/find-by-descrizione-taglia"})
-    @ResponseBody
-    public List<Taglia> ricercaByDescrizioneTaglia(
-            @RequestBody Taglia taglia
-    ) {
-        return srvTaglia.findByDescrizione(taglia);
+        return srvTaglia.findByDescrizioneLikeOrSiglaLike(ricerca, ricerca);
     }
 }

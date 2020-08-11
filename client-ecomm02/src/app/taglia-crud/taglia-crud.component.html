@@ -4,8 +4,7 @@
 
 <span *ngIf="state =='ricerca'">
 
-    <input type="text" [(ngModel)]="memT.taglia.sigla"
-        placeholder="taglia">
+    <input type="text" [(ngModel)]="memT.ricerca.ricerca">
     <!-- descrizione <input type="text" [(ngModel)]="memT.taglia.descrizione" placeholder="taglia"> -->
     <button (click)="findTaglia()">Cerca</button>&nbsp;
     <button (click)="addTaglia()">Aggiungi</button>
@@ -46,7 +45,7 @@
 <br>
 <table>
     <tr>
-       <!-- <th>ID</th> da eliminare nella versione definitiva -->
+        <!-- <th>ID</th> da eliminare nella versione definitiva -->
         <th>Descrizione</th>
         <th>Sigla</th>
     </tr>
@@ -55,7 +54,7 @@
         <td>{{i.descrizione}}</td>
         <td>{{i.sigla}}</td>
         <td><button (click)="updateTaglia(i, x)">Modifica</button>&nbsp;
-        <button (click)="removeTaglia(i.id)">Rimuovi</button></td>
+            <button (click)="removeTaglia(i.id)">Rimuovi</button></td>
     </tr>
 
 </table>

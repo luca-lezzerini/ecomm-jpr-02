@@ -14,11 +14,12 @@ import org.springframework.stereotype.Repository;
  *
  * @author Francesco
  */
-
 @Repository
 public interface RepTaglia extends JpaRepository<Taglia, Long> {
 
     List<Taglia> findBySiglaLike(String sigla);
 
     List<Taglia> findByDescrizioneLike(String descrizione);
+
+    public List<Taglia> findByDescrizioneLikeOrSiglaLike(String ricerca, String ricerca0);
 }

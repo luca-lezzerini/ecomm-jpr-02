@@ -1,3 +1,4 @@
+import { RicercaDto } from './dto/ricerca-dto';
 import { Observable } from 'rxjs';
 import { TagliaDto } from './dto/taglia-dto';
 import { HttpClient } from '@angular/common/http';
@@ -11,6 +12,7 @@ export class TagliaServiceService {
   taglia: TagliaDto = new TagliaDto();
   taglie: TagliaDto[] = [];
   tagliaMod: TagliaDto = new TagliaDto();
+  ricerca: RicercaDto = new RicercaDto();
 
   private url = "http://localhost:8080";
 
@@ -38,10 +40,12 @@ export class TagliaServiceService {
     return this.taglie;
   }
 
-  findTagliaSigla(taglia: TagliaDto) {
-    let o: Observable<TagliaDto[]> = this.http.post<TagliaDto[]>(this.url + '/find-taglia-by-sigla', taglia)
-    o.subscribe(risp => { this.taglie = risp; })
+  findTagliaSigla(): TagliaDto[] {
+    let o: Observable<TagliaDto[]> = this.http.post<TagliaDto[]>(this.url + '/find-taglia', this.ricerca.ricerca);
+    o.subscribe(risp => { this.taglie = risp; });
+    return this.taglie;
   }
+
 
 
 }
