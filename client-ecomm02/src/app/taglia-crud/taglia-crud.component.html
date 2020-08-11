@@ -4,15 +4,17 @@
 
 <span *ngIf="state =='ricerca'">
 
-    sigla <input type="text" [(ngModel)]="memT.taglia.sigla"
+    <input type="text" [(ngModel)]="memT.taglia.sigla"
         placeholder="taglia">
     <!-- descrizione <input type="text" [(ngModel)]="memT.taglia.descrizione" placeholder="taglia"> -->
     <button (click)="findTaglia()">Cerca</button>&nbsp;
     <button (click)="addTaglia()">Aggiungi</button>
 </span>
 <span *ngIf="state !='ricerca'">
-    sigla <input type="hidden" [(ngModel)]="memT.taglia.sigla"
+    <input type="text" [(ngModel)]="memT.taglia.sigla"
         placeholder="taglia" disabled>
+    <button (click)="findTaglia()" disabled>Cerca</button>&nbsp;
+    <button (click)="addTaglia()" disabled>Aggiungi</button>
     <!-- descrizione <input type="hidden" [(ngModel)]="memT.taglia.descrizione"
         placeholder="taglia" disabled> -->
 </span>
@@ -23,9 +25,9 @@
 <span *ngIf="state =='aggiungi'">
     <div>
         <h3>Form dati</h3>
-        descrizione <input type="text" [(ngModel)]="memT.tagliaMod.descrizione"
+        <input type="text" [(ngModel)]="memT.tagliaMod.descrizione"
             placeholder="descrizione">
-        sigla <input type="text" [(ngModel)]="memT.tagliaMod.sigla"
+        <input type="text" [(ngModel)]="memT.tagliaMod.sigla"
             placeholder="sigla">
         <br>
         <button (click)="conferma()">Conferma</button>
@@ -35,7 +37,7 @@
 <div *ngIf="state == 'modifica'">
     nuova descrizione:<input type="text"
         [(ngModel)]="memT.tagliaMod.descrizione" placeholder="descrizione">
-    nuova sigla:<input type="number" [(ngModel)]="memT.tagliaMod.sigla"
+    nuova sigla:<input type="text" [(ngModel)]="memT.tagliaMod.sigla"
         placeholder="sigla">&nbsp;
     <button (click)="conferma()">Conferma modifica</button>
     <button (click)="chiudi()">Annulla</button>
@@ -44,16 +46,16 @@
 <br>
 <table>
     <tr>
-        <th>ID</th> <!-- da eliminare nella versione definitiva -->
+       <!-- <th>ID</th> da eliminare nella versione definitiva -->
         <th>Descrizione</th>
         <th>Sigla</th>
     </tr>
     <tr *ngFor="let i of memT.taglie; index as x">
-        <td>{{i.id}}</td> <!-- da eliminare nella versione definitiva -->
+        <!-- <td>{{i.id}}</td> da eliminare nella versione definitiva -->
         <td>{{i.descrizione}}</td>
         <td>{{i.sigla}}</td>
-        <td><button (click)="updateTaglia(i, x)">Modifica</button></td>
-        <td><button (click)="removeTaglia(i.id)">Rimuovi</button></td>
+        <td><button (click)="updateTaglia(i, x)">Modifica</button>&nbsp;
+        <button (click)="removeTaglia(i.id)">Rimuovi</button></td>
     </tr>
 
 </table>

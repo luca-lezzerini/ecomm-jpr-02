@@ -16,6 +16,7 @@ export class TagliaCrudComponent implements OnInit {
   constructor(private router: Router, public memT: TagliaServiceService) { }
 
   ngOnInit(): void {
+    this.memT.taglie = this.memT.lista();
   }
 
   addTaglia() {
