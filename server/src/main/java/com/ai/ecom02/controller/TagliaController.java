@@ -39,12 +39,12 @@ public class TagliaController {
 
     @RequestMapping(value = {"/delete-taglia/{id}"})
     @ResponseBody
-    public Taglia cancellaTaglia(
+    public List<Taglia> cancellaTaglia(
             @PathVariable Long id
     ) {
         Taglia taglia = new Taglia(id);
         srvTaglia.delete(taglia);
-        return taglia;
+        return srvTaglia.getAll();
     }
 
     @RequestMapping(value = {"/update-taglia"})

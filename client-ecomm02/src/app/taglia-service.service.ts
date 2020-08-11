@@ -28,10 +28,10 @@ export class TagliaServiceService {
     o.subscribe(risp => { this.taglia = risp; });
   }
 
-  removeTaglia(id: number) {
-    let o: Observable<TagliaDto> = this.http.get<TagliaDto>(this.url + '/delete-taglia/' + id);
-    o.subscribe(risp => { this.taglia = risp; });
-    return this.taglia;
+  removeTaglia(id: number): TagliaDto[] {
+    let o: Observable<TagliaDto[]> = this.http.get<TagliaDto[]>(this.url + '/delete-taglia/' + id);
+    o.subscribe(risp => { this.taglie = risp; });
+    return this.taglie;
   }
 
   lista(): TagliaDto[] {
