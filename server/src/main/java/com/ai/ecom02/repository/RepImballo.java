@@ -21,4 +21,8 @@ public interface RepImballo extends JpaRepository<Imballo, Long> {
     List<Imballo> findByDescrizioneLike(String descrizione);
     
 //    List<Imballo> findByCostoLike(Double costo);
+
+    public List<Imballo> findByDescrizioneLikeOrCostoLike(String string, String string0);
+
+    
 }

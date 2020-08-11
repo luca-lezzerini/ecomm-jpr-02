@@ -1,3 +1,5 @@
+import { SpedizioneDto } from './dto/spedizione-dto';
+import { RicercaDto } from './dto/ricerca-dto';
 import { ImballoDto } from './dto/imballo-dto';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
@@ -12,6 +14,8 @@ export class ImballoServiceService {
   imballi: ImballoDto[] = [];
   imballo: ImballoDto = new ImballoDto();
   imballoMod: ImballoDto = new ImballoDto();
+  ricerca : RicercaDto = new RicercaDto()
+
 
   constructor(private http: HttpClient) { }
 
@@ -27,9 +31,10 @@ export class ImballoServiceService {
     return this.imballi
   }
 
-  findImballo(imballo: ImballoDto) {
-    let o: Observable<ImballoDto[]> = this.http.post<ImballoDto[]>(this.url + "/find-by-descrizione-imballo", imballo)
+  findImballo() : ImballoDto[] {
+    let o: Observable<ImballoDto[]> = this.http.post<ImballoDto[]>(this.url + "/find-by-descrizione-imballo", this.ricerca.ricerca)
     o.subscribe(risp => { this.imballi = risp; })
+    return this.imballi
 
 
   }

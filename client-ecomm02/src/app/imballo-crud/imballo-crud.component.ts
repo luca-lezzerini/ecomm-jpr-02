@@ -52,12 +52,14 @@ export class ImballoCrudComponent implements OnInit {
   }
 
   findImballo() {
-    if (this.mem.imballo.descrizione.length > 0) {
-      this.mem.findImballo(this.mem.imballo)
-    }
-    else {
-      this.mem.lista()
-    }
+     if(this.mem.ricerca.ricerca.length > 0) {
 
+      this.mem.findImballo()
+     } else {
+       this.mem.lista()
+     }
+    
+      
+    
   }
 }

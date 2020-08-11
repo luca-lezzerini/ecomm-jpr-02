@@ -66,19 +66,22 @@ public class ImballoController {
         return imballo;
     }
 
+//    @RequestMapping(value = {"/find-by-descrizione-imballo"})
+//    @ResponseBody
+//    public List<Imballo> ricercaByDescrizioneImballo(
+//            @RequestBody Imballo imballo
+//    ) {
+//        return srvImballo.findByDescrizione(imballo);         
+//    }
+    
+    
     @RequestMapping(value = {"/find-by-descrizione-imballo"})
     @ResponseBody
     public List<Imballo> ricercaByDescrizioneImballo(
-            @RequestBody Imballo imballo
+            @RequestBody String ricerca
     ) {
-        return srvImballo.findByDescrizione(imballo);         
+        return srvImballo.findByDescrizione(ricerca);         
     }
     
-//    @RequestMapping(value = {"/find-by-costo-imballo"})
-//    @ResponseBody
-//    public List<Imballo> ricercaByCostoImballo(
-//            @RequestBody Imballo imballo
-//    ) {
-//        return srvImballo.findByCosto(imballo);         
-//    }
+
 }

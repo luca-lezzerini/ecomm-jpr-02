@@ -52,9 +52,15 @@ public class ImballoServiceImpl implements ImballoService {
        return repImballo.save(imballo);
     }
 
-    public List<Imballo> findByDescrizione(Imballo imballo){
-        return repImballo.findByDescrizioneLike(imballo.getDescrizione());
+    public List<Imballo> findByDescrizione(String descrizione){
+        return repImballo.findByDescrizioneLike("%"+descrizione+"%");
     }
+    
+     public List<Imballo> findImballo(String descrizione, Double costo){
+        return repImballo.findByDescrizioneLikeOrCostoLike("%"+descrizione+"%", "%"+costo.toString()+"%");
+    }
+    
+    
     
 //    public List<Imballo> findByCosto(Imballo imballo){
 //        return repImballo.findByCostoLike(imballo.getCosto());
