@@ -27,7 +27,7 @@ export class TagliaServiceService {
   }
 
   removeTaglia(id: number) {
-    let o: Observable<TagliaDto> = this.http.get<TagliaDto>(this.url + '/delete-taglia' + id);
+    let o: Observable<TagliaDto> = this.http.get<TagliaDto>(this.url + '/delete-taglia/' + id);
     o.subscribe(risp => { this.taglia = risp; });
     return this.taglia;
   }

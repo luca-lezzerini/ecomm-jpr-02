@@ -31,6 +31,7 @@ export class TagliaCrudComponent implements OnInit {
 
   removeTaglia(id: number) {
     this.memT.removeTaglia(id);
+    this.memT.taglia = new TagliaDto();
     this.memT.taglie = this.memT.lista();
   }
 
