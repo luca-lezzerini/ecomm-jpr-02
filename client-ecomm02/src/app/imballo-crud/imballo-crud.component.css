@@ -13,3 +13,28 @@ th,td{
 tr:hover {
     background-color: #f5f5f5;
 }
+#aggiungi{
+    position : absolute;
+    top: 280px;
+  right: 300px;
+  width: 150px;
+  height: 20px;
+ }
+ #conferma{
+    position : absolute;
+    top: 450px;
+  right: 900px;
+  width: 150px;
+  height: 20px;
+ }
+ #annulla{
+    position : absolute;
+    top: 450px;
+  right: 1060px;
+  width: 150px;
+  height: 20px;
+ }
+ .pointer {
+    cursor: pointer;
+  }
+ 

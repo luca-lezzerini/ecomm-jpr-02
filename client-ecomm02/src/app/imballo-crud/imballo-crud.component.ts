@@ -13,6 +13,7 @@ import { Router } from '@angular/router';
 export class ImballoCrudComponent implements OnInit {
 
   state = "ricerca"
+  state2= ""
   imballoSelezionato: number
 
   constructor(private router: Router, public mem: ImballoServiceService) { }
@@ -23,10 +24,12 @@ export class ImballoCrudComponent implements OnInit {
 
   addImballo() {
     this.state = "aggiungi"
+    this.state2 = ""
   }
 
   updateImballo(imballo: ImballoDto, i: number) {
     this.state = "modifica"
+    this.state2 =""
     this.imballoSelezionato = i;
     this.mem.imballoMod = Object.assign({}, imballo)
   }
@@ -58,8 +61,15 @@ export class ImballoCrudComponent implements OnInit {
      } else {
        this.mem.lista()
      }
-    
-      
-    
+  
+  }
+
+  visualizza(i : ImballoDto, n: number) {
+
+  this.state2 = "visualizza"
+  this.imballoSelezionato = n
+  this.mem.imballoMod = Object.assign({}, i)
+
+
   }
 }
