@@ -14,6 +14,7 @@ export class SpedizioneServiceService {
   spedizione: SpedizioneDto = new SpedizioneDto();
   temp: SpedizioneDto = new SpedizioneDto();
   ricerca: RicercaDto = new RicercaDto();
+  nascondiMessaggio = true;
 
   constructor(private http: HttpClient) { }
 

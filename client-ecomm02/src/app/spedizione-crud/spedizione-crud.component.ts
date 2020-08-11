@@ -22,10 +22,9 @@ export class SpedizioneCRUDComponent implements OnInit {
 
   ngOnInit() {
     this.meme.spedizioni = this.meme.lista();
-    this.meme.ricerca.ricerca = "";
   }
   searchCriteria() {
-    if (this.meme.ricerca.ricerca != "") {
+    if (this.meme.ricerca.ricerca != null) {
       this.meme.cerca();
       this.meme.ricerca.ricerca = "";
       this.aggiungiStateSped = false;
@@ -35,8 +34,12 @@ export class SpedizioneCRUDComponent implements OnInit {
   }
   conferma() {
     if (this.aggiungiStateSped) {
-      this.meme.aggiungi();
-      this.meme.temp = new SpedizioneDto();
+      if (this.meme.temp.codice != null) {
+        this.meme.aggiungi();
+        this.meme.temp = new SpedizioneDto();
+      } else {
+        this.meme.nascondiMessaggio = false;
+      }
     } else {
       this.meme.spedizioni[this.indice] = this.meme.temp;
       this.meme.update(this.meme.temp);
@@ -52,6 +55,7 @@ export class SpedizioneCRUDComponent implements OnInit {
     this.meme.temp = new SpedizioneDto();
     this.nascondiButton = false;
     this.disabilitaCampi = false;
+    this.meme.nascondiMessaggio = true;
   }
   annulla() {
     this.aggiungiStateSped = false;
@@ -80,6 +84,10 @@ export class SpedizioneCRUDComponent implements OnInit {
     this.modificaStateSped = true;
     this.nascondiButton = true;
     this.disabilitaCampi = true;
+  }
+
+  disabilitaCod() {
+    this.meme.nascondiMessaggio = true;
   }
 
 }

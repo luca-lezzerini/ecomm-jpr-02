@@ -9,9 +9,10 @@
 <div class="check-element animate-show-hide" *ngIf="aggiungiState || modificaState">
     <h3>Form dati</h3>
     <input type="text" [readonly]="disabilitaDescrizione" [(ngModel)]="mem.categTemp.descrizione"
-        placeholder="descrizione">
+        placeholder="descrizione" (click)="disabilitaDesc()">
     <button (click)="conferma()" [hidden]="nascondiButton">Conferma</button>
     <button (click)="annulla()" [hidden]="nascondiButton">Annulla</button>
+    <p [hidden]="mem.nascondiMessaggio">Digitare una categoria valida</p>
 </div>
 <br><br><br>
 <table *ngIf="tabellaState">

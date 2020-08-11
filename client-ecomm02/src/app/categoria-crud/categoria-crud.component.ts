@@ -21,11 +21,10 @@ export class CategoriaCRUDComponent implements OnInit {
 
   ngOnInit() {
     this.mem.categorie = this.mem.lista();
-    this.mem.categoria.descrizione = "";
   }
 
   searchCriteria() {
-    if (this.mem.ricerca.ricerca != "") {
+    if (this.mem.ricerca.ricerca != null) {
       this.mem.cerca();
       this.mem.ricerca.ricerca = "";
       this.aggiungiState = false;
@@ -40,12 +39,17 @@ export class CategoriaCRUDComponent implements OnInit {
     this.mem.categTemp = new CategoriaDto();
     this.nascondiButton = false;
     this.disabilitaDescrizione = false;
+    this.mem.nascondiMessaggio = true;
   }
 
   conferma() {
     if (this.aggiungiState) {
-      this.mem.addCategoria();
-      this.mem.categTemp = new CategoriaDto();
+      if (this.mem.categTemp.descrizione != null) {
+        this.mem.addCategoria();
+        this.mem.categTemp = new CategoriaDto();
+      }else{
+        this.mem.nascondiMessaggio = false;
+      }
     } else {
       this.mem.categorie[this.categoriaSelezionata] = this.mem.categTemp;
       this.mem.update(this.mem.categTemp);
@@ -85,5 +89,9 @@ export class CategoriaCRUDComponent implements OnInit {
     this.modificaState = true;
     this.nascondiButton = true;
     this.disabilitaDescrizione = true;
+  }
+
+  disabilitaDesc(){
+    this.mem.nascondiMessaggio = true;
   }
 }

@@ -7,11 +7,12 @@
 <br><br><br>
 <div class="check-element animate-show-hide" *ngIf="aggiungiStateSped || modificaStateSped">
     <h1>Form Dati</h1>
-    <input type="text" [readonly]="disabilitaCampi" [(ngModel)]="meme.temp.codice" placeholder="codice">
+    <input type="text" (click)="disabilitaCod()" [readonly]="disabilitaCampi" [(ngModel)]="meme.temp.codice" placeholder="codice">
     <input type="text" [readonly]="disabilitaCampi" [(ngModel)]="meme.temp.nome" placeholder="nome">
     <input type="number" [readonly]="disabilitaCampi" [(ngModel)]="meme.temp.prezzoKg" placeholder="prezzoKg">
     <button (click)="conferma()" [hidden]="nascondiButton">Conferma</button>
     <button (click)="annulla()" [hidden]="nascondiButton">Annulla</button>
+    <p [hidden]="meme.nascondiMessaggio">Digitare una spedizione valida</p>
 </div>
 <br><br><br>
 <table *ngIf="tabellaState">
