@@ -12,6 +12,7 @@ export class TagliaServiceService {
   taglia: TagliaDto = new TagliaDto();
   taglie: TagliaDto[] = [];
   tagliaMod: TagliaDto = new TagliaDto();
+  tagliaVis : TagliaDto = new TagliaDto()
   ricerca: RicercaDto = new RicercaDto();
 
   private url = "http://localhost:8080";

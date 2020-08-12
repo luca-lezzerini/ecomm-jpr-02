@@ -13,7 +13,7 @@ import { Router } from '@angular/router';
 export class ImballoCrudComponent implements OnInit {
 
   state = "ricerca"
-  state2= ""
+  state2 = ""
   imballoSelezionato: number
 
   constructor(private router: Router, public mem: ImballoServiceService) { }
@@ -29,7 +29,7 @@ export class ImballoCrudComponent implements OnInit {
 
   updateImballo(imballo: ImballoDto, i: number) {
     this.state = "modifica"
-    this.state2 =""
+    this.state2 = ""
     this.imballoSelezionato = i;
     this.mem.imballoMod = Object.assign({}, imballo)
   }
@@ -48,6 +48,7 @@ export class ImballoCrudComponent implements OnInit {
       this.mem.updateImballo(this.mem.imballoMod)
       this.mem.imballoMod = new ImballoDto()
     }
+    this.state = "ricerca"
   }
 
   chiudi() {
@@ -57,20 +58,23 @@ export class ImballoCrudComponent implements OnInit {
   findImballo() {
 
     this.state2 = ""
-     if(this.mem.ricerca.ricerca.length > 0) {
+    if (this.mem.ricerca.ricerca.length > 0) {
 
       this.mem.findImballo()
-     } else {
-       this.mem.lista()
-     }
-  
+    } else {
+      this.mem.lista()
+    }
+
   }
 
-  visualizza(i : ImballoDto, n: number) {
+  visualizza(i: ImballoDto, n: number) {
 
-  this.state2 = "visualizza"
-  this.imballoSelezionato = n
-  this.mem.imballoMod = Object.assign({}, i)
+    if (this.state != "aggiungi") {
+      this.state2 = "visualizza"
+      this.imballoSelezionato = n
+      this.mem.imballoVis = Object.assign({}, i)
+    }
+
 
 
   }

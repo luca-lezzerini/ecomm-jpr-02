@@ -14,6 +14,7 @@ export class ImballoServiceService {
   imballi: ImballoDto[] = [];
   imballo: ImballoDto = new ImballoDto();
   imballoMod: ImballoDto = new ImballoDto();
+  imballoVis: ImballoDto = new ImballoDto()
   ricerca : RicercaDto = new RicercaDto()
 
 

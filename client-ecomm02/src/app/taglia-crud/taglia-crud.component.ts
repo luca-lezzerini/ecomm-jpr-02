@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 export class TagliaCrudComponent implements OnInit {
 
   state = "ricerca";
+  state2 = ""
   tagliaSelezionata: number;
 
   constructor(private router: Router, public memT: TagliaServiceService) { }
@@ -21,6 +22,7 @@ export class TagliaCrudComponent implements OnInit {
 
   addTaglia() {
     this.state = "aggiungi"
+    this.state2 = ""
   }
 
   updateTaglia(taglia: TagliaDto, i: number) {
@@ -41,6 +43,7 @@ export class TagliaCrudComponent implements OnInit {
     } else {
       this.memT.lista();
     }
+    this.state2 = ""
   }
 
   conferma() {
@@ -52,9 +55,23 @@ export class TagliaCrudComponent implements OnInit {
       this.memT.updateTaglia(this.memT.tagliaMod);
       this.memT.tagliaMod = new TagliaDto();
     }
+    this.state = "ricerca"
+    this.state2 = ""
   }
 
   chiudi() {
     this.state = "ricerca";
+    this.state2 = ""
+  }
+
+  visualizza(t: TagliaDto, n: number) {
+  
+    if (this.state != "aggiungi") {
+      this.state2 = "visualizza"
+      this.tagliaSelezionata = n
+      this.memT.tagliaVis = Object.assign({}, t)
+  
+    } 
+   
   }
 }
