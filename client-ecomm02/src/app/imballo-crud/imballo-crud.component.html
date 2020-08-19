@@ -7,7 +7,8 @@
     <button class="pointer" id="aggiungi" (click)="addImballo()">Aggiungi</button>
 </span>
 <span *ngIf="state !='ricerca'">
-    <input type="text" [(ngModel)]="mem.ricerca.ricerca" placeholder="imballo" disabled>
+    <input type="text" [(ngModel)]="mem.ricerca.ricerca" placeholder="imballo"
+        disabled>
 </span>
 <br>
 <br>
@@ -15,24 +16,39 @@
 <span *ngIf="state =='aggiungi'">
     <div>
         <h3>Form dati</h3>
-        <input type="text" [(ngModel)]="mem.imballoMod.descrizione" placeholder="descrizione">
-        <input type="number" [(ngModel)]="mem.imballoMod.costo" placeholder="costo">
+        <input type="text" [(ngModel)]="mem.imballoMod.descrizione"
+            placeholder="descrizione">
+        <input type="number" [(ngModel)]="mem.imballoMod.costo"
+            placeholder="costo">
         <br>
         <button class="pointer" id="conferma" (click)="conferma()">Conferma</button>
         <button class="pointer" id="annulla" (click)="chiudi()">Annulla</button>
-
     </div>
 </span>
 <div *ngIf="state == 'modifica'">
-    nuova descrizione:<input type="text" [(ngModel)]="mem.imballoMod.descrizione" placeholder="descrizione">
-    nuovo costo:<input type="number" [(ngModel)]="mem.imballoMod.costo" placeholder="costo">&nbsp;
+    nuova descrizione:<input type="text"
+        [(ngModel)]="mem.imballoMod.descrizione" placeholder="descrizione">
+    nuovo costo:<input type="number" [(ngModel)]="mem.imballoMod.costo"
+        placeholder="costo">&nbsp;
     <button class="pointer" (click)="conferma()">Conferma modifica</button>
     <button class="pointer" (click)="chiudi()">Annulla</button>
 </div>
 <div *ngIf="state2 == 'visualizza'">
     <h3>Form dati</h3>
-    Descrizione: {{mem.imballoVis.descrizione}}
-    Costo: {{mem.imballoVis.costo}}
+    <table>
+        <tr>
+            <th>Descrizione</th>
+            <th>Costo</th>
+        </tr>
+        <tr>
+            <td>
+                {{mem.imballoVis.descrizione}}
+            </td>
+            <td>
+                {{mem.imballoVis.costo}}
+            </td>
+        </tr>
+    </table>
 </div>
 <br>
 <br>
@@ -42,11 +58,13 @@
     <tr>
         <th>Descrizione</th>
         <th>Costo</th>
+        <th>Modifica</th>
+        <th>Rimuovi</th>
     </tr>
     <tr *ngFor="let i of mem.imballi; index as x">
-        <td class="pointer" (click)="visualizza(i, x)">{{i.descrizione}}</td>               
-        <td class="pointer" (click)="visualizza(i, x)">{{i.costo}}</td>      
-        <td><button class="pointer" (click)="updateImballo(i, x)">Modifica</button></td>
+        <td class="pointer" (click)="visualizza(i, x)">{{i.descrizione}}</td>
+        <td class="pointer" (click)="visualizza(i, x)">{{i.costo}}</td>
+        <td><button class="pointer" (click)="updateImballo(i, x)">Modifica</button>&nbsp;</td>
         <td><button class="pointer" (click)="removeImballo(i.id)">Rimuovi</button></td>
     </tr>
 </table>
