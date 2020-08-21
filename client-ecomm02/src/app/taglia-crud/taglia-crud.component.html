@@ -34,11 +34,13 @@
     </div>
 </span>
 <div *ngIf="state == 'modifica'">
-    nuova descrizione:<input type="text"
-        [(ngModel)]="memT.tagliaMod.descrizione" placeholder="descrizione">
-    nuova sigla:<input type="text" [(ngModel)]="memT.tagliaMod.sigla"
-        placeholder="sigla">&nbsp;
+    nuova descrizione:<input type="text" [(ngModel)]="memT.tagliaMod.descrizione" placeholder="descrizione"> nuova sigla:<input type="text" [(ngModel)]="memT.tagliaMod.sigla" placeholder="sigla">&nbsp;
     <button class="pointer" (click)="conferma()">Conferma modifica</button>
+    <button class="pointer" (click)="chiudi()">Annulla</button>
+</div>
+<div *ngIf="state == 'delete'">
+    <h2>elimina?</h2>
+    <button class="pointer" (click)="removeTaglia(memT.tagliaMod.id)">Conferma</button>
     <button class="pointer" (click)="chiudi()">Annulla</button>
 </div>
 <br>
@@ -60,6 +62,6 @@
         <td class="pointer" (click)="visualizza(i, x)">{{i.descrizione}}</td>
         <td class="pointer" (click)="visualizza(i, x)">{{i.sigla}}</td>
         <td><button class="pointer" (click)="updateTaglia(i, x)">Modifica</button>&nbsp;
-            <button class="pointer" (click)="removeTaglia(i.id)">Rimuovi</button></td>
+            <button class="pointer" (click)="canRemove(i, x)">Rimuovi</button></td>
     </tr>
 </table>

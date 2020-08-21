@@ -35,6 +35,7 @@ export class TagliaCrudComponent implements OnInit {
     this.memT.removeTaglia(id);
     this.memT.taglia = new TagliaDto();
     this.memT.taglie = this.memT.lista();
+    this.state = "ricerca"
   }
 
   findTaglia() {
@@ -73,5 +74,10 @@ export class TagliaCrudComponent implements OnInit {
   
     } 
    
+  }
+  canRemove(t:TagliaDto, n:number){
+    this.state = "delete";
+    this.tagliaSelezionata = n
+    this.memT.tagliaMod = Object.assign({}, t)
   }
 }
