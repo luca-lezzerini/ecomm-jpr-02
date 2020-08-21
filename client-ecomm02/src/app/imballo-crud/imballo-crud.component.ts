@@ -37,6 +37,7 @@ export class ImballoCrudComponent implements OnInit {
   removeImballo(id: number) {
     this.mem.removeImballo(id)
     this.mem.imballi = this.mem.lista();
+    this.state = "ricerca"
   }
 
   conferma() {
@@ -74,8 +75,11 @@ export class ImballoCrudComponent implements OnInit {
       this.imballoSelezionato = n
       this.mem.imballoVis = Object.assign({}, i)
     }
-
-
-
+  }
+  canRemove(i : ImballoDto, n : number) {
+    this.state = "delete" 
+    this.imballoSelezionato = n
+    this.mem.imballoMod = Object.assign({}, i)
+     
   }
 }
