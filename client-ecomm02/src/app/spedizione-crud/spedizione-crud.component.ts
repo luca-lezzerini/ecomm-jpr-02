@@ -102,7 +102,6 @@ export class SpedizioneCRUDComponent implements OnInit {
     }else{
       this.aggiungiState = false;
       this.visualizzaState = false;
-      return false;
     }
   }
   visualizzaDettagliSped(x: SpedizioneDto, i: number) {
@@ -116,7 +115,7 @@ export class SpedizioneCRUDComponent implements OnInit {
   }
 
   disabilitaCod() {
-    this.meme.nascondiMessaggio = true;
+    this.msgSpedizioneNulla = true;
   }
 
 }
