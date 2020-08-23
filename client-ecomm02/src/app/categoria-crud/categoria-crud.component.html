@@ -6,7 +6,7 @@
     <button (click)="aggiungi()">Aggiungi</button>
 </div>
 <br><br><br>
-<div class="check-element animate-show-hide" *ngIf="aggiungiState || modificaState || cancellaState || visualizzaState">
+<div class="check-element animate-show-hide" *ngIf="aggiungiState || modificaState || visualizzaState">
     <h3>Form dati</h3>
     <input type="text" [readonly]="disabilitaDescrizione" [(ngModel)]="mem.categTemp.descrizione"
         placeholder="descrizione" (click)="disabilitaDesc()">

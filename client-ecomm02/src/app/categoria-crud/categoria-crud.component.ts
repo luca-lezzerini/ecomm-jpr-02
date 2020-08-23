@@ -13,7 +13,6 @@ export class CategoriaCRUDComponent implements OnInit {
   aggiungiState = false;
   modificaState = false;
   visualizzaState = false;
-  cancellaState = false;
   nascondiButton = false;
   disabilitaDescrizione = false;
   tabellaState = true;
@@ -40,7 +39,6 @@ export class CategoriaCRUDComponent implements OnInit {
   aggiungi() {
     this.aggiungiState = true;
     this.visualizzaState = false;
-    this.cancellaState = false;
     this.searchState = false;
     this.nascondiButton = false;
     this.disabilitaDescrizione = false;
@@ -75,7 +73,6 @@ export class CategoriaCRUDComponent implements OnInit {
   annulla() {
     this.aggiungiState = false;
     this.modificaState = false;
-    this.cancellaState = false;
     this.msgCategoriaNonValida = true;
     this.tabellaState = true;
     this.searchState = true;
@@ -87,7 +84,6 @@ export class CategoriaCRUDComponent implements OnInit {
     this.modificaState = true;
     this.searchState = false;
     this.aggiungiState = false;
-    this.cancellaState = false;
     this.visualizzaState = false;
     this.disabilitaDescrizione = false;
     this.nascondiButton = false;
@@ -103,7 +99,6 @@ export class CategoriaCRUDComponent implements OnInit {
       this.mem.remove(this.mem.categTemp.id);
       this.mem.lista();
       this.mem.categTemp = new CategoriaDto();
-      this.cancellaState = false;
       this.aggiungiState = false;
       this.modificaState = false;
       this.visualizzaState = false;
