@@ -52,21 +52,21 @@ export class CategoriaCRUDComponent implements OnInit {
         this.mem.categTemp = new CategoriaDto();
         this.aggiungiState = false;
         this.searchState = true;
-      }else{
+      } else {
         this.msgCategoriaNonValida = false;
       }
-    } else if(this.modificaState) {
-      if(this.mem.categTemp.descrizione != ""){
+    } else if (this.modificaState) {
+      if (this.mem.categTemp.descrizione != "") {
         this.mem.categorie[this.categoriaSelezionata] = this.mem.categTemp;
-      this.mem.update(this.mem.categTemp);
-      this.mem.lista();
-      this.modificaState = false;
-      this.tabellaState = true;
-      this.searchState = true;
-      this.mem.categTemp = new CategoriaDto();
+        this.mem.update(this.mem.categTemp);
+        this.mem.lista();
+        this.modificaState = false;
+        this.tabellaState = true;
+        this.searchState = true;
+        this.mem.categTemp = new CategoriaDto();
+      } else {
+        this.msgCategoriaNonValida = false;
       }
-    } else{
-      this.msgCategoriaNonValida = false;
     }
   }
 
@@ -93,7 +93,7 @@ export class CategoriaCRUDComponent implements OnInit {
 
   rimuovi(c: CategoriaDto, i: number) {
     this.categoriaSelezionata = i;
-    if(confirm("Vuoi eliminare la categoria " + c.descrizione + "?")){
+    if (confirm("Vuoi eliminare la categoria " + c.descrizione + "?")) {
       this.mem.categTemp = Object.assign({}, c);
       this.mem.categorie[this.categoriaSelezionata] = this.mem.categTemp;
       this.mem.remove(this.mem.categTemp.id);
@@ -106,11 +106,11 @@ export class CategoriaCRUDComponent implements OnInit {
       this.disabilitaDescrizione = true;
       this.searchState = true;
       this.tabellaState = true;
-    }else{
+    } else {
       this.searchState = true;
       this.aggiungiState = false;
       this.visualizzaState = false;
-      
+
     }
   }
   visualizzaDettagliCat(c: CategoriaDto, i: number) {
@@ -122,15 +122,15 @@ export class CategoriaCRUDComponent implements OnInit {
     this.msgCategoriaNonValida = true;
   }
 
-  disabilitaDesc(){
+  disabilitaDesc() {
     this.msgCategoriaNonValida = true;
   }
 
-  sortDescrizione(){
-    if(this.direzioneOrdinamento == "asc"){
+  sortDescrizione() {
+    if (this.direzioneOrdinamento == "asc") {
       this.direzioneOrdinamento = "disc";
       this.mem.categorie.sort((a, b) => (a.descrizione < b.descrizione ? -1 : 1))
-    } else{
+    } else {
       this.direzioneOrdinamento = "asc";
       this.mem.categorie.sort((a, b) => (a.descrizione > b.descrizione ? -1 : 1))
     }
