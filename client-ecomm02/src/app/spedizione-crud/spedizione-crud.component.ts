@@ -43,15 +43,19 @@ export class SpedizioneCRUDComponent implements OnInit {
       } else {
         this.msgSpedizioneNulla = false;
       }
-    } else  if(this.modificaState){
-      this.meme.spedizioni[this.indice] = this.meme.temp;
-      this.meme.update(this.meme.temp);
-      this.meme.lista();
-      this.tabellaState = true;
-      this.searchState = true;
-      this.modificaState = false;
-      this.meme.temp = new SpedizioneDto();
-    }else{
+    } else if (this.modificaState) {
+      if (this.meme.temp.codice != "") {
+        this.meme.spedizioni[this.indice] = this.meme.temp;
+        this.meme.update(this.meme.temp);
+        this.meme.lista();
+        this.tabellaState = true;
+        this.searchState = true;
+        this.modificaState = false;
+        this.meme.temp = new SpedizioneDto();
+      } else {
+        this.msgSpedizioneNulla = false;
+      }
+    } else {
       this.msgSpedizioneNulla = false;
     }
   }
@@ -85,7 +89,7 @@ export class SpedizioneCRUDComponent implements OnInit {
   }
   rimuovi(x: SpedizioneDto, i: number) {
     this.indice = i;
-    if(confirm("Vuoi eliminare la spedizione "+ x.codice+"?")){
+    if (confirm("Vuoi eliminare la spedizione " + x.codice + "?")) {
       this.meme.temp = Object.assign({}, x);
       this.meme.spedizioni[this.indice] = this.meme.temp;
       this.meme.remove(this.meme.temp.id);
@@ -99,7 +103,7 @@ export class SpedizioneCRUDComponent implements OnInit {
       this.searchState = true;
       this.msgSpedizioneNulla = false;
       this.tabellaState = true;
-    }else{
+    } else {
       this.aggiungiState = false;
       this.visualizzaState = false;
     }

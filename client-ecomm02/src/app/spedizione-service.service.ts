@@ -40,9 +40,9 @@ export class SpedizioneServiceService {
     obs.subscribe(risp => { this.spedizioni = risp });
   }
   update(temp: SpedizioneDto) {
-    let obs: Observable<SpedizioneDto> =
-      this.http.post<SpedizioneDto>(this.url + "/modifica-spedizione/", temp);
-    obs.subscribe(risp => { this.spedizione = risp });
-    return this.spedizione;
+    let obs: Observable<SpedizioneDto[]> =
+      this.http.post<SpedizioneDto[]>(this.url + "/modifica-spedizione/", temp);
+    obs.subscribe(risp => { this.spedizioni = risp });
+    return this.spedizioni;
   }
 }

@@ -79,7 +79,7 @@ public class SpedizioneController {
     @ResponseBody
     public List<Spedizione> modificaCategoria(@RequestBody Optional<Spedizione> spedizione) {
         log.info("Ricevuta richiesta di modifica");
-        if (spedizione.isPresent()) {
+        if (!spedizione.get().getCodice().isEmpty()) {
             spedizioneService.updateSped(spedizione.get());
         } else {
             log.error("Spedizione nulla");
