@@ -28,11 +28,11 @@ export class SpedizioneCRUDComponent implements OnInit {
     this.meme.spedizioni = this.meme.lista();
   }
   searchCriteria() {
-    if (this.meme.ricerca.ricerca != null) {
+    if (this.meme.ricerca.ricerca != "") {
       this.meme.cerca();
       this.meme.ricerca.ricerca = "";
     } else {
-      this.meme.lista();
+      return this.meme.lista();
     }
   }
   conferma() {

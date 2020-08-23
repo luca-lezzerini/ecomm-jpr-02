@@ -5,7 +5,7 @@
     <button (click)="aggiungi()">Aggiungi</button>
 </div>
 <br><br><br>
-<div class="check-element animate-show-hide" *ngIf="aggiungiState || modificaState || cancellaState || visualizzaState">
+<div class="check-element " *ngIf="aggiungiState || modificaState || cancellaState || visualizzaState">
     <h1>Form Dati</h1>
     <input type="text" (click)="disabilitaCod()" [readonly]="disabilitaCampi" [(ngModel)]="meme.temp.codice" placeholder="codice">
     <input type="text" [readonly]="disabilitaCampi" [(ngModel)]="meme.temp.nome" placeholder="nome">

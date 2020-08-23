@@ -53,6 +53,7 @@ export class CategoriaCRUDComponent implements OnInit {
         this.mem.addCategoria();
         this.mem.categTemp = new CategoriaDto();
         this.aggiungiState = false;
+        this.searchState = true;
       }else{
         this.msgCategoriaNonValida = false;
       }
@@ -96,7 +97,7 @@ export class CategoriaCRUDComponent implements OnInit {
 
   rimuovi(c: CategoriaDto, i: number) {
     this.categoriaSelezionata = i;
-    if(confirm("Vuoi eliminare la categoria?")){
+    if(confirm("Vuoi eliminare la categoria " + c.descrizione + "?")){
       this.mem.categTemp = Object.assign({}, c);
       this.mem.categorie[this.categoriaSelezionata] = this.mem.categTemp;
       this.mem.remove(this.mem.categTemp.id);
@@ -111,9 +112,10 @@ export class CategoriaCRUDComponent implements OnInit {
       this.searchState = true;
       this.tabellaState = true;
     }else{
+      this.searchState = true;
       this.aggiungiState = false;
       this.visualizzaState = false;
-      return false;
+      
     }
   }
   visualizzaDettagliCat(c: CategoriaDto, i: number) {
