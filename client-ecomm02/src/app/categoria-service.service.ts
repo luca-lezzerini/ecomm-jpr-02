@@ -15,7 +15,6 @@ export class CategoriaServiceService {
   categTemp: CategoriaDto = new CategoriaDto();
   ricerca: RicercaDto = new RicercaDto();
   ricerche: RicercaDto[] = [];
-  nascondiMessaggio = true;
   
   constructor(private http:HttpClient) { }
 

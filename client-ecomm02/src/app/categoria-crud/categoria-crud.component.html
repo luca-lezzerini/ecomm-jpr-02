@@ -1,24 +1,24 @@
 <h1>CATEGORIA</h1>
 <br>
-<div class="check-element animate-show-hide" *ngIf="nascostoSearch">
+<div class="check-element animate-show-hide" *ngIf="searchState">
     <input type="text" [(ngModel)]="mem.ricerca.ricerca" placeholder="categoria">
     <button (click)="searchCriteria()">Cerca</button>
     <button (click)="aggiungi()">Aggiungi</button>
 </div>
 <br><br><br>
-<div class="check-element animate-show-hide" *ngIf="aggiungiState || modificaState">
+<div class="check-element animate-show-hide" *ngIf="aggiungiState || modificaState || cancellaState || visualizzaState">
     <h3>Form dati</h3>
     <input type="text" [readonly]="disabilitaDescrizione" [(ngModel)]="mem.categTemp.descrizione"
         placeholder="descrizione" (click)="disabilitaDesc()">
     <button (click)="conferma()" [hidden]="nascondiButton">Conferma</button>
     <button (click)="annulla()" [hidden]="nascondiButton">Annulla</button>
-    <p [hidden]="mem.nascondiMessaggio">Digitare una categoria valida</p>
+    <p [hidden]="msgCategoriaNonValida">Digitare una categoria valida</p>
 </div>
 <br><br><br>
 <table *ngIf="tabellaState">
     <tr>
         <th style="display:none;">ID</th>
-        <th>Descrizione</th>
+        <th><button (click)="sortDescrizione()">Descrizione</button></th>
         <th></th>
         <th></th>
     </tr>
@@ -26,6 +26,6 @@
         <td style="display:none;">{{c.id}}</td>
         <td (click)="visualizzaDettagliCat(c, i)" class="clickable">{{c.descrizione}}</td>
         <td><button (click)="modifica(c,i)">Modifica</button></td>
-        <td><button (click)="rimuovi(c.id)">Rimuovi</button></td>
+        <td><button (click)="rimuovi(c, i)">Rimuovi</button></td>
     </tr>
 </table>

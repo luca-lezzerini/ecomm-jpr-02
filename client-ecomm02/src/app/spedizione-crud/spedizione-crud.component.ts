@@ -9,12 +9,16 @@ import { SpedizioneServiceService } from '../spedizione-service.service';
 })
 export class SpedizioneCRUDComponent implements OnInit {
 
-  aggiungiStateSped = false;
-  modificaStateSped = false;
+  aggiungiState = false;
+  modificaState = false;
+  cancellaState = false;
+  visualizzaState = false;
+  msgSpedizioneNulla = false;
+
   indice: number;
   disabilitaCampi = false;
   nascondiButton = false;
-  nascostoSearch = true;
+  searchState = true;
   tabellaState = true;
 
 
@@ -27,63 +31,92 @@ export class SpedizioneCRUDComponent implements OnInit {
     if (this.meme.ricerca.ricerca != null) {
       this.meme.cerca();
       this.meme.ricerca.ricerca = "";
-      this.aggiungiStateSped = false;
     } else {
-      return this.meme.lista();
+      this.meme.lista();
     }
   }
   conferma() {
-    if (this.aggiungiStateSped) {
+    if (this.aggiungiState) {
       if (this.meme.temp.codice != null) {
         this.meme.aggiungi();
         this.meme.temp = new SpedizioneDto();
+        this.aggiungiState = false;
       } else {
-        this.meme.nascondiMessaggio = false;
+        this.msgSpedizioneNulla = false;
       }
-    } else {
+    } else  if(this.modificaState){
       this.meme.spedizioni[this.indice] = this.meme.temp;
       this.meme.update(this.meme.temp);
       this.meme.lista();
       this.tabellaState = true;
-      this.nascostoSearch = true;
+      this.searchState = true;
+      this.modificaState = false;
       this.meme.temp = new SpedizioneDto();
+    }else{
+      this.msgSpedizioneNulla = false;
     }
   }
   aggiungi() {
-    this.aggiungiStateSped = true;
-    this.modificaStateSped = false;
+    this.aggiungiState = true;
+    this.modificaState = false;
     this.meme.temp = new SpedizioneDto();
     this.nascondiButton = false;
     this.disabilitaCampi = false;
-    this.meme.nascondiMessaggio = true;
+    this.msgSpedizioneNulla = true;
   }
   annulla() {
-    this.aggiungiStateSped = false;
-    this.modificaStateSped = false;
+    this.aggiungiState = false;
+    this.modificaState = false;
+    this.visualizzaState = false;
+    this.cancellaState = false;
+    this.msgSpedizioneNulla = false;
     this.tabellaState = true;
-    this.nascostoSearch = true;
+    this.searchState = true;
   }
   modifica(x: SpedizioneDto, i: number) {
     this.indice = i;
     this.meme.temp = Object.assign({}, x)
-    this.aggiungiStateSped = false;
-    this.modificaStateSped = true;
+    this.modificaState = true;
+    this.visualizzaState = false;
+    this.aggiungiState = false;
+    this.cancellaState = false;
     this.nascondiButton = false;
     this.disabilitaCampi = false;
-    this.nascostoSearch = false;
+    this.searchState = false;
     this.tabellaState = false;
+    this.msgSpedizioneNulla = true;
   }
-  rimuovi(id: number) {
-    this.meme.remove(id);
-    this.meme.temp = new SpedizioneDto();
+  rimuovi(x: SpedizioneDto, i: number) {
+    this.indice = i;
+    if(confirm("Vuoi eliminare la spedizione?")){
+      this.meme.temp = Object.assign({}, x);
+      this.meme.spedizioni[this.indice] = this.meme.temp;
+      this.meme.remove(this.meme.temp.id);
+      this.meme.lista();
+      this.meme.temp = new SpedizioneDto();
+      this.cancellaState = false;
+      this.aggiungiState = false;
+      this.modificaState = false;
+      this.visualizzaState = false;
+      this.nascondiButton = false;
+      this.disabilitaCampi = true;
+      this.searchState = true;
+      this.msgSpedizioneNulla = false;
+      this.tabellaState = true;
+    }else{
+      this.aggiungiState = false;
+      this.visualizzaState = false;
+      return false;
+    }
   }
   visualizzaDettagliSped(x: SpedizioneDto, i: number) {
     this.indice = i;
     this.meme.temp = Object.assign({}, x);
-    this.aggiungiStateSped = false;
-    this.modificaStateSped = true;
+    this.visualizzaState = true;
     this.nascondiButton = true;
     this.disabilitaCampi = true;
+    this.msgSpedizioneNulla = true;
+    this.searchState = true;
   }
 
   disabilitaCod() {

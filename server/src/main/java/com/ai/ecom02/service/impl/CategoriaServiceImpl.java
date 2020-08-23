@@ -10,6 +10,9 @@ import com.ai.ecom02.model.Categoria;
 import com.ai.ecom02.repository.RepCategoria;
 import com.ai.ecom02.service.CategoriaService;
 import java.util.List;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,6 +23,8 @@ import org.springframework.stereotype.Service;
 @Service
 public class CategoriaServiceImpl implements CategoriaService {
 
+    private static Logger log = LoggerFactory.getLogger(CategoriaServiceImpl.class);
+
     @Autowired
     RepCategoria repCategoria;
 
@@ -28,7 +33,7 @@ public class CategoriaServiceImpl implements CategoriaService {
         try {
             repCategoria.save(categoria);
         } catch (Exception e) {
-
+            log.error("Categoria già presente: {}", e.getMessage());
         }
     }
 
@@ -54,7 +59,7 @@ public class CategoriaServiceImpl implements CategoriaService {
         try {
             repCategoria.save(categoria);
         } catch (Exception e) {
-
+           log.error("Categoria già presente; {}", e.getMessage());
         }
         return getLista();
     }

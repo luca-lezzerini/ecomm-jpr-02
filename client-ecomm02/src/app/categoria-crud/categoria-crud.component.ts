@@ -9,13 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CategoriaCRUDComponent implements OnInit {
 
+  searchState = true;
   aggiungiState = false;
   modificaState = false;
-  categoriaSelezionata: number;
+  visualizzaState = false;
+  cancellaState = false;
   nascondiButton = false;
   disabilitaDescrizione = false;
-  nascostoSearch = true;
   tabellaState = true;
+  msgCategoriaNonValida = true;
+
+  categoriaSelezionata: number;
+  direzioneOrdinamento = "asc";
 
   constructor(public mem: CategoriaServiceService) { }
 
@@ -27,7 +32,6 @@ export class CategoriaCRUDComponent implements OnInit {
     if (this.mem.ricerca.ricerca != null) {
       this.mem.cerca();
       this.mem.ricerca.ricerca = "";
-      this.aggiungiState = false;
     } else {
       return this.mem.lista();
     }
@@ -35,11 +39,12 @@ export class CategoriaCRUDComponent implements OnInit {
 
   aggiungi() {
     this.aggiungiState = true;
-    this.modificaState = false;
-    this.mem.categTemp = new CategoriaDto();
+    this.visualizzaState = false;
+    this.cancellaState = false;
+    this.searchState = false;
     this.nascondiButton = false;
     this.disabilitaDescrizione = false;
-    this.mem.nascondiMessaggio = true;
+    this.mem.categTemp = new CategoriaDto();
   }
 
   conferma() {
@@ -47,51 +52,90 @@ export class CategoriaCRUDComponent implements OnInit {
       if (this.mem.categTemp.descrizione != null) {
         this.mem.addCategoria();
         this.mem.categTemp = new CategoriaDto();
+        this.aggiungiState = false;
       }else{
-        this.mem.nascondiMessaggio = false;
+        this.msgCategoriaNonValida = false;
       }
-    } else {
-      this.mem.categorie[this.categoriaSelezionata] = this.mem.categTemp;
+    } else if(this.modificaState) {
+      if(this.mem.categTemp.descrizione != ""){
+        this.mem.categorie[this.categoriaSelezionata] = this.mem.categTemp;
       this.mem.update(this.mem.categTemp);
       this.mem.lista();
+      this.modificaState = false;
       this.tabellaState = true;
-      this.nascostoSearch = true;
+      this.searchState = true;
       this.mem.categTemp = new CategoriaDto();
+      }
+    } else{
+      this.msgCategoriaNonValida = false;
     }
   }
 
   annulla() {
     this.aggiungiState = false;
     this.modificaState = false;
+    this.cancellaState = false;
+    this.msgCategoriaNonValida = true;
     this.tabellaState = true;
-    this.nascostoSearch = true;
+    this.searchState = true;
   }
 
   modifica(c: CategoriaDto, i: number) {
     this.categoriaSelezionata = i;
     this.mem.categTemp = Object.assign({}, c); //copio c dentro categTemp
-    this.aggiungiState = false;
     this.modificaState = true;
-    this.nascondiButton = false;
+    this.searchState = false;
+    this.aggiungiState = false;
+    this.cancellaState = false;
+    this.visualizzaState = false;
     this.disabilitaDescrizione = false;
-    this.nascostoSearch = false;
+    this.nascondiButton = false;
     this.tabellaState = false;
+    this.msgCategoriaNonValida = true;
   }
 
-  rimuovi(id: number) {
-    this.mem.remove(id);
-    this.mem.categTemp = new CategoriaDto();
+  rimuovi(c: CategoriaDto, i: number) {
+    this.categoriaSelezionata = i;
+    if(confirm("Vuoi eliminare la categoria?")){
+      this.mem.categTemp = Object.assign({}, c);
+      this.mem.categorie[this.categoriaSelezionata] = this.mem.categTemp;
+      this.mem.remove(this.mem.categTemp.id);
+      this.mem.lista();
+      this.mem.categTemp = new CategoriaDto();
+      this.cancellaState = false;
+      this.aggiungiState = false;
+      this.modificaState = false;
+      this.visualizzaState = false;
+      this.nascondiButton = false;
+      this.disabilitaDescrizione = true;
+      this.searchState = true;
+      this.tabellaState = true;
+    }else{
+      this.aggiungiState = false;
+      this.visualizzaState = false;
+      return false;
+    }
   }
   visualizzaDettagliCat(c: CategoriaDto, i: number) {
     this.categoriaSelezionata = i;
     this.mem.categTemp = Object.assign({}, c); //copio c dentro categTemp
-    this.aggiungiState = false;
-    this.modificaState = true;
+    this.visualizzaState = true;
     this.nascondiButton = true;
     this.disabilitaDescrizione = true;
+    this.msgCategoriaNonValida = true;
   }
 
   disabilitaDesc(){
-    this.mem.nascondiMessaggio = true;
+    this.msgCategoriaNonValida = true;
+  }
+
+  sortDescrizione(){
+    if(this.direzioneOrdinamento == "asc"){
+      this.direzioneOrdinamento = "disc";
+      this.mem.categorie.sort((a, b) => (a.descrizione < b.descrizione ? -1 : 1))
+    } else{
+      this.direzioneOrdinamento = "asc";
+      this.mem.categorie.sort((a, b) => (a.descrizione > b.descrizione ? -1 : 1))
+    }
   }
 }

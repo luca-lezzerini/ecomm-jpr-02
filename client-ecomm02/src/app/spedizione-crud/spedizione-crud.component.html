@@ -1,18 +1,18 @@
 <h1>SPEDIZIONI</h1>
-<div class="check-element animate-show-hide" *ngIf="nascostoSearch">
+<div class="check-element animate-show-hide" *ngIf="searchState">
     <input type="text" [(ngModel)]="meme.ricerca.ricerca" placeholder="codice">
     <button (click)="searchCriteria()">Cerca</button>
     <button (click)="aggiungi()">Aggiungi</button>
 </div>
 <br><br><br>
-<div class="check-element animate-show-hide" *ngIf="aggiungiStateSped || modificaStateSped">
+<div class="check-element animate-show-hide" *ngIf="aggiungiState || modificaState || cancellaState || visualizzaState">
     <h1>Form Dati</h1>
     <input type="text" (click)="disabilitaCod()" [readonly]="disabilitaCampi" [(ngModel)]="meme.temp.codice" placeholder="codice">
     <input type="text" [readonly]="disabilitaCampi" [(ngModel)]="meme.temp.nome" placeholder="nome">
     <input type="number" [readonly]="disabilitaCampi" [(ngModel)]="meme.temp.prezzoKg" placeholder="prezzoKg">
     <button (click)="conferma()" [hidden]="nascondiButton">Conferma</button>
     <button (click)="annulla()" [hidden]="nascondiButton">Annulla</button>
-    <p [hidden]="meme.nascondiMessaggio">Digitare una spedizione valida</p>
+    <p [hidden]="msgSpedizioneNulla">Digitare una spedizione valida</p>
 </div>
 <br><br><br>
 <table *ngIf="tabellaState">
@@ -30,6 +30,6 @@
         <td (click)="visualizzaDettagliSped(x, i)">{{x.nome}}</td>
         <td (click)="visualizzaDettagliSped(x, i)">{{x.prezzoKg}}€</td>
         <td><button (click)="modifica(x,i)">Modifica</button></td>
-        <td><button (click)="rimuovi(x.id)">Rimuovi</button></td>
+        <td><button (click)="rimuovi(x,i)">Rimuovi</button></td>
     </tr>
 </table>

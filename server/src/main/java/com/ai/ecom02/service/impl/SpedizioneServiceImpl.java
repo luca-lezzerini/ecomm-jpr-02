@@ -5,13 +5,13 @@
  */
 package com.ai.ecom02.service.impl;
 
-import com.ai.ecom02.dto.RicercaDto;
 import com.ai.ecom02.model.Spedizione;
 import com.ai.ecom02.repository.RepSpedizione;
 import com.ai.ecom02.service.SpedizioneService;
 import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,6 +22,8 @@ import org.springframework.stereotype.Service;
 @Service
 public class SpedizioneServiceImpl implements SpedizioneService {
 
+    private static Logger log = LoggerFactory.getLogger(SpedizioneServiceImpl.class);
+
     @Autowired
     RepSpedizione repSpedizione;
 
@@ -31,6 +33,7 @@ public class SpedizioneServiceImpl implements SpedizioneService {
         try {
             repSpedizione.save(spedizione);
         } catch (Exception ex) {
+            log.error("Spedizione già presente {}", ex.getMessage());
 
         }
     }
@@ -48,7 +51,7 @@ public class SpedizioneServiceImpl implements SpedizioneService {
 
     @Override
     public List<Spedizione> findSped(String codice, String nome) {
-        return repSpedizione.findByCodiceLikeOrNomeLike("%"+codice+"%", "%"+nome+"%");
+        return repSpedizione.findByCodiceLikeOrNomeLike("%" + codice + "%", "%" + nome + "%");
     }
 
     @Override
@@ -57,7 +60,7 @@ public class SpedizioneServiceImpl implements SpedizioneService {
         try {
             repSpedizione.save(spedizione);
         } catch (Exception e) {
-
+            log.error("Spedizione già presente {}", e.getMessage());
         }
         return getLista();
     }
