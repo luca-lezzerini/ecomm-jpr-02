@@ -85,7 +85,7 @@ export class SpedizioneCRUDComponent implements OnInit {
   }
   rimuovi(x: SpedizioneDto, i: number) {
     this.indice = i;
-    if(confirm("Vuoi eliminare la spedizione?")){
+    if(confirm("Vuoi eliminare la spedizione "+ x.codice+"?")){
       this.meme.temp = Object.assign({}, x);
       this.meme.spedizioni[this.indice] = this.meme.temp;
       this.meme.remove(this.meme.temp.id);
