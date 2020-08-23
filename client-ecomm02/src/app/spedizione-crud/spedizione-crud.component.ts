@@ -11,7 +11,6 @@ export class SpedizioneCRUDComponent implements OnInit {
 
   aggiungiState = false;
   modificaState = false;
-  cancellaState = false;
   visualizzaState = false;
   msgSpedizioneNulla = false;
 
@@ -68,7 +67,6 @@ export class SpedizioneCRUDComponent implements OnInit {
     this.aggiungiState = false;
     this.modificaState = false;
     this.visualizzaState = false;
-    this.cancellaState = false;
     this.msgSpedizioneNulla = false;
     this.tabellaState = true;
     this.searchState = true;
@@ -79,7 +77,6 @@ export class SpedizioneCRUDComponent implements OnInit {
     this.modificaState = true;
     this.visualizzaState = false;
     this.aggiungiState = false;
-    this.cancellaState = false;
     this.nascondiButton = false;
     this.disabilitaCampi = false;
     this.searchState = false;
@@ -94,7 +91,6 @@ export class SpedizioneCRUDComponent implements OnInit {
       this.meme.remove(this.meme.temp.id);
       this.meme.lista();
       this.meme.temp = new SpedizioneDto();
-      this.cancellaState = false;
       this.aggiungiState = false;
       this.modificaState = false;
       this.visualizzaState = false;
