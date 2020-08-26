@@ -63,19 +63,20 @@ export class TagliaCrudComponent implements OnInit {
   chiudi() {
     this.state = "ricerca";
     this.state2 = ""
+    this.memT.tagliaMod = new TagliaDto();
   }
 
   visualizza(t: TagliaDto, n: number) {
-  
+
     if (this.state != "aggiungi") {
       this.state2 = "visualizza"
       this.tagliaSelezionata = n
       this.memT.tagliaVis = Object.assign({}, t)
-  
-    } 
-   
+
+    }
+
   }
-  canRemove(t:TagliaDto, n:number){
+  canRemove(t: TagliaDto, n: number) {
     this.state = "delete";
     this.tagliaSelezionata = n
     this.memT.tagliaMod = Object.assign({}, t)
