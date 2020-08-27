@@ -22,9 +22,7 @@ public interface RepProdotto extends JpaRepository<Prodotto, Long> {
 
     List<Prodotto> findByPrezzoLike(String prezzo);
 
-  @Query("SELECT p FROM Prodotto p WHERE codice LIKE :str OR descrizione LIKE :str ")
-    List<Prodotto> findByCodiceLikeOrDescrizioneLike(@Param("str") String str);
-
-   
+    @Query("SELECT p FROM Prodotto p WHERE codice LIKE :str OR descrizione LIKE :str ")
+    List<Prodotto> trovaPerChiaveParziale(@Param("str") String str);
 
 }
