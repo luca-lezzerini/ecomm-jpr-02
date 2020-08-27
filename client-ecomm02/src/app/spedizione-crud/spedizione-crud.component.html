@@ -7,7 +7,8 @@
 <br><br><br>
 <div class="check-element " *ngIf="aggiungiState || modificaState || visualizzaState">
     <h1>Form Dati</h1>
-    <input type="text" (click)="disabilitaCod()" [readonly]="disabilitaCampi" [(ngModel)]="meme.temp.codice" placeholder="codice">
+    <input type="text" (click)="disabilitaCod()" [readonly]="disabilitaCampi" [(ngModel)]="meme.temp.codice"
+        placeholder="codice">
     <input type="text" [readonly]="disabilitaCampi" [(ngModel)]="meme.temp.nome" placeholder="nome">
     <input type="number" [readonly]="disabilitaCampi" [(ngModel)]="meme.temp.prezzoKg" placeholder="prezzoKg">
     <button (click)="conferma()" [hidden]="nascondiButton">Conferma</button>
@@ -29,7 +30,7 @@
         <td (click)="visualizzaDettagliSped(x, i)">{{x.codice}}</td>
         <td (click)="visualizzaDettagliSped(x, i)">{{x.nome}}</td>
         <td (click)="visualizzaDettagliSped(x, i)">{{x.prezzoKg}}€</td>
-        <td><button (click)="modifica(x,i)">Modifica</button></td>
-        <td><button (click)="rimuovi(x,i)">Rimuovi</button></td>
+        <td><button (click)="modifica(x, i)">Modifica</button></td>
+        <td><button (click)="rimuovi(x, i)">Rimuovi</button></td>
     </tr>
 </table>
