@@ -75,12 +75,14 @@ public class OffertaServiceImpl implements OffertaService {
         
         return repOfferta.findByDescrizioneLike(offerta.getDescrizione() +"%");
     }
+//    public List<Offerta> findByDescrizioneOrCodiceLike(RicercaDto ricerca) {
+//        List<Offerta> d = repOfferta.findByDescrizioneLike(ricerca.getRicerca() + "%");
+//        List<Offerta> c = repOfferta.findByCodiceLike(ricerca.getRicerca()+ "%");
+//        return Stream.concat(d.stream(),c.stream()).collect(Collectors.toList());
+//    }
+    
     public List<Offerta> findByDescrizioneOrCodiceLike(RicercaDto ricerca) {
-        List<Offerta> d = repOfferta.findByDescrizioneLike(ricerca.getRicerca() + "%");
-        List<Offerta> c = repOfferta.findByCodiceLike(ricerca.getRicerca()+ "%");
-        return Stream.concat(d.stream(),c.stream()).collect(Collectors.toList());
+         return repOfferta.findByDescrizioneOrCodiceLike("%"+ricerca.getRicerca()+"%");
     }
-    
-    
     
 }

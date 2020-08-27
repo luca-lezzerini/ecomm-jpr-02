@@ -9,6 +9,8 @@ package com.ai.ecom02.repository;
 import com.ai.ecom02.model.Offerta;
 import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -26,4 +28,6 @@ public interface RepOfferta extends JpaRepository<Offerta, Long> {       // vuol
 
     public List<Offerta> findByDescrizioneLike(String descrizione);
     
+    @Query("SELECT o FROM Offerta o WHERE codice LIKE :str OR descrizione LIKE :str")
+    public List<Offerta> findByDescrizioneOrCodiceLike(@Param("str") String str);
 }

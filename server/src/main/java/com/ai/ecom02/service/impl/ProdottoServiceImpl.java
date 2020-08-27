@@ -81,6 +81,6 @@ public class ProdottoServiceImpl implements ProdottoService {
     @Override
     public List<Prodotto> findByCodiceLikeOrDescrizioneLike(RicercaDto ricerca) {
 
-        return repProdotto.findByCodiceLikeOrDescrizioneLike("%"+ricerca.getRicerca()+"%","%"+ricerca.getRicerca() +"%");
+        return repProdotto.findByCodiceLikeOrDescrizioneLike("%"+ricerca.getRicerca()+"%");
     }
 }

@@ -5,6 +5,7 @@
  */
 package com.ai.ecom02.service;
 
+import com.ai.ecom02.dto.RicercaDto;
 import com.ai.ecom02.model.Offerta;
 import java.util.List;
 
@@ -31,5 +32,6 @@ public interface OffertaService {                                 // Sto dichiar
     Offerta findByDescrizione(Offerta offerta);
 
     List<Offerta> findByDescrizioneLike(Offerta offerta);
-
+    
+    List<Offerta> findByDescrizioneOrCodiceLike(RicercaDto ricerca);
 }

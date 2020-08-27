@@ -3,6 +3,7 @@ import { ImballoDto } from './../dto/imballo-dto';
 import { ImballoServiceService } from './../imballo-service.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { RicercaDto } from '../dto/ricerca-dto';
 
 
 @Component({
@@ -15,6 +16,7 @@ export class ImballoCrudComponent implements OnInit {
   state = "ricerca"
   state2 = ""
   imballoSelezionato: number
+  msg: String;
 
   constructor(private router: Router, public mem: ImballoServiceService) { }
 
@@ -25,6 +27,7 @@ export class ImballoCrudComponent implements OnInit {
   addImballo() {
     this.state = "aggiungi"
     this.state2 = ""
+    this.mem.ricerca.ricerca = ""
   }
 
   updateImballo(imballo: ImballoDto, i: number) {
@@ -40,20 +43,26 @@ export class ImballoCrudComponent implements OnInit {
     this.state = "ricerca"
   }
 
-  conferma() {
-    if (this.state == "aggiungi") {
+  confirm() {
+    if (this.state == "aggiungi" && this.mem.imballoMod.descrizione.length != 0 && this.mem.imballoMod.costo > 0) {
       this.mem.addImballo()
       this.mem.imballoMod = new ImballoDto()
-    } else {
+    } else if (this.mem.imballoMod.descrizione.length > 0 && this.mem.imballoMod.costo > 0) {
       this.mem.imballi[this.imballoSelezionato] = this.mem.imballoMod;
       this.mem.updateImballo(this.mem.imballoMod)
       this.mem.imballoMod = new ImballoDto()
+    } else {
+      this.mem.imballoMod = new ImballoDto()
+      this.msg = "Inserire campo descrizione";
     }
     this.state = "ricerca"
+
   }
 
-  chiudi() {
+  close() {
     this.state = "ricerca"
+    this.mem.imballoMod = new ImballoDto()
+
   }
 
   findImballo() {
@@ -68,7 +77,7 @@ export class ImballoCrudComponent implements OnInit {
 
   }
 
-  visualizza(i: ImballoDto, n: number) {
+  view(i: ImballoDto, n: number) {
 
     if (this.state != "aggiungi") {
       this.state2 = "visualizza"
@@ -76,10 +85,11 @@ export class ImballoCrudComponent implements OnInit {
       this.mem.imballoVis = Object.assign({}, i)
     }
   }
-  canRemove(i : ImballoDto, n : number) {
-    this.state = "delete" 
+  canRemove(i: ImballoDto, n: number) {
+    this.state = "delete"
+    this.state2 = "";
     this.imballoSelezionato = n
     this.mem.imballoMod = Object.assign({}, i)
-     
+
   }
 }
