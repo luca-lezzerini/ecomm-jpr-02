@@ -16,6 +16,7 @@ export class ImballoCrudComponent implements OnInit {
   state = "ricerca"
   state2 = ""
   imballoSelezionato: number
+  msg: String;
 
   constructor(private router: Router, public mem: ImballoServiceService) { }
 
@@ -43,15 +44,19 @@ export class ImballoCrudComponent implements OnInit {
   }
 
   confirm() {
-    if (this.state == "aggiungi") {
+    if (this.state == "aggiungi" && this.mem.imballoMod.descrizione.length != 0 && this.mem.imballoMod.costo > 0) {
       this.mem.addImballo()
       this.mem.imballoMod = new ImballoDto()
-    } else {
+    } else if (this.mem.imballoMod.descrizione.length > 0 && this.mem.imballoMod.costo > 0) {
       this.mem.imballi[this.imballoSelezionato] = this.mem.imballoMod;
       this.mem.updateImballo(this.mem.imballoMod)
       this.mem.imballoMod = new ImballoDto()
+    } else {
+      this.mem.imballoMod = new ImballoDto()
+      this.msg = "Inserire campo descrizione";
     }
     this.state = "ricerca"
+
   }
 
   close() {
@@ -82,6 +87,7 @@ export class ImballoCrudComponent implements OnInit {
   }
   canRemove(i: ImballoDto, n: number) {
     this.state = "delete"
+    this.state2 = "";
     this.imballoSelezionato = n
     this.mem.imballoMod = Object.assign({}, i)
 

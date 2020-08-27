@@ -3,41 +3,57 @@
     <br>
     <h2>Inserire i dati di ricerca:</h2>
     <span *ngIf="state =='ricerca'">
-    <input type="text" [(ngModel)]="mem.ricerca.ricerca">&nbsp;
-    <button class="pointer" (click)="findImballo()">Cerca</button>&nbsp;
-    <button class="pointer" id="aggiungi" (click)="addImballo()">Aggiungi</button>
-</span>
+        <input type="text" [(ngModel)]="mem.ricerca.ricerca">&nbsp;
+        <button class="pointer" (click)="findImballo()">Cerca</button>&nbsp;
+        <button class="pointer" id="aggiungi" (click)="addImballo()">Aggiungi</button>
+    </span>
     <span *ngIf="state !='ricerca'">
-    <input type="text" [(ngModel)]="mem.ricerca.ricerca" placeholder="imballo"
-        disabled>
-</span>
+        <input type="text" [(ngModel)]="mem.ricerca.ricerca"
+            placeholder="imballo"
+            disabled>
+    </span>
     <br>
     <br>
     <br>
     <span *ngIf="state =='aggiungi'">
-    <div>
-        <h3>Form dati</h3>
-        <input type="text" [(ngModel)]="mem.imballoMod.descrizione"
-            placeholder="descrizione">
-        <input type="number" [(ngModel)]="mem.imballoMod.costo"
-            placeholder="costo">
+        <div class="box">
+            <br>
+            <input type="text" [(ngModel)]="mem.imballoMod.descrizione"
+                placeholder="descrizione">
+            <input type="number" [(ngModel)]="mem.imballoMod.costo"
+                placeholder="costo">
+            <br>
+            {{msg}}
+            <br>
+            <button class="pointer" id="conferma" (click)="confirm()">Conferma</button>&nbsp;
+            <button class="pointer" id="annulla" (click)="close()">Annulla</button>
+            <br>
+            <br>
+        </div>
+    </span>
+    <div *ngIf="state == 'modifica'" class="box">
         <br>
-        <button class="pointer" id="conferma" (click)="confirm()">Conferma</button>
-        <button class="pointer" id="annulla" (click)="close()">Annulla</button>
-    </div>
-</span>
-    <div *ngIf="state == 'modifica'">
-        nuova descrizione:<input type="text" [(ngModel)]="mem.imballoMod.descrizione" placeholder="descrizione"> nuovo costo:<input type="number" [(ngModel)]="mem.imballoMod.costo" placeholder="costo">&nbsp;
-        <button class="pointer" (click)="confirm()">Conferma modifica</button>
+        nuova descrizione:<input type="text"
+            [(ngModel)]="mem.imballoMod.descrizione" placeholder="descrizione">
+        nuovo costo:<input type="number" [(ngModel)]="mem.imballoMod.costo"
+            placeholder="costo">&nbsp;
+        <br>
+        <br>
+        <button class="pointer" (click)="confirm()">Conferma modifica</button>&nbsp;
         <button class="pointer" (click)="close()">Annulla</button>
+        <br>
+        <br>
     </div>
-    <div *ngIf="state == 'delete'">
-        <h2>elimina?</h2>
-        <button class="pointer" (click)="removeImballo(mem.imballoMod.id)">Conferma</button>
+    <div *ngIf="state == 'delete'" class="box">
+        <h2>Elimina
+            {{mem.imballoMod.descrizione}} ?</h2>
+        <button class="pointer" (click)="removeImballo(mem.imballoMod.id)">Conferma</button>&nbsp;
         <button class="pointer" (click)="close()">Annulla</button>
+        <br>
+        <br>
     </div>
-    <div *ngIf="state2 == 'visualizza'">
-        <h3>Form dati</h3>
+    <div *ngIf="state2 == 'visualizza'" class="box">
+        <br>
         <table>
             <tr>
                 <th>Descrizione</th>
@@ -52,6 +68,7 @@
                 </td>
             </tr>
         </table>
+        <br>
     </div>
     <br>
     <br>
