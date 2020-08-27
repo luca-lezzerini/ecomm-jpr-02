@@ -60,6 +60,6 @@ public class TagliaServiceImpl implements TagliaService {
         return repTaglia.findByDescrizioneLikeOrSiglaLike("%" + ricerca + "%", "%" + ricerca0 + "%");
     }
     public List<Taglia> findByDescrizioneOrSigla(String ricerca, String ricerca0) {
-        return repTaglia.findByDescrizioneOrSigla("%" + ricerca + "%", "%" + ricerca0 + "%");
+        return repTaglia.trovaPerChiaveParziale("%" + ricerca + "%", "%" + ricerca0 + "%");
     }
 }
