@@ -49,7 +49,7 @@ public class ColoreServiceImpl implements ColoreService {
 
     @Override
     public List<Colore> findByColoreLike(Colore colore) {
-        return repColore.findByColoreLike(colore.getColore()+"%");
+        return repColore.findByColoreLike("%"+colore.getColore()+"%");
     }
     
 }
