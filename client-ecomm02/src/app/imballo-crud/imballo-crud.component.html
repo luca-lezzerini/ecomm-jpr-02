@@ -18,9 +18,9 @@
     <span *ngIf="state =='aggiungi'">
         <div class="box">
             <br>
-            <input type="text" [(ngModel)]="mem.imballoMod.descrizione"
+            <input type="text" required [(ngModel)]="mem.imballoMod.descrizione"
                 placeholder="descrizione">
-            <input type="number" [(ngModel)]="mem.imballoMod.costo"
+            <input type="number" required [(ngModel)]="mem.imballoMod.costo"
                 placeholder="costo">
             <br>
             {{msg}}
@@ -32,11 +32,7 @@
         </div>
     </span>
     <div *ngIf="state == 'modifica'" class="box">
-        <br>
-        nuova descrizione:<input type="text"
-            [(ngModel)]="mem.imballoMod.descrizione" placeholder="descrizione">
-        nuovo costo:<input type="number" [(ngModel)]="mem.imballoMod.costo"
-            placeholder="costo">&nbsp;
+        <br> nuova descrizione:<input type="text" [(ngModel)]="mem.imballoMod.descrizione" placeholder="descrizione"> nuovo costo:<input type="number" [(ngModel)]="mem.imballoMod.costo" placeholder="costo">&nbsp;
         <br>
         <br>
         <button class="pointer" (click)="confirm()">Conferma modifica</button>&nbsp;
@@ -45,8 +41,7 @@
         <br>
     </div>
     <div *ngIf="state == 'delete'" class="box">
-        <h2>Elimina
-            {{mem.imballoMod.descrizione}} ?</h2>
+        <h2>Elimina {{mem.imballoMod.descrizione}} ?</h2>
         <button class="pointer" (click)="removeImballo(mem.imballoMod.id)">Conferma</button>&nbsp;
         <button class="pointer" (click)="close()">Annulla</button>
         <br>

@@ -44,19 +44,19 @@ export class ImballoCrudComponent implements OnInit {
   }
 
   confirm() {
-    if (this.state == "aggiungi" && this.mem.imballoMod.descrizione.length != 0 && this.mem.imballoMod.costo > 0) {
+    if (this.state == "aggiungi" && this.mem.imballoMod.descrizione != null && this.mem.imballoMod.costo != 0) {
       this.mem.addImballo()
       this.mem.imballoMod = new ImballoDto()
-    } else if (this.mem.imballoMod.descrizione.length > 0 && this.mem.imballoMod.costo > 0) {
-      this.mem.imballi[this.imballoSelezionato] = this.mem.imballoMod;
-      this.mem.updateImballo(this.mem.imballoMod)
-      this.mem.imballoMod = new ImballoDto()
-    } else {
-      this.mem.imballoMod = new ImballoDto()
-      this.msg = "Inserire campo descrizione";
-    }
-    this.state = "ricerca"
+      this.state = "ricerca"
+    } else if (this.state == "modifica") {
 
+      this.mem.imballi[this.imballoSelezionato] = this.mem.imballoMod;
+      if (this.mem.imballoMod.descrizione.length > 0 && this.mem.imballoMod.costo != 0) {
+        this.mem.updateImballo(this.mem.imballoMod)
+        this.mem.imballoMod = new ImballoDto()
+        this.state = "ricerca"
+      }
+    }
   }
 
   close() {
