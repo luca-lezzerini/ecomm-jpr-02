@@ -23,7 +23,7 @@
             <input type="number" required [(ngModel)]="mem.imballoMod.costo"
                 placeholder="costo">
             <br>
-            {{msg}}
+            <h2 class="colortext">{{msg}}</h2>
             <br>
             <button class="pointer" id="conferma" (click)="confirm()">Conferma</button>&nbsp;
             <button class="pointer" id="annulla" (click)="close()">Annulla</button>
@@ -34,6 +34,7 @@
     <div *ngIf="state == 'modifica'" class="box">
         <br> nuova descrizione:<input type="text" [(ngModel)]="mem.imballoMod.descrizione" placeholder="descrizione"> nuovo costo:<input type="number" [(ngModel)]="mem.imballoMod.costo" placeholder="costo">&nbsp;
         <br>
+        <h2 class="colortext">{{msg}}</h2>
         <br>
         <button class="pointer" (click)="confirm()">Conferma modifica</button>&nbsp;
         <button class="pointer" (click)="close()">Annulla</button>

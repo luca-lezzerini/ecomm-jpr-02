@@ -16,7 +16,7 @@ export class ImballoCrudComponent implements OnInit {
   state = "ricerca"
   state2 = ""
   imballoSelezionato: number
-  msg: String;
+  msg = ""
 
   constructor(private router: Router, public mem: ImballoServiceService) { }
 
@@ -28,6 +28,7 @@ export class ImballoCrudComponent implements OnInit {
     this.state = "aggiungi"
     this.state2 = ""
     this.mem.ricerca.ricerca = ""
+    this.msg = ""
   }
 
   updateImballo(imballo: ImballoDto, i: number) {
@@ -35,6 +36,7 @@ export class ImballoCrudComponent implements OnInit {
     this.state2 = ""
     this.imballoSelezionato = i;
     this.mem.imballoMod = Object.assign({}, imballo)
+    this.msg = ""
   }
 
   removeImballo(id: number) {
@@ -44,23 +46,28 @@ export class ImballoCrudComponent implements OnInit {
   }
 
   confirm() {
-    if (this.state == "aggiungi" && this.mem.imballoMod.descrizione && this.mem.imballoMod.costo > 0) {
-
-      this.mem.addImballo()
-      this.mem.imballoMod = new ImballoDto()
-      this.state = "ricerca"
-    } else if (this.state == "modifica") {
-      if (this.mem.imballoMod.descrizione  && this.mem.imballoMod.costo > 0){
+    if (this.state == "aggiungi") {
+      if (this.mem.imballoMod.descrizione && this.mem.imballoMod.costo > 0) {
+        this.mem.addImballo()
+        this.mem.imballoMod = new ImballoDto()
+        this.state = "ricerca"
+      } else {
+        this.state = "aggiungi"
+        this.msg = "riempire tutti i campi!"
+      }
+    }
+    else if (this.state == "modifica") {
+      if (this.mem.imballoMod.descrizione && this.mem.imballoMod.costo > 0) {
         this.mem.imballi[this.imballoSelezionato] = this.mem.imballoMod;
-       
+
         this.mem.updateImballo(this.mem.imballoMod)
         this.mem.imballoMod = new ImballoDto()
         this.state = "ricerca"
       } else {
-        this.state = "modifica"  
-        this.msg = "riempire tutti i campi!"    
+        this.state = "modifica"
+        this.msg = "riempire tutti i campi!"
       }
-   }
+    }
   }
 
   close() {

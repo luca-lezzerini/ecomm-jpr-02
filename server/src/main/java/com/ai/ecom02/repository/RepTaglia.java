@@ -25,6 +25,6 @@ public interface RepTaglia extends JpaRepository<Taglia, Long> {
 
     List<Taglia> findByDescrizioneLikeOrSiglaLike(String ricerca, String ricerca0);
 
-    @Query("SELECT t FROM taglia t WHERE descrizione LIKE :str1 OR sigla LIKE :str2")
-    List<Taglia> trovaPerChiaveParziale(@Param("str1") String str1, @Param("str2") String str2);
+//    @Query("SELECT t FROM taglia t WHERE descrizione LIKE :str OR sigla LIKE :str")
+//    List<Taglia> trovaPerChiaveParziale(@Param("str1") String str1);
 }
