@@ -1,12 +1,7 @@
-
 package com.ai.ecom02.service;
 
-
-import com.ai.ecom02.dto.ListaProdottoDto;
-import com.ai.ecom02.dto.ProdottoDto;
 import com.ai.ecom02.dto.RicercaDto;
 import com.ai.ecom02.model.Prodotto;
-import com.ai.ecom02.model.Token;
 import java.util.List;
 
 
@@ -33,9 +28,5 @@ public interface ProdottoService {
     
     List<Prodotto> findByCodiceLikeOrDescrizioneLike(RicercaDto ricerca);
     
-    public ListaProdottoDto creaListaProdottoDto(List<Prodotto> listaProdotto, Token t);
-    
-    public ProdottoDto creaListaProdottoDto(Prodotto prodotto, Token t);  
-        
 }
 
