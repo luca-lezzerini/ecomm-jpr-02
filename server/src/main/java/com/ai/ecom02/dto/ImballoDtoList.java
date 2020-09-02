@@ -18,6 +18,11 @@ public class ImballoDtoList implements Tokenizabile {
     public ImballoDtoList() {
     }
 
+    public ImballoDtoList(List<Imballo> imballoDtoList, Token token) {
+        this.imballoDtoList = imballoDtoList;
+        this.token = token;
+    }
+
     public ImballoDtoList(List<Imballo> imballoDtoList, String descrizione, Double costo) {
         this.imballoDtoList = imballoDtoList;
         this.descrizione = descrizione;

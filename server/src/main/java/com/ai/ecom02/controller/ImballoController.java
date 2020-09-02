@@ -1,6 +1,10 @@
 package com.ai.ecom02.controller;
 
+import com.ai.ecom02.dto.ImballoDtoList;
+import com.ai.ecom02.dto.RicercaDto;
 import com.ai.ecom02.model.Imballo;
+import com.ai.ecom02.model.Token;
+import com.ai.ecom02.service.SecurityService;
 import com.ai.ecom02.service.impl.ImballoServiceImpl;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +24,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class ImballoController {
 
+    @Autowired
+    SecurityService securityService;
+    
     @Autowired
     ImballoServiceImpl srvImballo;
 
@@ -56,31 +63,17 @@ public class ImballoController {
         srvImballo.update(imballo);
         return imballo;
     }
-
-//    @RequestMapping(value = {"/find-imballo"})
-//    @ResponseBody
-//    public Imballo ricercaImballo(
-//            @RequestBody Imballo imballo
-//    ) {
-//        srvImballo.findById(imballo);
-//        return imballo;
-//    }
-
-//    @RequestMapping(value = {"/find-by-descrizione-imballo"})
-//    @ResponseBody
-//    public List<Imballo> ricercaByDescrizioneImballo(
-//            @RequestBody Imballo imballo
-//    ) {
-//        return srvImballo.findByDescrizione(imballo);         
-//    }
-    
-    
+   
     @RequestMapping(value = {"/find-by-descrizione-imballo"})
     @ResponseBody
-    public List<Imballo> ricercaByDescrizioneImballo(
-            @RequestBody String ricerca
+    public ImballoDtoList ricercaByDescrizioneImballo(
+            @RequestBody RicercaDto ricerca
     ) {
-        return srvImballo.findByDescrizione(ricerca);         
+        Token t = ricerca.getToken();
+        t = securityService.retrieveToken(t);
+        List<Imballo> listaImballo = srvImballo.findByDescrizione(ricerca); 
+        ImballoDtoList imbDtoList = new ImballoDtoList(listaImballo, t);
+        return imbDtoList;
     }
     
 
