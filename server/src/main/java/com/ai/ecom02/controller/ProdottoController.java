@@ -1,6 +1,7 @@
 package com.ai.ecom02.controller;
 
 import com.ai.ecom02.dto.ListaProdottoDto;
+import com.ai.ecom02.dto.ProdottoDto;
 import com.ai.ecom02.dto.RicercaDto;
 import com.ai.ecom02.model.Prodotto;
 import com.ai.ecom02.model.Token;
@@ -26,8 +27,14 @@ public class ProdottoController {
 
     @RequestMapping(value = ("/lista-prodotti"))
     @ResponseBody
-    public List<Prodotto> listaProdotti() {
-        return srvProdotto.getAll();
+    public ListaProdottoDto listaProdotti(
+            @RequestBody ProdottoDto dto
+    ) {
+        Token token = dto.getToken();
+        Token t = securityService.retrieveToken(token);
+        List<Prodotto> listaProdotto = srvProdotto.getAll();
+        ListaProdottoDto listaProdottoDto = srvProdotto.creaListaProdottoDto(listaProdotto, t);
+        return listaProdottoDto;
     }
 
     @RequestMapping(value = ("/prodotti-add"))
