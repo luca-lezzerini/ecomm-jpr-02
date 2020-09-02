@@ -1,9 +1,7 @@
+import { Offerta } from "../model/offerta";
+import { Token } from "./token";
+
 export class OffertaDto {
-    id: string;
-
-    codice: string;
-
-    descrizione: string;
-
-    scontoPercentuale: number;
+    offerta : Offerta;
+    token : Token;
 }

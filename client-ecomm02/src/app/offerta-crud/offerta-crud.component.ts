@@ -2,6 +2,7 @@ import { RicercaDto } from './../dto/ricerca-dto';
 import { OffertaDto } from './../dto/offerta-dto';
 import { Component, OnInit } from '@angular/core';
 import { OffertaService } from '../offerta.service';
+import { Offerta } from '../model/offerta';
 
 @Component({
   selector: 'app-offerta-crud',
@@ -10,7 +11,7 @@ import { OffertaService } from '../offerta.service';
 })
 export class OffertaCrudComponent implements OnInit {
 
-  offerta: OffertaDto = new OffertaDto();
+  offerta: Offerta = new Offerta();
   ricerca: RicercaDto = new RicercaDto();
   state = 'ricerca';
 
@@ -20,12 +21,12 @@ export class OffertaCrudComponent implements OnInit {
     this.srvOfferta.lista();
   }
 
-  chiediModifica(offerta: OffertaDto): void {
+  chiediModifica(offerta: Offerta): void {
     this.state = 'modifica';
     this.srvOfferta.offertaForm = Object.assign({}, offerta);
 
   }
-  chiediElimina(offerta: OffertaDto): void {
+  chiediElimina(offerta: Offerta): void {
     this.state = 'elimina';
     this.srvOfferta.offertaForm = Object.assign({}, offerta);
 
@@ -36,11 +37,11 @@ export class OffertaCrudComponent implements OnInit {
   }
   chiudi(): void {
     this.state = 'ricerca';
-    this.offerta = new OffertaDto();
-    this.srvOfferta.offertaForm = new OffertaDto();
+    this.offerta = new Offerta();
+    this.srvOfferta.offertaForm = new Offerta();
   }
 
-  visualizza(offerta: OffertaDto): void {
+  visualizza(offerta: Offerta): void {
     this.srvOfferta.offertaForm = Object.assign({}, offerta);
     this.state = 'visualizza';
   }
