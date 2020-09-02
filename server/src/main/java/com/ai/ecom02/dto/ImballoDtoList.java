@@ -2,33 +2,26 @@ package com.ai.ecom02.dto;
 
 import com.ai.ecom02.model.Imballo;
 import com.ai.ecom02.model.Token;
+import java.util.List;
 
 /**
  *
  * @author Francesco
  */
-public class ImballoDto implements Tokenizabile {
+public class ImballoDtoList implements Tokenizabile {
 
-    private ImballoDto imballoDto;
+    private List<Imballo> imballoDtoList;
     private String descrizione;
     private Double costo;
     private Token token;
 
-    public ImballoDto() {
+    public ImballoDtoList() {
     }
 
-    public ImballoDto(ImballoDto imballoDto, String descrizione, Double costo) {
-        this.imballoDto = imballoDto;
+    public ImballoDtoList(List<Imballo> imballoDtoList, String descrizione, Double costo) {
+        this.imballoDtoList = imballoDtoList;
         this.descrizione = descrizione;
         this.costo = costo;
-    }
-
-    public ImballoDto getImballoDto() {
-        return imballoDto;
-    }
-
-    public void setImballoDto(ImballoDto imballoDto) {
-        this.imballoDto = imballoDto;
     }
 
     @Override
@@ -55,6 +48,14 @@ public class ImballoDto implements Tokenizabile {
 
     public void setCosto(Double costo) {
         this.costo = costo;
+    }
+
+    public List<Imballo> getImballoDtoList() {
+        return imballoDtoList;
+    }
+
+    public void setImballoDtoList(List<Imballo> imballoDtoList) {
+        this.imballoDtoList = imballoDtoList;
     }
 
 }
