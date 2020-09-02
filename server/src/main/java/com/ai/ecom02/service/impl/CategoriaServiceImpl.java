@@ -5,6 +5,7 @@
  */
 package com.ai.ecom02.service.impl;
 
+import com.ai.ecom02.dto.CategoriaDto;
 import com.ai.ecom02.dto.RicercaDto;
 import com.ai.ecom02.model.Categoria;
 import com.ai.ecom02.repository.RepCategoria;

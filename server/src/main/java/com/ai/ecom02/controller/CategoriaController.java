@@ -5,9 +5,13 @@
  */
 package com.ai.ecom02.controller;
 
+import com.ai.ecom02.dto.CategoriaDto;
+import com.ai.ecom02.dto.CategoriaListaDto;
 import com.ai.ecom02.dto.RicercaDto;
 import com.ai.ecom02.model.Categoria;
+import com.ai.ecom02.model.Token;
 import com.ai.ecom02.service.CategoriaService;
+import com.ai.ecom02.service.SecurityService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,60 +36,99 @@ import org.springframework.web.bind.annotation.RestController;
 public class CategoriaController {
 
     private static Logger log = LoggerFactory.getLogger(CategoriaController.class);
-
+    
+    @Autowired
+    SecurityService securityService;
+    
     @Autowired
     CategoriaService categoriaService;
 
     @RequestMapping(value = {"/aggiungi-categoria"})
     @ResponseBody
-    public List<Categoria> aggiungiCategoria(
-            @RequestBody Optional<Categoria> categoria
+    public CategoriaListaDto aggiungiCategoria(
+            @RequestBody CategoriaDto categoriaDto
     ) {
+        CategoriaListaDto lista = new CategoriaListaDto();
         log.info("ricevuta richiesta di aggiunta");
-        if (categoria.isPresent()) {
-            categoriaService.addCat(categoria.get());
+        if (categoriaDto != null) {
+            Token token = categoriaDto.getToken();
+            Token t = securityService.retrieveToken(token);
+            categoriaService.addCat(categoriaDto.getCategoriaDto());
+            lista = new CategoriaListaDto(categoriaService.getLista(), t);
+            return lista;
         } else {
             log.error("impossibile aggiungere");
-        }      
-        return categoriaService.getLista();
-   
+            return lista;
+        }
     }
 
     @RequestMapping(value = {"/lista-categorie"})
     @ResponseBody
-    public List<Categoria> listaCategoria() {
-        return categoriaService.getLista();
+    public CategoriaListaDto listaCategoria(
+            @RequestBody CategoriaDto categoriaDto
+    ) {
+        CategoriaListaDto lista = new CategoriaListaDto();
+        log.info("ricevuta richiesta lista");
+        if(categoriaDto != null){
+            Token token = categoriaDto.getToken();
+            Token t = securityService.retrieveToken(token);
+            lista = new CategoriaListaDto(categoriaService.getLista(), t);
+            return lista;
+        }
+        log.info("lista non trovata");
+        return lista;
     }
 
-    @RequestMapping(value = {"/rimuovi-categoria/{id}"})
+    @RequestMapping(value = {"/rimuovi-categoria"})
     @ResponseBody
-    public List<Categoria> rimuoviCategoria(
-            @PathVariable Optional<Long> id
+    public CategoriaListaDto rimuoviCategoria(
+            @RequestBody CategoriaDto categoriaDto
     ) {
-        if(id.isPresent())
-        categoriaService.removeCat(id.get());
-        return categoriaService.getLista();
+        CategoriaListaDto lista = new CategoriaListaDto();
+        log.info("ricevuta richiesta di eliminazione");
+        if (categoriaDto != null) {
+            Token token = categoriaDto.getToken();
+            Token t = securityService.retrieveToken(token);
+            categoriaService.removeCat(categoriaDto.getCategoriaDto().getId());
+            lista = new CategoriaListaDto(categoriaService.getLista(), t);
+            return lista;
+        }
+        log.info("categoria non trovata");
+        return lista;
     }
 
     @RequestMapping(value = {"/cerca-categoria"})
     @ResponseBody
-    public List<Categoria> cercaCategoria(
-            @RequestBody Optional<RicercaDto> ricerca
+    public CategoriaListaDto cercaCategoria(
+            @RequestBody RicercaDto ricercaDto
     ) {
-        if(! ricerca.isPresent()){
-            log.error("Ricerca non presente");
-            return new ArrayList<Categoria>();
+        CategoriaListaDto lista = new CategoriaListaDto();
+        log.info("ricevuta richiesta di ricerca categoria");
+        if (ricercaDto != null) {
+            Token token = ricercaDto.getToken();
+            Token t = securityService.retrieveToken(token);
+            lista = new CategoriaListaDto(categoriaService.findCat(ricercaDto), t);
+            return lista;
         }
-        return categoriaService.findCat(ricerca.get());
+        log.error("ricerca non presente");
+        return lista;
     }
-    
-    @RequestMapping(value={"/modifica-categoria"})
+
+    @RequestMapping(value = {"/modifica-categoria"})
     @ResponseBody
-    public List<Categoria> modificaCategoria(
-            @RequestBody Optional<Categoria> categoria
-    ){
-        if(categoria.isPresent())
-        categoriaService.updateCat(categoria.get());
-        return categoriaService.getLista();
+    public CategoriaListaDto modificaCategoria(
+            @RequestBody CategoriaDto categoriaDto
+    ) {
+        CategoriaListaDto lista = new CategoriaListaDto();
+        log.info("richiesta modifica categoria");
+        if (categoriaDto != null) {
+            Token token = categoriaDto.getToken();
+            Token t = securityService.retrieveToken(token);
+            categoriaService.updateCat(categoriaDto.getCategoriaDto());
+            lista = new CategoriaListaDto(categoriaService.getLista(), t);
+            return lista;
+        }
+        log.error("impossibile modificare la categoria");
+        return lista;
     }
 }
