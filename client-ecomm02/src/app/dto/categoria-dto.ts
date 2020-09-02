@@ -1,6 +1,8 @@
+import { Token } from "./token";
+import { Categoria } from "../model/categoria";
+
 export class CategoriaDto {
 
-    id: number;
-    descrizione: string;
-
+    token: Token;
+    categoria: Categoria;
 }
