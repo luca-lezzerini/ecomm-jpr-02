@@ -13,7 +13,7 @@ import java.util.List;
  *
  * @author Gian Marco
  */
-public class ListaOfferteDto {
+public class ListaOfferteDto implements Tokenizabile {
     
     List<Offerta> listaOfferte;
     
