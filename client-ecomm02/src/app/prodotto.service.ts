@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
 import { ProdottoDto } from './dto/prodotto-dto';
-import { Prodotto } from './dto/prodotto';
+import { Prodotto } from './model/prodotto';
 import { RicercaDto } from './dto/ricerca-dto';
 import { HttpClient } from '@angular/common/http';
 

@@ -1,4 +1,4 @@
-import { Token } from './token';
+import { Token } from '../dto/token';
 export class Prodotto {
     id: string;
     codice: String;
