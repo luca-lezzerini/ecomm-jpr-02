@@ -42,9 +42,11 @@ public class CategoriaController {
             @RequestBody Optional<Categoria> categoria
     ) {
         log.info("ricevuta richiesta di aggiunta");
-        if(categoria.isPresent()){
+        if (categoria.isPresent()) {
             categoriaService.addCat(categoria.get());
-        }    else log.error("impossibile aggiungere");      
+        } else {
+            log.error("impossibile aggiungere");
+        }      
         return categoriaService.getLista();
    
     }

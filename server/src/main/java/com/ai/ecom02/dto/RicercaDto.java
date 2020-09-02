@@ -5,12 +5,16 @@
  */
 package com.ai.ecom02.dto;
 
+import com.ai.ecom02.model.Token;
+
 /**
  *
  * @author rcora
  */
-public class RicercaDto {
+public class RicercaDto implements Tokenizabile {
+
     private String ricerca;
+    private Token token;
 
     public RicercaDto() {
     }
@@ -26,6 +30,15 @@ public class RicercaDto {
     public void setRicerca(String ricerca) {
         this.ricerca = ricerca;
     }
-    
-    
+
+    @Override
+    public Token getToken() {
+        return token;
+    }
+
+    @Override
+    public void setToken(Token t) {
+        token = t;
+    }
+
 }
