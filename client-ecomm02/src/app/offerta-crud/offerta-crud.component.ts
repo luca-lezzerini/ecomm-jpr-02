@@ -1,5 +1,4 @@
 import { RicercaDto } from './../dto/ricerca-dto';
-import { OffertaDto } from './../dto/offerta-dto';
 import { Component, OnInit } from '@angular/core';
 import { OffertaService } from '../offerta.service';
 import { Offerta } from '../model/offerta';

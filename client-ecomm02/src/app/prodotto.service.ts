@@ -1,9 +1,11 @@
+import { ListaProdottoDto } from './dto/lista-prodotto-dto';
+import { TokenService } from './token.service';
 import { Injectable } from '@angular/core';
-import { Observable, Subscription } from 'rxjs';
 import { ProdottoDto } from './dto/prodotto-dto';
-import { Prodotto } from './model/prodotto';
 import { RicercaDto } from './dto/ricerca-dto';
 import { HttpClient } from '@angular/common/http';
+import { Observable, Subscription } from 'rxjs';
+import { Prodotto } from './model/prodotto';
 
 @Injectable({
   providedIn: 'root'
@@ -11,32 +13,36 @@ import { HttpClient } from '@angular/common/http';
 export class ProdottoService {
   urlPath = 'http://localhost:8080';
   prodottoForm: Prodotto = new Prodotto(); // memorizza l'istanza da trattare
-  listaProdotti: Prodotto[] = []; /* il contenitore che renderizza la tabella
-   contente le risposte dal server*/
-
-  constructor(private http: HttpClient) { }
+  prodottoDto: ProdottoDto = new ProdottoDto();
+  listaProdotti: Prodotto[] = []; /* il contenitore che renderizza la tabella contente le risposte dal server*/
+  risultatiProdotti: RicercaDto[] = [];
+  listaDto: ListaProdottoDto = new ListaProdottoDto();
+  constructor(private http: HttpClient, private srvToken : TokenService,) { }
 /* Passa al server il RicercaDto contenete la stringa da cercare posiziona i dati 
 nella Lista aposita, restituisce una istanza di DtoRicerca per resettare il campo
 nel Tamplate*/
-  cerca(ricerca: RicercaDto): RicercaDto {
-    if (ricerca.ricerca == null) {
+  cerca(ricerca: RicercaDto): RicercaDto { 
+    if (ricerca.ricerca == null) { // se non viene inserito nulla nel campo di ricerca vengono restituite tutte le offerte
       this.lista();
     } else {
-      const oss: Observable<Prodotto[]> = this.http.post<Prodotto[]>(this.urlPath + '/prodotti-find', ricerca);
-      const sub: Subscription = oss.subscribe(risp => { this.listaProdotti = risp; });
+      const oss: Observable<ListaProdottoDto> = this.http.post<ListaProdottoDto>(this.urlPath + '/prodotti-find', ricerca);
+      const sub: Subscription = oss.subscribe(risp => { this.listaDto = risp;      this.listaProdotti = this.listaDto.listaProdotti;
+        this.srvToken.setToken(this.listaDto.token); });
     }
     return new RicercaDto();
   }
 
   lista() {
-    const oss: Observable<Prodotto[]> = this.http.get<Prodotto[]>(this.urlPath + '/lista-prodotti');
-    const sub: Subscription = oss.subscribe(risp => { this.listaProdotti = risp; });
+    const oss: Observable<ListaProdottoDto> = this.http.post<ListaProdottoDto> (this.urlPath + '/lista-prodotti', this.listaDto);
+    const sub: Subscription = oss.subscribe(risp => { this.listaDto = risp;    this.listaProdotti = this.listaDto.listaProdotti; this.srvToken.setToken(this.listaDto.token); });
   }
 /* in Base alla stato del componente che riceve come parametro setta url per la
 richiesta e invia al server l'istanza da trattare. restituisce la stringa
  per ripristinare lo stato iniziale del component*/
-  conferma(state: string) {
+  conferma(state: string) { 
     let urlEnd: string;
+    this.prodottoDto.prodotto = this.prodottoForm;
+    this.prodottoDto.token = this.srvToken.getToken();
     switch (state) {
       case 'modifica': {
         urlEnd = '/prodotti-update';
@@ -50,9 +56,9 @@ richiesta e invia al server l'istanza da trattare. restituisce la stringa
         urlEnd = '/prodotti-add';
         break;
       }
-
     }
-    const oss: Observable<Prodotto> = this.http.post<Prodotto>(this.urlPath + urlEnd, this.prodottoForm);
+
+    const oss: Observable<ProdottoDto> = this.http.post<ProdottoDto>(this.urlPath + urlEnd, this.prodottoForm);
     const sub: Subscription = oss.subscribe(risp => { this.lista(); });
     this.prodottoForm = new Prodotto();
     return 'ricerca';

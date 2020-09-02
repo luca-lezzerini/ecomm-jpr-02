@@ -1,5 +1,3 @@
-import { ListaProdottoDto } from './dto/lista-prodotto-dto';
-import { Token } from './dto/token';
 import { ListaOfferteDto } from './dto/lista-offerte-dto';
 import { TokenService } from './token.service';
 import { Injectable } from '@angular/core';
@@ -20,10 +18,10 @@ export class OffertaService {
   risultatiOfferte: RicercaDto[] = [];
   listaDto: ListaOfferteDto = new ListaOfferteDto();
   constructor(private http: HttpClient, private srvToken : TokenService,) { }
+
   lista(): void {
     const oss: Observable<ListaOfferteDto> = this.http.post<ListaOfferteDto> (this.urlPath + '/lista-offerte', this.listaDto);
     const sub: Subscription = oss.subscribe(risp => { this.listaDto = risp;    this.listaOfferte = this.listaDto.listaOfferte; this.srvToken.setToken(this.listaDto.token); });
- 
   }
 
   cerca(ricerca: RicercaDto): RicercaDto {
@@ -33,10 +31,10 @@ export class OffertaService {
       const oss: Observable<ListaOfferteDto> = this.http.post<ListaOfferteDto>(this.urlPath + '/offerta-find', ricerca);
       const sub: Subscription = oss.subscribe(risp => { this.listaDto = risp;      this.listaOfferte = this.listaDto.listaOfferte;
         this.srvToken.setToken(this.listaDto.token); });
-
     }
     return new RicercaDto();
   }
+
   conferma(state: string): string {
     let urlEnd: string;
     this.offertaDto.offerta = this.offertaForm;
@@ -54,8 +52,8 @@ export class OffertaService {
         urlEnd = '/offerta-add';
         break;
       }
-
     }
+
     const oss: Observable<OffertaDto> = this.http.post<OffertaDto>(this.urlPath + urlEnd, this.offertaForm);
     const sub: Subscription = oss.subscribe(risp => { this.lista(); });
     this.offertaForm = new Offerta();
