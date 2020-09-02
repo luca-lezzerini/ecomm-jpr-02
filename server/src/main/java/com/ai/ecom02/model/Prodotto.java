@@ -33,6 +33,14 @@ public class Prodotto implements Serializable {
         this.id = id;
     }
 
+    public Prodotto(Long id, String codice, String descrizione, Double peso, Double prezzo) {
+        this.id = id;
+        this.codice = codice;
+        this.descrizione = descrizione;
+        this.peso = peso;
+        this.prezzo = prezzo;
+    }
+
     public Long getId() {
         return id;
     }

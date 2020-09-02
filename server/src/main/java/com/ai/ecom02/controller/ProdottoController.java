@@ -3,6 +3,7 @@ package com.ai.ecom02.controller;
 import com.ai.ecom02.dto.ListaProdottoDto;
 import com.ai.ecom02.dto.ProdottoDto;
 import com.ai.ecom02.dto.RicercaDto;
+import com.ai.ecom02.dto.TokenDto;
 import com.ai.ecom02.model.Prodotto;
 import com.ai.ecom02.model.Token;
 import com.ai.ecom02.service.SecurityService;
@@ -28,9 +29,9 @@ public class ProdottoController {
     @RequestMapping(value = ("/lista-prodotti"))
     @ResponseBody
     public ListaProdottoDto listaProdotti(
-            @RequestBody ProdottoDto dto
+            @RequestBody TokenDto tokenDto
     ) {
-        Token token = dto.getToken();
+        Token token = tokenDto.getToken();
         Token t = securityService.retrieveToken(token);
         List<Prodotto> listaProdotto = srvProdotto.getAll();
         ListaProdottoDto listaProdottoDto = srvProdotto.creaListaProdottoDto(listaProdotto, t);
@@ -40,25 +41,31 @@ public class ProdottoController {
     @RequestMapping(value = ("/prodotti-add"))
     @ResponseBody
     public void addProdotto(
-            @RequestBody Prodotto prodotto
+            @RequestBody ProdottoDto prodottoDto  
     ) {
-        srvProdotto.add(prodotto);
+        Token t = prodottoDto.getToken();
+        t = securityService.retrieveToken(t);
+        srvProdotto.add(prodottoDto.getProdotto());
     }
 
     @RequestMapping(value = ("/prodotti-delete"))
     @ResponseBody
     public void deleteProdotto(
-            @RequestBody Prodotto prodotto
+            @RequestBody ProdottoDto prodottoDto
     ) {
-        srvProdotto.delete(prodotto);
+        Token t = prodottoDto.getToken();
+        t = securityService.retrieveToken(t);
+        srvProdotto.delete(prodottoDto.getProdotto());
     }
 
     @RequestMapping(value = ("/prodotti-update"))
     @ResponseBody
     public void updateProdotto(
-            @RequestBody Prodotto prodotto
+            @RequestBody ProdottoDto prodottoDto
     ) {
-        srvProdotto.update(prodotto);
+        Token t = prodottoDto.getToken();
+        t = securityService.retrieveToken(t);
+        srvProdotto.update(prodottoDto.getProdotto());
     }
 
     @RequestMapping(value = ("/prodotti-find"))

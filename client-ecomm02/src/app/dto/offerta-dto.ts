@@ -1,5 +1,5 @@
 export class OffertaDto {
-    id: number;
+    id: string;
 
     codice: string;
 

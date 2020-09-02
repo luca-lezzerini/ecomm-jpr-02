@@ -15,10 +15,5 @@ export class TokenService {
   getToken(): Token {
     return this.token;
   }
-  /* controlla se il token e cambiato e in caso lo aggiorna*/
-  controllaToken(t: Token): void {
-    if (this.token.token !== t.token) {
-      this.token = t ;
-    }
-  }
+
 }

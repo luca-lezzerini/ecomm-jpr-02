@@ -1,6 +1,6 @@
 import { ProdottoService } from './../prodotto.service';
 import { Component, OnInit } from '@angular/core';
-import { ProdottoDto } from '../dto/prodotto-dto';
+import { Prodotto } from '../dto/prodotto';
 import { RicercaDto } from './../dto/ricerca-dto';
 
 @Component({
@@ -22,24 +22,24 @@ export class ProdottoCrudComponent implements OnInit {
   }
   nuovo(): void {
     this.state = 'aggiungi';
-    this.srvProdotto.prodottoForm.id = 0;
+    this.srvProdotto.prodottoForm.id = "0";
   }
   chiudi(): void {
     this.state = 'ricerca';
-    this.srvProdotto.prodottoForm = new ProdottoDto();
+    this.srvProdotto.prodottoForm = new Prodotto();
   }
 
-  chiediModifica(prodotto: ProdottoDto): void {
+  chiediModifica(prodotto: Prodotto): void {
     this.state = 'modifica';
     this.srvProdotto.prodottoForm = Object.assign({}, prodotto);
 
   }
-  chiediElimina(prodotto: ProdottoDto): void {
+  chiediElimina(prodotto: Prodotto): void {
     this.state = 'elimina';
     this.srvProdotto.prodottoForm = Object.assign({}, prodotto);
 
   }
-  visualizza(prodotto: ProdottoDto): void {
+  visualizza(prodotto: Prodotto): void {
     this.srvProdotto.prodottoForm = Object.assign({}, prodotto);
     this.state = 'visualizza';
   }

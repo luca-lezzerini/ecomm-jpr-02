@@ -1,10 +1,6 @@
-import { Token } from '../dto/token';
+import { Token } from './token';
+import { Prodotto } from '/prodotto';
 export class ProdottoDto {
-    id: number;
-    codice: String;
-    descrizione: String;
-    peso: number;
-    prezzo: number;
-    token: Token;
-    
+    prodotto: Prodotto;
+    token: Token; 
 } 

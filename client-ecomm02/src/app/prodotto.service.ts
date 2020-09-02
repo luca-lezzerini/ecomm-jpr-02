@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
 import { ProdottoDto } from './dto/prodotto-dto';
+import { Prodotto } from './dto/prodotto';
 import { RicercaDto } from './dto/ricerca-dto';
 import { HttpClient } from '@angular/common/http';
 
@@ -9,8 +10,8 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ProdottoService {
   urlPath = 'http://localhost:8080';
-  prodottoForm: ProdottoDto = new ProdottoDto(); // memorizza l'istanza da trattare
-  listaProdotti: ProdottoDto[] = []; /* il contenitore che renderizza la tabella
+  prodottoForm: Prodotto = new Prodotto(); // memorizza l'istanza da trattare
+  listaProdotti: Prodotto[] = []; /* il contenitore che renderizza la tabella
    contente le risposte dal server*/
 
   constructor(private http: HttpClient) { }
@@ -21,14 +22,14 @@ nel Tamplate*/
     if (ricerca.ricerca == null) {
       this.lista();
     } else {
-      const oss: Observable<ProdottoDto[]> = this.http.post<ProdottoDto[]>(this.urlPath + '/prodotti-find', ricerca);
+      const oss: Observable<Prodotto[]> = this.http.post<Prodotto[]>(this.urlPath + '/prodotti-find', ricerca);
       const sub: Subscription = oss.subscribe(risp => { this.listaProdotti = risp; });
     }
     return new RicercaDto();
   }
 
   lista() {
-    const oss: Observable<ProdottoDto[]> = this.http.get<ProdottoDto[]>(this.urlPath + '/lista-prodotti');
+    const oss: Observable<Prodotto[]> = this.http.get<Prodotto[]>(this.urlPath + '/lista-prodotti');
     const sub: Subscription = oss.subscribe(risp => { this.listaProdotti = risp; });
   }
 /* in Base alla stato del componente che riceve come parametro setta url per la
@@ -51,9 +52,9 @@ richiesta e invia al server l'istanza da trattare. restituisce la stringa
       }
 
     }
-    const oss: Observable<ProdottoDto> = this.http.post<ProdottoDto>(this.urlPath + urlEnd, this.prodottoForm);
+    const oss: Observable<Prodotto> = this.http.post<Prodotto>(this.urlPath + urlEnd, this.prodottoForm);
     const sub: Subscription = oss.subscribe(risp => { this.lista(); });
-    this.prodottoForm = new ProdottoDto();
+    this.prodottoForm = new Prodotto();
     return 'ricerca';
   }
 }
