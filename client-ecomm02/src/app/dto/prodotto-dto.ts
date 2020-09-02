@@ -1,4 +1,4 @@
-import { Prodotto } from './model/prodotto';
+import { Prodotto } from '../model/prodotto';
 import { Token } from '../model/token';
 export class ProdottoDto {
     prodotto: Prodotto;
