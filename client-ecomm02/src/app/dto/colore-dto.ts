@@ -1,4 +1,4 @@
 export class ColoreDto {
-    id: number;
+    id: string;
     colore: string;
 }
