@@ -31,7 +31,7 @@ export class ColoreCrudComponent implements OnInit {
   }
   nuovo(): void {
     this.state = 'aggiungi';
-    this.srvColore.coloreForm.id = 0;
+    this.srvColore.coloreForm.id = '0';
   }
   chiudi(): void {
     this.state = 'ricerca';
