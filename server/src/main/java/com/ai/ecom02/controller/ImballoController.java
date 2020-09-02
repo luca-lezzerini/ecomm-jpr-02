@@ -1,5 +1,6 @@
 package com.ai.ecom02.controller;
 
+import com.ai.ecom02.dto.ImballoDto;
 import com.ai.ecom02.dto.ImballoDtoList;
 import com.ai.ecom02.dto.RicercaDto;
 import com.ai.ecom02.model.Imballo;
@@ -32,8 +33,12 @@ public class ImballoController {
 
     @RequestMapping(value = {"/list-imballo"})
     @ResponseBody
-    public List<Imballo> listaImballi() {
-        return srvImballo.getAll();
+    public ImballoDtoList listaImballi(@RequestBody ImballoDto imbDto ) {
+        Token token = imbDto.getToken();
+        Token t = securityService.retrieveToken(token);
+        List<Imballo> list = srvImballo.getAll();
+        ImballoDtoList imbDtoList = new ImballoDtoList(list, t);       
+        return imbDtoList;
     }
 
     @RequestMapping(value = {"/add-imballo"})
