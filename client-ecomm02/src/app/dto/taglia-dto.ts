@@ -1,8 +1,8 @@
 import { Identifiers } from '@angular/compiler';
 
-export class TagliaDto {
+export class Taglia {
 
-    id: number;
+    id: string;
     descrizione: string;
     sigla: string;
 

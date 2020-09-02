@@ -1,6 +1,9 @@
+import { ImballoDto } from './imballo-dto';
+import { TokenService } from './token.service';
+import { ImballoListDto } from './imballo-list-dto';
 import { SpedizioneDto } from './dto/spedizione-dto';
 import { RicercaDto } from './dto/ricerca-dto';
-import { ImballoDto } from './dto/imballo-dto';
+
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
@@ -18,16 +21,19 @@ export class ImballoServiceService {
   ricerca: RicercaDto = new RicercaDto()
 
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, public tokenService : TokenService) { }
 
   addImballo() {
-    let o: Observable<ImballoDto[]> =
-      this.http.post<ImballoDto[]>(this.url + "/add-imballo", this.imballoMod)
-    o.subscribe(risp => { this.imballi = risp; })
+    let o: Observable<ImballoListDto> =
+      this.http.post<ImballoListDto>(this.url + "/add-imballo", this.imballoMod)
+    o.subscribe(risp => { this.imballi = risp.imballi;
+    this.tokenService.setToken(risp.token);
+    
+    })
   }
 
   lista(): ImballoDto[] {
-    let o: Observable<ImballoDto[]> = this.http.get<ImballoDto[]>(this.url + "/list-imballo")
+    let o: Observable<ImballoDto[]> = this.http.post<ImballoDto[]>(this.url + "/list-imballo", ImballoDto)
     o.subscribe(risp => { this.imballi = risp; })
     return this.imballi
   }
