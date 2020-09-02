@@ -22,7 +22,7 @@ export class ProdottoCrudComponent implements OnInit {
   }
   nuovo(): void {
     this.state = 'aggiungi';
-    this.srvProdotto.prodottoForm.id = "0";
+    this.srvProdotto.prodottoForm.id = '0';
   }
   chiudi(): void {
     this.state = 'ricerca';
