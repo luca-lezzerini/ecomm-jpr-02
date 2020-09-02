@@ -22,7 +22,7 @@ export class ProdottoService {
 nella Lista aposita, restituisce una istanza di DtoRicerca per resettare il campo
 nel Tamplate*/
   cerca(ricerca: RicercaDto): RicercaDto { 
-    if (ricerca.ricerca == null) { // se non viene inserito nulla nel campo di ricerca vengono restituite tutte le offerte
+    if (ricerca.ricerca == null) { // se non viene inserito nulla nel campo di ricerca vengono restituite tutti i prodotto
       this.lista();
     } else {
       const oss: Observable<ListaProdottoDto> = this.http.post<ListaProdottoDto>(this.urlPath + '/prodotti-find', ricerca);
