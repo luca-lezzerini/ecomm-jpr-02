@@ -35,8 +35,7 @@ public interface ProdottoService {
     
     public ListaProdottoDto creaListaProdottoDto(List<Prodotto> listaProdotto, Token t);
     
-    public ProdottoDto creaListaProdottoDto(Prodotto prodotto, Token t);
-    
-    
+    public ProdottoDto creaListaProdottoDto(Prodotto prodotto, Token t);  
+        
 }
 

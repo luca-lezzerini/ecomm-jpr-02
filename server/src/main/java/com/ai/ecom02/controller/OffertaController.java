@@ -44,7 +44,7 @@ public class OffertaController {
 
     @RequestMapping(value = ("/offerta-add"))
     @ResponseBody
-    public void addProdotto(
+    public void addOfferta(
             @RequestBody OffertaDto offerta // la richiesta arriva dal application client 
     ) {
         Token t = offerta.getToken();

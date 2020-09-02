@@ -92,7 +92,8 @@ public class ProdottoServiceImpl implements ProdottoService {
     }
 
     @Override
-    public ProdottoDto creaListaProdottoDto(Prodotto prodotto, Token t){
+    public ProdottoDto creaListaProdottoDto(Prodotto prodotto, Token t) {
         return new ProdottoDto(prodotto, t);
     }
+
 }
