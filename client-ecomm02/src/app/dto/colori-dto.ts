@@ -1,7 +1,7 @@
 import { Colore } from '../model/colore';
 import { Token } from './token';
 
-export class ColoreDto {
-    colore: Colore;
-    token: Token;
+export class ColoriDto {
+  coliri: Colore[] = [];
+  token: Token;
 }
