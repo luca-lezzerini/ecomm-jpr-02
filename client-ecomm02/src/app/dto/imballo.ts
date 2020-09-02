@@ -1,7 +1,8 @@
 import { Token } from './token';
 
-export class ImballoDto {
+export class Imballo {
 
+    id: string
     descrizione: string
     costo: number
     token: Token;

@@ -1,4 +1,4 @@
-import { Imballo } from './imballo-dto';
+import { Imballo } from './imballo';
 
 describe('Imballo', () => {
   it('should create an instance', () => {

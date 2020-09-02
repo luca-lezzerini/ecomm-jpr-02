@@ -1,4 +1,4 @@
-import { ImballoDto } from './../dto/imballo-dto';
+import { ImballoDto } from '../dto/imballo';
 
 import { ImballoServiceService } from './../imballo-service.service';
 import { Component, OnInit } from '@angular/core';
