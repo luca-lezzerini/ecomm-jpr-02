@@ -1,5 +1,5 @@
 export class Offerta {
-    id: number;
+    id: string;
 
     codice: string;
 
