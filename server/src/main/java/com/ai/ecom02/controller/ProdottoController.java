@@ -1,7 +1,10 @@
 package com.ai.ecom02.controller;
 
+import com.ai.ecom02.dto.ListaProdottoDto;
 import com.ai.ecom02.dto.RicercaDto;
 import com.ai.ecom02.model.Prodotto;
+import com.ai.ecom02.model.Token;
+import com.ai.ecom02.service.SecurityService;
 import com.ai.ecom02.service.impl.ProdottoServiceImpl;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +20,9 @@ public class ProdottoController {
 
     @Autowired
     ProdottoServiceImpl srvProdotto;
+
+    @Autowired
+    SecurityService securityService;
 
     @RequestMapping(value = ("/lista-prodotti"))
     @ResponseBody
@@ -50,10 +56,14 @@ public class ProdottoController {
 
     @RequestMapping(value = ("/prodotti-find"))
     @ResponseBody
-    public List<Prodotto> findProdottiByCodice(
+    public ListaProdottoDto findProdottiByCodiceOrDescrizione(
             @RequestBody RicercaDto ricerca
     ) {
-        return srvProdotto.findByCodiceLikeOrDescrizioneLike(ricerca);
+        Token token = ricerca.getToken();
+        Token t = securityService.retrieveToken(token);
+        List<Prodotto> listaProdotto = srvProdotto.findByDescrizioneOrCodiceLike(ricerca);
+        ListaProdottoDto listaProdottoDto = srvProdotto.creaListaProdottoDto(listaProdotto, t);
+        return listaProdottoDto;
     }
 
 }
