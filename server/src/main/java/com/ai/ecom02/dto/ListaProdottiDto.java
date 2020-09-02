@@ -4,14 +4,14 @@ import com.ai.ecom02.model.Prodotto;
 import com.ai.ecom02.model.Token;
 import java.util.List;
 
-public class ListaProdottoDto {
+public class ListaProdottiDto {
     private List<Prodotto> listaProdotto;
     private Token token;
 
-    public ListaProdottoDto() {
+    public ListaProdottiDto() {
     }
 
-    public ListaProdottoDto(List<Prodotto> listaProdotto, Token token) {
+    public ListaProdottiDto(List<Prodotto> listaProdotto, Token token) {
         this.listaProdotto = listaProdotto;
         this.token = token;
     }

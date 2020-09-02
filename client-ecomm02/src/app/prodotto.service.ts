@@ -1,4 +1,4 @@
-import { ListaProdottoDto } from './dto/lista-prodotto-dto';
+import { ListaProdottiDto as ListaProdottiDto } from './dto/lista-prodotti-dto';
 import { TokenService } from './token.service';
 import { Injectable } from '@angular/core';
 import { ProdottoDto } from './dto/prodotto-dto';
@@ -16,7 +16,7 @@ export class ProdottoService {
   prodottoDto: ProdottoDto = new ProdottoDto();
   listaProdotti: Prodotto[] = []; /* il contenitore che renderizza la tabella contente le risposte dal server*/
   risultatiProdotti: RicercaDto[] = [];
-  listaDto: ListaProdottoDto = new ListaProdottoDto();
+  listaDto: ListaProdottiDto = new ListaProdottiDto();
   constructor(private http: HttpClient, private srvToken : TokenService,) { }
 /* Passa al server il RicercaDto contenete la stringa da cercare posiziona i dati 
 nella Lista aposita, restituisce una istanza di DtoRicerca per resettare il campo
@@ -25,7 +25,7 @@ nel Tamplate*/
     if (ricerca.ricerca == null) { // se non viene inserito nulla nel campo di ricerca vengono restituiti tutti i prodotto
       this.lista();
     } else {
-      const oss: Observable<ListaProdottoDto> = this.http.post<ListaProdottoDto>(this.urlPath + '/prodotti-find', ricerca);
+      const oss: Observable<ListaProdottiDto> = this.http.post<ListaProdottiDto>(this.urlPath + '/prodotti-find', ricerca);
       const sub: Subscription = oss.subscribe(risp => { this.listaDto = risp;      this.listaProdotti = this.listaDto.listaProdotti;
         this.srvToken.setToken(this.listaDto.token); });
     }
@@ -33,7 +33,7 @@ nel Tamplate*/
   }
 
   lista() {
-    const oss: Observable<ListaProdottoDto> = this.http.post<ListaProdottoDto> (this.urlPath + '/lista-prodotti', this.listaDto);
+    const oss: Observable<ListaProdottiDto> = this.http.post<ListaProdottiDto> (this.urlPath + '/lista-prodotti', this.listaDto);
     const sub: Subscription = oss.subscribe(risp => { this.listaDto = risp;    this.listaProdotti = this.listaDto.listaProdotti; this.srvToken.setToken(this.listaDto.token); });
   }
 /* in Base alla stato del componente che riceve come parametro setta url per la
