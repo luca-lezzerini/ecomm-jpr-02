@@ -5,6 +5,7 @@
  */
 package com.ai.ecom02.service.impl;
 
+import com.ai.ecom02.dto.RicercaDto;
 import com.ai.ecom02.model.Imballo;
 import com.ai.ecom02.repository.RepImballo;
 import java.util.List;
@@ -42,8 +43,6 @@ public class ImballoServiceImpl implements ImballoService {
     @Override
     public Imballo findById(Imballo o) {
         Imballo i = repImballo.getOne(o.getId());
-//        Optional<Imballo> s = repImballo.findById(o.getId());
-//        Imballo i = s.get();
         return i;
     }
 
@@ -52,17 +51,8 @@ public class ImballoServiceImpl implements ImballoService {
        return repImballo.save(imballo);
     }
 
-    public List<Imballo> findByDescrizione(String descrizione){
-        return repImballo.findByDescrizione("%"+descrizione+"%");
+    public List<Imballo> findByDescrizione(RicercaDto ricerca){
+        return repImballo.findByDescrizione("%"+ricerca.getRicerca() +"%");
     }
-    
-     public List<Imballo> findImballo(String descrizione, Double costo){
-        return repImballo.findByDescrizioneLikeOrCostoLike("%"+descrizione+"%",String.valueOf(costo));
-    }
-    
-    
-    
-//    public List<Imballo> findByCosto(Imballo imballo){
-//        return repImballo.findByCostoLike(imballo.getCosto());
-//    }
+
 }
