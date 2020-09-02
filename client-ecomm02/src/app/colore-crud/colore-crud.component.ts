@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ColoreDto } from '../dto/colore-dto';
 import { ColoriService } from '../colori.service';
+import { Colore } from '../model/colore';
 
 @Component({
   selector: 'app-colore-crud',
@@ -10,7 +11,7 @@ import { ColoriService } from '../colori.service';
 export class ColoreCrudComponent implements OnInit {
   /* per ricuperare la chiavi di ricerca
      direttamnte nel tamplate vieni pasata nel service e resettata.*/
-  colore: ColoreDto = new ColoreDto();
+  colore: Colore = new Colore();
   state = 'ricerca'; // lo stato del component che influenza il tamplate e metodi
 
   constructor(private srvColore: ColoriService) { }
@@ -19,12 +20,12 @@ export class ColoreCrudComponent implements OnInit {
     this.srvColore.lista();
   }
 
-  chiediModifica(colore: ColoreDto): void {
+  chiediModifica(colore: Colore): void {
     this.state = 'modifica';
     this.srvColore.coloreForm = Object.assign({}, colore);
 
   }
-  chiediElimina(colore: ColoreDto): void {
+  chiediElimina(colore: Colore): void {
     this.state = 'elimina';
     this.srvColore.coloreForm = Object.assign({}, colore);
 
@@ -35,10 +36,11 @@ export class ColoreCrudComponent implements OnInit {
   }
   chiudi(): void {
     this.state = 'ricerca';
-    this.srvColore.coloreForm = new ColoreDto();
+    this.colore = new Colore();
+    this.srvColore.coloreForm = new Colore();
   }
 
-  visualizza(colore: ColoreDto): void {
+  visualizza(colore: Colore): void {
     this.srvColore.coloreForm = Object.assign({}, colore);
     this.state = 'visualizza';
   }

@@ -5,6 +5,7 @@
  */
 package com.ai.ecom02.dto;
 
+import com.ai.ecom02.model.Colore;
 import com.ai.ecom02.model.Token;
 
 /**
@@ -14,17 +15,23 @@ import com.ai.ecom02.model.Token;
 public class ColoreDto implements Tokenizabile{
     
     
-     private String colore;
+     private Colore colore;
     private Token token;
 
     public ColoreDto() {
     }
 
-    public String getColore() {
+    public ColoreDto(Colore colore, Token token) {
+        this.colore = colore;
+        this.token = token;
+    }
+    
+
+    public Colore getColore() {
         return colore;
     }
 
-    public void setColore(String colore) {
+    public void setColore(Colore colore) {
         this.colore = colore;
     }
 
