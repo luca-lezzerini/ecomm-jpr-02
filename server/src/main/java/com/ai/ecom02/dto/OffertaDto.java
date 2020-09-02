@@ -11,7 +11,7 @@ import com.ai.ecom02.model.Token;
  *
  * @author Gian Marco
  */
-public class OffertaDto {
+public class OffertaDto implements Tokenizabile {
 
     private String codice;
 
@@ -54,17 +54,19 @@ public class OffertaDto {
         this.scontoPercentuale = scontoPercentuale;
     }
 
-    public Token getToken() {
-        return token;
-    }
-
-    public void setToken(Token token) {
-        this.token = token;
-    }
-
     @Override
     public String toString() {
         return "OffertaDto{" + "codice=" + codice + ", descrizione=" + descrizione + ", scontoPercentuale=" + scontoPercentuale + ", token=" + token + '}';
+    }
+
+    @Override
+    public Token getToken() {
+            return token;
+    }
+
+    @Override
+    public void setToken(Token t) {
+        this.token = token;
     }
 
 }
