@@ -15,7 +15,7 @@ export class ImballoServiceService {
   imballo: ImballoDto = new ImballoDto();
   imballoMod: ImballoDto = new ImballoDto();
   imballoVis: ImballoDto = new ImballoDto()
-  ricerca : RicercaDto = new RicercaDto()
+  ricerca: RicercaDto = new RicercaDto()
 
 
   constructor(private http: HttpClient) { }
@@ -32,7 +32,8 @@ export class ImballoServiceService {
     return this.imballi
   }
 
-  findImballo() : ImballoDto[] {
+  findImballo(): ImballoDto[] {
+    this.ricerca.token = null;
     let o: Observable<ImballoDto[]> = this.http.post<ImballoDto[]>(this.url + "/find-by-descrizione-imballo", this.ricerca.ricerca)
     o.subscribe(risp => { this.imballi = risp; })
     return this.imballi
@@ -52,6 +53,6 @@ export class ImballoServiceService {
     return this.imballi;
   }
 
-  
+
 
 }
