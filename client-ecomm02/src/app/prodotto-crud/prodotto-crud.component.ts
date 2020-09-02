@@ -1,6 +1,6 @@
 import { ProdottoService } from './../prodotto.service';
 import { Component, OnInit } from '@angular/core';
-import { ProdottoDto } from '../model/prodotto';
+import { ProdottoDto } from '../dto/prodotto-dto';
 import { RicercaDto } from './../dto/ricerca-dto';
 
 @Component({

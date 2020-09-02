@@ -1,10 +1,10 @@
-import { Prodotto } from '../model/prodotto';
-import { Token } from '../model/token';
+import { Token } from '../dto/token';
 export class ProdottoDto {
-    prodotto: Prodotto;
+    id: number;
+    codice: String;
+    descrizione: String;
+    peso: number;
+    prezzo: number;
     token: Token;
-    constructor(prodotto: Prodotto, token: Token){
-        this.prodotto = prodotto;
-        this.token = token;
-    }
+    
 } 

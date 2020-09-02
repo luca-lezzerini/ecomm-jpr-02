@@ -1,4 +1,4 @@
-import { ProdottoDto } from '../model/prodotto';
+import { ProdottoDto } from '../dto/prodotto-dto';
 import { Router } from '@angular/router';
 import { HomeServiceService } from './../home-service.service';
 import { Component, OnInit } from '@angular/core';

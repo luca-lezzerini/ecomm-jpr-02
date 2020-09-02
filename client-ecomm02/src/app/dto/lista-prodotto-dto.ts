@@ -1,5 +1,5 @@
-import { ProdottoDto } from '../model/prodotto';
-import { Token } from '../model/token';
+import { ProdottoDto } from '../dto/prodotto-dto';
+import { Token } from '../dto/token';
 export class ListaProdottoDto {
     listaColori: ProdottoDto [];
     token: Token;

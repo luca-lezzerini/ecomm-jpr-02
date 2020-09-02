@@ -1,7 +1,7 @@
 import { RicercaDto } from './dto/ricerca-dto';
 import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
-import { ProdottoDto } from './model/prodotto';
+import { ProdottoDto } from './dto/prodotto-dto';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({

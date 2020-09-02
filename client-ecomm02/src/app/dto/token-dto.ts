@@ -1,4 +1,4 @@
-import { Token } from '../model/token';
+import { Token } from '../dto/token';
 export class TokenDto {
     token: Token;
 
