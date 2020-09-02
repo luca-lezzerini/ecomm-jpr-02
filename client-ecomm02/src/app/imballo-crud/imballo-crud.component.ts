@@ -79,12 +79,12 @@ export class ImballoCrudComponent implements OnInit {
   findImballo() {
 
     this.state2 = ""
-    if (this.mem.ricerca.ricerca.length > 0) {
+    // if (this.mem.ricerca.ricerca.length > 0) {
 
       this.mem.findImballo()
-    } else {
-      this.mem.lista()
-    }
+    // } else {
+    //   this.mem.lista()
+    // }
 
   }
 
