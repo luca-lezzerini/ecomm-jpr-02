@@ -1,10 +1,7 @@
 package com.ai.ecom02.service.impl;
 
-import com.ai.ecom02.dto.ListaProdottoDto;
-import com.ai.ecom02.dto.ProdottoDto;
 import com.ai.ecom02.dto.RicercaDto;
 import com.ai.ecom02.model.Prodotto;
-import com.ai.ecom02.model.Token;
 import com.ai.ecom02.repository.RepProdotto;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -84,16 +81,6 @@ public class ProdottoServiceImpl implements ProdottoService {
     public List<Prodotto> findByCodiceLikeOrDescrizioneLike(RicercaDto ricerca) {
 
         return repProdotto.trovaPerChiaveParziale("%" + ricerca.getRicerca() + "%");
-    }
-
-    @Override
-    public ListaProdottoDto creaListaProdottoDto(List<Prodotto> listaProdotto, Token t) {
-        return new ListaProdottoDto(listaProdotto, t);
-    }
-
-    @Override
-    public ProdottoDto creaListaProdottoDto(Prodotto prodotto, Token t) {
-        return new ProdottoDto(prodotto, t);
     }
 
 }

@@ -3,7 +3,6 @@ package com.ai.ecom02.controller;
 import com.ai.ecom02.dto.ListaProdottoDto;
 import com.ai.ecom02.dto.ProdottoDto;
 import com.ai.ecom02.dto.RicercaDto;
-import com.ai.ecom02.dto.TokenDto;
 import com.ai.ecom02.model.Prodotto;
 import com.ai.ecom02.model.Token;
 import com.ai.ecom02.service.SecurityService;
@@ -29,19 +28,19 @@ public class ProdottoController {
     @RequestMapping(value = ("/lista-prodotti"))
     @ResponseBody
     public ListaProdottoDto listaProdotti(
-            @RequestBody TokenDto tokenDto
+            @RequestBody ProdottoDto prodottoDto
     ) {
-        Token token = tokenDto.getToken();
-        Token t = securityService.retrieveToken(token);
-        List<Prodotto> listaProdotto = srvProdotto.getAll();
-        ListaProdottoDto listaProdottoDto = srvProdotto.creaListaProdottoDto(listaProdotto, t);
+        Token t = prodottoDto.getToken();
+        t = securityService.retrieveToken(t);
+        List<Prodotto> lista = srvProdotto.getAll();
+        ListaProdottoDto listaProdottoDto = new ListaProdottoDto(lista, t);
         return listaProdottoDto;
     }
 
     @RequestMapping(value = ("/prodotti-add"))
     @ResponseBody
     public void addProdotto(
-            @RequestBody ProdottoDto prodottoDto  
+            @RequestBody ProdottoDto prodottoDto
     ) {
         Token t = prodottoDto.getToken();
         t = securityService.retrieveToken(t);
@@ -71,12 +70,12 @@ public class ProdottoController {
     @RequestMapping(value = ("/prodotti-find"))
     @ResponseBody
     public ListaProdottoDto findProdottiByCodiceOrDescrizione(
-            @RequestBody RicercaDto ricerca
+            @RequestBody RicercaDto ricercaDto
     ) {
-        Token token = ricerca.getToken();
-        Token t = securityService.retrieveToken(token);
-        List<Prodotto> listaProdotto = srvProdotto.findByDescrizioneOrCodiceLike(ricerca);
-        ListaProdottoDto listaProdottoDto = srvProdotto.creaListaProdottoDto(listaProdotto, t);
+        Token t = ricercaDto.getToken();
+        t = securityService.retrieveToken(t);
+        List<Prodotto> lista = srvProdotto.findByDescrizioneOrCodiceLike(ricercaDto);
+        ListaProdottoDto listaProdottoDto = new ListaProdottoDto(lista, t);
         return listaProdottoDto;
     }
 
