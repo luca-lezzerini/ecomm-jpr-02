@@ -33,7 +33,7 @@ export class OffertaCrudComponent implements OnInit {
   }
   nuovo(): void {
     this.state = 'aggiungi';
-    this.srvOfferta.offertaForm.id = 0;
+    this.srvOfferta.offertaForm.id = '0';
   }
   chiudi(): void {
     this.state = 'ricerca';
