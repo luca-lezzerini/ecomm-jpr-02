@@ -1,6 +1,6 @@
-import { ProdottoDto } from '../dto/prodotto-dto';
+import { Prodotto } from './prodotto';
 import { Token } from '../dto/token';
 export class ListaProdottoDto {
-    listaColori: ProdottoDto [];
+    listaColori: Prodotto [];
     token: Token;
 } 
