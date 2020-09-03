@@ -20,34 +20,36 @@ import org.springframework.web.bind.annotation.RestController;
  *
  * @author Francesco
  */
-
 @CrossOrigin("*")
 @RestController
 public class ImballoController {
 
     @Autowired
     SecurityService securityService;
-    
+
     @Autowired
     ImballoServiceImpl srvImballo;
 
     @RequestMapping(value = {"/list-imballo"})
     @ResponseBody
-    public ImballoDtoList listaImballi(@RequestBody ImballoDto imbDto ) {
+    public ImballoDtoList listaImballi(@RequestBody ImballoDto imbDto) {
         Token token = imbDto.getToken();
         Token t = securityService.retrieveToken(token);
         List<Imballo> list = srvImballo.getAll();
-        ImballoDtoList imbDtoList = new ImballoDtoList(list, t);       
+        ImballoDtoList imbDtoList = new ImballoDtoList(list, t);
         return imbDtoList;
     }
 
     @RequestMapping(value = {"/add-imballo"})
     @ResponseBody
-    public List<Imballo> aggiungiImballo(
-            @RequestBody Imballo imballo
+    public ImballoDtoList aggiungiImballo(
+            @RequestBody ImballoDto dto
     ) {
-        srvImballo.add(imballo);
-        return srvImballo.getAll();
+        srvImballo.add(dto.getImballo());
+        List<Imballo> lista = srvImballo.getAll();
+        // FIXME: passare token
+        ImballoDtoList dx = new ImballoDtoList(lista, null);
+        return dx;
     }
 
     @RequestMapping(value = {"/delete-imballo/{id}"})
@@ -62,13 +64,16 @@ public class ImballoController {
 
     @RequestMapping(value = {"/update-imballo"})
     @ResponseBody
-    public Imballo aggiornaImballo(
-            @RequestBody Imballo imballo
+    public ImballoDtoList aggiornaImballo(
+            @RequestBody ImballoDto dto
     ) {
-        srvImballo.update(imballo);
-        return imballo;
+        srvImballo.update(dto.getImballo());
+        List<Imballo> lista = srvImballo.getAll();
+        // FIXME: passare il token corretto
+        ImballoDtoList dx = new ImballoDtoList(lista, null);
+        return dx;
     }
-   
+
     @RequestMapping(value = {"/find-by-descrizione-imballo"})
     @ResponseBody
     public ImballoDtoList ricercaByDescrizioneImballo(
@@ -76,10 +81,9 @@ public class ImballoController {
     ) {
         Token t = ricerca.getToken();
         t = securityService.retrieveToken(t);
-        List<Imballo> listaImballo = srvImballo.findByDescrizione(ricerca); 
+        List<Imballo> listaImballo = srvImballo.findByDescrizione(ricerca);
         ImballoDtoList imbDtoList = new ImballoDtoList(listaImballo, t);
         return imbDtoList;
     }
-    
 
 }

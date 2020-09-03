@@ -5,6 +5,7 @@ import { ImballoServiceService } from './../imballo-service.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { RicercaDto } from '../dto/ricerca-dto';
+import { Imballo } from '../dto/imballo';
 
 
 @Component({
@@ -26,29 +27,32 @@ export class ImballoCrudComponent implements OnInit {
   }
 
   addImballo() {
-    this.state = "aggiungi"
-    this.state2 = ""
-    this.mem.ricerca.ricerca = ""
-    this.msg = ""
+    this.state = "aggiungi";
+    this.state2 = "";
+    this.mem.ricerca.ricerca = "";
+    this.msg = "";
   }
 
-  updateImballo(imballo: ImballoDto, i: number) {
-    this.state = "modifica"
-    this.state2 = ""
+  updateImballo(imballo: Imballo, i: number) {
+    this.state = "modifica";
+    this.state2 = "";
     this.imballoSelezionato = i;
-    this.mem.imballoMod = Object.assign({}, imballo)
-    this.msg = ""
+    console.log(imballo);
+    this.mem.imballoMod.imballo = Object.assign({}, imballo);
+    this.msg = "";
   }
 
-  /*removeImballo(id: number) {
+  removeImballo(id: number) {
     this.mem.removeImballo(id)
     this.mem.imballi = this.mem.lista();
     this.state = "ricerca"
   }
-  */
+  
 
   confirm() {
+    console.log("Entrato in confirm");
     if (this.state == "aggiungi") {
+      console.log(this.mem.imballoMod);
       if (this.mem.imballoMod.imballo.descrizione && this.mem.imballoMod.imballo.costo > 0) {
         this.mem.addImballo()
         this.mem.imballoMod = new ImballoDto()
@@ -59,6 +63,7 @@ export class ImballoCrudComponent implements OnInit {
       }
     }
     else if (this.state == "modifica") {
+      console.log("Siamo in confirm - modifica");
       if (this.mem.imballoMod.imballo.descrizione && this.mem.imballoMod.imballo.costo > 0) {
         //this.mem.imballi[this.imballoSelezionato] = this.mem.imballoMod;
 
@@ -79,14 +84,12 @@ export class ImballoCrudComponent implements OnInit {
   }
 
   findImballo() {
-
-    this.state2 = ""
-    // if (this.mem.ricerca.ricerca.length > 0) {
-
-      //this.mem.findImballo()
-    // } else {
-    //   this.mem.lista()
-    // }
+    this.state2 = "";
+    if (this.mem.ricerca.ricerca.length > 0) {
+      this.mem.findImballo();
+    } else {
+      this.mem.lista();
+    }
 
   }
 

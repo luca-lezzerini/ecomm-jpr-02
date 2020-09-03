@@ -12,15 +12,12 @@
             placeholder="imballo"
             disabled>
     </span>
-    <br>
-    <br>
-    <br>
     <span *ngIf="state =='aggiungi'">
         <div class="box">
             <br>
-            <input type="text" required [(ngModel)]="mem.imballoMod.descrizione"
+            <input type="text" required [(ngModel)]="mem.imballoMod.imballo.descrizione"
                 placeholder="descrizione">
-            <input type="number" required [(ngModel)]="mem.imballoMod.costo"
+            <input type="number" required [(ngModel)]="mem.imballoMod.imballo.costo"
                 placeholder="costo">
             <br>
             <h2 class="colortext">{{msg}}</h2>
@@ -32,7 +29,11 @@
         </div>
     </span>
     <div *ngIf="state == 'modifica'" class="box">
-        <br> nuova descrizione:<input type="text" [(ngModel)]="mem.imballoMod.descrizione" placeholder="descrizione"> nuovo costo:<input type="number" [(ngModel)]="mem.imballoMod.costo" placeholder="costo">&nbsp;
+        <br> 
+        nuova descrizione:
+        <input type="text" [(ngModel)]="mem.imballoMod.imballo.descrizione" placeholder="descrizione"> 
+        nuovo costo:
+        <input type="number" [(ngModel)]="mem.imballoMod.imballo.costo" placeholder="costo">&nbsp;
         <br>
         <h2 class="colortext">{{msg}}</h2>
         <br>
@@ -70,7 +71,7 @@
     <br>
     <br>
     <br>
-    <table>
+    <table *ngIf="state != 'aggiungi' && state != 'modifica' && state != 'delete'">
         <tr>
             <th>Descrizione</th>
             <th>Costo</th>

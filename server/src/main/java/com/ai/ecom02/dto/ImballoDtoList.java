@@ -10,7 +10,7 @@ import java.util.List;
  */
 public class ImballoDtoList implements Tokenizabile {
 
-    private List<Imballo> imballoDtoList;
+    private List<Imballo> imballi;
     private String descrizione;
     private Double costo;
     private Token token;
@@ -19,12 +19,12 @@ public class ImballoDtoList implements Tokenizabile {
     }
 
     public ImballoDtoList(List<Imballo> imballoDtoList, Token token) {
-        this.imballoDtoList = imballoDtoList;
+        this.imballi = imballoDtoList;
         this.token = token;
     }
 
     public ImballoDtoList(List<Imballo> imballoDtoList, String descrizione, Double costo) {
-        this.imballoDtoList = imballoDtoList;
+        this.imballi = imballoDtoList;
         this.descrizione = descrizione;
         this.costo = costo;
     }
@@ -55,12 +55,12 @@ public class ImballoDtoList implements Tokenizabile {
         this.costo = costo;
     }
 
-    public List<Imballo> getImballoDtoList() {
-        return imballoDtoList;
+    public List<Imballo> getImballi() {
+        return imballi;
     }
 
-    public void setImballoDtoList(List<Imballo> imballoDtoList) {
-        this.imballoDtoList = imballoDtoList;
+    public void setImballi(List<Imballo> imballi) {
+        this.imballi = imballi;
     }
 
 }

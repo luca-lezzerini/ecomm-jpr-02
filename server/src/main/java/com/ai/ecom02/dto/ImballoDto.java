@@ -9,7 +9,7 @@ import com.ai.ecom02.model.Token;
  */
 public class ImballoDto implements Tokenizabile {
 
-    private ImballoDto imballoDto;
+    private Imballo imballo;
     private String descrizione;
     private Double costo;
     private Token token;
@@ -17,18 +17,19 @@ public class ImballoDto implements Tokenizabile {
     public ImballoDto() {
     }
 
-    public ImballoDto(ImballoDto imballoDto, String descrizione, Double costo) {
-        this.imballoDto = imballoDto;
+    public ImballoDto(Imballo imballo, String descrizione, Double costo, Token token) {
+        this.imballo = imballo;
         this.descrizione = descrizione;
         this.costo = costo;
+        this.token = token;
     }
 
-    public ImballoDto getImballoDto() {
-        return imballoDto;
+    public Imballo getImballo() {
+        return imballo;
     }
 
-    public void setImballoDto(ImballoDto imballoDto) {
-        this.imballoDto = imballoDto;
+    public void setImballo(Imballo imballo) {
+        this.imballo = imballo;
     }
 
     @Override
