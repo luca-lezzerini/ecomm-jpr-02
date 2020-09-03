@@ -38,32 +38,38 @@ public class ColoreController {
 
     @RequestMapping(value = ("/colori-add"))
     @ResponseBody
-    public void addColore(
+    public ListaColoriDto addColore(
             @RequestBody ColoreDto colore
     ) {
         Token t = colore.getToken();
         t = securityService.retrieveToken(t);
         srvColore.add(colore.getColore());
+        ListaColoriDto lista = new ListaColoriDto(srvColore.getAll(), t);
+        return lista;
     }
 
     @RequestMapping(value = ("/colori-delete"))
     @ResponseBody
-    public void deleteColore(
+    public ListaColoriDto deleteColore(
             @RequestBody ColoreDto colore
     ) {
         Token t = colore.getToken();
         t = securityService.retrieveToken(t);
         srvColore.delete(colore.getColore());
+        ListaColoriDto lista = new ListaColoriDto(srvColore.getAll(), t);
+        return lista;
     }
 
     @RequestMapping(value = ("/colori-update"))
     @ResponseBody
-    public void updateColore(
+    public ListaColoriDto updateColore(
             @RequestBody ColoreDto colore
     ) {
         Token t = colore.getToken();
         t = securityService.retrieveToken(t);
         srvColore.update(colore.getColore());
+        ListaColoriDto lista = new ListaColoriDto(srvColore.getAll(), t);
+        return lista;
     }
 
     @RequestMapping(value = ("/colori-find"))

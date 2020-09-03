@@ -56,8 +56,7 @@ export class OffertaService {
     console.log("fine switch");
 
     const oss: Observable<ListaOfferteDto> = this.http.post<ListaOfferteDto>(this.urlPath + urlEnd, this.offertaDto);
-    const sub: Subscription = oss.subscribe(risp => { this.listaOfferte = risp.listaOfferte; this.srvToken.setToken(risp.token);});
-    return this.listaOfferte;
+    const sub: Subscription = oss.subscribe(risp => { this.listaOfferte = risp.listaOfferte; this.srvToken.setToken(risp.token);    return this.listaOfferte;});
     return 'ricerca';
     
   }
