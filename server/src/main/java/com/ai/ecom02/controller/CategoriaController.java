@@ -53,7 +53,7 @@ public class CategoriaController {
         if (categoriaDto != null) {
             Token token = categoriaDto.getToken();
             Token t = securityService.retrieveToken(token);
-            categoriaService.addCat(categoriaDto.getCategoriaDto());
+            categoriaService.addCat(categoriaDto.getCategoria());
             lista = new CategoriaListaDto(categoriaService.getLista(), t);
             return lista;
         } else {
@@ -93,7 +93,7 @@ public class CategoriaController {
         if (categoriaDto != null) {
             Token token = categoriaDto.getToken();
             Token t = securityService.retrieveToken(token);
-            categoriaService.removeCat(categoriaDto.getCategoriaDto().getId());
+            categoriaService.removeCat(categoriaDto.getCategoria().getId());
             lista = new CategoriaListaDto(categoriaService.getLista(), t);
             return lista;
         }
@@ -132,7 +132,7 @@ public class CategoriaController {
         if (categoriaDto != null) {
             Token token = categoriaDto.getToken();
             Token t = securityService.retrieveToken(token);
-            categoriaService.updateCat(categoriaDto.getCategoriaDto());
+            categoriaService.updateCat(categoriaDto.getCategoria());
             lista = new CategoriaListaDto(categoriaService.getLista(), t);
             return lista;
         }
