@@ -63,7 +63,6 @@ export class CategoriaCRUDComponent implements OnInit {
         console.log("descrizione non vuota");
         this.mem.categorie[this.categoriaSelezionata] = this.mem.categTemp;
         this.mem.update(this.mem.categTemp);
-        this.mem.lista();
         this.modificaState = false;
         this.tabellaState = true;
         this.searchState = true;
