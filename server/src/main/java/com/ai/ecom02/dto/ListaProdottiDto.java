@@ -5,23 +5,23 @@ import com.ai.ecom02.model.Token;
 import java.util.List;
 
 public class ListaProdottiDto {
-    private List<Prodotto> listaProdotto;
+    private List<Prodotto> listaProdotti;
     private Token token;
 
     public ListaProdottiDto() {
     }
 
     public ListaProdottiDto(List<Prodotto> listaProdotto, Token token) {
-        this.listaProdotto = listaProdotto;
+        this.listaProdotti = listaProdotto;
         this.token = token;
     }
 
-    public List<Prodotto> getListaProdotto() {
-        return listaProdotto;
+    public List<Prodotto> getListaProdotti() {
+        return listaProdotti;
     }
 
-    public void setListaProdotto(List<Prodotto> listaProdotto) {
-        this.listaProdotto = listaProdotto;
+    public void setListaProdotti(List<Prodotto> listaProdotti) {
+        this.listaProdotti = listaProdotti;
     }
 
     public Token getToken() {
