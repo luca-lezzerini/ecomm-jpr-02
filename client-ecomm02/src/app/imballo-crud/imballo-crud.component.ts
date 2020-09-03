@@ -42,10 +42,12 @@ export class ImballoCrudComponent implements OnInit {
     this.msg = "";
   }
 
-  removeImballo(id: number) {
-    this.mem.removeImballo(id)
-    this.mem.imballi = this.mem.lista();
-    this.state = "ricerca"
+  removeImballo(imballo: Imballo) {
+    
+    this.mem.removeImballo();
+    console.log("imballo eliminato")
+    this.mem.imballoMod = new ImballoDto()
+    this.state = "ricerca";
   }
   
 
@@ -101,11 +103,11 @@ export class ImballoCrudComponent implements OnInit {
       this.mem.imballoVis = Object.assign({}, i)
     }
   }
-  canRemove(i: ImballoDto, n: number) {
+  canRemove(i: Imballo, n: number) {
     this.state = "delete"
     this.state2 = "";
     this.imballoSelezionato = n
-    this.mem.imballoMod = Object.assign({}, i)
+    this.mem.imballoMod.imballo = Object.assign({}, i)
 
   }
 }

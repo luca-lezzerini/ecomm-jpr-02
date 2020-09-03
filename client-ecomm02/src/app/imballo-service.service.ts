@@ -1,3 +1,4 @@
+import { CategoriaDto } from './dto/categoria-dto';
 import { Imballo } from './dto/imballo';
 import { ImballoDto } from './imballo-dto';
 import { TokenService } from './token.service';
@@ -71,12 +72,12 @@ export class ImballoServiceService {
     });
   }
 
-  removeImballo(id: number) {
-    let o: Observable<ImballoDto[]> = this.http.get<ImballoDto[]>(this.url + '/delete-imballo/' + id)
-    o.subscribe(risp => { this.imballi = risp; })
+  removeImballo() {
+    let o: Observable<ImballoListDto> = this.http.post<ImballoListDto>(this.url + '/delete-imballo', this.imballoMod)
+    o.subscribe(risp => { this.imballi = risp.imballi; })
     return this.imballi;
   }
-
+  
 
 
 }
