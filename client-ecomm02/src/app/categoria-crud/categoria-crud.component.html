@@ -5,7 +5,6 @@
     <button (click)="searchCriteria()">Cerca</button>
     <button (click)="aggiungi()">Aggiungi</button>
 </div>
-<br><br><br>
 <!-- Form dati per aggiungi e modifica -->
 <div class="check-element animate-show-hide" *ngIf="aggiungiState || modificaState || visualizzaState">
     <h3>Form dati</h3>
@@ -15,18 +14,21 @@
     <button (click)="annulla()" [hidden]="nascondiButton">Annulla</button>
     <p [hidden]="msgCategoriaNonValida">Digitare una categoria valida</p>
 </div>
-<br><br><br>
-<table *ngIf="tabellaState">
-    <tr>
-        <th style="display:none;">ID</th>
-        <th><button (click)="sortDescrizione()">Descrizione</button></th>
-        <th></th>
-        <th></th>
-    </tr>
-    <tr *ngFor="let c of mem.categorie; index as i">
-        <td style="display:none;">{{c.id}}</td>
-        <td (click)="visualizzaDettagliCat(c, i)" class="clickable">{{c.descrizione}}</td>
-        <td><button (click)="modifica(c,i)">Modifica</button></td>
-        <td><button (click)="rimuovi(c, i)">Rimuovi</button></td>
-    </tr>
-</table>
+<br>
+<div *ngIf="tabellaState">
+    <table *ngIf="mem.categorie.length > 0">
+        <tr>
+            <th style="display:none;">ID</th>
+            <th><button (click)="sortDescrizione()">Descrizione</button></th>
+            <th></th>
+            <th></th>
+        </tr>
+        <tr *ngFor="let c of mem.categorie; index as i">
+            <td style="display:none;">{{c.id}}</td>
+            <td (click)="visualizzaDettagliCat(c, i)" class="clickable">{{c.descrizione}}</td>
+            <td><button (click)="modifica(c,i)">Modifica</button></td>
+            <td><button (click)="rimuovi(c, i)">Rimuovi</button></td>
+        </tr>
+    </table>
+    <h3 *ngIf="mem.categorie.length == 0">Nessun record trovato</h3>
+</div>
