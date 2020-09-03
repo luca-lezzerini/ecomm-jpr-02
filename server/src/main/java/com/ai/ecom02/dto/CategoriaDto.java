@@ -14,23 +14,23 @@ import com.ai.ecom02.model.Token;
  */
 public class CategoriaDto implements Tokenizabile{
     
-    private Categoria categoriaDto;
+    private Categoria categoria;
     private Token token;
 
     public CategoriaDto(Categoria categoriaDto, Token token) {
-        this.categoriaDto = categoriaDto;
+        this.categoria = categoriaDto;
         this.token = token;
     }
 
     public CategoriaDto() {
     }
 
-    public Categoria getCategoriaDto() {
-        return categoriaDto;
+    public Categoria getCategoria() {
+        return categoria;
     }
 
-    public void setCategoriaDto(Categoria categoriaDto) {
-        this.categoriaDto = categoriaDto;
+    public void setCategoria(Categoria categoria) {
+        this.categoria = categoria;
     }
 
     

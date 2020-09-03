@@ -21,7 +21,6 @@ import javax.persistence.Id;
 public class Categoria implements Serializable {
 
     @Id         //dico all'ID che è un identificativo, quindi che è PRIMARY KEY
-
     @GeneratedValue(strategy = GenerationType.IDENTITY)   //gli dico che l''ID primaryKey è AUTOINCREMENT
     private Long id;
 

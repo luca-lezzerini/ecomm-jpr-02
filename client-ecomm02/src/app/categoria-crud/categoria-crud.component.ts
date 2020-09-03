@@ -31,7 +31,6 @@ export class CategoriaCRUDComponent implements OnInit {
   searchCriteria() {
     if (this.mem.ricerca.ricerca != null) {
       this.mem.cerca();
-      this.mem.ricerca.ricerca = "";
     } else {
       return this.mem.lista();
     }
@@ -47,17 +46,21 @@ export class CategoriaCRUDComponent implements OnInit {
   }
 
   conferma() {
+    console.log("Siamo in conferma");
     if (this.aggiungiState) {
       if (this.mem.categTemp.descrizione != null) {
+        console.log("descrizione not null");
         this.mem.addCategoria();
         this.mem.categTemp = new Categoria();
         this.aggiungiState = false;
         this.searchState = true;
       } else {
+        console.log("descrizione null");
         this.msgCategoriaNonValida = false;
       }
     } else if (this.modificaState) {
       if (this.mem.categTemp.descrizione != "") {
+        console.log("descrizione non vuota");
         this.mem.categorie[this.categoriaSelezionata] = this.mem.categTemp;
         this.mem.update(this.mem.categTemp);
         this.mem.lista();
@@ -66,6 +69,7 @@ export class CategoriaCRUDComponent implements OnInit {
         this.searchState = true;
         this.mem.categTemp = new Categoria();
       } else {
+        console.log("descrizione vuota");
         this.msgCategoriaNonValida = false;
       }
     }
