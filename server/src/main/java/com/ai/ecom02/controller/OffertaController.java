@@ -44,29 +44,39 @@ public class OffertaController {
 
     @RequestMapping(value = ("/offerta-add"))
     @ResponseBody
-    public void addOfferta(
+    public ListaOfferteDto addOfferta(
             @RequestBody OffertaDto offerta // la richiesta arriva dal application client 
     ) {
         Token t = offerta.getToken();
         t = securityService.retrieveToken(t);
         srvOfferta.add(offerta.getOfferta());
+        ListaOfferteDto lista = new ListaOfferteDto();
+        lista = new ListaOfferteDto(srvOfferta.getAll(), t);
+        return lista;
     }
 
     @RequestMapping(value = ("/offerta-delete"))
     @ResponseBody
-    public void deleteOfferta(@RequestBody OffertaDto offerta) {
+    public ListaOfferteDto deleteOfferta(@RequestBody OffertaDto offerta) {
         Token t = offerta.getToken();
         t = securityService.retrieveToken(t);
         srvOfferta.delete(offerta.getOfferta());
+        ListaOfferteDto lista = new ListaOfferteDto();
+        lista = new ListaOfferteDto(srvOfferta.getAll(), t);
+        return lista;
 
     }
 
     @RequestMapping(value = ("/offerta-update"))
     @ResponseBody
-    public void updateOfferta(@RequestBody OffertaDto offerta) {
+    public ListaOfferteDto updateOfferta(@RequestBody OffertaDto offerta) {
         Token t = offerta.getToken();
         t = securityService.retrieveToken(t);
         srvOfferta.update(offerta.getOfferta());
+        ListaOfferteDto lista = new ListaOfferteDto();
+        lista = new ListaOfferteDto(srvOfferta.getAll(), t);
+        return lista;
+
     }
 
     @RequestMapping(value = ("/offerta-find"))
