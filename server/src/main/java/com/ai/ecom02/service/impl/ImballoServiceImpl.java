@@ -9,7 +9,6 @@ import com.ai.ecom02.dto.RicercaDto;
 import com.ai.ecom02.model.Imballo;
 import com.ai.ecom02.repository.RepImballo;
 import java.util.List;
-import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.ai.ecom02.service.ImballoService;
@@ -48,11 +47,11 @@ public class ImballoServiceImpl implements ImballoService {
 
     @Override
     public Imballo update(Imballo imballo) {
-       return repImballo.save(imballo);
+        return repImballo.save(imballo);
     }
 
-    public List<Imballo> findByDescrizione(RicercaDto ricerca){
-        return repImballo.findByDescrizione("%"+ricerca.getRicerca() +"%");
+    public List<Imballo> findByDescrizione(RicercaDto ricerca) {
+        return repImballo.findByDescrizione("%" + ricerca.getRicerca() + "%");
     }
 
 }

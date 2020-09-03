@@ -16,16 +16,13 @@ import org.springframework.stereotype.Repository;
  *
  * @author Francesco
  */
-
 @Repository
 public interface RepImballo extends JpaRepository<Imballo, Long> {
 
     List<Imballo> findByDescrizioneLike(String descrizione);
-    
-//    List<Imballo> findByCostoLike(Double costo);
 
     public List<Imballo> findByDescrizioneLikeOrCostoLike(String string, String string0);
 
-     @Query("SELECT i FROM Imballo i WHERE descrizione LIKE :str")
+    @Query("SELECT i FROM Imballo i WHERE descrizione LIKE :str")
     public List<Imballo> findByDescrizione(@Param("str") String str);
 }
