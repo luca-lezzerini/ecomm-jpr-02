@@ -1,3 +1,4 @@
+import { Imballo } from './dto/imballo';
 import { ImballoDto } from './imballo-dto';
 import { TokenService } from './token.service';
 import { ImballoListDto } from './imballo-list-dto';
@@ -14,8 +15,9 @@ import { Observable } from 'rxjs';
 export class ImballoServiceService {
 
   private url = "http://localhost:8080"
-  imballi: ImballoDto[] = [];
+  imballi: Imballo[] = [];
   imballo: ImballoDto = new ImballoDto();
+  imballiListMod : ImballoListDto = new ImballoListDto()
   imballoMod: ImballoDto = new ImballoDto();
   imballoVis: ImballoDto = new ImballoDto()
   ricerca: RicercaDto = new RicercaDto()
@@ -25,20 +27,24 @@ export class ImballoServiceService {
 
   addImballo() {
     let o: Observable<ImballoListDto> =
-      this.http.post<ImballoListDto>(this.url + "/add-imballo", this.imballoMod)
+      this.http.post<ImballoListDto>(this.url + "/add-imballo", this.imballoMod.imballo)
     o.subscribe(risp => { this.imballi = risp.imballi;
     this.tokenService.setToken(risp.token);
     
     })
   }
 
-  lista(): ImballoDto[] {
-    let o: Observable<ImballoDto[]> = this.http.post<ImballoDto[]>(this.url + "/list-imballo", ImballoDto)
-    o.subscribe(risp => { this.imballi = risp; })
-    return this.imballi
+  lista(): Imballo[] {
+    this.imballoMod.token = this.tokenService.getToken();
+    let o: Observable<ImballoListDto> = this.http.post<ImballoListDto>(this.url + "/list-imballo", this.imballoMod)
+    o.subscribe(risp => { this.imballi = risp.imballi;
+      this.tokenService.setToken(risp.token);
+    })
+    return this.imballi;
   }
+  
 
-  findImballo(): ImballoDto[] {
+  /*findImballo(): ImballoDto[] {
     this.ricerca.token = null;
     let o: Observable<ImballoDto[]> = this.http.post<ImballoDto[]>(this.url + "/find-by-descrizione-imballo", this.ricerca.ricerca)
     o.subscribe(risp => { this.imballi = risp; })
@@ -46,6 +52,7 @@ export class ImballoServiceService {
 
 
   }
+  */
 
   updateImballo(imballoMod: ImballoDto) {
     let o: Observable<ImballoDto> =
@@ -53,12 +60,12 @@ export class ImballoServiceService {
     o.subscribe(risp => { this.imballo = risp; })
   }
 
-  removeImballo(id: number): ImballoDto[] {
+  /*removeImballo(id: number): ImballoDto[] {
     let o: Observable<ImballoDto[]> = this.http.get<ImballoDto[]>(this.url + '/delete-imballo/' + id)
     o.subscribe(risp => { this.imballi = risp; })
     return this.imballi;
   }
-
+*/
 
 
 }

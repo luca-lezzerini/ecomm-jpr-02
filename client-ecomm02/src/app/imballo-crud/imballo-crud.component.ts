@@ -40,11 +40,12 @@ export class ImballoCrudComponent implements OnInit {
     this.msg = ""
   }
 
-  removeImballo(id: number) {
+  /*removeImballo(id: number) {
     this.mem.removeImballo(id)
     this.mem.imballi = this.mem.lista();
     this.state = "ricerca"
   }
+  */
 
   confirm() {
     if (this.state == "aggiungi") {
@@ -59,7 +60,7 @@ export class ImballoCrudComponent implements OnInit {
     }
     else if (this.state == "modifica") {
       if (this.mem.imballoMod.imballo.descrizione && this.mem.imballoMod.imballo.costo > 0) {
-        this.mem.imballi[this.imballoSelezionato] = this.mem.imballoMod;
+        //this.mem.imballi[this.imballoSelezionato] = this.mem.imballoMod;
 
         this.mem.updateImballo(this.mem.imballoMod)
         this.mem.imballoMod = new ImballoDto()
@@ -82,7 +83,7 @@ export class ImballoCrudComponent implements OnInit {
     this.state2 = ""
     // if (this.mem.ricerca.ricerca.length > 0) {
 
-      this.mem.findImballo()
+      //this.mem.findImballo()
     // } else {
     //   this.mem.lista()
     // }
