@@ -1,9 +1,11 @@
-import { Identifiers } from '@angular/compiler';
+import { Token } from './token';
+import { Taglia } from './taglia';
+export class TagliaDto {
 
-export class Taglia {
+ taglia : Taglia;
+ token : Token;
 
-    id: string;
-    descrizione: string;
-    sigla: string;
+
+
 
 }
