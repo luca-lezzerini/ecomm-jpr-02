@@ -1,6 +1,7 @@
 import { CategoriaDto } from './../dto/categoria-dto';
 import { CategoriaServiceService } from './../categoria-service.service';
 import { Component, OnInit } from '@angular/core';
+import { Categoria } from '../model/categoria';
 
 @Component({
   selector: 'app-categoria-crud',
@@ -42,14 +43,14 @@ export class CategoriaCRUDComponent implements OnInit {
     this.searchState = false;
     this.nascondiButton = false;
     this.disabilitaDescrizione = false;
-    this.mem.categTemp = new CategoriaDto();
+    this.mem.categTemp = new Categoria();
   }
 
   conferma() {
     if (this.aggiungiState) {
       if (this.mem.categTemp.descrizione != null) {
         this.mem.addCategoria();
-        this.mem.categTemp = new CategoriaDto();
+        this.mem.categTemp = new Categoria();
         this.aggiungiState = false;
         this.searchState = true;
       } else {
@@ -63,7 +64,7 @@ export class CategoriaCRUDComponent implements OnInit {
         this.modificaState = false;
         this.tabellaState = true;
         this.searchState = true;
-        this.mem.categTemp = new CategoriaDto();
+        this.mem.categTemp = new Categoria();
       } else {
         this.msgCategoriaNonValida = false;
       }
@@ -78,7 +79,7 @@ export class CategoriaCRUDComponent implements OnInit {
     this.searchState = true;
   }
 
-  modifica(c: CategoriaDto, i: number) {
+  modifica(c: Categoria, i: number) {
     this.categoriaSelezionata = i;
     this.mem.categTemp = Object.assign({}, c); //copio c dentro categTemp
     this.modificaState = true;
@@ -91,14 +92,14 @@ export class CategoriaCRUDComponent implements OnInit {
     this.msgCategoriaNonValida = true;
   }
 
-  rimuovi(c: CategoriaDto, i: number) {
+  rimuovi(c: Categoria, i: number) {
     this.categoriaSelezionata = i;
     if (confirm("Vuoi eliminare la categoria " + c.descrizione + "?")) {
       this.mem.categTemp = Object.assign({}, c);
       this.mem.categorie[this.categoriaSelezionata] = this.mem.categTemp;
-      this.mem.remove(this.mem.categTemp.id);
+      this.mem.remove(this.mem.categTemp);
       this.mem.lista();
-      this.mem.categTemp = new CategoriaDto();
+      this.mem.categTemp = new Categoria();
       this.aggiungiState = false;
       this.modificaState = false;
       this.visualizzaState = false;
@@ -113,7 +114,7 @@ export class CategoriaCRUDComponent implements OnInit {
 
     }
   }
-  visualizzaDettagliCat(c: CategoriaDto, i: number) {
+  visualizzaDettagliCat(c: Categoria, i: number) {
     this.categoriaSelezionata = i;
     this.mem.categTemp = Object.assign({}, c); //copio c dentro categTemp
     this.visualizzaState = true;

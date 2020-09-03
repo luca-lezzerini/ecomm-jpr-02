@@ -34,7 +34,7 @@ export class SpedizioneServiceService {
     obs.subscribe(risp => { this.spedizioni = risp });
     return this.spedizioni;
   }
-  remove(id: number) {
+  remove(id: String) {
     let obs: Observable<SpedizioneDto[]> =
       this.http.get<SpedizioneDto[]>(this.url + "/rimuovi-spedizione/" + id);
     obs.subscribe(risp => { this.spedizioni = risp });

@@ -1,3 +1,4 @@
+import { TokenService } from './token.service';
 import { RicercaDto } from './dto/ricerca-dto';
 import { CategoriaDto } from './dto/categoria-dto';
 import { Categoria } from './model/categoria';
@@ -18,40 +19,47 @@ export class CategoriaServiceService {
   ricerca: RicercaDto = new RicercaDto();
   ricerche: RicercaDto[] = [];
   categoriaDto: CategoriaDto = new CategoriaDto();
+  categoriaListaDto: CategoriaListaDto = new CategoriaListaDto;
   
-  constructor(private http:HttpClient) { }
+  constructor(private http:HttpClient, private tokenSrv:TokenService) { }
 
   addCategoria(){
     if(this.categoriaDto.token != null){
-      let o: Observable<CategoriaListaDto> =
-      this.http.post<CategoriaListaDto>(this.url + "/aggiungi-categoria/", this.categTemp)
-      o.subscribe(risp => {this.categoria = risp;
-                          this.ser.setToken(risp.token);}) //inietto il token e dopo il ;
+       this.categoriaDto.token = this.tokenSrv.getToken();
+       this.categoriaDto.categoria = this.categTemp;
+      let o: Observable<CategoriaListaDto> = this.http.post<CategoriaListaDto>(this.url + "/aggiungi-categoria/", this.categoriaDto)
+      o.subscribe(risp => {this.categorie = risp.listaCategoriaDto;
+                          this.tokenSrv.setToken(risp.token);}) //inietto il token e dopo il ;
     }
   }
 
   lista(): Categoria[] {
-    let o: Observable<CategoriaListaDto> = this.http.get<CategoriaListaDto>(this.url + '/lista-categorie')
-    o.subscribe(risp => { this.categoria = risp; })
+    this.categoriaDto.token = this.tokenSrv.getToken();
+    let o: Observable<CategoriaListaDto> = this.http.post<CategoriaListaDto>(this.url + '/lista-categorie/', this.categoriaDto )
+    o.subscribe(risp => { this.categorie = risp.listaCategoriaDto; this.tokenSrv.setToken(risp.token);})
     return this.categorie
   }
 
   cerca(): RicercaDto[]{
     let o: Observable<CategoriaListaDto> =
     this.http.post<CategoriaListaDto>(this.url+'/cerca-categoria/' , this.ricerca)
-    o.subscribe(risp => {this.categoria = risp;})
+    o.subscribe(risp => {this.categorie = risp.listaCategoriaDto; this.tokenSrv.setToken(risp.token);})
     return this.ricerche;
   }
 
   update(categTemp: Categoria){
+    this.categoriaDto.categoria = categTemp;
+    this.categoriaDto.token = this.tokenSrv.getToken();
     let o: Observable<CategoriaListaDto> =
-    this.http.post<CategoriaListaDto>(this.url + "/modifica-categoria", categTemp)
-    o.subscribe(risp => {this.categoria = risp;})
+    this.http.post<CategoriaListaDto>(this.url + "/modifica-categoria", this.categoriaDto)
+    o.subscribe(risp => {this.categorie = risp.listaCategoriaDto; this.tokenSrv.setToken(risp.token);})
   }
 
-  remove(id: number){
-    let o: Observable<CategoriaListaDto> = this.http.get<CategoriaListaDto>(this.url + '/rimuovi-categoria/' + id)
-    o.subscribe(risp => { this.categoria = risp; })
+  remove(categTemp: Categoria){
+    this.categoriaDto.categoria = categTemp;
+    this.categoriaDto.token = this.tokenSrv.getToken();
+    let o: Observable<CategoriaListaDto> = this.http.post<CategoriaListaDto>(this.url + '/rimuovi-categoria/', this.categoriaDto)
+    o.subscribe(risp => { this.categorie = risp.listaCategoriaDto; this.tokenSrv.setToken(risp.token);})
     return this.categorie
   }
 }

@@ -36,10 +36,10 @@ import org.springframework.web.bind.annotation.RestController;
 public class CategoriaController {
 
     private static Logger log = LoggerFactory.getLogger(CategoriaController.class);
-    
+
     @Autowired
     SecurityService securityService;
-    
+
     @Autowired
     CategoriaService categoriaService;
 
@@ -58,6 +58,8 @@ public class CategoriaController {
             return lista;
         } else {
             log.error("impossibile aggiungere");
+            lista.setListaCategoriaDto(categoriaService.getLista());
+            lista.setToken(categoriaDto.getToken());
             return lista;
         }
     }
@@ -69,13 +71,15 @@ public class CategoriaController {
     ) {
         CategoriaListaDto lista = new CategoriaListaDto();
         log.info("ricevuta richiesta lista");
-        if(categoriaDto != null){
+        if (categoriaDto != null) {
             Token token = categoriaDto.getToken();
             Token t = securityService.retrieveToken(token);
             lista = new CategoriaListaDto(categoriaService.getLista(), t);
             return lista;
         }
         log.info("lista non trovata");
+        lista.setListaCategoriaDto(categoriaService.getLista());
+        lista.setToken(categoriaDto.getToken());
         return lista;
     }
 
@@ -94,6 +98,8 @@ public class CategoriaController {
             return lista;
         }
         log.info("categoria non trovata");
+        lista.setListaCategoriaDto(categoriaService.getLista());
+        lista.setToken(categoriaDto.getToken());
         return lista;
     }
 
@@ -111,6 +117,8 @@ public class CategoriaController {
             return lista;
         }
         log.error("ricerca non presente");
+        lista.setListaCategoriaDto(categoriaService.getLista());
+        lista.setToken(ricercaDto.getToken());
         return lista;
     }
 
@@ -129,6 +137,8 @@ public class CategoriaController {
             return lista;
         }
         log.error("impossibile modificare la categoria");
+        lista.setListaCategoriaDto(categoriaService.getLista());
+        lista.setToken(categoriaDto.getToken());
         return lista;
     }
 }
