@@ -1,6 +1,6 @@
+import { TagliaDto } from './dto/taglia-dto';
 import { RicercaDto } from './dto/ricerca-dto';
 import { Observable } from 'rxjs';
-import { TagliaDto } from './dto/taglia-dto';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 

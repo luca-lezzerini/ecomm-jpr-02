@@ -1,7 +1,7 @@
-import { TagliaDto } from './taglia-dto';
+import { Taglia } from './taglia';
 
-describe('TagliaDto', () => {
+describe('Taglia', () => {
   it('should create an instance', () => {
-    expect(new TagliaDto()).toBeTruthy();
+    expect(new Taglia()).toBeTruthy();
   });
 });
