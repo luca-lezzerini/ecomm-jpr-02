@@ -27,13 +27,12 @@ public class ColoreController {
     @RequestMapping(value = ("/lista-colori"))
     @ResponseBody
     public ColoriDto listaColori(
-            @RequestBody ColoriDto coloriDto
+            @RequestBody ColoreDto coloreDto
     ) {
-        Token t = coloriDto.getToken();
+        Token t = coloreDto.getToken();
         t = securityService.retrieveToken(t);
         List<Colore> lista = srvColore.getAll();
-        coloriDto.setListaColori(lista);
-        coloriDto.setToken(t);
+        ColoriDto coloriDto = new ColoriDto(lista, t);
         return coloriDto;
     }
 
