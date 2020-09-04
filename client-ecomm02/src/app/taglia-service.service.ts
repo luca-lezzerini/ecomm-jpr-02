@@ -1,8 +1,11 @@
+import { TagliaListDto } from './taglia-list-dto';
 import { TagliaDto } from './dto/taglia-dto';
 import { RicercaDto } from './dto/ricerca-dto';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Taglia } from './dto/taglia';
+import { TokenService } from './token.service';
 
 @Injectable({
   providedIn: 'root'
@@ -10,40 +13,58 @@ import { Injectable } from '@angular/core';
 export class TagliaServiceService {
 
   taglia: TagliaDto = new TagliaDto();
-  taglie: TagliaDto[] = [];
+  taglie: Taglia[] = [];
   tagliaMod: TagliaDto = new TagliaDto();
   tagliaVis : TagliaDto = new TagliaDto()
   ricerca: RicercaDto = new RicercaDto();
 
   private url = "http://localhost:8080";
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, public tokenService: TokenService) { }
 
   addTaglia() {
-    let o: Observable<TagliaDto[]> = this.http.post<TagliaDto[]>(this.url + '/add-taglia', this.tagliaMod);
-    o.subscribe(risp => { this.taglie = risp; });
+    console.log("Siamo in addTaglia e la taglia vale ",
+     this.tagliaMod)
+    let o: Observable<TagliaListDto> 
+    = this.http.post<TagliaListDto>(
+      this.url + '/add-taglia', this.tagliaMod);
+    o.subscribe(risp => { this.taglie = risp.taglie;
+      this.tokenService.setToken(risp.token); });
   }
 
   updateTaglia(tagliaMod: TagliaDto) {
-    let o: Observable<TagliaDto> = this.http.post<TagliaDto>(this.url + '/update-taglia', tagliaMod);
-    o.subscribe(risp => { this.taglia = risp; });
+    console.log("In updateTaglia ", tagliaMod);
+    let o: Observable<TagliaListDto> =
+     this.http.post<TagliaListDto>(
+       this.url + '/update-taglia', tagliaMod);
+    o.subscribe(risp => { this.findTaglia() });
   }
 
-  removeTaglia(id: number): TagliaDto[] {
-    let o: Observable<TagliaDto[]> = this.http.get<TagliaDto[]>(this.url + '/delete-taglia/' + id);
-    o.subscribe(risp => { this.taglie = risp; });
+  removeTaglia(){
+    let o: Observable<TagliaListDto> = 
+    this.http.get<TagliaListDto>(
+      this.url + '/delete-taglia' + this.tagliaMod);
+    o.subscribe(risp => { this.taglie = risp.taglie;
+      this.tokenService.setToken(risp.token); });
     return this.taglie;
   }
 
-  lista(): TagliaDto[] {
-    let o: Observable<TagliaDto[]> = this.http.get<TagliaDto[]>(this.url + '/list-taglia');
-    o.subscribe(risp => { this.taglie = risp; });
+  lista(): Taglia[] {
+    let o: Observable<TagliaListDto> = 
+    this.http.post<TagliaListDto>(
+      this.url + '/list-taglia', this.tagliaMod);
+    o.subscribe(risp => { this.taglie = risp.taglie;
+      this.tokenService.setToken(risp.token); });
     return this.taglie;
   }
 
-  findTagliaSigla(): TagliaDto[] {
-    let o: Observable<TagliaDto[]> = this.http.post<TagliaDto[]>(this.url + '/find-taglia', this.ricerca.ricerca);
-    o.subscribe(risp => { this.taglie = risp; });
+  findTaglia() {
+    this.ricerca.token =null;
+    let o: Observable<TagliaListDto> 
+    = this.http.post<TagliaListDto>(
+      this.url + '/find-taglia', this.ricerca);
+    o.subscribe(risp => { this.taglie = risp.taglie;
+      this.tokenService.setToken(risp.token); });
     return this.taglie;
   }
 
