@@ -14,23 +14,23 @@ import java.util.List;
  * @author Gian Marco
  */
 public class ColoriDto {
-    List<Colore> colori;
+    List<Colore> listaColori;
     Token token;
 
     public ColoriDto() {
     }
 
     public ColoriDto(List<Colore> colori, Token token) {
-        this.colori = colori;
+        this.listaColori = colori;
         this.token = token;
     }
 
     public List<Colore> getListaColori() {
-        return colori;
+        return listaColori;
     }
 
     public void setListaColori(List<Colore> colori) {
-        this.colori = colori;
+        this.listaColori = colori;
     }
 
     public Token getToken() {
