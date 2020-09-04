@@ -7,6 +7,7 @@ import com.ai.ecom02.model.Token;
  *
  * @author Francesco
  */
+
 public class ImballoDto implements Tokenizabile {
 
     private Imballo imballo;

@@ -92,7 +92,6 @@ export class ImballoCrudComponent implements OnInit {
     } else {
       this.mem.lista();
     }
-
   }
 
   view(i: ImballoDto, n: number) {

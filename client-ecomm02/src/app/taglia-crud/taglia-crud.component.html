@@ -5,7 +5,6 @@
 <span *ngIf="state =='ricerca'">
 
     <input type="text" [(ngModel)]="memT.ricerca.ricerca">
-    <!-- descrizione <input type="text" [(ngModel)]="memT.taglia.descrizione" placeholder="taglia"> -->
     <button class="pointer" (click)="findTaglia()">Cerca</button>&nbsp;
     <button class="pointer" (click)="addTaglia()">Aggiungi</button>
 </span>
@@ -14,8 +13,6 @@
         placeholder="taglia" disabled>
     <button class="pointer" (click)="findTaglia()" disabled>Cerca</button>&nbsp;
     <button class="pointer" (click)="addTaglia()" disabled>Aggiungi</button>
-    <!-- descrizione <input type="hidden" [(ngModel)]="memT.taglia.descrizione"
-        placeholder="taglia" disabled> -->
 </span>
 
 <br>
@@ -24,9 +21,9 @@
 <span *ngIf="state =='aggiungi'">
     <div>
         <h3>Form dati</h3>
-        <input type="text" [(ngModel)]="memT.tagliaMod.descrizione"
+        <input type="text" [(ngModel)]="memT.tagliaMod.taglia.descrizione"
             placeholder="descrizione">
-        <input type="text" [(ngModel)]="memT.tagliaMod.sigla"
+        <input type="text" [(ngModel)]="memT.tagliaMod.taglia.sigla"
             placeholder="sigla">
         <br>
         <button class="pointer" (click)="conferma()">Conferma</button>
@@ -34,7 +31,7 @@
     </div>
 </span>
 <div *ngIf="state == 'modifica'">
-    nuova descrizione:<input type="text" [(ngModel)]="memT.tagliaMod.descrizione" placeholder="descrizione"> nuova sigla:<input type="text" [(ngModel)]="memT.tagliaMod.sigla" placeholder="sigla">&nbsp;
+    nuova descrizione:<input type="text" [(ngModel)]="memT.tagliaMod.taglia.descrizione" placeholder="descrizione"> nuova sigla:<input type="text" [(ngModel)]="memT.tagliaMod.sigla" placeholder="sigla">&nbsp;
     <button class="pointer" (click)="conferma()">Conferma modifica</button>
     <button class="pointer" (click)="chiudi()">Annulla</button>
 </div>
