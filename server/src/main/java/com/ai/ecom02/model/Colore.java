@@ -12,7 +12,7 @@ public class Colore implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
     @Column
     private String colore;
@@ -20,16 +20,16 @@ public class Colore implements Serializable {
     public Colore() {
     }
 
-    public Colore(long id, String colore) {
+    public Colore(Long id, String colore) {
         this.id = id;
         this.colore = colore;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
