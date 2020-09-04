@@ -1,7 +1,9 @@
+import { Token } from "./token";
+import { Spedizione } from "../model/spedizione";
+
 export class SpedizioneDto {
-    public id: string;
-    public codice: string;
-    public nome: string;
-    public prezzoKg: number;
+
+    token: Token;
+    spedizione: Spedizione;
 
 }

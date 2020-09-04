@@ -7,30 +7,30 @@ package com.ai.ecom02.dto;
 
 import com.ai.ecom02.model.Spedizione;
 import com.ai.ecom02.model.Token;
-
+import java.util.List;
 /**
  *
  * @author roberto
  */
-public class SpedizioneDto implements Tokenizabile{
+public class SpedizioneListaDto implements Tokenizabile{
     
-    private Spedizione spedizione;
+    private List<Spedizione> listaSpedizioneDto;
     private Token token;
 
-    public SpedizioneDto() {
+    public SpedizioneListaDto() {
     }
 
-    public SpedizioneDto(Spedizione spedizione, Token token) {
-        this.spedizione = spedizione;
+    public SpedizioneListaDto(List<Spedizione> listaSpedizioneDto, Token token) {
+        this.listaSpedizioneDto = listaSpedizioneDto;
         this.token = token;
     }
 
-    public Spedizione getSpedizione() {
-        return spedizione;
+    public List<Spedizione> getListaSpedizioneDto() {
+        return listaSpedizioneDto;
     }
 
-    public void setSpedizione(Spedizione spedizione) {
-        this.spedizione = spedizione;
+    public void setListaSpedizioneDto(List<Spedizione> listaSpedizioneDto) {
+        this.listaSpedizioneDto = listaSpedizioneDto;
     }
 
     @Override
@@ -40,9 +40,8 @@ public class SpedizioneDto implements Tokenizabile{
 
     @Override
     public void setToken(Token t) {
-        token = t;
+        this.token = t;
     }
-    
     
     
 }

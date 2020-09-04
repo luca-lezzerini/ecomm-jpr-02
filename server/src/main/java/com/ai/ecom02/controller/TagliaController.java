@@ -55,7 +55,7 @@ public class TagliaController {
         return dy;
     }
 
-    @RequestMapping(value = {"/delete-taglia/{id}"})
+    @RequestMapping(value = {"/delete-taglia"})
     @ResponseBody
     public TagliaDtoList cancellaTaglia(
             @RequestBody TagliaDto dto

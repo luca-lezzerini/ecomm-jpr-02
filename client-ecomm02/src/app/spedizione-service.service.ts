@@ -2,7 +2,10 @@ import { RicercaDto } from './dto/ricerca-dto';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { SpedizioneDto } from './dto/spedizione-dto';
+import { SpedizioneListaDto } from './dto/spedizione-lista-dto';
 import { HttpClient } from '@angular/common/http';
+import { Spedizione } from './model/spedizione';
+import { TokenService } from './token.service';
 
 
 @Injectable({
@@ -10,39 +13,66 @@ import { HttpClient } from '@angular/common/http';
 })
 export class SpedizioneServiceService {
   private url = "http://localhost:8080";
-  spedizioni: SpedizioneDto[] = [];
-  spedizione: SpedizioneDto = new SpedizioneDto();
-  temp: SpedizioneDto = new SpedizioneDto();
+  spedizioni: Spedizione[] = [];
+  spedizione: Spedizione = new Spedizione();
+  temp: Spedizione = new Spedizione();
   ricerca: RicercaDto = new RicercaDto();
+  ricerche: RicercaDto[] = [];
+  spedizioneDto: SpedizioneDto = new SpedizioneDto();
+  spedizioneListaDto: SpedizioneListaDto = new SpedizioneListaDto();
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private tokenSrv: TokenService) { }
 
   aggiungi() {
-    let obs: Observable<SpedizioneDto[]> =
-      this.http.post<SpedizioneDto[]>(this.url + "/aggiungi-spedizione/", this.temp);
-    obs.subscribe(risp => { this.spedizioni = risp });
+    //if(this.spedizioneDto != null){
+    this.spedizioneDto.token = this.tokenSrv.getToken();
+    this.spedizioneDto.spedizione = this.temp;
+    let obs: Observable<SpedizioneListaDto> =
+      this.http.post<SpedizioneListaDto>(this.url + "/aggiungi-spedizione/", this.spedizioneDto);
+    obs.subscribe(risp => {
+      this.spedizioni = risp.listaSpedizioneDto;
+      this.tokenSrv.setToken(risp.token);
+    });
+    //}
   }
-  cerca(): SpedizioneDto[] {
-    let obs: Observable<SpedizioneDto[]> =
-      this.http.post<SpedizioneDto[]>(this.url + "/cerca-spedizione/", this.ricerca.ricerca);
-    obs.subscribe(risp => { this.spedizioni = risp });
+  cerca(): RicercaDto[] {
+    let obs: Observable<SpedizioneListaDto> =
+      this.http.post<SpedizioneListaDto>(this.url + "/cerca-spedizione/", this.ricerca);
+    obs.subscribe(risp => {
+      this.spedizioni = risp.listaSpedizioneDto;
+      this.tokenSrv.setToken(risp.token);
+    });
+    return this.ricerche;
+  }
+  lista(): Spedizione[] {
+    this.spedizioneDto.token = this.tokenSrv.getToken();
+    let obs: Observable<SpedizioneListaDto> =
+      this.http.post<SpedizioneListaDto>(this.url + "/lista-spedizioni", this.spedizioneDto);
+    obs.subscribe(risp => {
+      this.spedizioni = risp.listaSpedizioneDto;
+      this.tokenSrv.setToken(risp.token);
+    });
     return this.spedizioni;
   }
-  lista(): SpedizioneDto[] {
-    let obs: Observable<SpedizioneDto[]> =
-      this.http.get<SpedizioneDto[]>(this.url + "/lista-spedizioni");
-    obs.subscribe(risp => { this.spedizioni = risp });
-    return this.spedizioni;
+  remove(temp: Spedizione) {
+    this.spedizioneDto.spedizione = temp;
+    this.spedizioneDto.token = this.tokenSrv.getToken();
+    let obs: Observable<SpedizioneListaDto> =
+      this.http.post<SpedizioneListaDto>(this.url + "/rimuovi-spedizione/", this.spedizioneDto);
+    obs.subscribe(risp => {
+      this.spedizioni = risp.listaSpedizioneDto;
+      this.tokenSrv.setToken(risp.token);
+    });
   }
-  remove(id: String) {
-    let obs: Observable<SpedizioneDto[]> =
-      this.http.get<SpedizioneDto[]>(this.url + "/rimuovi-spedizione/" + id);
-    obs.subscribe(risp => { this.spedizioni = risp });
-  }
-  update(temp: SpedizioneDto) {
-    let obs: Observable<SpedizioneDto[]> =
-      this.http.post<SpedizioneDto[]>(this.url + "/modifica-spedizione/", temp);
-    obs.subscribe(risp => { this.spedizioni = risp });
+  update(temp: Spedizione) {
+    this.spedizioneDto.spedizione = temp;
+    this.spedizioneDto.token = this.tokenSrv.getToken();
+    let obs: Observable<SpedizioneListaDto> =
+      this.http.post<SpedizioneListaDto>(this.url + "/modifica-spedizione/", this.spedizioneDto);
+    obs.subscribe(risp => {
+      this.cerca();
+      this.tokenSrv.setToken(risp.token);
+    });
     return this.spedizioni;
   }
 }

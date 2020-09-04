@@ -39,15 +39,16 @@ export class TagliaCrudComponent implements OnInit {
   }
 
   removeTaglia(taglia: Taglia) {
+    console.log("sei in removeTaglia");
     this.memT.removeTaglia();
-    console.log("taglia eliminata");
     this.memT.tagliaMod = new TagliaDto();
     this.state = "ricerca"
   }
 
   findTaglia() {
     this.state2 = "";
-    if (this.memT.ricerca.ricerca.length > 0) {
+    console.log("stiamo in findTaglia",this.memT.ricerca )
+    if (this.memT.ricerca.ricerca != null) {
       this.memT.findTaglia();
     } else {
       this.memT.lista();
@@ -95,9 +96,12 @@ export class TagliaCrudComponent implements OnInit {
 
   }
   canRemove(t: Taglia, n: number) {
+    console.log("stai in canRemove()")
+    
     this.state = "delete";
-    this.state="";
+    this.state2 ="";
     this.tagliaSelezionata = n
     this.memT.tagliaMod.taglia = Object.assign({}, t)
+    console.log("taglia da eliminare:", this.memT.tagliaMod.taglia)
   }
 }

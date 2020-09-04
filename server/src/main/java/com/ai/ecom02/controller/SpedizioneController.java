@@ -6,7 +6,11 @@
 package com.ai.ecom02.controller;
 
 import com.ai.ecom02.dto.RicercaDto;
+import com.ai.ecom02.dto.SpedizioneDto;
+import com.ai.ecom02.dto.SpedizioneListaDto;
 import com.ai.ecom02.model.Spedizione;
+import com.ai.ecom02.model.Token;
+import com.ai.ecom02.service.SecurityService;
 import com.ai.ecom02.service.SpedizioneService;
 import java.util.List;
 import java.util.Optional;
@@ -30,60 +34,109 @@ import org.springframework.web.bind.annotation.RestController;
 public class SpedizioneController {
 
     @Autowired
+    SecurityService securityService;
+
+    @Autowired
     SpedizioneService spedizioneService;
 
     private static Logger log = LoggerFactory.getLogger(SpedizioneController.class);
 
     @RequestMapping(value = {"/aggiungi-spedizione"})
     @ResponseBody
-    public List<Spedizione> aggiungiSpedizione(@RequestBody Optional<Spedizione> spedizione) {
+    public SpedizioneListaDto aggiungiSpedizione(
+            @RequestBody SpedizioneDto spedizioneDto
+    ) {
+        SpedizioneListaDto lista = new SpedizioneListaDto();
         log.info("Ricevuta richiesta di inserimento");
-        if (spedizione.isPresent()) {
-            spedizioneService.addSped(spedizione.get());
+        if (spedizioneDto != null) {
+            Token token = spedizioneDto.getToken();
+            Token t = securityService.retrieveToken(token);
+            lista = new SpedizioneListaDto(spedizioneService.getLista(), t);
+            return lista;
         } else {
             log.error("Spedizione nulla");
+            lista.setListaSpedizioneDto(spedizioneService.getLista());
+            return lista;
         }
-        return spedizioneService.getLista();
     }
 
     @RequestMapping(value = {"/lista-spedizioni"})
     @ResponseBody
-    public List<Spedizione> listaSpedizioni() {
-        return spedizioneService.getLista();
+    public SpedizioneListaDto listaSpedizioni(
+            @RequestBody SpedizioneDto spedizioneDto
+    ) {
+        SpedizioneListaDto lista = new SpedizioneListaDto();
+        log.info("Ricevuta richiesta lista");
+        if (spedizioneDto != null) {
+            Token token = spedizioneDto.getToken();
+            Token t = securityService.retrieveToken(token);
+            lista = new SpedizioneListaDto(spedizioneService.getLista(), t);
+            return lista;
+        } else {
+            log.error("Lista non presente");
+            lista.setListaSpedizioneDto(spedizioneService.getLista());
+            lista.setToken(spedizioneDto.getToken());
+            return lista;
+        }
     }
 
-    @RequestMapping(value = {"/rimuovi-spedizione/{id}"})
+    @RequestMapping(value = {"/rimuovi-spedizione"})
     @ResponseBody
-    public List<Spedizione> rimuoviSpedizione(@PathVariable Optional<Long> id) {
+    public SpedizioneListaDto rimuoviSpedizione(
+            @RequestBody SpedizioneDto spedizioneDto
+    ) {
+        SpedizioneListaDto lista = new SpedizioneListaDto();
         log.info("Ricevuta richiesta di cancellazione");
-        if (id.isPresent()) {
-            spedizioneService.removeSped(id.get());
+        if (spedizioneDto != null) {
+            Token token = spedizioneDto.getToken();
+            Token t = securityService.retrieveToken(token);
+            lista = new SpedizioneListaDto(spedizioneService.getLista(), t);
+            return lista;
         } else {
             log.error("Spedizione nulla");
+            lista.setListaSpedizioneDto(spedizioneService.getLista());
+            lista.setToken(spedizioneDto.getToken());
+            return lista;
         }
-        return spedizioneService.getLista();
     }
 
     @RequestMapping(value = {"/cerca-spedizione"})
     @ResponseBody
-    public List<Spedizione> cercaSpedizione(@RequestBody Optional<String> ricerca) {
-        if (ricerca.isPresent()) {
-            log.info("Ecco cosa ho trovato per questa ricerca");
+    public SpedizioneListaDto cercaSpedizione(
+            @RequestBody SpedizioneDto spedizioneDto
+    ) {
+        SpedizioneListaDto lista = new SpedizioneListaDto();
+        log.info("Ricevuta richiesta di ricerca spedizione");
+        if (spedizioneDto != null) {
+            Token token = spedizioneDto.getToken();
+            Token t = securityService.retrieveToken(token);
+            lista = new SpedizioneListaDto(spedizioneService.getLista(), t);
+            return lista;
         } else {
             log.error("Non ci sono spedizioni per la ricerca effettuata");
+            lista.setListaSpedizioneDto(spedizioneService.getLista());
+            lista.setToken(spedizioneDto.getToken());
+            return lista;
         }
-        return spedizioneService.findSped(ricerca.get(), ricerca.get());
     }
 
     @RequestMapping(value = {"/modifica-spedizione"})
     @ResponseBody
-    public List<Spedizione> modificaCategoria(@RequestBody Optional<Spedizione> spedizione) {
+    public SpedizioneListaDto modificaCategoria(
+            @RequestBody SpedizioneDto spedizioneDto
+    ) {
+        SpedizioneListaDto lista  = new SpedizioneListaDto();
         log.info("Ricevuta richiesta di modifica");
-        if (!spedizione.get().getCodice().isEmpty()) {
-            spedizioneService.updateSped(spedizione.get());
+        if (spedizioneDto != null) {
+            Token token = spedizioneDto.getToken();
+            Token t = securityService.retrieveToken(token);
+            lista = new SpedizioneListaDto(spedizioneService.getLista(), t);
+            return lista;
         } else {
-            log.error("Spedizione nulla");
+            log.error("Modifica spedizione annullata");
+            lista.setListaSpedizioneDto(spedizioneService.getLista());
+            lista.setToken(spedizioneDto.getToken());
+            return lista;
         }
-        return spedizioneService.getLista();
     }
 }
