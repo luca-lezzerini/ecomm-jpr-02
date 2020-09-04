@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SpedizioneDto } from '../dto/spedizione-dto';
 import { SpedizioneServiceService } from '../spedizione-service.service';
+import { Spedizione } from '../model/spedizione';
 
 @Component({
   selector: 'app-spedizione-crud',
@@ -38,7 +39,7 @@ export class SpedizioneCRUDComponent implements OnInit {
     if (this.aggiungiState) {
       if (this.meme.temp.codice != null) {
         this.meme.aggiungi();
-        this.meme.temp = new SpedizioneDto();
+        this.meme.temp = new Spedizione();
         this.aggiungiState = false;
       } else {
         this.msgSpedizioneNulla = false;
@@ -47,11 +48,10 @@ export class SpedizioneCRUDComponent implements OnInit {
       if (this.meme.temp.codice != "") {
         this.meme.spedizioni[this.indice] = this.meme.temp;
         this.meme.update(this.meme.temp);
-        this.meme.lista();
         this.tabellaState = true;
         this.searchState = true;
         this.modificaState = false;
-        this.meme.temp = new SpedizioneDto();
+        this.meme.temp = new Spedizione();
       } else {
         this.msgSpedizioneNulla = false;
       }
@@ -62,7 +62,7 @@ export class SpedizioneCRUDComponent implements OnInit {
   aggiungi() {
     this.aggiungiState = true;
     this.modificaState = false;
-    this.meme.temp = new SpedizioneDto();
+    this.meme.temp = new Spedizione();
     this.nascondiButton = false;
     this.disabilitaCampi = false;
     this.msgSpedizioneNulla = true;
@@ -75,7 +75,7 @@ export class SpedizioneCRUDComponent implements OnInit {
     this.tabellaState = true;
     this.searchState = true;
   }
-  modifica(x: SpedizioneDto, i: number) {
+  modifica(x: Spedizione, i: number) {
     this.indice = i;
     this.meme.temp = Object.assign({}, x)
     this.modificaState = true;
@@ -87,14 +87,14 @@ export class SpedizioneCRUDComponent implements OnInit {
     this.tabellaState = false;
     this.msgSpedizioneNulla = true;
   }
-  rimuovi(x: SpedizioneDto, i: number) {
+  rimuovi(x: Spedizione, i: number) {
     this.indice = i;
     if (confirm("Vuoi eliminare la spedizione " + x.codice + "?")) {
       this.meme.temp = Object.assign({}, x);
       this.meme.spedizioni[this.indice] = this.meme.temp;
-      this.meme.remove(this.meme.temp.id);
+      this.meme.remove(this.meme.temp);
       this.meme.lista();
-      this.meme.temp = new SpedizioneDto();
+      this.meme.temp = new Spedizione();
       this.aggiungiState = false;
       this.modificaState = false;
       this.visualizzaState = false;
@@ -108,7 +108,7 @@ export class SpedizioneCRUDComponent implements OnInit {
       this.visualizzaState = false;
     }
   }
-  visualizzaDettagliSped(x: SpedizioneDto, i: number) {
+  visualizzaDettagliSped(x: Spedizione, i: number) {
     this.indice = i;
     this.meme.temp = Object.assign({}, x);
     this.visualizzaState = true;
