@@ -59,12 +59,14 @@ public class ProdottoController {
 
     @RequestMapping(value = ("/prodotti-update"))
     @ResponseBody
-    public void updateProdotto(
+    public ProdottoDto updateProdotto(
             @RequestBody ProdottoDto prodottoDto
     ) {
         Token t = prodottoDto.getToken();
         t = securityService.retrieveToken(t);
         srvProdotto.update(prodottoDto.getProdotto());
+        prodottoDto.setToken(t);
+        return prodottoDto;
     }
 
     @RequestMapping(value = ("/prodotti-find"))
