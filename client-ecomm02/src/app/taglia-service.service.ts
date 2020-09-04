@@ -42,10 +42,11 @@ export class TagliaServiceService {
 
   removeTaglia(){
     let o: Observable<TagliaListDto> = 
-    this.http.get<TagliaListDto>(
-      this.url + '/delete-taglia' + this.tagliaMod);
+    this.http.post<TagliaListDto>(
+      this.url + '/delete-taglia',this.tagliaMod);
     o.subscribe(risp => { this.taglie = risp.taglie;
       this.tokenService.setToken(risp.token); });
+      console.log("taglia eliminata");
     return this.taglie;
   }
 

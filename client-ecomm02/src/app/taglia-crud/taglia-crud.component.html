@@ -31,7 +31,7 @@
     </div>
 </span>
 <div *ngIf="state == 'modifica'">
-    nuova descrizione:<input type="text" [(ngModel)]="memT.tagliaMod.taglia.descrizione" placeholder="descrizione"> nuova sigla:<input type="text" [(ngModel)]="memT.tagliaMod.sigla" placeholder="sigla">&nbsp;
+    nuova descrizione:<input type="text" [(ngModel)]="memT.tagliaMod.taglia.descrizione" placeholder="descrizione"> nuova sigla:<input type="text" [(ngModel)]="memT.tagliaMod.taglia.sigla" placeholder="sigla">&nbsp;
     <button class="pointer" (click)="conferma()">Conferma modifica</button>
     <button class="pointer" (click)="chiudi()">Annulla</button>
 </div>
