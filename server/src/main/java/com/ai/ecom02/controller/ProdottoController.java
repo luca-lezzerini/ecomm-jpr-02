@@ -39,22 +39,26 @@ public class ProdottoController {
 
     @RequestMapping(value = ("/prodotti-add"))
     @ResponseBody
-    public void addProdotto(
+    public ProdottoDto addProdotto(
             @RequestBody ProdottoDto prodottoDto
     ) {
         Token t = prodottoDto.getToken();
         t = securityService.retrieveToken(t);
         srvProdotto.add(prodottoDto.getProdotto());
+        prodottoDto.setToken(t);
+        return prodottoDto;
     }
 
     @RequestMapping(value = ("/prodotti-delete"))
     @ResponseBody
-    public void deleteProdotto(
+    public ProdottoDto deleteProdotto(
             @RequestBody ProdottoDto prodottoDto
     ) {
         Token t = prodottoDto.getToken();
         t = securityService.retrieveToken(t);
         srvProdotto.delete(prodottoDto.getProdotto());
+        prodottoDto.setToken(t);
+        return prodottoDto;
     }
 
     @RequestMapping(value = ("/prodotti-update"))
