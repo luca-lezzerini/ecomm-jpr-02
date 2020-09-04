@@ -10,7 +10,6 @@ import com.ai.ecom02.service.impl.ImballoServiceImpl;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -20,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
  *
  * @author Francesco
  */
+
 @CrossOrigin("*")
 @RestController
 public class ImballoController {
@@ -60,12 +60,11 @@ public class ImballoController {
     ) {
         Token token = dto.getToken();
         Token t = securityService.retrieveToken(token);
-        Imballo imballo = new Imballo(dto.getImballo().getId());
-        srvImballo.delete(imballo);
-       List<Imballo> lista = srvImballo.getAll();
-       ImballoDtoList dx = new ImballoDtoList(lista, t);
+        srvImballo.delete(dto.getImballo());
+        List<Imballo> lista = srvImballo.getAll();
+        ImballoDtoList dx = new ImballoDtoList(lista, t);
         return dx;
-        
+
     }
 
     @RequestMapping(value = {"/update-imballo"})
