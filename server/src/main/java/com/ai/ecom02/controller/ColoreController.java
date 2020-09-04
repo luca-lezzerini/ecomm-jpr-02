@@ -1,7 +1,7 @@
 package com.ai.ecom02.controller;
 
 import com.ai.ecom02.dto.ColoreDto;
-import com.ai.ecom02.dto.ListaColoriDto;
+import com.ai.ecom02.dto.ColoriDto;
 import com.ai.ecom02.model.Colore;
 import com.ai.ecom02.model.Token;
 import com.ai.ecom02.service.SecurityService;
@@ -26,61 +26,62 @@ public class ColoreController {
 
     @RequestMapping(value = ("/lista-colori"))
     @ResponseBody
-    public ListaColoriDto listaColori(
-    @RequestBody ColoreDto coloreDto
+    public ColoriDto listaColori(
+            @RequestBody ColoriDto coloriDto
     ) {
-        Token t = coloreDto.getToken();
+        Token t = coloriDto.getToken();
         t = securityService.retrieveToken(t);
         List<Colore> lista = srvColore.getAll();
-        ListaColoriDto listaDto = new ListaColoriDto(lista, t);
-        return listaDto;
+        coloriDto.setListaColori(lista);
+        coloriDto.setToken(t);
+        return coloriDto;
     }
 
     @RequestMapping(value = ("/colori-add"))
     @ResponseBody
-    public ListaColoriDto addColore(
+    public ColoreDto addColore(
             @RequestBody ColoreDto colore
     ) {
         Token t = colore.getToken();
         t = securityService.retrieveToken(t);
         srvColore.add(colore.getColore());
-        ListaColoriDto lista = new ListaColoriDto(srvColore.getAll(), t);
-        return lista;
+        colore.setToken(t);
+        return colore;
     }
 
     @RequestMapping(value = ("/colori-delete"))
     @ResponseBody
-    public ListaColoriDto deleteColore(
+    public ColoreDto deleteColore(
             @RequestBody ColoreDto colore
     ) {
         Token t = colore.getToken();
         t = securityService.retrieveToken(t);
         srvColore.delete(colore.getColore());
-        ListaColoriDto lista = new ListaColoriDto(srvColore.getAll(), t);
-        return lista;
+        colore.setToken(t);
+        return colore;
     }
 
     @RequestMapping(value = ("/colori-update"))
     @ResponseBody
-    public ListaColoriDto updateColore(
+    public ColoreDto updateColore(
             @RequestBody ColoreDto colore
     ) {
         Token t = colore.getToken();
         t = securityService.retrieveToken(t);
         srvColore.update(colore.getColore());
-        ListaColoriDto lista = new ListaColoriDto(srvColore.getAll(), t);
-        return lista;
+        colore.setToken(t);
+        return colore;
     }
 
     @RequestMapping(value = ("/colori-find"))
     @ResponseBody
-    public ListaColoriDto findColori(
+    public ColoriDto findColori(
             @RequestBody ColoreDto colore
     ) {
         Token t = colore.getToken();
         t = securityService.retrieveToken(t);
         List<Colore> lista = srvColore.findByColoreLike(colore.getColore());
-        ListaColoriDto listaDto = new ListaColoriDto(lista, t);
+        ColoriDto listaDto = new ColoriDto(lista, t);
         return listaDto;
     }
 

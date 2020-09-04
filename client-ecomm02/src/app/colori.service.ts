@@ -14,12 +14,17 @@ export class ColoriService {
   coloreForm: Colore = new Colore();
   coloreDto: ColoreDto = new ColoreDto();
   listaColori: Colore[] = [];
-  listaDto: ColoriDto = new ColoriDto;
-  constructor(private http: HttpClient, private srvToken : TokenService) { }
-  
-  lista() : void{
+  listaDto: ColoriDto = new ColoriDto();
+  constructor(private http: HttpClient, private srvToken: TokenService) { }
+
+  lista(): void {
     const oss: Observable<ColoriDto> = this.http.post<ColoriDto>(this.urlPath + '/lista-colori', this.listaDto);
-    const sub: Subscription = oss.subscribe(risp => { this.listaDto = risp; this.listaColori = this.listaDto.colori; this.srvToken.setToken(this.listaDto.token); });
+    const sub: Subscription = oss.subscribe(risp => { this.listaDto = risp; this.listaColori = risp.listaColori;
+      this.srvToken.setToken(risp.token);  console.log(risp);
+      console.log(risp.listaColori); });
+    console.log(this.listaColori);
+    console.log(this.listaDto);
+    console.log(this.listaColori);
   }
 /* Passa al server il Dto (colorepuñ essere cercato solo per colore)contenete
 la stringa da cercare posiziona i dati nella Lista aposita,
@@ -29,15 +34,17 @@ nel Tamplate*/
     if (colore.colore == null) {
       this.lista();
     } else {
+      this.coloreDto.colore = colore;
+      this.coloreDto.token = this.srvToken.getToken();
       const oss: Observable<ColoriDto> = this.http.post<ColoriDto>(this.urlPath + '/colori-find', this.coloreDto);
-      const sub: Subscription = oss.subscribe(risp => { this.listaColori = risp.colori ; this.srvToken.setToken(this.listaDto.token); });
+      const sub: Subscription = oss.subscribe(risp => { this.listaColori = risp.listaColori ; this.srvToken.setToken(this.listaDto.token); });
     }
-return this.listaColori;
+    return new Colore();
   }
   /* in Base alla stato del componente che riceve come parametro setta url per la
 richiesta e invia al server l'istanza da trattare. restituisce la stringa
  per ripristinare lo stato iniziale del component*/
-  conferma(state: string){
+  conferma(state: string) {
     let urlEnd: string;
     this.coloreDto.colore = this.coloreForm;
     this.coloreDto.token = this.srvToken.getToken();
@@ -57,7 +64,8 @@ richiesta e invia al server l'istanza da trattare. restituisce la stringa
 
     }
     const oss: Observable<ColoriDto> = this.http.post<ColoriDto>(this.urlPath + urlEnd, this.coloreDto);
-    const sub: Subscription = oss.subscribe(risp => { this.listaColori = risp.colori; this.srvToken.setToken(risp.token);     return this.listaColori; });
+    const sub: Subscription = oss.subscribe(risp => { this.lista(); this.srvToken.setToken(risp.token); });
+    this.coloreForm = new Colore();
     return 'ricerca';
   }
 }

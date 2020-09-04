@@ -60,7 +60,7 @@ richiesta e invia al server l'istanza da trattare. restituisce la stringa
     }
     console.log(this.prodottoDto);
     const oss: Observable<ProdottoDto> = this.http.post<ProdottoDto>(this.urlPath + urlEnd, this.prodottoDto);
-    const sub: Subscription = oss.subscribe(risp => { this.lista(); });
+    const sub: Subscription = oss.subscribe(risp => { this.lista(); this.srvToken.setToken(risp.token); });
     this.prodottoForm = new Prodotto();
     return 'ricerca';
   }
