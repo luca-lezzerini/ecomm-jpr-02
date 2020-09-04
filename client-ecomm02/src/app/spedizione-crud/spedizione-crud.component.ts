@@ -30,22 +30,25 @@ export class SpedizioneCRUDComponent implements OnInit {
   searchCriteria() {
     if (this.meme.ricerca.ricerca != "") {
       this.meme.cerca();
-      this.meme.ricerca.ricerca = "";
     } else {
       return this.meme.lista();
     }
   }
   conferma() {
+    console.log("siamo in conferma")
     if (this.aggiungiState) {
       if (this.meme.temp.codice != null) {
-        this.meme.aggiungi();
+        console.log("spedizione con campi valorizzati");
+        this.meme.addSpedizione();
         this.meme.temp = new Spedizione();
         this.aggiungiState = false;
       } else {
+        console.log("descrizione null");
         this.msgSpedizioneNulla = false;
       }
     } else if (this.modificaState) {
       if (this.meme.temp.codice != "") {
+        console.log("spedizione non vuota");
         this.meme.spedizioni[this.indice] = this.meme.temp;
         this.meme.update(this.meme.temp);
         this.tabellaState = true;
@@ -53,6 +56,7 @@ export class SpedizioneCRUDComponent implements OnInit {
         this.modificaState = false;
         this.meme.temp = new Spedizione();
       } else {
+        console.log("spedizione vuota");
         this.msgSpedizioneNulla = false;
       }
     } else {

@@ -19,7 +19,7 @@ export class CategoriaServiceService {
   ricerca: RicercaDto = new RicercaDto();
   ricerche: RicercaDto[] = [];
   categoriaDto: CategoriaDto = new CategoriaDto();
-  categoriaListaDto: CategoriaListaDto = new CategoriaListaDto;
+  categoriaListaDto: CategoriaListaDto = new CategoriaListaDto();
 
   constructor(private http: HttpClient, private tokenSrv: TokenService) { }
 

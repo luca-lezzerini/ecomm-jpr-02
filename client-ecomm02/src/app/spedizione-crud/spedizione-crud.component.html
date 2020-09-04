@@ -16,21 +16,24 @@
     <p [hidden]="msgSpedizioneNulla">Digitare una spedizione valida</p>
 </div>
 <br><br><br>
-<table *ngIf="tabellaState">
-    <tr>
-        <th style="display:none;">ID</th>
-        <th>Codice</th>
-        <th>Nome</th>
-        <th>PrezzoKg</th>
-        <th></th>
-        <th></th>
-    </tr>
-    <tr *ngFor="let x of meme.spedizioni; index as i" class="clickable">
-        <td style="display:none;">{{x.id}}</td>
-        <td (click)="visualizzaDettagliSped(x, i)">{{x.codice}}</td>
-        <td (click)="visualizzaDettagliSped(x, i)">{{x.nome}}</td>
-        <td (click)="visualizzaDettagliSped(x, i)">{{x.prezzoKg}}€</td>
-        <td><button (click)="modifica(x, i)">Modifica</button></td>
-        <td><button (click)="rimuovi(x, i)">Rimuovi</button></td>
-    </tr>
-</table>
+<div *ngIf="tabellaState">
+    <table *ngIf="meme.spedizioni.length > 0">
+        <tr>
+            <th style="display:none;">ID</th>
+            <th>Codice</th>
+            <th>Nome</th>
+            <th>PrezzoKg</th>
+            <th></th>
+            <th></th>
+        </tr>
+        <tr *ngFor="let x of meme.spedizioni; index as i" class="clickable">
+            <td style="display:none;">{{x.id}}</td>
+            <td (click)="visualizzaDettagliSped(x, i)">{{x.codice}}</td>
+            <td (click)="visualizzaDettagliSped(x, i)">{{x.nome}}</td>
+            <td (click)="visualizzaDettagliSped(x, i)">{{x.prezzoKg}}€</td>
+            <td><button (click)="modifica(x, i)">Modifica</button></td>
+            <td><button (click)="rimuovi(x, i)">Rimuovi</button></td>
+        </tr>
+    </table>
+    <h3 *ngIf="meme.spedizioni.length == 0">Nessun record trovato</h3>
+</div>

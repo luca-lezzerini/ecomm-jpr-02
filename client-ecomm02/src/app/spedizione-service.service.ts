@@ -23,10 +23,11 @@ export class SpedizioneServiceService {
 
   constructor(private http: HttpClient, private tokenSrv: TokenService) { }
 
-  aggiungi() {
+  addSpedizione() {
     //if(this.spedizioneDto != null){
     this.spedizioneDto.token = this.tokenSrv.getToken();
     this.spedizioneDto.spedizione = this.temp;
+    console.log("SpedizioneDto = ", this.spedizioneDto);
     let obs: Observable<SpedizioneListaDto> =
       this.http.post<SpedizioneListaDto>(this.url + "/aggiungi-spedizione/", this.spedizioneDto);
     obs.subscribe(risp => {
@@ -34,20 +35,24 @@ export class SpedizioneServiceService {
       this.tokenSrv.setToken(risp.token);
     });
     //}
+    console.log("Spedizione aggiunta");
   }
   cerca(): RicercaDto[] {
+    console.log("Siamo in cerca e ricerca vale ", this.ricerca);
     let obs: Observable<SpedizioneListaDto> =
       this.http.post<SpedizioneListaDto>(this.url + "/cerca-spedizione/", this.ricerca);
     obs.subscribe(risp => {
+      console.log(risp);
       this.spedizioni = risp.listaSpedizioneDto;
       this.tokenSrv.setToken(risp.token);
+      console.log("Finito cerca");
     });
     return this.ricerche;
   }
   lista(): Spedizione[] {
     this.spedizioneDto.token = this.tokenSrv.getToken();
     let obs: Observable<SpedizioneListaDto> =
-      this.http.post<SpedizioneListaDto>(this.url + "/lista-spedizioni", this.spedizioneDto);
+      this.http.post<SpedizioneListaDto>(this.url + "/lista-spedizioni/", this.spedizioneDto);
     obs.subscribe(risp => {
       this.spedizioni = risp.listaSpedizioneDto;
       this.tokenSrv.setToken(risp.token);

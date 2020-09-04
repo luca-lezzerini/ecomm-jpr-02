@@ -20,8 +20,8 @@ public class SpedizioneDto implements Tokenizabile{
     public SpedizioneDto() {
     }
 
-    public SpedizioneDto(Spedizione spedizione, Token token) {
-        this.spedizione = spedizione;
+    public SpedizioneDto(Spedizione spedizioneDto, Token token) {
+        this.spedizione = spedizioneDto;
         this.token = token;
     }
 

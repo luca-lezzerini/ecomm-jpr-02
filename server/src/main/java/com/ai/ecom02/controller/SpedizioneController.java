@@ -51,6 +51,7 @@ public class SpedizioneController {
         if (spedizioneDto != null) {
             Token token = spedizioneDto.getToken();
             Token t = securityService.retrieveToken(token);
+            spedizioneService.addSped(spedizioneDto.getSpedizione());
             lista = new SpedizioneListaDto(spedizioneService.getLista(), t);
             return lista;
         } else {
@@ -90,6 +91,7 @@ public class SpedizioneController {
         if (spedizioneDto != null) {
             Token token = spedizioneDto.getToken();
             Token t = securityService.retrieveToken(token);
+            spedizioneService.removeSped(spedizioneDto.getSpedizione().getId());
             lista = new SpedizioneListaDto(spedizioneService.getLista(), t);
             return lista;
         } else {
@@ -103,19 +105,19 @@ public class SpedizioneController {
     @RequestMapping(value = {"/cerca-spedizione"})
     @ResponseBody
     public SpedizioneListaDto cercaSpedizione(
-            @RequestBody SpedizioneDto spedizioneDto
+            @RequestBody RicercaDto ricercaDto
     ) {
         SpedizioneListaDto lista = new SpedizioneListaDto();
         log.info("Ricevuta richiesta di ricerca spedizione");
-        if (spedizioneDto != null) {
-            Token token = spedizioneDto.getToken();
+        if (ricercaDto != null) {
+            Token token = ricercaDto.getToken();
             Token t = securityService.retrieveToken(token);
-            lista = new SpedizioneListaDto(spedizioneService.getLista(), t);
+            lista = new SpedizioneListaDto(spedizioneService.findSped(ricercaDto.getRicerca(), ricercaDto.getRicerca()), t);
             return lista;
         } else {
             log.error("Non ci sono spedizioni per la ricerca effettuata");
             lista.setListaSpedizioneDto(spedizioneService.getLista());
-            lista.setToken(spedizioneDto.getToken());
+            lista.setToken(ricercaDto.getToken());
             return lista;
         }
     }
@@ -125,11 +127,12 @@ public class SpedizioneController {
     public SpedizioneListaDto modificaCategoria(
             @RequestBody SpedizioneDto spedizioneDto
     ) {
-        SpedizioneListaDto lista  = new SpedizioneListaDto();
+        SpedizioneListaDto lista = new SpedizioneListaDto();
         log.info("Ricevuta richiesta di modifica");
         if (spedizioneDto != null) {
             Token token = spedizioneDto.getToken();
             Token t = securityService.retrieveToken(token);
+            spedizioneService.updateSped(spedizioneDto.getSpedizione());
             lista = new SpedizioneListaDto(spedizioneService.getLista(), t);
             return lista;
         } else {
