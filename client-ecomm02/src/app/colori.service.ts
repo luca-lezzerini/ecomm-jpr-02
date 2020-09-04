@@ -19,12 +19,9 @@ export class ColoriService {
 
   lista(): void {
     const oss: Observable<ColoriDto> = this.http.post<ColoriDto>(this.urlPath + '/lista-colori', this.listaDto);
-    const sub: Subscription = oss.subscribe(risp => { this.listaDto = risp; this.listaColori = risp.colori;
-      this.srvToken.setToken(risp.token);  console.log(risp);
-      console.log(risp.colori); });
-    console.log(this.listaColori);
-    console.log(this.listaDto);
-    console.log(this.listaColori);
+    const sub: Subscription = oss.subscribe(risp => { this.listaDto = risp; this.listaColori = risp.listaColori;
+      this.srvToken.setToken(risp.token); });
+
   }
 /* Passa al server il Dto (colorepuñ essere cercato solo per colore)contenete
 la stringa da cercare posiziona i dati nella Lista aposita,
@@ -37,7 +34,7 @@ nel Tamplate*/
       this.coloreDto.colore = colore;
       this.coloreDto.token = this.srvToken.getToken();
       const oss: Observable<ColoriDto> = this.http.post<ColoriDto>(this.urlPath + '/colori-find', this.coloreDto);
-      const sub: Subscription = oss.subscribe(risp => { this.listaColori = risp.colori ; this.srvToken.setToken(this.listaDto.token); });
+      const sub: Subscription = oss.subscribe(risp => { this.listaColori = risp.listaColori ; this.srvToken.setToken(risp.token); });
     }
     return new Colore();
   }
