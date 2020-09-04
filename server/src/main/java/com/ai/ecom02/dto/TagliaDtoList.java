@@ -8,9 +8,10 @@ import java.util.List;
  *
  * @author Francesco
  */
+
 public class TagliaDtoList implements Tokenizabile {
 
-    private List<Taglia> tagliaDtoList;
+    private List<Taglia> taglie;
     private Token token;
     private String descrizione;
     private String sigla;
@@ -19,9 +20,14 @@ public class TagliaDtoList implements Tokenizabile {
     }
 
     public TagliaDtoList(List<Taglia> tagliaDtoList, String descrizione, String sigla) {
-        this.tagliaDtoList = tagliaDtoList;
+        this.taglie = tagliaDtoList;
         this.descrizione = descrizione;
         this.sigla = sigla;
+    }
+
+    public TagliaDtoList(List<Taglia> taglie, Token token) {
+        this.taglie = taglie;
+        this.token = token;
     }
 
     @Override
@@ -34,12 +40,12 @@ public class TagliaDtoList implements Tokenizabile {
         this.token = t;
     }
 
-    public List<Taglia> getTagliaDtoList() {
-        return tagliaDtoList;
+    public List<Taglia> getTaglie() {
+        return taglie;
     }
 
-    public void setTagliaDtoList(List<Taglia> tagliaDtoList) {
-        this.tagliaDtoList = tagliaDtoList;
+    public void setTaglie(List<Taglia> taglie) {
+        this.taglie = taglie;
     }
 
     public String getDescrizione() {

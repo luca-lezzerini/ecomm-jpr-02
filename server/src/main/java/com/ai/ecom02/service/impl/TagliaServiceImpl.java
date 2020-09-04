@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.ai.ecom02.service.impl;
 
 import com.ai.ecom02.model.Taglia;
@@ -16,6 +11,7 @@ import com.ai.ecom02.service.TagliaService;
  *
  * @author Francesco
  */
+
 @Service
 public class TagliaServiceImpl implements TagliaService {
 
@@ -48,18 +44,8 @@ public class TagliaServiceImpl implements TagliaService {
         return repTaglia.save(taglia);
     }
 
-    public List<Taglia> findByDescrizione(Taglia taglia) {
-        return repTaglia.findByDescrizioneLike(taglia.getDescrizione());
-    }
-
-    public List<Taglia> findBySigla(Taglia taglia) {
-        return repTaglia.findBySiglaLike(taglia.getSigla());
-    }
-
     public List<Taglia> findByDescrizioneLikeOrSiglaLike(String ricerca, String ricerca0) {
         return repTaglia.findByDescrizioneLikeOrSiglaLike("%" + ricerca + "%", "%" + ricerca0 + "%");
     }
-//    public List<Taglia> findByDescrizioneOrSigla(String ricerca) {
-//        return repTaglia.trovaPerChiaveParziale("%" + ricerca + "%");
-//    }
+
 }

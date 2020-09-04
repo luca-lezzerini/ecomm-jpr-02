@@ -1,6 +1,6 @@
 import { ColoriDto } from './dto/colori-dto';
 import { Colore } from './model/colore';
-import { Injectable } from '@angular/core';
+import { Injectable, ValueProvider } from '@angular/core';
 import { ColoreDto } from './dto/colore-dto';
 import { HttpClient } from '@angular/common/http';
 import { Observable, Subscription } from 'rxjs';
@@ -14,29 +14,37 @@ export class ColoriService {
   coloreForm: Colore = new Colore();
   coloreDto: ColoreDto = new ColoreDto();
   listaColori: Colore[] = [];
-  listaDto: ColoriDto = new ColoriDto;
-  constructor(private http: HttpClient, private srvToken : TokenService) { }
+  listaDto: ColoriDto = new ColoriDto();
+  constructor(private http: HttpClient, private srvToken: TokenService) { }
+
   lista(): void {
     const oss: Observable<ColoriDto> = this.http.post<ColoriDto>(this.urlPath + '/lista-colori', this.listaDto);
-    const sub: Subscription = oss.subscribe(risp => { this.listaDto = risp; this.listaColori = this.listaDto.colori; this.srvToken.setToken(this.listaDto.token); });
+    const sub: Subscription = oss.subscribe(risp => { this.listaDto = risp; this.listaColori = risp.colori;
+      this.srvToken.setToken(risp.token);  console.log(risp);
+      console.log(risp.colori); });
+    console.log(this.listaColori);
+    console.log(this.listaDto);
+    console.log(this.listaColori);
   }
 /* Passa al server il Dto (colorepuñ essere cercato solo per colore)contenete
 la stringa da cercare posiziona i dati nella Lista aposita,
 restituisce una istanza di ColoreDtoa per resettare il campo
 nel Tamplate*/
-  cerca(colore: Colore): Colore {
+  cerca(colore: Colore) {
     if (colore.colore == null) {
       this.lista();
     } else {
-      const oss: Observable<ColoriDto> = this.http.post<ColoriDto>(this.urlPath + '/colori-find', colore);
-      const sub: Subscription = oss.subscribe(risp => { this.listaDto = risp; this.listaColori = this.listaDto.colori; this.srvToken.setToken(this.listaDto.token); });
+      this.coloreDto.colore = colore;
+      this.coloreDto.token = this.srvToken.getToken();
+      const oss: Observable<ColoriDto> = this.http.post<ColoriDto>(this.urlPath + '/colori-find', this.coloreDto);
+      const sub: Subscription = oss.subscribe(risp => { this.listaColori = risp.colori ; this.srvToken.setToken(this.listaDto.token); });
     }
     return new Colore();
   }
   /* in Base alla stato del componente che riceve come parametro setta url per la
 richiesta e invia al server l'istanza da trattare. restituisce la stringa
  per ripristinare lo stato iniziale del component*/
-  conferma(state: string): string {
+  conferma(state: string) {
     let urlEnd: string;
     this.coloreDto.colore = this.coloreForm;
     this.coloreDto.token = this.srvToken.getToken();
@@ -55,8 +63,8 @@ richiesta e invia al server l'istanza da trattare. restituisce la stringa
       }
 
     }
-    const oss: Observable<ColoreDto> = this.http.post<ColoreDto>(this.urlPath + urlEnd, this.coloreForm);
-    const sub: Subscription = oss.subscribe(risp => { this.lista(); });
+    const oss: Observable<ColoriDto> = this.http.post<ColoriDto>(this.urlPath + urlEnd, this.coloreDto);
+    const sub: Subscription = oss.subscribe(risp => { this.lista(); this.srvToken.setToken(risp.token); });
     this.coloreForm = new Colore();
     return 'ricerca';
   }

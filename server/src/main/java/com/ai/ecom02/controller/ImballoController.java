@@ -10,7 +10,6 @@ import com.ai.ecom02.service.impl.ImballoServiceImpl;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -20,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
  *
  * @author Francesco
  */
+
 @CrossOrigin("*")
 @RestController
 public class ImballoController {
@@ -32,34 +32,39 @@ public class ImballoController {
 
     @RequestMapping(value = {"/list-imballo"})
     @ResponseBody
-    public ImballoDtoList listaImballi(@RequestBody ImballoDto imbDto) {
-        Token token = imbDto.getToken();
+    public ImballoDtoList listaImballo(@RequestBody ImballoDto dto) {
+        Token token = dto.getToken();
         Token t = securityService.retrieveToken(token);
         List<Imballo> list = srvImballo.getAll();
-        ImballoDtoList imbDtoList = new ImballoDtoList(list, t);
-        return imbDtoList;
+        ImballoDtoList dx = new ImballoDtoList(list, t);
+        return dx;
     }
 
     @RequestMapping(value = {"/add-imballo"})
     @ResponseBody
-    public ImballoDtoList aggiungiImballo(
+    public ImballoDtoList addImballo(
             @RequestBody ImballoDto dto
     ) {
+        Token token = dto.getToken();
+        Token t = securityService.retrieveToken(token);
         srvImballo.add(dto.getImballo());
         List<Imballo> lista = srvImballo.getAll();
-        // FIXME: passare token
-        ImballoDtoList dx = new ImballoDtoList(lista, null);
+        ImballoDtoList dx = new ImballoDtoList(lista, t);
         return dx;
     }
 
-    @RequestMapping(value = {"/delete-imballo/{id}"})
+    @RequestMapping(value = {"/delete-imballo"})
     @ResponseBody
-    public List<Imballo> cancellaImballo(
-            @PathVariable Long id
+    public ImballoDtoList cancellaImballo(
+            @RequestBody ImballoDto dto
     ) {
-        Imballo imballo = new Imballo(id);
-        srvImballo.delete(imballo);
-        return srvImballo.getAll();
+        Token token = dto.getToken();
+        Token t = securityService.retrieveToken(token);
+        srvImballo.delete(dto.getImballo());
+        List<Imballo> lista = srvImballo.getAll();
+        ImballoDtoList dx = new ImballoDtoList(lista, t);
+        return dx;
+
     }
 
     @RequestMapping(value = {"/update-imballo"})
@@ -67,10 +72,11 @@ public class ImballoController {
     public ImballoDtoList aggiornaImballo(
             @RequestBody ImballoDto dto
     ) {
+        Token token = dto.getToken();
+        Token t = securityService.retrieveToken(token);
         srvImballo.update(dto.getImballo());
         List<Imballo> lista = srvImballo.getAll();
-        // FIXME: passare il token corretto
-        ImballoDtoList dx = new ImballoDtoList(lista, null);
+        ImballoDtoList dx = new ImballoDtoList(lista, t);
         return dx;
     }
 
@@ -82,8 +88,8 @@ public class ImballoController {
         Token t = ricerca.getToken();
         t = securityService.retrieveToken(t);
         List<Imballo> listaImballo = srvImballo.findByDescrizione(ricerca);
-        ImballoDtoList imbDtoList = new ImballoDtoList(listaImballo, t);
-        return imbDtoList;
+        ImballoDtoList dx = new ImballoDtoList(listaImballo, t);
+        return dx;
     }
 
 }

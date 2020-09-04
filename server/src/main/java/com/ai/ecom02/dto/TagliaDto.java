@@ -7,28 +7,30 @@ import com.ai.ecom02.model.Token;
  *
  * @author Francesco
  */
+
 public class TagliaDto implements Tokenizabile {
 
-    private TagliaDto tagliaDto;
+    private Taglia taglia;
     private Token token;
     private String descrizione;
     private String sigla;
 
-    public TagliaDto() {
-    }
-
-    public TagliaDto(TagliaDto tagliaDto, String descrizione, String sigla) {
-        this.tagliaDto = tagliaDto;
+    public TagliaDto(Taglia taglia, Token token, String descrizione, String sigla) {
+        this.taglia = taglia;
+        this.token = token;
         this.descrizione = descrizione;
         this.sigla = sigla;
     }
 
-    public TagliaDto getTagliaDto() {
-        return tagliaDto;
+    public TagliaDto() {
     }
 
-    public void setTagliaDto(TagliaDto tagliaDto) {
-        this.tagliaDto = tagliaDto;
+    public Taglia getTaglia() {
+        return taglia;
+    }
+
+    public void setTaglia(Taglia taglia) {
+        this.taglia = taglia;
     }
 
     public String getDescrizione() {

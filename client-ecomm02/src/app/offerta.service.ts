@@ -35,7 +35,7 @@ export class OffertaService {
     return new RicercaDto();
   }
 
-  conferma(state: string): string {
+  conferma(state: string) {
     let urlEnd: string;
     this.offertaDto.offerta = this.offertaForm;
     this.offertaDto.token = this.srvToken.getToken();
@@ -53,10 +53,11 @@ export class OffertaService {
         break;
       }
     }
+    console.log("fine switch");
 
-    const oss: Observable<OffertaDto> = this.http.post<OffertaDto>(this.urlPath + urlEnd, this.offertaForm);
-    const sub: Subscription = oss.subscribe(risp => { this.lista(); });
-    this.offertaForm = new Offerta();
+    const oss: Observable<ListaOfferteDto> = this.http.post<ListaOfferteDto>(this.urlPath + urlEnd, this.offertaDto);
+    const sub: Subscription = oss.subscribe(risp => { this.listaOfferte = risp.listaOfferte; this.srvToken.setToken(risp.token);    return this.listaOfferte;});
     return 'ricerca';
+    
   }
 }

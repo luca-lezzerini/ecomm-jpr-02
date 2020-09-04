@@ -8,6 +8,7 @@ import java.util.List;
  *
  * @author Francesco
  */
+
 public class ImballoDtoList implements Tokenizabile {
 
     private List<Imballo> imballi;

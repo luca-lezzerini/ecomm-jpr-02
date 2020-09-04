@@ -8,10 +8,7 @@ package com.ai.ecom02.dto;
 import com.ai.ecom02.model.Colore;
 import com.ai.ecom02.model.Token;
 
-/**
- *
- * @author Narga
- */
+
 public class ColoreDto implements Tokenizabile{
     
     

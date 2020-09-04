@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ColoreDto } from '../dto/colore-dto';
 import { ColoriService } from '../colori.service';
 import { Colore } from '../model/colore';
 
