@@ -26,7 +26,7 @@ export class ImballoServiceService {
 
   constructor(private http: HttpClient, public tokenService: TokenService) { }
 
-  addImballo() {
+  addImballoService() {
     console.log("Siamo in addImballo e imballo vale ", this.imballoMod)
     let o: Observable<ImballoListDto> =
       this.http.post<ImballoListDto>(
@@ -40,7 +40,7 @@ export class ImballoServiceService {
     });
   }
 
-  lista(): Imballo[] {
+  listaImballoService(): Imballo[] {
     this.imballoMod.token = this.tokenService.getToken();
     let o: Observable<ImballoListDto> = this.http.post<ImballoListDto>(this.url + "/list-imballo", this.imballoMod)
     o.subscribe(risp => {
@@ -50,8 +50,7 @@ export class ImballoServiceService {
     return this.imballi;
   }
 
-
-  findImballo() {
+  findImballoService() {
     this.ricerca.token = null;
     let o: Observable<ImballoListDto> = this.http.post<ImballoListDto>(
       this.url + "/find-by-descrizione-imballo",
@@ -63,21 +62,18 @@ export class ImballoServiceService {
     return this.imballi;
   }
 
-  updateImballo(imballoMod: ImballoDto) {
+  updateImballoService(imballoMod: ImballoDto) {
     console.log("In updateImballo ", imballoMod);
     let o: Observable<ImballoListDto> =
       this.http.post<ImballoListDto>(this.url + "/update-imballo", imballoMod);
     o.subscribe(risp => {
-      this.findImballo();
+      this.findImballoService();
     });
   }
 
-  removeImballo() {
+  removeImballoService() {
     let o: Observable<ImballoListDto> = this.http.post<ImballoListDto>(this.url + '/delete-imballo', this.imballoMod)
     o.subscribe(risp => { this.imballi = risp.imballi; })
     return this.imballi;
   }
-  
-
-
 }
