@@ -18,7 +18,7 @@ export class TagliaCrudComponent implements OnInit {
   constructor(private router: Router, public memT: TagliaServiceService) {}
 
   ngOnInit(): void {
-    this.memT.taglie = this.memT.lista();
+    this.memT.taglie = this.memT.listaService();
   }
 
   /* 
@@ -55,7 +55,7 @@ export class TagliaCrudComponent implements OnInit {
   */
   removeTaglia(taglia: Taglia) {
     console.log("sei in removeTaglia");
-    this.memT.removeTaglia();
+    this.memT.removeTagliaService();
     this.memT.tagliaMod = new TagliaDto();
     this.state = "ricerca";
   }
@@ -70,9 +70,9 @@ export class TagliaCrudComponent implements OnInit {
     this.state2 = "";
     console.log("stiamo in findTaglia", this.memT.ricerca);
     if (this.memT.ricerca.ricerca != null) {
-      this.memT.findTaglia();
+      this.memT.findTagliaService();
     } else {
-      this.memT.lista();
+      this.memT.listaService();
     }
   }
   /*
@@ -102,7 +102,7 @@ export class TagliaCrudComponent implements OnInit {
         this.memT.tagliaMod.taglia.descrizione &&
         this.memT.tagliaMod.taglia.sigla
       ) {
-        this.memT.addTaglia();
+        this.memT.addTagliaService();
         this.memT.tagliaMod = new TagliaDto();
         this.state = "ricerca";
       } else {
@@ -115,7 +115,7 @@ export class TagliaCrudComponent implements OnInit {
         this.memT.tagliaMod.taglia.descrizione &&
         this.memT.tagliaMod.taglia.sigla
       ) {
-        this.memT.updateTaglia(this.memT.tagliaMod);
+        this.memT.updateTagliaService(this.memT.tagliaMod);
         this.memT.tagliaMod = new TagliaDto();
         this.state = "ricerca";
       } else {

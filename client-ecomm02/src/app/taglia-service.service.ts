@@ -22,28 +22,28 @@ export class TagliaServiceService {
 
   constructor(private http: HttpClient, public tokenService: TokenService) { }
 
-  addTaglia() {
+  addTagliaService() {
     console.log("Siamo in addTaglia e la taglia vale ",
      this.tagliaMod)
     let o: Observable<TagliaListDto> 
     = this.http.post<TagliaListDto>(
       this.url + '/add-taglia', this.tagliaMod);
     o.subscribe(risp => { //this.taglie = risp.taglie;
-      this.findTaglia();
+      this.findTagliaService();
       this.tokenService.setToken(risp.token); });
   }
 
-  updateTaglia(tagliaMod: TagliaDto) {
+  updateTagliaService(tagliaMod: TagliaDto) {
     console.log("In updateTaglia ", tagliaMod);
     let o: Observable<TagliaListDto> =
      this.http.post<TagliaListDto>(
        this.url + '/update-taglia', tagliaMod);
-    o.subscribe(risp => { this.findTaglia();
+    o.subscribe(risp => { this.findTagliaService();
       this.tokenService.setToken(risp.token); });
   
   }
 
-  removeTaglia(){
+  removeTagliaService(){
     let o: Observable<TagliaListDto> = 
     this.http.post<TagliaListDto>(
       this.url + '/delete-taglia',this.tagliaMod);
@@ -53,7 +53,7 @@ export class TagliaServiceService {
     return this.taglie;
   }
 
-  lista(): Taglia[] {
+  listaService(): Taglia[] {
     let o: Observable<TagliaListDto> = 
     this.http.post<TagliaListDto>(
       this.url + '/list-taglia', this.tagliaMod);
@@ -62,7 +62,7 @@ export class TagliaServiceService {
     return this.taglie;
   }
 
-  findTaglia() {
+  findTagliaService() {
     this.ricerca.token =null;
     let o: Observable<TagliaListDto> 
     = this.http.post<TagliaListDto>(
