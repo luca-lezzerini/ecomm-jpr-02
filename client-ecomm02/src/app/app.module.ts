@@ -28,7 +28,7 @@ import { TagliaCrudComponent } from './taglia-crud/taglia-crud.component';
   ],
   imports: [
 
-  BrowserModule,
+    BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule
