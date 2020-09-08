@@ -7,7 +7,7 @@
     </span>
     <span *ngIf="state != 'ricerca'">
         <input type="text" [(ngModel)]="ricerca.ricerca" disabled>
-        <button (click)="srvProdotto.cerca()" disabled>Cerca</button>
+        <button (click)="cercaProdotto()" disabled>Cerca</button>
         <button (click)="nuovo()" disabled>Aggiungi</button>
     </span>
 </div>
