@@ -29,7 +29,7 @@ export class TagliaServiceService {
     let o: Observable<TagliaListDto> 
     = this.http.post<TagliaListDto>(
       this.url + '/add-taglia', this.tagliaMod);
-    o.subscribe(risp => { //this.taglie = risp.taglie;
+    o.subscribe(risp => { 
       this.findTagliaService();
       this.tokenService.setToken(risp.token); });
   }
@@ -39,16 +39,17 @@ export class TagliaServiceService {
     let o: Observable<TagliaListDto> =
      this.http.post<TagliaListDto>(
        this.url + '/update-taglia', tagliaMod);
-    o.subscribe(risp => { this.findTagliaService();
-      this.tokenService.setToken(risp.token); });
-  
+    o.subscribe(risp => {
+      this.findTagliaService();
+      this.tokenService.setToken(risp.token); });  
   }
 
   removeTagliaService(){
     let o: Observable<TagliaListDto> = 
     this.http.post<TagliaListDto>(
       this.url + '/delete-taglia',this.tagliaMod);
-    o.subscribe(risp => { this.taglie = risp.taglie;
+    o.subscribe(risp => {
+      this.findTagliaService();
       this.tokenService.setToken(risp.token); });
       console.log("taglia eliminata");
     return this.taglie;
@@ -58,7 +59,8 @@ export class TagliaServiceService {
     let o: Observable<TagliaListDto> = 
     this.http.post<TagliaListDto>(
       this.url + '/list-taglia', this.tagliaMod);
-    o.subscribe(risp => { this.taglie = risp.taglie;
+    o.subscribe(risp => {
+      this.taglie = risp.taglie;
       this.tokenService.setToken(risp.token); });
     return this.taglie;
   }
@@ -68,11 +70,9 @@ export class TagliaServiceService {
     let o: Observable<TagliaListDto> 
     = this.http.post<TagliaListDto>(
       this.url + '/find-taglia', this.ricerca);
-    o.subscribe(risp => { this.taglie = risp.taglie;
+    o.subscribe(risp => {
+      this.taglie = risp.taglie;
       this.tokenService.setToken(risp.token); });
     return this.taglie;
   }
-
-
-
 }

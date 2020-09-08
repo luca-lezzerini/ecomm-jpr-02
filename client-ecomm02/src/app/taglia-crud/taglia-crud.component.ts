@@ -16,7 +16,7 @@ export class TagliaCrudComponent implements OnInit {
   tagliaSelezionata: number;
   msg = "";
 
-  constructor(private router: Router, public memT: TagliaServiceService) {}
+  constructor(private router: Router, public memT: TagliaServiceService) { }
 
   ngOnInit(): void {
     this.memT.taglie = this.memT.listaService();
@@ -31,7 +31,6 @@ export class TagliaCrudComponent implements OnInit {
   addTaglia() {
     this.state = "aggiungi";
     this.state2 = "";
-    this.memT.ricerca.ricerca = "";
     this.msg = "";
   }
   /*

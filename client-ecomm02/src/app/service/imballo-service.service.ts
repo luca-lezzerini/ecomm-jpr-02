@@ -31,7 +31,7 @@ export class ImballoServiceService {
         this.imballoMod
       );
     o.subscribe(risp => {
-      this.imballi = risp.imballi;
+      this.findImballoService();
       this.tokenService.setToken(risp.token);
 
     });
@@ -76,7 +76,7 @@ export class ImballoServiceService {
     let o: Observable<ImballoListDto> =
      this.http.post<ImballoListDto>(this.url + '/delete-imballo', this.imballoMod)
     o.subscribe(risp => {
-       this.imballi = risp.imballi;
+      this.findImballoService();
        this.tokenService.setToken(risp.token);
       })
     return this.imballi;
