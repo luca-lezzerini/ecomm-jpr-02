@@ -2,7 +2,7 @@
 <div>
     <span *ngIf="state == 'ricerca'">
         <input type="text" [(ngModel)]="ricerca.ricerca" placeholder="Ricerca">
-        <button (click)="ricerca = srvProdotto.cerca(ricerca)">Cerca</button>
+        <button (click)="cercaProdotto()">Cerca</button>
         <button (click)="nuovo()">Aggiungi</button>
     </span>
     <span *ngIf="state != 'ricerca'">
@@ -44,7 +44,7 @@
     <button (click)="chiudi()">Annulla</button>
 </div>
 <div>
-    <table>
+    <table *ngIf="state == 'ricerca' && srvProdotto.listaProdotti.length > 0">
         <thead>
             <tr>
                 <th>Codice</th>
@@ -55,13 +55,13 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let item of srvProdotto.listaProdotti">
-                <td (click)="visualizza(item)">{{item.codice}}</td>
-                <td (click)="visualizza(item)">{{item.descrizione}}</td>
-                <td (click)="visualizza(item)">{{item.peso}}</td>
-                <td (click)="visualizza(item)">{{item.prezzo}}</td>
-                <td><button (click)="chiediModifica(item)">Modifica</button></td>
-                <td><button (click)="chiediElimina(item)">Rimuovi</button></td>
+            <tr *ngFor=" let item of srvProdotto.listaProdotti ">
+                <td (click)="visualizza(item) ">{{item.codice}}</td>
+                <td (click)="visualizza(item) ">{{item.descrizione}}</td>
+                <td (click)="visualizza(item) ">{{item.peso}}</td>
+                <td (click)="visualizza(item) ">{{item.prezzo}}</td>
+                <td><button (click)="chiediModifica(item) ">Modifica</button></td>
+                <td><button (click)="chiediElimina(item) ">Rimuovi</button></td>
             </tr>
         </tbody>
     </table>

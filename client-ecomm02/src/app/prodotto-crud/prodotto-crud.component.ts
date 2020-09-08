@@ -46,5 +46,8 @@ export class ProdottoCrudComponent implements OnInit {
     this.srvProdotto.prodottoForm = Object.assign({}, prodotto);
     this.state = 'visualizza';
   }
+  cercaProdotto() {
+    this.srvProdotto.cerca(this.ricerca);
+  }
 
 }

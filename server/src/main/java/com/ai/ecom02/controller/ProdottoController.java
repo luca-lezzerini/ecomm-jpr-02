@@ -80,7 +80,7 @@ public class ProdottoController {
     ) {
         Token t = ricercaDto.getToken();
         t = securityService.retrieveToken(t);
-        List<Prodotto> lista = srvProdotto.findByDescrizioneOrCodiceLike(ricercaDto);
+        List<Prodotto> lista = srvProdotto.findByCodiceLikeOrDescrizioneLike(ricercaDto);
         ListaProdottiDto listaProdottoDto = new ListaProdottiDto(lista, t);
         return listaProdottoDto;
     }
