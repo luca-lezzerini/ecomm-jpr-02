@@ -21,7 +21,7 @@ export class OffertaService {
 
   lista(): void {
     const oss: Observable<ListaOfferteDto> = this.http.post<ListaOfferteDto> (this.urlPath + '/lista-offerte', this.listaDto);
-    const sub: Subscription = oss.subscribe(risp => { this.listaDto = risp;    this.listaOfferte = this.listaDto.listaOfferte; this.srvToken.setToken(this.listaDto.token); });
+    const sub: Subscription = oss.subscribe(risp => { this.listaDto = risp;    this.listaOfferte = this.listaDto.listaOfferte; this.srvToken.token=this.listaDto.token; });
   }
 
   cerca(ricerca: RicercaDto): RicercaDto {
@@ -30,7 +30,7 @@ export class OffertaService {
     } else {
       const oss: Observable<ListaOfferteDto> = this.http.post<ListaOfferteDto>(this.urlPath + '/offerta-find', ricerca);
       const sub: Subscription = oss.subscribe(risp => { this.listaDto = risp;      this.listaOfferte = this.listaDto.listaOfferte;
-        this.srvToken.setToken(this.listaDto.token); });
+        this.srvToken.token=this.listaDto.token; });
     }
     return new RicercaDto();
   }
@@ -38,7 +38,7 @@ export class OffertaService {
   conferma(state: string) {
     let urlEnd: string;
     this.offertaDto.offerta = this.offertaForm;
-    this.offertaDto.token = this.srvToken.getToken();
+    this.offertaDto.token = this.srvToken.token;
     switch (state) {
       case 'modifica': {
         urlEnd = '/offerta-update';
@@ -56,8 +56,8 @@ export class OffertaService {
     console.log("fine switch");
 
     const oss: Observable<ListaOfferteDto> = this.http.post<ListaOfferteDto>(this.urlPath + urlEnd, this.offertaDto);
-    const sub: Subscription = oss.subscribe(risp => { this.listaOfferte = risp.listaOfferte; this.srvToken.setToken(risp.token);    return this.listaOfferte;});
+    const sub: Subscription = oss.subscribe(risp => { this.listaOfferte = risp.listaOfferte; this.srvToken.token=risp.token;    return this.listaOfferte;});
     return 'ricerca';
-    
+
   }
 }

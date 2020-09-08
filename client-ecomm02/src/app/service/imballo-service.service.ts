@@ -32,17 +32,17 @@ export class ImballoServiceService {
       );
     o.subscribe(risp => {
       this.imballi = risp.imballi;
-      this.tokenService.setToken(risp.token);
+      this.tokenService.token=risp.token;
 
     });
   }
 
   listaImballoService(): Imballo[] {
-    this.imballoMod.token = this.tokenService.getToken();
+    this.imballoMod.token = this.tokenService.token;
     let o: Observable<ImballoListDto> = this.http.post<ImballoListDto>(this.url + "/list-imballo", this.imballoMod)
     o.subscribe(risp => {
       this.imballi = risp.imballi;
-      this.tokenService.setToken(risp.token);
+      this.tokenService.token=risp.token;
     })
     return this.imballi;
   }
@@ -55,7 +55,7 @@ export class ImballoServiceService {
     );
     o.subscribe(risp => {
       this.imballi = risp.imballi;
-      this.tokenService.setToken(risp.token);
+      this.tokenService.token=risp.token;
 
     });
     return this.imballi;
@@ -67,7 +67,7 @@ export class ImballoServiceService {
       this.http.post<ImballoListDto>(this.url + "/update-imballo", imballoMod);
     o.subscribe(risp => {
       this.findImballoService();
-      this.tokenService.setToken(risp.token);
+      this.tokenService.token=risp.token;
 
     });
   }
@@ -77,7 +77,7 @@ export class ImballoServiceService {
      this.http.post<ImballoListDto>(this.url + '/delete-imballo', this.imballoMod)
     o.subscribe(risp => {
        this.imballi = risp.imballi;
-       this.tokenService.setToken(risp.token);
+       this.tokenService.token=risp.token;
       })
     return this.imballi;
   }

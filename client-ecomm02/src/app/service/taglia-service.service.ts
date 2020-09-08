@@ -26,12 +26,12 @@ export class TagliaServiceService {
   addTagliaService() {
     console.log("Siamo in addTaglia e la taglia vale ",
      this.tagliaMod)
-    let o: Observable<TagliaListDto> 
+    let o: Observable<TagliaListDto>
     = this.http.post<TagliaListDto>(
       this.url + '/add-taglia', this.tagliaMod);
     o.subscribe(risp => { //this.taglie = risp.taglie;
       this.findTagliaService();
-      this.tokenService.setToken(risp.token); });
+      this.tokenService.token=risp.token; });
   }
 
   updateTagliaService(tagliaMod: TagliaDto) {
@@ -40,36 +40,36 @@ export class TagliaServiceService {
      this.http.post<TagliaListDto>(
        this.url + '/update-taglia', tagliaMod);
     o.subscribe(risp => { this.findTagliaService();
-      this.tokenService.setToken(risp.token); });
-  
+      this.tokenService.token=risp.token; });
+
   }
 
   removeTagliaService(){
-    let o: Observable<TagliaListDto> = 
+    let o: Observable<TagliaListDto> =
     this.http.post<TagliaListDto>(
       this.url + '/delete-taglia',this.tagliaMod);
     o.subscribe(risp => { this.taglie = risp.taglie;
-      this.tokenService.setToken(risp.token); });
+      this.tokenService.token=risp.token; });
       console.log("taglia eliminata");
     return this.taglie;
   }
 
   listaService(): Taglia[] {
-    let o: Observable<TagliaListDto> = 
+    let o: Observable<TagliaListDto> =
     this.http.post<TagliaListDto>(
       this.url + '/list-taglia', this.tagliaMod);
     o.subscribe(risp => { this.taglie = risp.taglie;
-      this.tokenService.setToken(risp.token); });
+      this.tokenService.token=risp.token; });
     return this.taglie;
   }
 
   findTagliaService() {
     this.ricerca.token =null;
-    let o: Observable<TagliaListDto> 
+    let o: Observable<TagliaListDto>
     = this.http.post<TagliaListDto>(
       this.url + '/find-taglia', this.ricerca);
     o.subscribe(risp => { this.taglie = risp.taglie;
-      this.tokenService.setToken(risp.token); });
+      this.tokenService.token=risp.token; });
     return this.taglie;
   }
 

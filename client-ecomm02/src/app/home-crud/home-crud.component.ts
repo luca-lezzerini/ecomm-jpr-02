@@ -15,7 +15,7 @@ export class HomeCRUDComponent implements OnInit {
   constructor(public mx: HomeServiceService, private router:Router) { }
 
   ngOnInit() {
-    this.mx.lista();
+
   }
 
   aggiungiAlCarrello(){

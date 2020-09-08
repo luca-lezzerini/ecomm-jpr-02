@@ -29,7 +29,7 @@ export class ProdottoService {
       const sub: Subscription = oss.subscribe(risp => {
         this.listaDto = risp;
         this.listaProdotti = this.listaDto.listaProdotti;
-        this.srvToken.setToken(this.listaDto.token);
+        this.srvToken.token=this.listaDto.token;
       });
     }
     //FIXME verificare se è necessario restituire questo DTO
@@ -40,7 +40,7 @@ export class ProdottoService {
     const oss: Observable<ListaProdottiDto> = this.http.post<ListaProdottiDto>(this.urlPath + '/lista-prodotti', this.listaDto);
     const sub: Subscription = oss.subscribe(risp => {
       this.listaDto = risp; this.listaProdotti = this.listaDto.listaProdotti;
-      this.srvToken.setToken(this.listaDto.token);
+      this.srvToken.token=this.listaDto.token;
     });
   }
   /* in Base alla stato del componente che riceve come parametro setta url per la
@@ -49,7 +49,7 @@ export class ProdottoService {
   conferma(state: string) {
     let urlEnd: string;
     this.prodottoDto.prodotto = this.prodottoForm;
-    this.prodottoDto.token = this.srvToken.getToken();
+    this.prodottoDto.token = this.srvToken.token;
     switch (state) {
       case 'modifica': {
         urlEnd = '/prodotti-update';
@@ -66,7 +66,10 @@ export class ProdottoService {
     }
     console.log(this.prodottoDto);
     const oss: Observable<ProdottoDto> = this.http.post<ProdottoDto>(this.urlPath + urlEnd, this.prodottoDto);
-    const sub: Subscription = oss.subscribe(risp => { this.lista(); this.srvToken.setToken(risp.token); console.log(risp) });
+    const sub: Subscription = oss.subscribe(risp => {
+      this.lista();
+      this.srvToken.token=risp.token;
+      console.log(risp); });
     this.prodottoForm = new Prodotto();
     return 'ricerca';
   }

@@ -1,19 +1,18 @@
-import { Injectable } from '@angular/core';
-import { Token } from './dto/token';
+import { Injectable } from "@angular/core";
+import { Token } from "./dto/token";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root",
 })
 export class TokenService {
   /* memorizza il token*/
-  private token: Token;
-  constructor() { }
-
-  setToken(t: Token ): void {
+  token: Token;
+  constructor() {}
+  /*
+  set token(t: Token ): void {
     this.token = t;
   }
-  getToken(): Token {
+  get token(): Token {
     return this.token;
-  }
-
+  }*/
 }
