@@ -112,7 +112,7 @@ public class SpedizioneController {
         if (ricercaDto != null) {
             Token token = ricercaDto.getToken();
             Token t = securityService.retrieveToken(token);
-            lista = new SpedizioneListaDto(spedizioneService.findSped(ricercaDto.getRicerca(), ricercaDto.getRicerca()), t);
+            lista = new SpedizioneListaDto(spedizioneService.findSped(ricercaDto.getRicerca()), t);
             return lista;
         } else {
             log.error("Non ci sono spedizioni per la ricerca effettuata");
