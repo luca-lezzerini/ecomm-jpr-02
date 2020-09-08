@@ -1,9 +1,8 @@
 <body>
     <h1>IMBALLO</h1>
     <br>
-    <h2>Inserire i parametri di ricerca:</h2>
-
     <span *ngIf="state =='ricerca'">
+        <h2>Inserire i parametri di ricerca:</h2>
         <input type="text" [(ngModel)]="mem.ricerca.ricerca">&nbsp;
         <button class="pointer" (click)="findImballo()">Cerca</button>&nbsp;
         <button class="pointer" id="aggiungi" (click)="addImballo()">Aggiungi</button>
@@ -48,7 +47,7 @@
         <br>
     </div>
     <div *ngIf="state == 'delete'" class="box">
-        <h2>Eliminare {{mem.imballoMod.descrizione}} ?</h2>
+        <h2>Eliminare {{mem.imballoMod.imballo.descrizione}}?</h2>
         <button class="pointer" (click)="removeImballo(mem.imballoMod.id)">Conferma</button>&nbsp;
         <button class="pointer" (click)="close()">Annulla</button>
         <br>

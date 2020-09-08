@@ -17,29 +17,35 @@ export class ProdottoService {
   listaProdotti: Prodotto[] = []; /* il contenitore che renderizza la tabella contente le risposte dal server*/
   risultatiProdotti: RicercaDto[] = [];
   listaDto: ListaProdottiDto = new ListaProdottiDto();
-  constructor(private http: HttpClient, private srvToken : TokenService,) { }
-/* Passa al server il RicercaDto contenete la stringa da cercare posiziona i dati
-nella Lista aposita, restituisce una istanza di DtoRicerca per resettare il campo
-nel Tamplate*/
+  constructor(private http: HttpClient, private srvToken: TokenService,) { }
+  /* Passa al server il RicercaDto contenente la stringa da cercare posiziona i dati
+  nella Lista aposita, restituisce una istanza di DtoRicerca per resettare il campo
+  nel Template*/
   cerca(ricerca: RicercaDto): RicercaDto {
     if (ricerca.ricerca == null) { // se non viene inserito nulla nel campo di ricerca vengono restituiti tutti i prodotto
       this.lista();
     } else {
       const oss: Observable<ListaProdottiDto> = this.http.post<ListaProdottiDto>(this.urlPath + '/prodotti-find', ricerca);
-      const sub: Subscription = oss.subscribe(risp => { this.listaDto = risp; this.listaProdotti = this.listaDto.listaProdotti;
-      this.srvToken.setToken(this.listaDto.token); });
+      const sub: Subscription = oss.subscribe(risp => {
+        this.listaDto = risp;
+        this.listaProdotti = this.listaDto.listaProdotti;
+        this.srvToken.setToken(this.listaDto.token);
+      });
     }
+    //FIXME verificare se è necessario restituire questo DTO
     return new RicercaDto();
   }
 
   lista() {
-    const oss: Observable<ListaProdottiDto> = this.http.post<ListaProdottiDto> (this.urlPath + '/lista-prodotti', this.listaDto);
-    const sub: Subscription = oss.subscribe(risp => { this.listaDto = risp;    this.listaProdotti = this.listaDto.listaProdotti;
-      this.srvToken.setToken(this.listaDto.token); });
+    const oss: Observable<ListaProdottiDto> = this.http.post<ListaProdottiDto>(this.urlPath + '/lista-prodotti', this.listaDto);
+    const sub: Subscription = oss.subscribe(risp => {
+      this.listaDto = risp; this.listaProdotti = this.listaDto.listaProdotti;
+      this.srvToken.setToken(this.listaDto.token);
+    });
   }
-/* in Base alla stato del componente che riceve come parametro setta url per la
-richiesta e invia al server l'istanza da trattare. restituisce la stringa
- per ripristinare lo stato iniziale del component*/
+  /* in Base alla stato del componente che riceve come parametro setta url per la
+  richiesta e invia al server l'istanza da trattare. restituisce la stringa
+   per ripristinare lo stato iniziale del component*/
   conferma(state: string) {
     let urlEnd: string;
     this.prodottoDto.prodotto = this.prodottoForm;

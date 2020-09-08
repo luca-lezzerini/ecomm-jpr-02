@@ -67,19 +67,8 @@ public class ProdottoServiceImpl implements ProdottoService {
         return repProdotto.findByPrezzoLike(prodotto.getPrezzo().toString());
     }
 
-    /* il seguente metodo riceve un oogetto riceca contenente la striga da cercare in diversi
-    campi della tabella Prodotto. Effetua la ricerca con due distinte chiamate a repository
-    e fonde in unica Lista i risultati
-     */
-    public List<Prodotto> findByDescrizioneOrCodiceLike(RicercaDto ricerca) {
-        List<Prodotto> d = repProdotto.findByDescrizioneLike("%" + ricerca.getRicerca() + "%");
-        List<Prodotto> c = repProdotto.findByCodiceLike("%" + ricerca.getRicerca() + "%");
-        return Stream.concat(d.stream(), c.stream()).collect(Collectors.toList());
-    }
-
     @Override
     public List<Prodotto> findByCodiceLikeOrDescrizioneLike(RicercaDto ricerca) {
-
         return repProdotto.trovaPerChiaveParziale("%" + ricerca.getRicerca() + "%");
     }
 
