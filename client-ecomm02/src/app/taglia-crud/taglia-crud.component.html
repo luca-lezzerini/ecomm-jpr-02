@@ -1,9 +1,8 @@
 <body>
     <h1>TAGLIA</h1>
     <br>
-    <h2>Inserire i parametri di ricerca:</h2>
-
     <span *ngIf="state =='ricerca'">
+        <h2>Inserire i parametri di ricerca:</h2>
         <input type="text" [(ngModel)]="memT.ricerca.ricerca">
         <button class="pointer" (click)="findTaglia()">Cerca</button>&nbsp;
         <button class="pointer" id="aggiungi" (click)="addTaglia()">Aggiungi</button>
@@ -77,7 +76,7 @@
     <br>
     <br>
     <table *ngIf="state != 'aggiungi' && state != 'modifica' && state !=
-    'delete'">
+        'delete'">
         <tr>
             <th>Descrizione</th>
             <th>Sigla</th>
