@@ -42,13 +42,13 @@
         <br>
         <h2 class="colortext">{{msg}}</h2>
         <br>
-        <button class="pointer" (click)="conferma()">Conferma modifica</button>
+        <button class="pointer" (click)="conferma()">Conferma modifica</button>&nbsp;
         <button class="pointer" (click)="chiudi()">Annulla</button>
         <br>
         <br>
     </div>
     <div *ngIf="state == 'delete'" class="box">
-        <h2>Eliminare {{memT.tagliaMod.descrizione}} ?</h2>
+        <h2>Eliminare {{memT.tagliaMod.taglia.descrizione}}?</h2>
         <button class="pointer" (click)="removeTaglia(memT.tagliaMod.id)">Conferma</button>
         <button class="pointer" (click)="chiudi()">Annulla</button>
         <br>

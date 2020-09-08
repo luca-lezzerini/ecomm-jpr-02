@@ -48,7 +48,7 @@
         <br>
     </div>
     <div *ngIf="state == 'delete'" class="box">
-        <h2>Eliminare {{mem.imballoMod.descrizione}} ?</h2>
+        <h2>Eliminare {{mem.imballoMod.imballo.descrizione}}?</h2>
         <button class="pointer" (click)="removeImballo(mem.imballoMod.id)">Conferma</button>&nbsp;
         <button class="pointer" (click)="close()">Annulla</button>
         <br>
