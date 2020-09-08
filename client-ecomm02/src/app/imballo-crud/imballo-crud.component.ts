@@ -1,8 +1,9 @@
-import { ImballoDto } from "./../imballo-dto";
-import { ImballoServiceService } from "./../imballo-service.service";
+
 import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
-import { Imballo } from "../dto/imballo";
+import { Imballo } from "../entity/imballo";
+import { ImballoServiceService } from '../service/imballo-service.service';
+import { ImballoDto } from '../dto/imballo-dto';
 
 @Component({
   selector: "app-imballo-crud",

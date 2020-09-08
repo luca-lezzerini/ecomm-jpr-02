@@ -1,14 +1,11 @@
-import { CategoriaDto } from './dto/categoria-dto';
-import { Imballo } from './dto/imballo';
-import { ImballoDto } from './imballo-dto';
-import { TokenService } from './token.service';
-import { ImballoListDto } from './imballo-list-dto';
-import { SpedizioneDto } from './dto/spedizione-dto';
-import { RicercaDto } from './dto/ricerca-dto';
-
+import { ImballoListDto } from '../dto/imballo-list-dto';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { Imballo } from '../entity/imballo';
+import { ImballoDto } from '../dto/imballo-dto';
+import { RicercaDto } from '../dto/ricerca-dto';
+import { TokenService } from '../token.service';
 
 @Injectable({
   providedIn: 'root'

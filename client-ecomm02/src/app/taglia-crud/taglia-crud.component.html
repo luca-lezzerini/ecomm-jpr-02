@@ -1,64 +1,94 @@
-<h1>TAGLIA</h1>
-<br>
-<h2>Inserire i dati:</h2>
+<body>
+    <h1>TAGLIA</h1>
+    <br>
+    <h2>Inserire i parametri di ricerca:</h2>
 
-<span *ngIf="state =='ricerca'">
-
-    <input type="text" [(ngModel)]="memT.ricerca.ricerca">
-    <button class="pointer" (click)="findTaglia()">Cerca</button>&nbsp;
-    <button class="pointer" (click)="addTaglia()">Aggiungi</button>
-</span>
-<span *ngIf="state !='ricerca'">
-    <input type="text" [(ngModel)]="memT.taglia.sigla"
-        placeholder="taglia" disabled>
-    <button class="pointer" (click)="findTaglia()" disabled>Cerca</button>&nbsp;
-    <button class="pointer" (click)="addTaglia()" disabled>Aggiungi</button>
-</span>
-
-<br>
-<br>
-<br>
-<span *ngIf="state =='aggiungi'">
-    <div>
-        <h3>Form dati</h3>
-        <input type="text" [(ngModel)]="memT.tagliaMod.taglia.descrizione"
+    <span *ngIf="state =='ricerca'">
+        <input type="text" [(ngModel)]="memT.ricerca.ricerca">
+        <button class="pointer" (click)="findTaglia()">Cerca</button>&nbsp;
+        <button class="pointer" id="aggiungi" (click)="addTaglia()">Aggiungi</button>
+    </span>
+    <span *ngIf="state !='ricerca'">
+        <input type="text" [(ngModel)]="memT.taglia.sigla"
+            placeholder="taglia" hidden>
+        <button class="pointer" (click)="findTaglia()" hidden>Cerca</button>&nbsp;
+        <button class="pointer" id="aggiungi" (click)="addTaglia()" hidden>Aggiungi</button>
+    </span>
+    <span *ngIf="state =='aggiungi'">
+        <div class="box">
+            <h3>Form dati</h3>
+            <br>
+            <input type="text" [(ngModel)]="memT.tagliaMod.taglia.descrizione"
+                placeholder="descrizione">
+            <input type="text" [(ngModel)]="memT.tagliaMod.taglia.sigla"
+                placeholder="sigla">
+            <br>
+            <h2 class="colortext">{{msg}}</h2>
+            <br>
+            <button class="pointer" id="conferma" (click)="conferma()">Conferma</button>&nbsp;
+            <button class="pointer" id="annulla" (click)="chiudi()">Annulla</button>
+            <br>
+            <br>
+        </div>
+    </span>
+    <div *ngIf="state == 'modifica'" class="box">
+        <br>
+        nuova descrizione: <input type="text"
+            [(ngModel)]="memT.tagliaMod.taglia.descrizione"
             placeholder="descrizione">
-        <input type="text" [(ngModel)]="memT.tagliaMod.taglia.sigla"
-            placeholder="sigla">
+        nuova sigla: <input type="text"
+            [(ngModel)]="memT.tagliaMod.taglia.sigla"
+            placeholder="sigla">&nbsp;
         <br>
-        <button class="pointer" (click)="conferma()">Conferma</button>
+        <h2 class="colortext">{{msg}}</h2>
+        <br>
+        <button class="pointer" (click)="conferma()">Conferma modifica</button>
         <button class="pointer" (click)="chiudi()">Annulla</button>
-    </div>
-</span>
-<div *ngIf="state == 'modifica'">
-    nuova descrizione:<input type="text" [(ngModel)]="memT.tagliaMod.taglia.descrizione" placeholder="descrizione"> nuova sigla:<input type="text" [(ngModel)]="memT.tagliaMod.taglia.sigla" placeholder="sigla">&nbsp;
-    <button class="pointer" (click)="conferma()">Conferma modifica</button>
-    <button class="pointer" (click)="chiudi()">Annulla</button>
-</div>
-<div *ngIf="state == 'delete'">
-    <h2>elimina?</h2>
-    <button class="pointer" (click)="removeTaglia(memT.tagliaMod.id)">Conferma</button>
-    <button class="pointer" (click)="chiudi()">Annulla</button>
-</div>
-<br>
-<br>
-<span *ngIf="state2 =='visualizza'">
-    <div>
-        <h3>Form dati</h3>
-        Descrizione: {{memT.tagliaVis.descrizione}}
-        Sigla: {{memT.tagliaVis.sigla}}
+        <br>
         <br>
     </div>
-</span>
-<table>
-    <tr>
-        <th>Descrizione</th>
-        <th>Sigla</th>
-    </tr>
-    <tr *ngFor="let i of memT.taglie; index as x">
-        <td class="pointer" (click)="visualizza(i, x)">{{i.descrizione}}</td>
-        <td class="pointer" (click)="visualizza(i, x)">{{i.sigla}}</td>
-        <td><button class="pointer" (click)="updateTaglia(i, x)">Modifica</button>&nbsp;
-            <button class="pointer" (click)="canRemove(i, x)">Rimuovi</button></td>
-    </tr>
-</table>
+    <div *ngIf="state == 'delete'" class="box">
+        <h2>Eliminare {{memT.tagliaMod.descrizione}} ?</h2>
+        <button class="pointer" (click)="removeTaglia(memT.tagliaMod.id)">Conferma</button>
+        <button class="pointer" (click)="chiudi()">Annulla</button>
+        <br>
+        <br>
+    </div>
+    <br>
+    <br>
+    <div *ngIf="state2 =='visualizza'" class="box">
+        <table>
+            <h3>Form dati</h3>
+            <tr>
+                <th>Descrizione:</th>
+                <th>Sigla:</th>
+            </tr>
+            <tr>
+                <td>
+                    {{memT.tagliaVis.descrizione}}
+                </td>
+                <td>
+                    {{memT.tagliaVis.sigla}}
+                </td>
+            </tr>
+        </table>
+        <br>
+    </div>
+    <br>
+    <br>
+    <table *ngIf="state != 'aggiungi' && state != 'modifica' && state !=
+    'delete'">
+        <tr>
+            <th>Descrizione</th>
+            <th>Sigla</th>
+            <th>Modifica</th>
+            <th>Rimuovi</th>
+        </tr>
+        <tr *ngFor="let i of memT.taglie; index as x">
+            <td class="pointer" (click)="visualizza(i, x)">{{i.descrizione}}</td>
+            <td class="pointer" (click)="visualizza(i, x)">{{i.sigla}}</td>
+            <td><button class="pointer" (click)="updateTaglia(i, x)">Modifica</button></td>
+            <td><button class="pointer" (click)="canRemove(i, x)">Rimuovi</button></td>
+        </tr>
+    </table>
+</body>

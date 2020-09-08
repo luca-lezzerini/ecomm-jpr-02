@@ -1,7 +1,7 @@
 import { Token } from './token';
 import { Taglia } from '../entity/taglia';
 
-export class TagliaDto {
-    taglia: Taglia = new Taglia();
+export class TagliaListDto {
+    taglie: Taglia[] = [];
     token: Token;
 }

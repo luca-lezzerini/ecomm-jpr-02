@@ -1,8 +1,9 @@
 import { TagliaDto } from "./../dto/taglia-dto";
-import { TagliaServiceService } from "./../taglia-service.service";
 import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
-import { Taglia } from "../dto/taglia";
+import { TagliaServiceService } from '../service/taglia-service.service';
+import { Taglia } from '../entity/taglia';
+
 
 @Component({
   selector: "app-taglia-crud",

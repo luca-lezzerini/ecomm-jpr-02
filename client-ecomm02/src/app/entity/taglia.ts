@@ -1,5 +1,3 @@
-import { Token } from './token';
-import { Identifiers } from '@angular/compiler';
 
 export class Taglia {
 
