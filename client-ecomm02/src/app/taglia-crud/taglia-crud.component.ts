@@ -1,8 +1,8 @@
+import { Taglia } from './../model/taglia';
 import { TagliaDto } from "./../dto/taglia-dto";
 import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { TagliaServiceService } from '../service/taglia-service.service';
-import { Taglia } from '../entity/taglia';
 
 
 @Component({

@@ -1,4 +1,4 @@
-import { Imballo } from '../entity/imballo';
+import { Imballo } from '../model/imballo';
 import { Token } from './token';
 
 export class ImballoDto {

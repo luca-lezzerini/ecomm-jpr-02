@@ -1,7 +1,7 @@
 
 import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
-import { Imballo } from "../entity/imballo";
+import { Imballo } from "../model/imballo";
 import { ImballoServiceService } from '../service/imballo-service.service';
 import { ImballoDto } from '../dto/imballo-dto';
 
@@ -30,7 +30,6 @@ export class ImballoCrudComponent implements OnInit {
   addImballo() {
     this.state = "aggiungi";
     this.state2 = "";
-    this.mem.ricerca.ricerca = "";
     this.msg = "";
   }
   /*
@@ -84,8 +83,7 @@ export class ImballoCrudComponent implements OnInit {
     if (this.state == "aggiungi") {
       console.log(this.mem.imballoMod);
       if (
-        this.mem.imballoMod.imballo.descrizione &&
-        this.mem.imballoMod.imballo.costo > 0
+        this.mem.imballoMod.imballo.descrizione
       ) {
         this.mem.addImballoService();
         this.mem.imballoMod = new ImballoDto();
@@ -97,8 +95,7 @@ export class ImballoCrudComponent implements OnInit {
     } else if (this.state == "modifica") {
       console.log("Siamo in confirm - modifica");
       if (
-        this.mem.imballoMod.imballo.descrizione &&
-        this.mem.imballoMod.imballo.costo > 0
+        this.mem.imballoMod.imballo.descrizione 
       ) {
         this.mem.updateImballoService(this.mem.imballoMod);
         this.mem.imballoMod = new ImballoDto();

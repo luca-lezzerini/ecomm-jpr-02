@@ -2,7 +2,7 @@ import { ImballoListDto } from '../dto/imballo-list-dto';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Imballo } from '../entity/imballo';
+import { Imballo } from '../model/imballo';
 import { ImballoDto } from '../dto/imballo-dto';
 import { RicercaDto } from '../dto/ricerca-dto';
 import { TokenService } from '../token.service';
@@ -55,6 +55,8 @@ export class ImballoServiceService {
     );
     o.subscribe(risp => {
       this.imballi = risp.imballi;
+      this.tokenService.setToken(risp.token);
+
     });
     return this.imballi;
   }
@@ -65,12 +67,18 @@ export class ImballoServiceService {
       this.http.post<ImballoListDto>(this.url + "/update-imballo", imballoMod);
     o.subscribe(risp => {
       this.findImballoService();
+      this.tokenService.setToken(risp.token);
+
     });
   }
 
   removeImballoService() {
-    let o: Observable<ImballoListDto> = this.http.post<ImballoListDto>(this.url + '/delete-imballo', this.imballoMod)
-    o.subscribe(risp => { this.imballi = risp.imballi; })
+    let o: Observable<ImballoListDto> =
+     this.http.post<ImballoListDto>(this.url + '/delete-imballo', this.imballoMod)
+    o.subscribe(risp => {
+       this.imballi = risp.imballi;
+       this.tokenService.setToken(risp.token);
+      })
     return this.imballi;
   }
 }
