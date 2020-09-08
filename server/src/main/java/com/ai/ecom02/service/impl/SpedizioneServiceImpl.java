@@ -50,8 +50,8 @@ public class SpedizioneServiceImpl implements SpedizioneService {
     }
 
     @Override
-    public List<Spedizione> findSped(String codice, String nome) {
-        return repSpedizione.findByCodiceLikeOrNomeLike("%" + codice + "%", "%" + nome + "%");
+    public List<Spedizione> findSped(String ricerca) {
+        return repSpedizione.findByCodiceLikeOrNomeLike("%" + ricerca + "%", "%" + ricerca + "%");
     }
 
     @Override
