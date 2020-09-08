@@ -24,7 +24,7 @@ export class ImballoServiceService {
   constructor(private http: HttpClient, public tokenService: TokenService) { }
 
   addImballoService() {
-    console.log("Siamo in addImballo e imballo vale ", this.imballoMod)
+    console.log("Siamo in addImballo e imballo vale ", this.imballoMod);
     let o: Observable<ImballoListDto> =
       this.http.post<ImballoListDto>(
         this.url + "/add-imballo",
@@ -33,7 +33,6 @@ export class ImballoServiceService {
     o.subscribe(risp => {
       this.findImballoService();
       this.tokenService.setToken(risp.token);
-
     });
   }
 
@@ -56,7 +55,6 @@ export class ImballoServiceService {
     o.subscribe(risp => {
       this.imballi = risp.imballi;
       this.tokenService.setToken(risp.token);
-
     });
     return this.imballi;
   }
@@ -68,7 +66,6 @@ export class ImballoServiceService {
     o.subscribe(risp => {
       this.findImballoService();
       this.tokenService.setToken(risp.token);
-
     });
   }
 
