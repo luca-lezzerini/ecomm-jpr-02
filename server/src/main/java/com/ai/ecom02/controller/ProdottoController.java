@@ -34,8 +34,8 @@ public class ProdottoController {
         Token t = tokenDto.getToken();
         t = securityService.retrieveToken(t);
         List<Prodotto> lista = srvProdotto.getAll();
-        ListaProdottiDto listaProdottoDto = new ListaProdottiDto(lista, t);
-        return listaProdottoDto;
+        ListaProdottiDto listaProdottiDto = new ListaProdottiDto(lista, t);
+        return listaProdottiDto;
     }
 
     @RequestMapping(value = ("/prodotti-add"))
@@ -82,8 +82,8 @@ public class ProdottoController {
         Token t = ricercaDto.getToken();
         t = securityService.retrieveToken(t);
         List<Prodotto> lista = srvProdotto.findByCodiceLikeOrDescrizioneLike(ricercaDto);
-        ListaProdottiDto listaProdottoDto = new ListaProdottiDto(lista, t);
-        return listaProdottoDto;
+        ListaProdottiDto listaProdottiDto = new ListaProdottiDto(lista, t);
+        return listaProdottiDto;
     }
 
 }

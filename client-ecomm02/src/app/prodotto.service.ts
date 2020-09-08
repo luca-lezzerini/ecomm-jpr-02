@@ -1,3 +1,4 @@
+import { TokenDto } from './dto/token-dto';
 import { ListaProdottiDto as ListaProdottiDto } from './dto/lista-prodotti-dto';
 import { TokenService } from './token.service';
 import { Injectable } from '@angular/core';
@@ -15,32 +16,29 @@ export class ProdottoService {
   prodottoForm: Prodotto = new Prodotto(); // memorizza l'istanza da trattare
   prodottoDto: ProdottoDto = new ProdottoDto();
   listaProdotti: Prodotto[] = []; /* il contenitore che renderizza la tabella contente le risposte dal server*/
-  risultatiProdotti: RicercaDto[] = [];
   listaDto: ListaProdottiDto = new ListaProdottiDto();
   constructor(private http: HttpClient, private srvToken: TokenService,) { }
   /* Passa al server il RicercaDto contenente la stringa da cercare posiziona i dati
   nella Lista aposita, restituisce una istanza di DtoRicerca per resettare il campo
   nel Template*/
-  cerca(ricerca: RicercaDto): RicercaDto {
-    if (ricerca.ricerca == null) { // se non viene inserito nulla nel campo di ricerca vengono restituiti tutti i prodotto
-      this.lista();
-    } else {
-      const oss: Observable<ListaProdottiDto> = this.http.post<ListaProdottiDto>(this.urlPath + '/prodotti-find', ricerca);
-      const sub: Subscription = oss.subscribe(risp => {
-        this.listaDto = risp;
-        this.listaProdotti = this.listaDto.listaProdotti;
-        this.srvToken.token=this.listaDto.token;
-      });
-    }
-    //FIXME verificare se è necessario restituire questo DTO
-    return new RicercaDto();
+  cerca(ricerca: RicercaDto) {
+    let o: Observable<ListaProdottiDto> = this.http.post<ListaProdottiDto>(
+      this.urlPath + "/prodotti-find/",
+      ricerca
+    );
+    o.subscribe((risp) => {
+      this.listaProdotti= risp.listaProdotti;
+    });
   }
 
   lista() {
-    const oss: Observable<ListaProdottiDto> = this.http.post<ListaProdottiDto>(this.urlPath + '/lista-prodotti', this.listaDto);
-    const sub: Subscription = oss.subscribe(risp => {
-      this.listaDto = risp; this.listaProdotti = this.listaDto.listaProdotti;
-      this.srvToken.token=this.listaDto.token;
+    let tik: TokenDto = new TokenDto(this.srvToken.token);
+    let o: Observable<ListaProdottiDto> = this.http.post<ListaProdottiDto>(
+      this.urlPath + "/lista-prodotti",
+      tik
+    );
+    o.subscribe((risp) => {
+      this.listaProdotti = risp.listaProdotti;
     });
   }
   /* in Base alla stato del componente che riceve come parametro setta url per la

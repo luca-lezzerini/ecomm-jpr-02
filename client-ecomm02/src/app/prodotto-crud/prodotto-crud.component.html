@@ -65,5 +65,5 @@
             </tr>
         </tbody>
     </table>
-    <h3 *ngIf="srvProdotto.listaProdotti.length === 0">Nessun record trovato!</h3>
+    <h3 *ngIf="state == 'ricerca' && srvProdotto.listaProdotti.length === 0">Nessun record trovato!</h3>
 </div>
