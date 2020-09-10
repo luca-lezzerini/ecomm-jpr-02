@@ -15,9 +15,8 @@ export class AssociaCategoriaComponent implements OnInit {
 
   associaStato = false;
   associativa = false;
-  prodottoSelezionato: Prodotto;
-  categoria: Categoria;
-  categoriaAssociata: AssociaCategoriaDto;
+  
+  
   nascondiButton = false;
   constructor(private srvProdotto: ProdottoService, public mem: CategoriaServiceService, public memcat: SrvAssociaCategoriaService) { }
 
@@ -28,17 +27,17 @@ export class AssociaCategoriaComponent implements OnInit {
   seleziona(item: Prodotto){
     this.associaStato = true;
     this.associativa = true;
-    this.prodottoSelezionato = item;
+    this.memcat.prodottoSelezionato = item;
   }
 
   associa(c: Categoria){
-    this.prodottoSelezionato = this.categoriaAssociata.prodotto;
-    this.categoriaAssociata.categoria = c;
-    if(this.prodottoSelezionato.idCategoria != null){
+    this.memcat.prodottoSelezionato = this.memcat.categoriaAssociata.prodotto;
+    this.memcat.categoriaAssociata.categoria = c;
+    if(this.memcat.prodottoSelezionato.idCategoria != null){
       this.nascondiButton = true;
     } else {
       this.nascondiButton = false;
-      this.memcat.associaCat(this.prodottoSelezionato.idCategoria, this.categoriaAssociata.categoria);
+      this.memcat.associaCat(this.memcat.prodottoSelezionato, this.memcat.categoriaAssociata.categoria);
     }
   }
 
