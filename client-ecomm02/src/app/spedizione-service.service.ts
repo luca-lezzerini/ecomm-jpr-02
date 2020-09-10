@@ -32,7 +32,7 @@ export class SpedizioneServiceService {
       this.http.post<SpedizioneListaDto>(this.url + "/aggiungi-spedizione/", this.spedizioneDto);
     obs.subscribe(risp => {
       this.spedizioni = risp.listaSpedizioneDto;
-      this.tokenSrv.token=risp.token;
+      this.tokenSrv.token = risp.token;
     });
     //}
     console.log("Spedizione aggiunta");
@@ -44,7 +44,7 @@ export class SpedizioneServiceService {
     obs.subscribe(risp => {
       console.log(risp);
       this.spedizioni = risp.listaSpedizioneDto;
-      this.tokenSrv.token=risp.token;
+      this.tokenSrv.token = risp.token;
       console.log("Finito cerca");
     });
     return this.ricerche;
@@ -55,7 +55,7 @@ export class SpedizioneServiceService {
       this.http.post<SpedizioneListaDto>(this.url + "/lista-spedizioni/", this.spedizioneDto);
     obs.subscribe(risp => {
       this.spedizioni = risp.listaSpedizioneDto;
-      this.tokenSrv.token=risp.token;
+      this.tokenSrv.token = risp.token;
     });
     return this.spedizioni;
   }
@@ -66,7 +66,7 @@ export class SpedizioneServiceService {
       this.http.post<SpedizioneListaDto>(this.url + "/rimuovi-spedizione/", this.spedizioneDto);
     obs.subscribe(risp => {
       this.spedizioni = risp.listaSpedizioneDto;
-      this.tokenSrv.token=risp.token;
+      this.tokenSrv.token = risp.token;
     });
   }
   update(temp: Spedizione) {
@@ -76,7 +76,7 @@ export class SpedizioneServiceService {
       this.http.post<SpedizioneListaDto>(this.url + "/modifica-spedizione/", this.spedizioneDto);
     obs.subscribe(risp => {
       this.cerca();
-      this.tokenSrv.token=risp.token;
+      this.tokenSrv.token = risp.token;
     });
     return this.spedizioni;
   }
