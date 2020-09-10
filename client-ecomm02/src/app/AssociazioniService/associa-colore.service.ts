@@ -61,7 +61,7 @@ export class AssociaColoreService {
     // Potrebbe essere necessario anche aggiungere un nuovo metodo a ControllerProdotto lato server per permettere l'associazione del colore
     this.prodottoDto.prodotto = prodotto;
     this.prodottoDto.token = this.srvToken.token;
-    const oss: Observable<ProdottoDto> = this.http.post<ProdottoDto>(this.urlPath + '/prodotti-add', this.prodottoDto);
+    const oss: Observable<ProdottoDto> = this.http.post<ProdottoDto>(this.urlPath + '/prodotti-update', this.prodottoDto);
     const sub: Subscription = oss.subscribe(risp => {
       this.visualizzaListaProdotti();
       this.srvToken.token = risp.token;
