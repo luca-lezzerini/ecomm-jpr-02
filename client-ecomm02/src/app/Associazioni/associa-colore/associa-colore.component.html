@@ -1,4 +1,4 @@
-<h1>Gestione Associazione Colori</h1>
+<h1>Associa Colori</h1>
 <div>
     <span>
         <input type="text" [(ngModel)]="ricerca.ricerca" placeholder="Ricerca">
@@ -35,13 +35,16 @@
             <tr>
                 <th>Colore</th>
                 <th></th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
             <tr *ngFor="let coloreDaSelezionare of srvAssociaColore.listaColori">
                 <td>{{coloreDaSelezionare.colore}}</td>
-                <td *ngIf="prodotto.colore != coloreDaSelezionare"><button (click)="chiediAssocia(coloreDaSelezionare, prodotto)">Associa</button></td>
-                <td *ngIf="prodotto.colore === coloreDaSelezionare"><button (click)="chiediAssocia(coloreDaSelezionare, prodotto)" disabled>Associa</button></td>
+                <td *ngIf="prodotto.colore == null || prodotto.colore.id != coloreDaSelezionare.id; else other_content"><button (click)="chiediAssocia(coloreDaSelezionare, prodotto)">Associa</button></td>
+                <ng-template #other_content>
+                    <td><button (click)="chiediAssocia(coloreDaSelezionare, prodotto)" disabled>Associa</button></td>
+                </ng-template>
             </tr>
         </tbody>
     </table>

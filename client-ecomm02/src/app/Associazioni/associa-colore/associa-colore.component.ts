@@ -1,3 +1,4 @@
+import { Colore } from './../../model/colore';
 import { Prodotto } from './../../model/prodotto';
 import { RicercaDto } from './../../dto/ricerca-dto';
 import { AssociaColoreService } from './../../AssociazioniService/associa-colore.service';
@@ -29,7 +30,7 @@ export class AssociaColoreComponent implements OnInit {
     this.prodotto = prodotto;
   }
 
-  chiediAssocia(colore) {
+  chiediAssocia(colore: Colore) {
     this.srvAssociaColore.associaColoreProdotto(colore, this.prodotto);
     this.state = 'visualizza';
   }

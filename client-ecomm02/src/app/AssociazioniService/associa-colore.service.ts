@@ -57,8 +57,7 @@ export class AssociaColoreService {
   }
 
   associaColoreProdotto(colore: Colore, prodotto: Prodotto) {
-    //prodotto.colore = colore; // Forse si deve aggiungere l'attributo "colore" all'entità Prodotto lato client
-    // Potrebbe essere necessario anche aggiungere un nuovo metodo a ControllerProdotto lato server per permettere l'associazione del colore
+    prodotto.colore = colore; 
     this.prodottoDto.prodotto = prodotto;
     this.prodottoDto.token = this.srvToken.token;
     const oss: Observable<ProdottoDto> = this.http.post<ProdottoDto>(this.urlPath + '/prodotti-update', this.prodottoDto);
