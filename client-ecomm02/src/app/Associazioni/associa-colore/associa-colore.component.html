@@ -7,7 +7,7 @@
 </div>
 <h3 *ngIf="state == 'seleziona'">Prodotto selezionato: {{prodotto.codice}} - {{prodotto.descrizione}}</h3>
 <div>
-    <table *ngIf="srvAssociaColore.listaProdotti.length > 0">
+    <table *ngIf="srvProdotto.listaProdotti.length > 0">
         <thead>
             <tr>
                 <th>Codice</th>
@@ -17,7 +17,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor=" let prodottoDaSelezionare of srvAssociaColore.listaProdotti ">
+            <tr *ngFor=" let prodottoDaSelezionare of srvProdotto.listaProdotti ">
                 <td>{{prodottoDaSelezionare.codice}}</td>
                 <td>{{prodottoDaSelezionare.descrizione}}</td>
                 <td>{{prodottoDaSelezionare.peso}}</td>
@@ -26,7 +26,7 @@
             </tr>
         </tbody>
     </table>
-    <h3 *ngIf="srvAssociaColore.listaProdotti.length === 0">Nessun record trovato!</h3>
+    <h3 *ngIf="srvProdotto.listaProdotti.length === 0">Nessun record trovato!</h3>
 </div>
 <div *ngIf="state == 'seleziona'">
     <h2>Colore da associare</h2>
@@ -39,7 +39,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let coloreDaSelezionare of srvAssociaColore.listaColori">
+            <tr *ngFor="let coloreDaSelezionare of srvColore.listaColori">
                 <td>{{coloreDaSelezionare.colore}}</td>
                 <td *ngIf="prodotto.colore == null || prodotto.colore.id != coloreDaSelezionare.id; else other_content"><button (click)="chiediAssocia(coloreDaSelezionare, prodotto)">Associa</button></td>
                 <ng-template #other_content>
