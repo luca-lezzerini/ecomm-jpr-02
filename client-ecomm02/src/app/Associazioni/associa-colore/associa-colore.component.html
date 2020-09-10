@@ -1,1 +1,48 @@
-<p>associa-colore works!</p>
+<h1>Gestione Associazione Colori</h1>
+<div>
+    <span>
+        <input type="text" [(ngModel)]="ricerca.ricerca" placeholder="Ricerca">
+        <button (click)="cercaProdotto()">Cerca</button>
+    </span>
+</div>
+<h3 *ngIf="state == 'seleziona'">Prodotto selezionato: {{prodotto.codice}} - {{prodotto.descrizione}}</h3>
+<div>
+    <table *ngIf="srvAssociaColore.listaProdotti.length > 0">
+        <thead>
+            <tr>
+                <th>Codice</th>
+                <th>Descrizione</th>
+                <th>Peso</th>
+                <th>Prezzo</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor=" let prodottoDaSelezionare of srvAssociaColore.listaProdotti ">
+                <td>{{prodottoDaSelezionare.codice}}</td>
+                <td>{{prodottoDaSelezionare.descrizione}}</td>
+                <td>{{prodottoDaSelezionare.peso}}</td>
+                <td>{{prodottoDaSelezionare.prezzo}}</td>
+                <td><button (click)="chiediSelezione(prodottoDaSelezionare)">Seleziona</button></td>
+            </tr>
+        </tbody>
+    </table>
+    <h3 *ngIf="srvAssociaColore.listaProdotti.length === 0">Nessun record trovato!</h3>
+</div>
+<div *ngIf="state == 'seleziona'">
+    <h2>Colore da associare</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Colore</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let coloreDaSelezionare of srvAssociaColore.listaColori">
+                <td>{{coloreDaSelezionare.colore}}</td>
+                <td *ngIf="prodotto.colore != coloreDaSelezionare"><button (click)="chiediAssocia(coloreDaSelezionare, prodotto)">Associa</button></td>
+                <td *ngIf="prodotto.colore === coloreDaSelezionare"><button (click)="chiediAssocia(coloreDaSelezionare, prodotto)" disabled>Associa</button></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
