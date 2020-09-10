@@ -28,7 +28,7 @@ public class Imballo implements Serializable {
     @Column
     private Double costo;
     
-    @OneToMany(mappedBy = "Imballo")
+    @OneToMany(mappedBy = "imballo")
     private List<Prodotto> prodotti = new ArrayList<>();
 
     public Imballo(Long id, String descrizione, Double costo) {
