@@ -1,3 +1,4 @@
+import { Categoria } from './categoria';
 import { Colore } from './colore';
 import { Token } from '../dto/token';
 export class Prodotto {
@@ -7,4 +8,5 @@ export class Prodotto {
     peso: number;
     prezzo: number;   
     colore: Colore; 
+    categoria: Categoria;
 } 

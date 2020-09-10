@@ -1,3 +1,6 @@
+import { Prodotto } from './../../model/prodotto';
+import { Categoria } from './../../model/categoria';
+import { CategoriaServiceService } from './../../categoria-service.service';
 import { SrvAssociaCategoriaService } from './../../AssociazioniService/srv-associa-categoria.service';
 import { Component, OnInit } from '@angular/core';
 import { ProdottoService } from '../../prodotto.service';
@@ -17,7 +20,7 @@ export class AssociaCategoriaComponent implements OnInit {
   searchState = true;
 
 
-  constructor(private srvProdotto: ProdottoService, public memcat: SrvAssociaCategoriaService) { }
+  constructor(private srvProdotto: ProdottoService, public mem: CategoriaServiceService, public memcat: SrvAssociaCategoriaService) { }
 
   ngOnInit() {
     this.srvProdotto.lista();
@@ -28,23 +31,23 @@ export class AssociaCategoriaComponent implements OnInit {
     this.associaStato = true;
     this.associativa = true;
     this.memcat.prodottoSelezionato = item;
-    //FIXME Aggiungere caricamento categorie perché non sono aggiornate
+    this.mem.lista();
   }
 
   cercaProdotto(){
     this.memcat.cerca();
   }
 
-/*
-  associa(c: Categoria[]){
+  associa(c: Categoria, p: Prodotto){
+    console.log("sono in associa", c );
     this.memcat.prodottoSelezionato = this.memcat.categoriaAssociata.prodotto;
     this.memcat.categoriaAssociata.categoria = c;
-    if(this.memcat.prodottoSelezionato.idCategoria != null){
+    if(this.memcat.categoriaAssociata.categoria != null){
       this.nascondiButton = true;
     } else {
       this.nascondiButton = false;
-      this.memcat.associaCat(this.memcat.prodottoSelezionato, this.memcat.categoriaAssociata.categoria);
+      this.memcat.associaCat(this.memcat.categoriaAssociata.categoria);
     }
-  }*/
+  }
 
 }
