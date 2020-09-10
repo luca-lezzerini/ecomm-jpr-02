@@ -17,12 +17,12 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor=" let prodotto of srvAssociaColore.listaProdotti ">
-                <td>{{prodotto.codice}}</td>
-                <td>{{prodotto.descrizione}}</td>
-                <td>{{prodotto.peso}}</td>
-                <td>{{prodotto.prezzo}}</td>
-                <td><button (click)="chiediSelezione(prodotto)">Seleziona</button></td>
+            <tr *ngFor=" let prodottoDaSelezionare of srvAssociaColore.listaProdotti ">
+                <td>{{prodottoDaSelezionare.codice}}</td>
+                <td>{{prodottoDaSelezionare.descrizione}}</td>
+                <td>{{prodottoDaSelezionare.peso}}</td>
+                <td>{{prodottoDaSelezionare.prezzo}}</td>
+                <td><button (click)="chiediSelezione(prodottoDaSelezionare)">Seleziona</button></td>
             </tr>
         </tbody>
     </table>
@@ -38,9 +38,10 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let colore of srvAssociaColore.listaColori">
-                <td>{{colore.colore}}</td>
-                <td><button (click)="chiediAssocia(colore)">Associa</button></td>
+            <tr *ngFor="let coloreDaSelezionare of srvAssociaColore.listaColori">
+                <td>{{coloreDaSelezionare.colore}}</td>
+                <td *ngIf="prodotto.colore != coloreDaSelezionare"><button (click)="chiediAssocia(coloreDaSelezionare, prodotto)">Associa</button></td>
+                <td *ngIf="prodotto.colore === coloreDaSelezionare"><button (click)="chiediAssocia(coloreDaSelezionare, prodotto)" disabled>Associa</button></td>
             </tr>
         </tbody>
     </table>
