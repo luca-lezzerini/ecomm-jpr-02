@@ -1,0 +1,11 @@
+tocTab[tocTab.length] = new Array("0.4.2:1", "", "Associa Caratteristica", "EARoot/EA4/EA2/EA106.htm", "188.png", "83", "0", "", "Custom diagram0","{88148FBA-7FBC-458f-BD72-77305C22CB33}");
+tocTab[tocTab.length] = new Array("0.4.2:2", "", "«WireframeWebsite» Webpage1", "EARoot/EA4/EA2/EA111.htm", "11.png", "E488", "0", "", "Screen0","{C970D60E-8AB3-4de2-845B-265627A777F3}");
+tocTab[tocTab.length] = new Array("0.4.2:3", "", "«WireframeButton» Associa", "EARoot/EA4/EA2/EA112.htm", "16.png", "E497", "E488", "", "GUIElement0","{2E1E8CDD-8B47-4984-9AB5-2ABC106CEB78}");
+tocTab[tocTab.length] = new Array("0.4.2:4", "", "«WireframeLabel» Associa Colori", "EARoot/EA4/EA2/EA113.htm", "16.png", "E499", "E488", "", "GUIElement0","{03074450-FB78-4492-9080-B9E0F0D56AEE}");
+tocTab[tocTab.length] = new Array("0.4.2:5", "", "«WireframeButton» Cerca", "EARoot/EA4/EA2/EA114.htm", "16.png", "E490", "E488", "", "GUIElement0","{A700096A-BEA6-4150-8FC0-7272024C37A5}");
+tocTab[tocTab.length] = new Array("0.4.2:6", "", "«WireframeLabel» Colore da associare", "EARoot/EA4/EA2/EA115.htm", "16.png", "E498", "E488", "", "GUIElement0","{FDBA190A-B951-441a-AA32-3FD4D105062B}");
+tocTab[tocTab.length] = new Array("0.4.2:7", "", "«WireframeLabel» Prodotto selezionato: P01-Papera di gomma", "EARoot/EA4/EA2/EA116.htm", "16.png", "E493", "E488", "", "GUIElement0","{0F6EEB0D-D659-4647-8768-4F5A645F1093}");
+tocTab[tocTab.length] = new Array("0.4.2:8", "", "«WireframeTextField» searchProdotto", "EARoot/EA4/EA2/EA117.htm", "16.png", "E489", "E488", "", "GUIElement0","{A6C8668E-E0E7-42bb-9B96-4B120247D3EC}");
+tocTab[tocTab.length] = new Array("0.4.2:9", "", "«WireframeButton» Seleziona", "EARoot/EA4/EA2/EA118.htm", "16.png", "E492", "E488", "", "GUIElement0","{A0E9F2FB-0ED4-412a-9376-52FF8224CBF0}");
+tocTab[tocTab.length] = new Array("0.4.2:10", "", "«WireframeTable» Table", "EARoot/EA4/EA2/EA119.htm", "16.png", "E496", "E488", "", "GUIElement0","{8943624E-8985-4ec1-8AFE-56FEE5E831DD}");
+tocTab[tocTab.length] = new Array("0.4.2:11", "", "«WireframeTable» Table", "EARoot/EA4/EA2/EA120.htm", "16.png", "E491", "E488", "", "GUIElement0","{085A85A0-98D6-4619-B51D-0BFE48261D08}");

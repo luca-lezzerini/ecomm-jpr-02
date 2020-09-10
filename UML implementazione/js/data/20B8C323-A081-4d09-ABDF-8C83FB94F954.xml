@@ -1,2 +1,4 @@
-tocTab[tocTab.length] = new Array("0.4:1", "", "Interfacce Utente", "EARoot/EA4/EA76.htm", "176.png", "68", "0", "", "Package diagram0","{7CA52B4B-7376-4ecd-B015-E2E8632947C3}");
-tocTab[tocTab.length] = new Array("0.4.1", "1", "Home Page UI", "EARoot/EA4/EA1/EA82.htm", "4.png", "", "", "{A7089EDC-F661-4e72-B412-A574D85F9C20}", "Package");
+tocTab[tocTab.length] = new Array("0.4:1", "", "Interfacce Utente", "EARoot/EA4/EA91.htm", "176.png", "68", "0", "", "Package diagram0","{7CA52B4B-7376-4ecd-B015-E2E8632947C3}");
+tocTab[tocTab.length] = new Array("0.4.1", "1", "Aggiungi al carrello", "EARoot/EA4/EA1/EA99.htm", "4.png", "", "", "{B2273904-E98B-4f4e-B9AF-A6E0491F552F}", "Package");
+tocTab[tocTab.length] = new Array("0.4.2", "1", "Associa Caratteristica", "EARoot/EA4/EA2/EA108.htm", "4.png", "", "", "{C300DD26-39BA-4420-BDDC-FFD9747F915B}", "Package");
+tocTab[tocTab.length] = new Array("0.4.3", "1", "Home Page UI", "EARoot/EA4/EA3/EA123.htm", "4.png", "", "", "{A7089EDC-F661-4e72-B412-A574D85F9C20}", "Package");
