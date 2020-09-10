@@ -1,3 +1,4 @@
+import { AssociaColoreComponent } from './Associazioni/associa-colore/associa-colore.component';
 import { TagliaCrudComponent } from './taglia-crud/taglia-crud.component';
 import { SpedizioneCRUDComponent } from './spedizione-crud/spedizione-crud.component';
 import { HomeCRUDComponent } from './home-crud/home-crud.component';
@@ -19,6 +20,7 @@ const routes: Routes = [
   { path: 'spedizione-crud', component: SpedizioneCRUDComponent},
   { path: 'taglia-crud', component: TagliaCrudComponent},
   { path: 'offerta-crud', component: OffertaCrudComponent},
+  { path: 'associa-colore', component: AssociaColoreComponent},
   { path: '', redirectTo: '/home-crud', pathMatch: 'full'}
 ];
 
