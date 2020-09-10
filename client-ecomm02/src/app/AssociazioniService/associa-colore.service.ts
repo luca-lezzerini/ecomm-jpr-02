@@ -21,28 +21,13 @@ export class AssociaColoreService {
 
   constructor(private http: HttpClient, private srvToken: TokenService, private srvColore: ColoriService, private srvProdotto: ProdottoService) { }
 
-  visualizzaListaProdotti(): void {
-      this.srvProdotto.lista();
-      this.listaProdotti = this.srvProdotto.listaProdotti;
-  }
-
-  visualizzaListaColori(): void {
-    this.srvColore.lista();
-    this.listaColori = this.srvColore.listaColori;
-  }
-
-  cercaProdotto(ricerca: RicercaDto) {
-    this.srvProdotto.cerca(ricerca);
-    this.listaProdotti = this.srvProdotto.listaProdotti;
-  }
-
   associaColoreProdotto(colore: Colore, prodotto: Prodotto): void {
     prodotto.colore = colore; 
     this.prodottoDto.prodotto = prodotto;
     this.prodottoDto.token = this.srvToken.token;
     const oss: Observable<ProdottoDto> = this.http.post<ProdottoDto>(this.urlPath + '/prodotti-update', this.prodottoDto);
     const sub: Subscription = oss.subscribe(risp => {
-      this.visualizzaListaProdotti();
+      this.srvProdotto.lista();
       this.srvToken.token = risp.token;
     });
     this.prodottoForm = new Prodotto();
