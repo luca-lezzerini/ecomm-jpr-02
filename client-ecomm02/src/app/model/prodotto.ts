@@ -4,5 +4,6 @@ export class Prodotto {
     codice: String;
     descrizione: String;
     peso: number;
-    prezzo: number;    
+    prezzo: number;  
+    idCategoria: String;  
 } 
