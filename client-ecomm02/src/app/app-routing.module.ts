@@ -28,6 +28,7 @@ const routes: Routes = [
   { path: 'associa-imballo', component: AssociaImballoComponent},
   { path: 'associa-categoria', component: AssociaCategoriaComponent},
   { path: 'associa-taglia', component: AssociaTagliaComponent},
+  { path: 'associa-imballo', component: AssociaImballoComponent},
 
   { path: '', redirectTo: '/home-crud', pathMatch: 'full'}
 ];
