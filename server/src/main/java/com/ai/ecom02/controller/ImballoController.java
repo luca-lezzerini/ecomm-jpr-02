@@ -98,14 +98,13 @@ public class ImballoController {
         return dx;
     }
     
+    //FIXME cosi non ritorna il token; la lista la puo gestire da solo il client.
     @RequestMapping(value = {"/associa-imballo"})
     @ResponseBody
-    public ImballoDtoList associaImballo(@RequestBody AssociaImballoDto dto) {
+    public void associaImballo(@RequestBody AssociaImballoDto dto) {
         Token token = dto.getToken();
         Token t = securityService.retrieveToken(token);
-        List<Imballo> list = srvImballo.associaImballo(dto.getProdotto(), dto.getImballo());
-        ImballoDtoList dx = new ImballoDtoList(list, t);        
-        return dx;
+        srvImballo.associaImballo(dto.getProdotto(), dto.getImballo());   
     }
 
 }
