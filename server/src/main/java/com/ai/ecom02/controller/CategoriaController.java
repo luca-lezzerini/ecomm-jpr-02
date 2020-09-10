@@ -6,13 +6,15 @@
 package com.ai.ecom02.controller;
 
 import com.ai.ecom02.dto.AssociaCategoriaDto;
+import com.ai.ecom02.dto.AssociaCategoriaListaDto;
 import com.ai.ecom02.dto.CategoriaDto;
 import com.ai.ecom02.dto.CategoriaListaDto;
 import com.ai.ecom02.dto.RicercaDto;
+import com.ai.ecom02.model.Prodotto;
 import com.ai.ecom02.model.Token;
 import com.ai.ecom02.service.CategoriaService;
+import com.ai.ecom02.service.ProdottoService;
 import com.ai.ecom02.service.SecurityService;
-
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -38,6 +40,9 @@ public class CategoriaController {
 
     @Autowired
     CategoriaService categoriaService;
+
+    @Autowired
+    ProdottoService prodottoService;
 
     @RequestMapping(value = {"/aggiungi-categoria"})
     @ResponseBody
@@ -137,10 +142,24 @@ public class CategoriaController {
         lista.setToken(categoriaDto.getToken());
         return lista;
     }
-    
+
     @RequestMapping(value = {"/associa-categorie"})
     @ResponseBody
-    public AssociaCategoriaDto associaCategoria(@RequestBody AssociaCategoriaDto associaCategoriaDto){
-        return associaCategoriaDto;
+    public AssociaCategoriaListaDto associaCategoria(
+            @RequestBody AssociaCategoriaDto associaCategoriaDto
+    ) {
+        AssociaCategoriaListaDto lista = new AssociaCategoriaListaDto();
+        log.info("richiesta di associazione categoria");
+        Token token = associaCategoriaDto.getToken();
+            Token t = securityService.retrieveToken(token);
+        if (associaCategoriaDto != null) {
+            prodottoService.findById(associaCategoriaDto.getProdotto()).setCategoria(associaCategoriaDto.getCategoria());
+            lista = new AssociaCategoriaListaDto(t, prodottoService.findById(associaCategoriaDto.getProdotto()), categoriaService.getLista());
+            return lista;
+        }
+        log.error("impossibile associare la categoria al prodotto");
+        lista.setToken(associaCategoriaDto.getToken());
+        lista = new AssociaCategoriaListaDto(t, null , categoriaService.getLista() );
+        return lista;
     }
 }

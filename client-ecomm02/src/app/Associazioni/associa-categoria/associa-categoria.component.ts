@@ -1,10 +1,9 @@
+import { Prodotto } from './../../model/prodotto';
+import { Categoria } from './../../model/categoria';
+import { CategoriaServiceService } from './../../categoria-service.service';
+import { SrvAssociaCategoriaService } from './../../AssociazioniService/srv-associa-categoria.service';
 import { Component, OnInit } from '@angular/core';
 import { ProdottoService } from '../../prodotto.service';
-import { Categoria } from '../../model/categoria';
-import { Prodotto } from '../../model/prodotto';
-import { CategoriaServiceService } from '../../categoria-service.service';
-import { SrvAssociaCategoriaService } from '../../AssociazioniService/srv-associa-categoria.service';
-import { AssociaCategoriaDto } from '../../dto/associa-categoria-dto';
 
 @Component({
   selector: 'app-associa-categoria',
@@ -16,28 +15,37 @@ export class AssociaCategoriaComponent implements OnInit {
   associaStato = false;
   associativa = false;
   nascondiButton = false;
+  searchState = true;
 
-  constructor(private srvProdotto: ProdottoService, public memcat: SrvAssociaCategoriaService) { }
+
+  constructor(private srvProdotto: ProdottoService, public mem: CategoriaServiceService, public memcat: SrvAssociaCategoriaService) { }
 
   ngOnInit() {
     this.srvProdotto.lista();
+    this.associativa = false;
   }
 
   seleziona(item: Prodotto){
     this.associaStato = true;
     this.associativa = true;
     this.memcat.prodottoSelezionato = item;
+    this.mem.lista();
   }
-/*
-  associa(c: Categoria[]){
+
+  cercaProdotto(){
+    this.memcat.cerca();
+  }
+
+  associa(c: Categoria, p: Prodotto){
+    console.log("sono in associa", c );
     this.memcat.prodottoSelezionato = this.memcat.categoriaAssociata.prodotto;
     this.memcat.categoriaAssociata.categoria = c;
-    if(this.memcat.prodottoSelezionato.idCategoria != null){
+    if(this.memcat.categoriaAssociata.categoria != null){
       this.nascondiButton = true;
     } else {
       this.nascondiButton = false;
-      this.memcat.associaCat(this.memcat.prodottoSelezionato, this.memcat.categoriaAssociata.categoria);
+      this.memcat.associaCat(this.memcat.categoriaAssociata.categoria);
     }
-  }*/
+  }
 
 }
