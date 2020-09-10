@@ -6,6 +6,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Prodotto implements Serializable {
@@ -25,7 +27,33 @@ public class Prodotto implements Serializable {
 
     @Column
     private Double prezzo;
+    
+    @ManyToOne
+    @JoinColumn(referencedColumnName = "id")
+    private Taglia taglia;
+            
+    @ManyToOne
+    @JoinColumn(referencedColumnName = "id")
+    private Imballo imballo;
+            
+    @ManyToOne
+    @JoinColumn(referencedColumnName = "id")        
+    private Colore colore;
+    
+    @ManyToOne
+    @JoinColumn(referencedColumnName = "id")
+    private Offerta offerta;
+    
+    @ManyToOne
+    @JoinColumn(referencedColumnName = "id")
+    private Spedizione spedizione;
+    
+    
+    @ManyToOne
+    @JoinColumn(referencedColumnName = "id")
+    private Categoria categoria;   
 
+    
     public Prodotto() {
     }
 
@@ -84,6 +112,54 @@ public class Prodotto implements Serializable {
     @Override
     public String toString() {
         return "Prodotto{" + "id=" + id + ", codice=" + codice + ", descrizione=" + descrizione + ", peso=" + peso + ", prezzo=" + prezzo + '}';
+    }
+
+    public Taglia getTaglia() {
+        return taglia;
+    }
+
+    public void setTaglia(Taglia taglia) {
+        this.taglia = taglia;
+    }
+
+    public Imballo getImballo() {
+        return imballo;
+    }
+
+    public void setImballo(Imballo imballo) {
+        this.imballo = imballo;
+    }
+
+    public Colore getColore() {
+        return colore;
+    }
+
+    public void setColore(Colore colore) {
+        this.colore = colore;
+    }
+
+    public Offerta getOfferta() {
+        return offerta;
+    }
+
+    public void setOfferta(Offerta offerta) {
+        this.offerta = offerta;
+    }
+
+    public Spedizione getSpedizione() {
+        return spedizione;
+    }
+
+    public void setSpedizione(Spedizione spedizione) {
+        this.spedizione = spedizione;
+    }
+
+    public Categoria getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(Categoria categoria) {
+        this.categoria = categoria;
     }
 
 }
