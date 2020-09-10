@@ -22,13 +22,17 @@ export class ProdottoService {
   nella Lista aposita, restituisce una istanza di DtoRicerca per resettare il campo
   nel Template*/
   cerca(ricerca: RicercaDto) {
-    let o: Observable<ListaProdottiDto> = this.http.post<ListaProdottiDto>(
-      this.urlPath + "/prodotti-find/",
-      ricerca
-    );
-    o.subscribe((risp) => {
-      this.listaProdotti= risp.listaProdotti;
-    });
+    if (ricerca.ricerca == null) { // se non viene inserito nulla nel campo di ricerca vengono restituiti tutti i prodotti
+      this.lista();
+    } else {
+      let o: Observable<ListaProdottiDto> = this.http.post<ListaProdottiDto>(
+        this.urlPath + "/prodotti-find/",
+        ricerca
+      );
+      o.subscribe((risp) => {
+        this.listaProdotti = risp.listaProdotti;
+      });
+    }
   }
 
   lista() {
@@ -66,8 +70,9 @@ export class ProdottoService {
     const oss: Observable<ProdottoDto> = this.http.post<ProdottoDto>(this.urlPath + urlEnd, this.prodottoDto);
     const sub: Subscription = oss.subscribe(risp => {
       this.lista();
-      this.srvToken.token=risp.token;
-      console.log(risp); });
+      this.srvToken.token = risp.token;
+      console.log(risp);
+    });
     this.prodottoForm = new Prodotto();
     return 'ricerca';
   }
