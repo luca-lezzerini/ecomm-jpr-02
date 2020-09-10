@@ -4,6 +4,6 @@ import { Token } from "./token";
 
 export class AssociaCategoriaDto {
     prodotto: Prodotto;
-    categoria: Categoria;
+    categoria: Categoria[];
     token: Token;
 }

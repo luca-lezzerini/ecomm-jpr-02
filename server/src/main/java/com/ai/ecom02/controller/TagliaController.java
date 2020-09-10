@@ -1,5 +1,6 @@
 package com.ai.ecom02.controller;
 
+import com.ai.ecom02.dto.AssociaTagliaDto;
 import com.ai.ecom02.dto.RicercaDto;
 import com.ai.ecom02.dto.TagliaDto;
 import com.ai.ecom02.dto.TagliaDtoList;
@@ -91,5 +92,12 @@ public class TagliaController {
         List<Taglia> listaTaglia = srvTaglia.findByDescrizioneLikeOrSiglaLike(ricerca.getRicerca(), ricerca.getRicerca());
         TagliaDtoList dt = new TagliaDtoList(listaTaglia, t);
         return dt;
+    }
+    @RequestMapping(value = {"/associa-taglia"})
+    @ResponseBody
+    public void associaImballo(@RequestBody AssociaTagliaDto dto) {
+        Token token = dto.getToken();
+        Token t = securityService.retrieveToken(token);
+        srvTaglia.associaTaglia(dto.getProdotto(), dto.getTaglia());   
     }
 }

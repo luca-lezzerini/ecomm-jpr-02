@@ -15,10 +15,9 @@ export class AssociaCategoriaComponent implements OnInit {
 
   associaStato = false;
   associativa = false;
-  
-  
   nascondiButton = false;
-  constructor(private srvProdotto: ProdottoService, public mem: CategoriaServiceService, public memcat: SrvAssociaCategoriaService) { }
+
+  constructor(private srvProdotto: ProdottoService, public memcat: SrvAssociaCategoriaService) { }
 
   ngOnInit() {
     this.srvProdotto.lista();
@@ -29,8 +28,8 @@ export class AssociaCategoriaComponent implements OnInit {
     this.associativa = true;
     this.memcat.prodottoSelezionato = item;
   }
-
-  associa(c: Categoria){
+/*
+  associa(c: Categoria[]){
     this.memcat.prodottoSelezionato = this.memcat.categoriaAssociata.prodotto;
     this.memcat.categoriaAssociata.categoria = c;
     if(this.memcat.prodottoSelezionato.idCategoria != null){
@@ -39,6 +38,6 @@ export class AssociaCategoriaComponent implements OnInit {
       this.nascondiButton = false;
       this.memcat.associaCat(this.memcat.prodottoSelezionato, this.memcat.categoriaAssociata.categoria);
     }
-  }
+  }*/
 
 }

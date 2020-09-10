@@ -1,6 +1,8 @@
 package com.ai.ecom02.service.impl;
 
+import com.ai.ecom02.model.Prodotto;
 import com.ai.ecom02.model.Taglia;
+import com.ai.ecom02.repository.RepProdotto;
 import com.ai.ecom02.repository.RepTaglia;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +19,8 @@ public class TagliaServiceImpl implements TagliaService {
 
     @Autowired
     RepTaglia repTaglia;
+    @Autowired
+    RepProdotto repProdotto;
 
     @Override
     public Taglia add(Taglia t) {
@@ -46,6 +50,16 @@ public class TagliaServiceImpl implements TagliaService {
 
     public List<Taglia> findByDescrizioneLikeOrSiglaLike(String ricerca, String ricerca0) {
         return repTaglia.findByDescrizioneLikeOrSiglaLike("%" + ricerca + "%", "%" + ricerca0 + "%");
+    }
+
+    public void associaTaglia(Prodotto prodotto, Taglia taglia) {
+         taglia = repTaglia.getOne(taglia.getId());
+        prodotto = repProdotto.getOne(prodotto.getId());
+        prodotto.setTaglia(taglia);
+        List<Prodotto> listaP = taglia.getProdotti();
+        listaP.add(prodotto);
+        repTaglia.save(taglia);
+        repProdotto.save(prodotto);
     }
 
 }
