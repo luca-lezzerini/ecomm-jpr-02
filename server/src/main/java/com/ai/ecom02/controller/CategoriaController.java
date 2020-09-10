@@ -5,6 +5,7 @@
  */
 package com.ai.ecom02.controller;
 
+import com.ai.ecom02.dto.AssociaCategoriaDto;
 import com.ai.ecom02.dto.CategoriaDto;
 import com.ai.ecom02.dto.CategoriaListaDto;
 import com.ai.ecom02.dto.RicercaDto;
@@ -135,5 +136,11 @@ public class CategoriaController {
         lista.setListaCategoriaDto(categoriaService.getLista());
         lista.setToken(categoriaDto.getToken());
         return lista;
+    }
+    
+    @RequestMapping(value = {"/associa-categorie"})
+    @ResponseBody
+    public AssociaCategoriaDto associaCategoria(@RequestBody AssociaCategoriaDto associaCategoriaDto){
+        return associaCategoriaDto;
     }
 }
