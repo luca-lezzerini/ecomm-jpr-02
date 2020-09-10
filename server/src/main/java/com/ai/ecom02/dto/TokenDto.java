@@ -1,8 +1,9 @@
 package com.ai.ecom02.dto;
 
 import com.ai.ecom02.model.Token;
+import java.io.Serializable;
 
-public class TokenDto {
+public class TokenDto implements Serializable {
 
     private Token token;
 
