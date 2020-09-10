@@ -4,8 +4,6 @@ import { CategoriaServiceService } from './../../categoria-service.service';
 import { SrvAssociaCategoriaService } from './../../AssociazioniService/srv-associa-categoria.service';
 import { Component, OnInit } from '@angular/core';
 import { ProdottoService } from '../../prodotto.service';
-import { Prodotto } from '../../model/prodotto';
-
 
 @Component({
   selector: 'app-associa-categoria',
