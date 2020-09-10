@@ -20,7 +20,7 @@ public class ImballoServiceImpl implements ImballoService {
 
     @Autowired
     RepImballo repImballo;
-    
+
     @Autowired
     RepProdotto repProdotto;
 
@@ -54,13 +54,15 @@ public class ImballoServiceImpl implements ImballoService {
         return repImballo.findByDescrizione("%" + ricerca.getRicerca() + "%");
     }
 
-    public List<Imballo> associaImballo(Prodotto prodotto, Imballo imballo) {
+    public void associaImballo(Prodotto prodotto, Imballo imballo) {
+        imballo = repImballo.getOne(imballo.getId());
+        prodotto = repProdotto.getOne(prodotto.getId());
         prodotto.setImballo(imballo);
         List<Prodotto> listaP = imballo.getProdotti();
         listaP.add(prodotto);
         repImballo.save(imballo);
         repProdotto.save(prodotto);
-        return repImballo.findAll();
+//        associa convine che ritorni findAll e quindi sia void
     }
 
 }
