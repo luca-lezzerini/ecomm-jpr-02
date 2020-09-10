@@ -13,6 +13,7 @@ import { OffertaCrudComponent } from './offerta-crud/offerta-crud.component';
 import { ProdottoCrudComponent } from './prodotto-crud/prodotto-crud.component';
 import { TagliaCrudComponent } from './taglia-crud/taglia-crud.component';
 import { AssociaCategoriaComponent } from './Associazioni/associa-categoria/associa-categoria.component';
+import { AssociaColoreComponent } from './Associazioni/associa-colore/associa-colore.component';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { AssociaCategoriaComponent } from './Associazioni/associa-categoria/asso
     ProdottoCrudComponent,
     SpedizioneCRUDComponent,
     TagliaCrudComponent,
-    AssociaCategoriaComponent
+    AssociaCategoriaComponent,
+    AssociaColoreComponent
   ],
   imports: [
 
