@@ -3,13 +3,10 @@ import { ColoriService } from './../colori.service';
 import { ProdottoDto } from './../dto/prodotto-dto';
 import { RicercaDto } from './../dto/ricerca-dto';
 import { Colore } from './../model/colore';
-import { ColoriDto } from './../dto/colori-dto';
 import { Prodotto } from './../model/prodotto';
 import { TokenService } from './../token.service';
 import { HttpClient } from '@angular/common/http';
 import { Observable, Subscription } from 'rxjs';
-import { ListaProdottiDto } from './../dto/lista-prodotti-dto';
-import { TokenDto } from './../dto/token-dto';
 import { Injectable } from '@angular/core';
 
 @Injectable({
