@@ -1,7 +1,6 @@
 import { ProdottoService } from './../prodotto.service';
 import { ColoriService } from './../colori.service';
 import { ProdottoDto } from './../dto/prodotto-dto';
-import { RicercaDto } from './../dto/ricerca-dto';
 import { Colore } from './../model/colore';
 import { Prodotto } from './../model/prodotto';
 import { TokenService } from './../token.service';
