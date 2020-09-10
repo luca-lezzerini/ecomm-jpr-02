@@ -1,3 +1,5 @@
+import { ProdottoService } from './../prodotto.service';
+import { ColoriService } from './../colori.service';
 import { ProdottoDto } from './../dto/prodotto-dto';
 import { RicercaDto } from './../dto/ricerca-dto';
 import { Colore } from './../model/colore';
@@ -17,46 +19,27 @@ export class AssociaColoreService {
   urlPath = 'http://localhost:8080';
   listaProdotti: Prodotto[] = [];
   listaColori: Colore[] = [];
-  listaColoriDto: ColoriDto = new ColoriDto();
   prodottoForm: Prodotto = new Prodotto();
   prodottoDto: ProdottoDto = new ProdottoDto();
 
-  constructor(private http: HttpClient, private srvToken: TokenService) { }
+  constructor(private http: HttpClient, private srvToken: TokenService, private srvColore: ColoriService, private srvProdotto: ProdottoService) { }
 
-  visualizzaListaProdotti() {
-    let tik: TokenDto = new TokenDto(this.srvToken.token);
-    let o: Observable<ListaProdottiDto> = this.http.post<ListaProdottiDto>(
-      this.urlPath + "/lista-prodotti",
-      tik
-    );
-    o.subscribe((risp) => {
-      this.listaProdotti = risp.listaProdotti;
-    });
+  visualizzaListaProdotti(): void {
+      this.srvProdotto.lista();
+      this.listaProdotti = this.srvProdotto.listaProdotti;
   }
 
   visualizzaListaColori(): void {
-    const oss: Observable<ColoriDto> = this.http.post<ColoriDto> (this.urlPath + '/lista-colori', this.listaColoriDto);
-    const sub: Subscription = oss.subscribe(risp => { this.listaColoriDto = risp;    
-      this.listaColori = this.listaColoriDto.listaColori; 
-      this.srvToken.token=this.listaColoriDto.token; 
-    });
+    this.srvColore.lista();
+    this.listaColori = this.srvColore.listaColori;
   }
 
   cercaProdotto(ricerca: RicercaDto) {
-    if (ricerca.ricerca == null) { // se non viene inserito nulla nel campo di ricerca vengono restituiti tutti i prodotti
-      this.visualizzaListaProdotti();
-    } else {
-      let o: Observable<ListaProdottiDto> = this.http.post<ListaProdottiDto>(
-        this.urlPath + "/prodotti-find/",
-        ricerca
-      );
-      o.subscribe((risp) => {
-        this.listaProdotti = risp.listaProdotti;
-      });
-    }
+    this.srvProdotto.cerca(ricerca);
+    this.listaProdotti = this.srvProdotto.listaProdotti;
   }
 
-  associaColoreProdotto(colore: Colore, prodotto: Prodotto) {
+  associaColoreProdotto(colore: Colore, prodotto: Prodotto): void {
     prodotto.colore = colore; 
     this.prodottoDto.prodotto = prodotto;
     this.prodottoDto.token = this.srvToken.token;
