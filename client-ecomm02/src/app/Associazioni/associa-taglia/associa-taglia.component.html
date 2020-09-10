@@ -1,1 +1,26 @@
-<p>associa-taglia works!</p>
+<input type="text" [(ngModel)]="ricerca.ricerca" placeholder="Ricerca">
+<button (click)="cercaProdotto()">Cerca</button>
+<h2>prodotto selezionato: {{memP.prodottoForm.descrizione}}</h2>
+<table>
+    <thead>
+        <tr>
+            <th>Codice</th>
+            <th>Descrizione</th>
+            <th>Peso</th>
+            <th>Prezzo</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor=" let item of memP.listaProdotti ">
+            <td>{{item.codice}}</td>
+            <td>{{item.descrizione}}</td>
+            <td>{{item.peso}}</td>
+            <td>{{item.prezzo}}</td>
+            <td><button (click)="seleziona(item)">SELEZIONA</button></td>
+
+        </tr>
+    </tbody>
+</table>
+
+<h2 *ngIf="state == true">taglia da associare:</h2>
