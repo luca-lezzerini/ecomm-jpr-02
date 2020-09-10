@@ -1,12 +1,15 @@
 package com.ai.ecom02.controller;
 
+import com.ai.ecom02.dto.AssociaImballoDto;
 import com.ai.ecom02.dto.ImballoDto;
 import com.ai.ecom02.dto.ImballoDtoList;
 import com.ai.ecom02.dto.RicercaDto;
 import com.ai.ecom02.model.Imballo;
+import com.ai.ecom02.model.Prodotto;
 import com.ai.ecom02.model.Token;
 import com.ai.ecom02.service.SecurityService;
 import com.ai.ecom02.service.impl.ImballoServiceImpl;
+import com.ai.ecom02.service.impl.ProdottoServiceImpl;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -29,6 +32,9 @@ public class ImballoController {
 
     @Autowired
     ImballoServiceImpl srvImballo;
+    
+    @Autowired
+    ProdottoServiceImpl srvProdotto;
 
     @RequestMapping(value = {"/list-imballo"})
     @ResponseBody
@@ -89,6 +95,16 @@ public class ImballoController {
         t = securityService.retrieveToken(t);
         List<Imballo> listaImballo = srvImballo.findByDescrizione(ricerca);
         ImballoDtoList dx = new ImballoDtoList(listaImballo, t);
+        return dx;
+    }
+    
+    @RequestMapping(value = {"/associa-imballo"})
+    @ResponseBody
+    public ImballoDtoList associaImballo(@RequestBody AssociaImballoDto dto) {
+        Token token = dto.getToken();
+        Token t = securityService.retrieveToken(token);
+        List<Imballo> list = srvImballo.associaImballo(dto.getProdotto(), dto.getImballo());
+        ImballoDtoList dx = new ImballoDtoList(list, t);        
         return dx;
     }
 
