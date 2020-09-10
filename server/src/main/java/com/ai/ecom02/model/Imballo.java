@@ -1,11 +1,14 @@
 package com.ai.ecom02.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 /**
  *
@@ -24,6 +27,9 @@ public class Imballo implements Serializable {
 
     @Column
     private Double costo;
+    
+    @OneToMany(mappedBy = "Imballo")
+    private List<Prodotto> prodotti = new ArrayList<>();
 
     public Imballo(Long id, String descrizione, Double costo) {
         this.id = id;
@@ -65,6 +71,14 @@ public class Imballo implements Serializable {
     @Override
     public String toString() {
         return "Imballo{" + "descrizione=" + descrizione + ", costo=" + costo + '}';
+    }
+
+    public List<Prodotto> getProdotti() {
+        return prodotti;
+    }
+
+    public void setProdotti(List<Prodotto> prodotti) {
+        this.prodotti = prodotti;
     }
 
 }
