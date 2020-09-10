@@ -15,7 +15,7 @@ import { Injectable } from '@angular/core';
 })
 export class AssociaColoreService {
   urlPath = 'http://localhost:8080';
-  listaProdotti: Prodotto[] = []; /* il contenitore che renderizza la tabella contente le risposte dal server*/
+  listaProdotti: Prodotto[] = [];
   listaColori: Colore[] = [];
   listaColoriDto: ColoriDto = new ColoriDto();
   prodottoForm: Prodotto = new Prodotto();
@@ -57,8 +57,7 @@ export class AssociaColoreService {
   }
 
   associaColoreProdotto(colore: Colore, prodotto: Prodotto) {
-    //prodotto.colore = colore; // Forse si deve aggiungere l'attributo "colore" all'entità Prodotto lato client
-    // Potrebbe essere necessario anche aggiungere un nuovo metodo a ControllerProdotto lato server per permettere l'associazione del colore
+    prodotto.colore = colore; 
     this.prodottoDto.prodotto = prodotto;
     this.prodottoDto.token = this.srvToken.token;
     const oss: Observable<ProdottoDto> = this.http.post<ProdottoDto>(this.urlPath + '/prodotti-update', this.prodottoDto);

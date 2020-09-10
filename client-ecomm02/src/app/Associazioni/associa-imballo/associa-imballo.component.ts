@@ -12,7 +12,7 @@ import { Prodotto } from 'src/app/model/prodotto';
 })
 export class AssociaImballoComponent implements OnInit {
 
-  constructor(private router: Router, private srvProdotto: ProdottoService, private mem: ImballoServiceService) { }
+  constructor(private router: Router, public srvProdotto: ProdottoService, public mem: ImballoServiceService) { }
 
   ngOnInit(): void {
     this.srvProdotto.lista();
@@ -20,13 +20,13 @@ export class AssociaImballoComponent implements OnInit {
 
   ricerca: RicercaDto = new RicercaDto();
   state = 'ricerca';
+  
 
   cercaProdotto() {
     this.srvProdotto.cerca(this.ricerca);
   }
 
-  visualizza(prodotto: Prodotto): void {
+  seleziona(prodotto: Prodotto): void {
     this.srvProdotto.prodottoForm = Object.assign({}, prodotto);
-    this.state = 'visualizza';
   }
 }
