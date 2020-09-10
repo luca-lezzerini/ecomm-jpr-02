@@ -15,7 +15,7 @@ import { Injectable } from '@angular/core';
 })
 export class AssociaColoreService {
   urlPath = 'http://localhost:8080';
-  listaProdotti: Prodotto[] = []; /* il contenitore che renderizza la tabella contente le risposte dal server*/
+  listaProdotti: Prodotto[] = [];
   listaColori: Colore[] = [];
   listaColoriDto: ColoriDto = new ColoriDto();
   prodottoForm: Prodotto = new Prodotto();
