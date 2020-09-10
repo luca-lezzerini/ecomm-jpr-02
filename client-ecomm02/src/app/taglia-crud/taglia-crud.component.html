@@ -3,12 +3,15 @@
     <br>
     <span *ngIf="state =='ricerca'">
         <h2>Inserire i parametri di ricerca:</h2>
-        <input type="text" [(ngModel)]="memT.ricerca.ricerca">
+        <input type="text"
+            [(ngModel)]="memT.ricerca.ricerca"
+            placeholder="taglia">
         <button class="pointer" (click)="findTaglia()">Cerca</button>&nbsp;
         <button class="pointer" id="aggiungi" (click)="addTaglia()">Aggiungi</button>
     </span>
     <span *ngIf="state !='ricerca'">
-        <input type="text" [(ngModel)]="memT.taglia.sigla"
+        <input type="text"
+            [(ngModel)]="memT.ricerca.ricerca"
             placeholder="taglia" hidden>
         <button class="pointer" (click)="findTaglia()" hidden>Cerca</button>&nbsp;
         <button class="pointer" id="aggiungi" (click)="addTaglia()" hidden>Aggiungi</button>
@@ -17,14 +20,17 @@
         <div class="box">
             <h3>Form dati</h3>
             <br>
-            <input type="text" [(ngModel)]="memT.tagliaMod.taglia.descrizione"
+            <input type="text"
+                [(ngModel)]="memT.tagliaMod.taglia.descrizione"
                 placeholder="descrizione">
-            <input type="text" [(ngModel)]="memT.tagliaMod.taglia.sigla"
+            <input type="text"
+                [(ngModel)]="memT.tagliaMod.taglia.sigla"
                 placeholder="sigla">
             <br>
             <h2 class="colortext">{{msg}}</h2>
             <br>
-            <button class="pointer" id="conferma" (click)="conferma()">Conferma</button>&nbsp;
+            <button class="pointer" id="conferma" (click)="conferma()">Conferma</button>
+            &nbsp;
             <button class="pointer" id="annulla" (click)="chiudi()">Annulla</button>
             <br>
             <br>
@@ -37,7 +43,8 @@
             placeholder="descrizione">
         nuova sigla: <input type="text"
             [(ngModel)]="memT.tagliaMod.taglia.sigla"
-            placeholder="sigla">&nbsp;
+            placeholder="sigla">
+        &nbsp;
         <br>
         <h2 class="colortext">{{msg}}</h2>
         <br>
@@ -47,7 +54,8 @@
         <br>
     </div>
     <div *ngIf="state == 'delete'" class="box">
-        <h2>Eliminare {{memT.tagliaMod.taglia.descrizione}}?</h2>
+        <h2>Eliminare {{memT.tagliaMod.taglia.descrizione}},
+            {{memT.tagliaMod.taglia.sigla}}?</h2>
         <button class="pointer" (click)="removeTaglia(memT.tagliaMod.id)">Conferma</button>
         <button class="pointer" (click)="chiudi()">Annulla</button>
         <br>
@@ -75,8 +83,7 @@
     </div>
     <br>
     <br>
-    <table *ngIf="state != 'aggiungi' && state != 'modifica' && state !=
-        'delete'">
+    <table *ngIf="state == 'ricerca' && memT.taglie.length > 0">
         <tr>
             <th>Descrizione</th>
             <th>Sigla</th>
