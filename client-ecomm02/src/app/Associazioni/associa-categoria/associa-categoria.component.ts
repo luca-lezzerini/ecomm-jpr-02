@@ -30,7 +30,7 @@ export class AssociaCategoriaComponent implements OnInit {
     this.memcat.prodottoSelezionato = item;
   }
 
-  associa(c: Categoria){
+  associa(c: Categoria[]){
     this.memcat.prodottoSelezionato = this.memcat.categoriaAssociata.prodotto;
     this.memcat.categoriaAssociata.categoria = c;
     if(this.memcat.prodottoSelezionato.idCategoria != null){
