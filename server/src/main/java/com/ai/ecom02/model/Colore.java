@@ -21,7 +21,7 @@ public class Colore implements Serializable {
     private String colore;
     
     @OneToMany(mappedBy = "colore")
-    List<Prodotto> prodotto = new ArrayList<>();
+    List<Prodotto> prodotti = new ArrayList<>();
 
     public Colore() {
     }
