@@ -1,3 +1,4 @@
+import { AssociaImballoComponent } from './Associazioni/associa-imballo/associa-imballo.component';
 import { AssociaColoreComponent } from './Associazioni/associa-colore/associa-colore.component';
 import { TagliaCrudComponent } from './taglia-crud/taglia-crud.component';
 import { SpedizioneCRUDComponent } from './spedizione-crud/spedizione-crud.component';
@@ -9,6 +10,9 @@ import { Routes, RouterModule } from '@angular/router';
 import { ColoreCrudComponent } from './colore-crud/colore-crud.component';
 import { ProdottoCrudComponent } from './prodotto-crud/prodotto-crud.component';
 import { OffertaCrudComponent } from './offerta-crud/offerta-crud.component';
+import { AssociaCategoriaComponent } from './Associazioni/associa-categoria/associa-categoria.component';
+import { AssociaTagliaComponent } from './Associazioni/associa-taglia/associa-taglia.component';
+import { AssociaColoreService } from './AssociazioniService/associa-colore.service';
 
 
 const routes: Routes = [
@@ -21,6 +25,10 @@ const routes: Routes = [
   { path: 'taglia-crud', component: TagliaCrudComponent},
   { path: 'offerta-crud', component: OffertaCrudComponent},
   { path: 'associa-colore', component: AssociaColoreComponent},
+  { path: 'associa-imballo', component: AssociaImballoComponent},
+  { path: 'associa-categoria', component: AssociaCategoriaComponent},
+  { path: 'associa-taglia', component: AssociaTagliaComponent},
+
   { path: '', redirectTo: '/home-crud', pathMatch: 'full'}
 ];
 
