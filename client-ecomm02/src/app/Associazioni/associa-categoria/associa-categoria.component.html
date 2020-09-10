@@ -1,0 +1,30 @@
+<h1>CATEGORIA</h1>
+<br>
+<div class="check-element animate-show-hide" *ngIf="searchState">
+    <input type="text" [(ngModel)]="mem.ricerca.ricerca" placeholder="categoria">
+    <button (click)="searchCriteria()">Cerca</button>
+</div>
+<br>
+<div>
+    <table *ngIf="srvProdotto.listaProdotti.length > 0">
+        <thead>
+            <tr>
+                <th>Codice</th>
+                <th>Descrizione</th>
+                <th>Peso</th>
+                <th>Prezzo</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor=" let item of srvProdotto.listaProdotti ">
+                <td (click)="visualizza(item) ">{{item.codice}}</td>
+                <td (click)="visualizza(item) ">{{item.descrizione}}</td>
+                <td (click)="visualizza(item) ">{{item.peso}}</td>
+                <td (click)="visualizza(item) ">{{item.prezzo}}</td>
+                <td><button (click)="chiediModifica(item) ">Modifica</button></td>
+                <td><button (click)="chiediElimina(item) ">Rimuovi</button></td>
+            </tr>
+        </tbody>
+    </table>
+    <h3 *ngIf="srvProdotto.listaProdotti.length === 0">Nessun prodotto disponibile</h3>
+</div>

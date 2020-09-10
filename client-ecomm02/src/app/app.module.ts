@@ -12,6 +12,7 @@ import { HomeCRUDComponent } from './home-crud/home-crud.component';
 import { OffertaCrudComponent } from './offerta-crud/offerta-crud.component';
 import { ProdottoCrudComponent } from './prodotto-crud/prodotto-crud.component';
 import { TagliaCrudComponent } from './taglia-crud/taglia-crud.component';
+import { AssociaCategoriaComponent } from './Associazioni/associa-categoria/associa-categoria.component';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { TagliaCrudComponent } from './taglia-crud/taglia-crud.component';
     OffertaCrudComponent,
     ProdottoCrudComponent,
     SpedizioneCRUDComponent,
-    TagliaCrudComponent
+    TagliaCrudComponent,
+    AssociaCategoriaComponent
   ],
   imports: [
 
