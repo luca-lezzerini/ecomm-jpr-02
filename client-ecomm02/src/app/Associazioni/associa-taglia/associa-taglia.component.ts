@@ -14,7 +14,9 @@ import { Taglia } from 'src/app/model/taglia';
 export class AssociaTagliaComponent implements OnInit {
 
   ricerca: RicercaDto = new RicercaDto();
-  state = false;
+  stateVisualizza = false;
+  stateControllo : boolean;
+  indexTaglia : number
 
 
   constructor(public memT: TagliaServiceService, public memP: ProdottoService, private router: Router) { }
@@ -25,12 +27,18 @@ export class AssociaTagliaComponent implements OnInit {
   }
 
   seleziona(prodotto: Prodotto): void {
-    this.state = true;
+    this.stateVisualizza = true;
     this.memT.associatagliaDto.prodotto = Object.assign({}, prodotto);
+    if (this.memT.associatagliaDto.taglia.prodotti.includes(prodotto)) {
+      this.stateControllo = false;
+    } else {
+      this.stateControllo = true;
+    }
   }
 
-  associataglia(taglia: Taglia) {
+  associataglia(taglia: Taglia, n : number) {
 
+    this.indexTaglia = n;
     this.memT.associatagliaDto.taglia = Object.assign({}, taglia);
     console.log(this.memT.associatagliaDto);
     this.memT.associaTagliaService();

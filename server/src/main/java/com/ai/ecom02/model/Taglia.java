@@ -30,7 +30,7 @@ public class Taglia implements Serializable{
     private String sigla;
     
     @OneToMany(mappedBy = "taglia")
-    @JsonManagedReference
+    
     private List<Prodotto> prodotti = new ArrayList<>();
 
     public Taglia() {
