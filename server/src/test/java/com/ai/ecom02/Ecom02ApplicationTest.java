@@ -3,7 +3,10 @@ package com.ai.ecom02;
 import com.ai.ecom02.model.Categoria;
 import com.ai.ecom02.repository.RepCategoria;
 import com.ai.ecom02.service.CategoriaService;
+import javax.persistence.EntityNotFoundException;
+import javax.transaction.Transactional;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +28,7 @@ class Ecom02ApplicationTest {
     }
 
     @Test
+    @Transactional
     void testaInserimento() {
 
         //Creo un oggetto Categoria jeans.
@@ -35,10 +39,9 @@ class Ecom02ApplicationTest {
         Categoria cx = repCategoria.findByDescrizione(jeans.getDescrizione());
         if (cx != null) {
             srvCat.removeCat(cx.getId());
-            cx = repCategoria.getOne(cx.getId());
-            System.out.println(cx);
-            System.out.println(jeans);
-            assertTrue(cx == null, "LA CATEGORIA DOVREBBE ESSER CANCELLATA!");
+            assertThrows(EntityNotFoundException.class, () -> {
+                repCategoria.getOne(cx.getId());
+            }, "LA CATEGORIA DOVREBBE ESSER CANCELLATA!");
         }
         System.out.println(cx);
         System.out.println(jeans);
