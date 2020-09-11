@@ -29,6 +29,7 @@ export class SrvAssociaCategoriaService {
   }
 
   associaCat(c: Categoria) {
+    console.log("sto associando", c);
     this.categoriaAssociata.prodotto = this.prodottoSelezionato;
     this.categoriaAssociata.categoria = c;
     this.categoriaAssociata.token = this.tokenSrv.token;
