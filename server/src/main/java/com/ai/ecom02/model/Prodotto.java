@@ -1,5 +1,6 @@
 package com.ai.ecom02.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -113,7 +114,7 @@ public class Prodotto implements Serializable {
     public String toString() {
         return "Prodotto{" + "id=" + id + ", codice=" + codice + ", descrizione=" + descrizione + ", peso=" + peso + ", prezzo=" + prezzo + '}';
     }
-
+   @JsonBackReference
     public Taglia getTaglia() {
         return taglia;
     }

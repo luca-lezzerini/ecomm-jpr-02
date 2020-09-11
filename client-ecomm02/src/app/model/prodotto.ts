@@ -1,6 +1,7 @@
 import { Categoria } from './categoria';
 import { Colore } from './colore';
 import { Token } from '../dto/token';
+import { Taglia } from './taglia';
 export class Prodotto {
     id: string;
     codice: String;
@@ -9,4 +10,5 @@ export class Prodotto {
     prezzo: number;   
     colore: Colore; 
     categoria: Categoria;
+    taglia : Taglia;
 } 

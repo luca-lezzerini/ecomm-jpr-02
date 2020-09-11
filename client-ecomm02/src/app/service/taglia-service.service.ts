@@ -1,3 +1,4 @@
+import { AssociaTagliaDto } from './../dto/associa-taglia-dto';
 import { Taglia } from './../model/taglia';
 import { Observable } from 'rxjs';
 import { TagliaListDto } from '../dto/taglia-list-dto';
@@ -18,6 +19,7 @@ export class TagliaServiceService {
   tagliaMod: TagliaDto = new TagliaDto();
   tagliaVis : TagliaDto = new TagliaDto()
   ricerca: RicercaDto = new RicercaDto();
+  associatagliaDto : AssociaTagliaDto = new AssociaTagliaDto();
 
   private url = "http://localhost:8080";
 
@@ -71,6 +73,17 @@ export class TagliaServiceService {
     o.subscribe(risp => { this.taglie = risp.taglie;
       this.tokenService.token=risp.token; });
     return this.taglie;
+  }
+
+  associaTagliaService() {
+    this.associatagliaDto.token = this.tokenService.token;
+  console.log("sto nel servizio associa taglia");
+  let o : Observable<AssociaTagliaDto> = 
+  this.http.post<AssociaTagliaDto>(this.url + "/associa-taglia", this.associatagliaDto);
+  o.subscribe(risp => {this.listaService();
+  //this.tokenService.token=risp.token;
+  })
+
   }
 
 
