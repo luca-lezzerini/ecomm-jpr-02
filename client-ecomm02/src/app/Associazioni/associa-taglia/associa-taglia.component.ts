@@ -4,6 +4,7 @@ import { ProdottoService } from './../../prodotto.service';
 import { TagliaServiceService } from './../../service/taglia-service.service';
 import { Component, OnInit } from '@angular/core';
 import { RicercaDto } from 'src/app/dto/ricerca-dto';
+import { Taglia } from 'src/app/model/taglia';
 
 @Component({
   selector: 'app-associa-taglia',
@@ -16,17 +17,23 @@ export class AssociaTagliaComponent implements OnInit {
   state = false;
 
 
-
-
-  constructor(public memT : TagliaServiceService, public memP : ProdottoService, private router: Router) { }
+  constructor(public memT: TagliaServiceService, public memP: ProdottoService, private router: Router) { }
 
   ngOnInit() {
     this.memP.lista();
+    this.memT.taglie = this.memT.listaService();
   }
-  
+
   seleziona(prodotto: Prodotto): void {
     this.state = true;
-    this.memP.prodottoForm = Object.assign({}, prodotto); 
+    this.memT.associatagliaDto.prodotto = Object.assign({}, prodotto);
+  }
+
+  associataglia(taglia: Taglia) {
+
+    this.memT.associatagliaDto.taglia = Object.assign({}, taglia);
+    console.log(this.memT.associatagliaDto);
+    this.memT.associaTagliaService();
   }
 
   cercaProdotto() {

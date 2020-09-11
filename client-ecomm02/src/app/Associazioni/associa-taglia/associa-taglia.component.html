@@ -23,4 +23,17 @@
     </tbody>
 </table>
 
-<h2 *ngIf="state == true">taglia da associare:</h2>
+<h2>taglia da associare:</h2>
+<table *ngIf="state == true">
+    <tr>
+        <th>Descrizione</th>
+        <th>Sigla</th>
+        <th>Associa</th>
+    </tr>
+    <tr *ngFor="let i of memT.taglie; index as x">
+        <td>{{i.descrizione}}</td>
+        <td>{{i.sigla}}</td>
+        <td><button class="pointer" (click)="associataglia(i)">Associa</button></td>
+
+    </tr>
+</table>

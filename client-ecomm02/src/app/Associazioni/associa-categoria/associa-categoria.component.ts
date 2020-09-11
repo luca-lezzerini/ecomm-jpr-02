@@ -30,21 +30,23 @@ export class AssociaCategoriaComponent implements OnInit {
     this.associativa = true;
     this.memcat.prodottoSelezionato = item;
     this.mem.lista();
+    this.nascondiButton = false;
   }
 
   cercaProdotto(){
     this.memcat.cerca();
   }
 
-  associa(c: Categoria, p: Prodotto){
-    console.log("sono in associa", c );
-    this.memcat.prodottoSelezionato = this.memcat.categoriaAssociata.prodotto;
+  associa(c: Categoria){
+    console.log("sono in associa", c);
     this.memcat.categoriaAssociata.categoria = c;
-    if(this.memcat.categoriaAssociata.categoria != null){
-      this.nascondiButton = true;
+    if(this.memcat.categoriaAssociata.categoria == null){
+      console.log("sto passando i parametri da associare");
     } else {
+      
       this.nascondiButton = false;
       this.memcat.associaCat(this.memcat.categoriaAssociata.categoria);
+      
     }
   }
 

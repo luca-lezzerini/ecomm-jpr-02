@@ -13,7 +13,7 @@
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor = "let item of srvProdotto.listaProdotti">
+        <tr *ngFor="let item of srvProdotto.listaProdotti; index as x">
             <td>{{item.codice}}</td>
             <td>{{item.descrizione}}</td>
             <td>{{item.peso}}</td>
