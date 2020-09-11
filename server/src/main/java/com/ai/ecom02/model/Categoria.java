@@ -24,7 +24,7 @@ import javax.persistence.OneToMany;
 public class Categoria implements Serializable {
 
     @Id         //dico all'ID che è un identificativo, quindi che è PRIMARY KEY
-    @GeneratedValue(strategy = GenerationType.IDENTITY)   //gli dico che l''ID primaryKey è AUTOINCREMENT
+    @GeneratedValue(strategy = GenerationType.AUTO)   //gli dico che l''ID primaryKey è AUTOINCREMENT
     private Long id;
 
     @Column(unique = true)                  //-> Creo le colonne della TABELLA (descrizione)

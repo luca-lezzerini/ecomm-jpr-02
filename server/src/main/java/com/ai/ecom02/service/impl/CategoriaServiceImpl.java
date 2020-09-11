@@ -30,11 +30,12 @@ public class CategoriaServiceImpl implements CategoriaService {
     RepCategoria repCategoria;
 
     @Override
-    public void addCat(Categoria categoria) {
+    public Categoria addCat(Categoria categoria) {
         try {
-            repCategoria.save(categoria);
+            return repCategoria.save(categoria);
         } catch (Exception e) {
             log.error("Categoria già presente: {}", e.getMessage());
+            return null;
         }
     }
 
@@ -60,7 +61,7 @@ public class CategoriaServiceImpl implements CategoriaService {
         try {
             repCategoria.save(categoria);
         } catch (Exception e) {
-           log.error("Categoria già presente; {}", e.getMessage());
+            log.error("Categoria già presente; {}", e.getMessage());
         }
         return getLista();
     }

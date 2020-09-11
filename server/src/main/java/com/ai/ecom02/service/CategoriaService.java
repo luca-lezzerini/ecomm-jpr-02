@@ -17,7 +17,7 @@ import java.util.List;
 
 public interface CategoriaService {
 
-    void addCat(Categoria categoria);
+    Categoria addCat(Categoria categoria);
 
     List<Categoria> getLista();
 
