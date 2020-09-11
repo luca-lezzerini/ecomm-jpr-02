@@ -13,6 +13,7 @@ import { OffertaCrudComponent } from './offerta-crud/offerta-crud.component';
 import { AssociaCategoriaComponent } from './Associazioni/associa-categoria/associa-categoria.component';
 import { AssociaTagliaComponent } from './Associazioni/associa-taglia/associa-taglia.component';
 import { AssociaColoreService } from './AssociazioniService/associa-colore.service';
+import { AssociaOffertaComponent } from './Associazioni/associa-offerta/associa-offerta.component';
 
 
 const routes: Routes = [
@@ -28,6 +29,7 @@ const routes: Routes = [
   { path: 'associa-imballo', component: AssociaImballoComponent},
   { path: 'associa-categoria', component: AssociaCategoriaComponent},
   { path: 'associa-taglia', component: AssociaTagliaComponent},
+  { path: 'associa-offerta', component: AssociaOffertaComponent},
   { path: 'associa-imballo', component: AssociaImballoComponent},
 
   { path: '', redirectTo: '/home-crud', pathMatch: 'full'}
