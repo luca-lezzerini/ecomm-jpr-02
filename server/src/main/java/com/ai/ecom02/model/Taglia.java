@@ -1,11 +1,13 @@
 package com.ai.ecom02.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -29,8 +31,8 @@ public class Taglia implements Serializable{
     @Column
     private String sigla;
     
-    @OneToMany(mappedBy = "taglia")
-    
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "taglia")
+    @JsonIgnoreProperties(value = "taglia", allowSetters = true)
     private List<Prodotto> prodotti = new ArrayList<>();
 
     public Taglia() {

@@ -2,9 +2,11 @@ package com.ai.ecom02.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -30,9 +32,9 @@ public class Prodotto implements Serializable {
     @Column
     private Double prezzo;
     
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(referencedColumnName = "id")
-    @JsonIgnore
+    @JsonIgnoreProperties(value = "prodotti", allowSetters = true)
     private Taglia taglia;
             
     @ManyToOne

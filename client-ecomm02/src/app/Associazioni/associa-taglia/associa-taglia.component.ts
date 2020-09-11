@@ -29,11 +29,13 @@ export class AssociaTagliaComponent implements OnInit {
   seleziona(prodotto: Prodotto): void {
     this.stateVisualizza = true;
     this.memT.associatagliaDto.prodotto = Object.assign({}, prodotto);
-    if (this.memT.associatagliaDto.taglia.prodotti.includes(prodotto)) {
-      this.stateControllo = false;
-    } else {
+    if (prodotto.taglia == null) {
       this.stateControllo = true;
+    } else {
+      this.stateControllo = false;
+
     }
+    
   }
 
   associataglia(taglia: Taglia, n : number) {
