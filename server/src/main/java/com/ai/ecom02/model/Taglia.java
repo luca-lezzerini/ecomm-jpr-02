@@ -1,5 +1,6 @@
 package com.ai.ecom02.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -29,6 +30,7 @@ public class Taglia implements Serializable{
     private String sigla;
     
     @OneToMany(mappedBy = "taglia")
+    
     private List<Prodotto> prodotti = new ArrayList<>();
 
     public Taglia() {

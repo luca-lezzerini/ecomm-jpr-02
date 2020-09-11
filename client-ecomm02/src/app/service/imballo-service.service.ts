@@ -1,3 +1,5 @@
+import { AssociaImballoDto } from './../dto/associa-imballo-dto';
+import { Prodotto } from './../model/prodotto';
 import { ImballoListDto } from '../dto/imballo-list-dto';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
@@ -6,6 +8,7 @@ import { Imballo } from '../model/imballo';
 import { ImballoDto } from '../dto/imballo-dto';
 import { RicercaDto } from '../dto/ricerca-dto';
 import { TokenService } from '../token.service';
+import { Token } from '@angular/compiler/src/ml_parser/lexer';
 
 @Injectable({
   providedIn: 'root'
@@ -15,10 +18,11 @@ export class ImballoServiceService {
   private url = "http://localhost:8080"
   imballi: Imballo[] = [];
   imballo: ImballoDto = new ImballoDto();
-  imballiListMod: ImballoListDto = new ImballoListDto()
+  imballiListMod: ImballoListDto = new ImballoListDto();
   imballoMod: ImballoDto = new ImballoDto();
-  imballoVis: ImballoDto = new ImballoDto()
-  ricerca: RicercaDto = new RicercaDto()
+  imballoVis: ImballoDto = new ImballoDto();
+  ricerca: RicercaDto = new RicercaDto();
+  associaImballoDto: AssociaImballoDto = new AssociaImballoDto();
 
 
   constructor(private http: HttpClient, public tokenService: TokenService) { }
@@ -32,7 +36,7 @@ export class ImballoServiceService {
       );
     o.subscribe(risp => {
       this.findImballoService();
-      this.tokenService.token=risp.token;
+      this.tokenService.token = risp.token;
     });
   }
 
@@ -41,7 +45,7 @@ export class ImballoServiceService {
     let o: Observable<ImballoListDto> = this.http.post<ImballoListDto>(this.url + "/list-imballo", this.imballoMod)
     o.subscribe(risp => {
       this.imballi = risp.imballi;
-      this.tokenService.token=risp.token;
+      this.tokenService.token = risp.token;
     })
     return this.imballi;
   }
@@ -54,7 +58,7 @@ export class ImballoServiceService {
     );
     o.subscribe(risp => {
       this.imballi = risp.imballi;
-      this.tokenService.token=risp.token;
+      this.tokenService.token = risp.token;
     });
     return this.imballi;
   }
@@ -65,17 +69,25 @@ export class ImballoServiceService {
       this.http.post<ImballoListDto>(this.url + "/update-imballo", imballoMod);
     o.subscribe(risp => {
       this.findImballoService();
-      this.tokenService.token=risp.token;
+      this.tokenService.token = risp.token;
     });
   }
 
   removeImballoService() {
     let o: Observable<ImballoListDto> =
-     this.http.post<ImballoListDto>(this.url + '/delete-imballo', this.imballoMod)
+      this.http.post<ImballoListDto>(this.url + '/delete-imballo', this.imballoMod)
     o.subscribe(risp => {
-       this.imballi = risp.imballi;
-       this.tokenService.token=risp.token;
-      })
+      this.imballi = risp.imballi;
+      this.tokenService.token = risp.token;
+    })
     return this.imballi;
+  }
+
+  bindingImballoService() {
+    let o: Observable<AssociaImballoDto> =
+      this.http.post<AssociaImballoDto>(this.url + '/associa-imballo', this.associaImballoDto)
+    o.subscribe(risp => {
+      this.findImballoService();
+    })
   }
 }

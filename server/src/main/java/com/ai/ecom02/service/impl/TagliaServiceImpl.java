@@ -53,7 +53,7 @@ public class TagliaServiceImpl implements TagliaService {
     }
 
     public void associaTaglia(Prodotto prodotto, Taglia taglia) {
-         taglia = repTaglia.getOne(taglia.getId());
+        taglia = repTaglia.getOne(taglia.getId());
         prodotto = repProdotto.getOne(prodotto.getId());
         prodotto.setTaglia(taglia);
         List<Prodotto> listaP = taglia.getProdotti();
