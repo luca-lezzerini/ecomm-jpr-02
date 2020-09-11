@@ -14,7 +14,8 @@ import java.util.List;
  *
  * @author Roberto
  */
-public class AssociaCategoriaListaDto implements Tokenizabile{
+public class AssociaCategoriaListaDto implements Tokenizabile {
+
     private Token token;
     private Prodotto prodotto;
     private List<Categoria> categorie;
@@ -28,7 +29,6 @@ public class AssociaCategoriaListaDto implements Tokenizabile{
         this.categorie = categorie;
     }
 
-    
     public Prodotto getProdotto() {
         return prodotto;
     }
@@ -45,7 +45,6 @@ public class AssociaCategoriaListaDto implements Tokenizabile{
         this.categorie = categorie;
     }
 
-    
     @Override
     public Token getToken() {
         return token;
@@ -55,6 +54,5 @@ public class AssociaCategoriaListaDto implements Tokenizabile{
     public void setToken(Token t) {
         token = t;
     }
-    
-    
+
 }

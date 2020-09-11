@@ -16,6 +16,7 @@ export class AssociaCategoriaComponent implements OnInit {
   associativa = false;
   nascondiButton = false;
   searchState = true;
+  
 
 
   constructor(private srvProdotto: ProdottoService, public mem: CategoriaServiceService, public memcat: SrvAssociaCategoriaService) { }
@@ -40,13 +41,13 @@ export class AssociaCategoriaComponent implements OnInit {
   associa(c: Categoria){
     console.log("sono in associa", c);
     this.memcat.categoriaAssociata.categoria = c;
-    if(this.memcat.categoriaAssociata.categoria == null){
+    if(this.memcat.categoriaAssociata.categoria != null){
       console.log("sto passando i parametri da associare");
-    } else {
-      
-      this.nascondiButton = false;
       this.memcat.associaCat(this.memcat.categoriaAssociata.categoria);
-      
+      console.log("La categoria è ",this.memcat.categoriaAssociata.categoria);
+    } else {
+      this.nascondiButton = false;
+      console.log("categoria Associata false!");
     }
   }
 

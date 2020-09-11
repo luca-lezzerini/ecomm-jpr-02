@@ -151,10 +151,14 @@ public class CategoriaController {
         AssociaCategoriaListaDto lista = new AssociaCategoriaListaDto();
         log.info("richiesta di associazione categoria");
         Token token = associaCategoriaDto.getToken();
-            Token t = securityService.retrieveToken(token);
+        Token t = securityService.retrieveToken(token);
         if (associaCategoriaDto != null) {
-            prodottoService.findById(associaCategoriaDto.getProdotto()).setCategoria(associaCategoriaDto.getCategoria());
+            log.info("passo i parametri" + associaCategoriaDto.getProdotto().getDescrizione());
+            Prodotto p = prodottoService.findById(associaCategoriaDto.getProdotto());
+            p.setCategoria(associaCategoriaDto.getCategoria());
+            prodottoService.update(p);        
             lista = new AssociaCategoriaListaDto(t, prodottoService.findById(associaCategoriaDto.getProdotto()), categoriaService.getLista());
+            log.info("creo risposta" + prodottoService.findById(associaCategoriaDto.getProdotto()) + t);
             return lista;
         }
         log.error("impossibile associare la categoria al prodotto");
