@@ -4,6 +4,9 @@ import { ImballoServiceService } from 'src/app/service/imballo-service.service';
 import { Router } from '@angular/router';
 import { RicercaDto } from 'src/app/dto/ricerca-dto';
 import { Prodotto } from 'src/app/model/prodotto';
+import { AssociaImballoDto } from 'src/app/dto/associa-imballo-dto';
+import { Imballo } from 'src/app/model/imballo';
+import { Token } from '@angular/compiler/src/ml_parser/lexer';
 
 @Component({
   selector: 'app-associa-imballo',
@@ -20,7 +23,7 @@ export class AssociaImballoComponent implements OnInit {
 
   ricerca: RicercaDto = new RicercaDto();
   state = 'ricerca';
-  
+
 
   cercaProdotto() {
     this.srvProdotto.cerca(this.ricerca);
@@ -28,5 +31,10 @@ export class AssociaImballoComponent implements OnInit {
 
   seleziona(prodotto: Prodotto): void {
     this.srvProdotto.prodottoForm = Object.assign({}, prodotto);
+  }
+
+  associa(imballo: Imballo) {
+    this.mem.associaImballoDto.imballo = Object.assign({}, imballo);
+    this.mem.bindingImballoService();
   }
 }

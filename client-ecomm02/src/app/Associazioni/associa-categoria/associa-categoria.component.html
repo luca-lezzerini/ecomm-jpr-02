@@ -1,11 +1,11 @@
-<h1>CATEGORIA</h1>
+<h1>ASSOCIA CATEGORIA</h1>
 <br>
 <div class="check-element animate-show-hide" *ngIf="searchState">
-    <input type="text" [(ngModel)]="mem.ricerca.ricerca" placeholder="categoria">
-    <button (click)="searchCriteria()">Cerca</button>
+    <input type="text" [(ngModel)]="memcat.ricerca.ricerca" placeholder="Cerca prodotto">
+    <button (click)="cercaProdotto()">Cerca</button>
 </div>
 <br>
-<h3 *ngIf="selezionaStato">Prodotto selezionato: {{item.descrizione}}</h3>
+<h3 *ngIf="associaStato">Prodotto selezionato:{{memcat.prodottoSelezionato.codice}} - {{memcat.prodottoSelezionato.descrizione}}</h3>
 
 <table *ngIf="srvProdotto.listaProdotti.length > 0">
     <thead>
@@ -18,11 +18,11 @@
     </thead>
     <tbody>
         <tr *ngFor=" let item of srvProdotto.listaProdotti ">
-            <td (click)="visualizza(item) ">{{item.codice}}</td>
-            <td (click)="visualizza(item) ">{{item.descrizione}}</td>
-            <td (click)="visualizza(item) ">{{item.peso}}</td>
-            <td (click)="visualizza(item) ">{{item.prezzo}}</td>
-            <td><button (click)="seleziona(item) ">Seleziona</button></td>
+            <td>{{item.codice}}</td>
+            <td>{{item.descrizione}}</td>
+            <td>{{item.peso}}kg</td>
+            <td>{{item.prezzo}}€</td>
+            <td><button (click)="seleziona(item)">Seleziona</button></td>
         </tr>
     </tbody>
 </table>
@@ -32,15 +32,14 @@
 <table *ngIf="associativa">
     <thead>
         <tr>
-            <th>Prodotto selezionato</th>
-            <th>Descrizione categoria</th>
+            <th>Descrizione</th>
             <th></th>
         </tr>
     </thead>
     <tbody>
         <tr *ngFor="let cat of mem.categorie; index as i">
             <td>{{cat.descrizione}}</td>
-            <td><button [hidden]="nascondiButton" (click)="associa(cat)"></button></td>
+            <td><button [hidden]="nascondiButton" (click)="associa(cat)">Associa</button></td>
         </tr>
     </tbody>
 </table>

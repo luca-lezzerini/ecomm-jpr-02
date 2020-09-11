@@ -15,6 +15,8 @@ import { TagliaCrudComponent } from './taglia-crud/taglia-crud.component';
 import { AssociaCategoriaComponent } from './Associazioni/associa-categoria/associa-categoria.component';
 import { AssociaColoreComponent } from './Associazioni/associa-colore/associa-colore.component';
 import { AssociaTagliaComponent } from './Associazioni/associa-taglia/associa-taglia.component';
+import { AssociaImballoComponent } from './Associazioni/associa-imballo/associa-imballo.component';
+import { AssociaOffertaComponent } from './Associazioni/associa-offerta/associa-offerta.component';
 
 
 @NgModule({
@@ -30,7 +32,9 @@ import { AssociaTagliaComponent } from './Associazioni/associa-taglia/associa-ta
     TagliaCrudComponent,
     AssociaCategoriaComponent,
     AssociaColoreComponent,
-    AssociaTagliaComponent
+    AssociaTagliaComponent,
+    AssociaOffertaComponent,
+    AssociaImballoComponent
   ],
   imports: [
 

@@ -1,3 +1,5 @@
+import { ColoriService } from './../../colori.service';
+import { ProdottoService } from './../../prodotto.service';
 import { Colore } from './../../model/colore';
 import { Prodotto } from './../../model/prodotto';
 import { RicercaDto } from './../../dto/ricerca-dto';
@@ -14,15 +16,15 @@ export class AssociaColoreComponent implements OnInit {
   prodotto = new Prodotto();
   state = 'visualizza';
 
-  constructor(private srvAssociaColore: AssociaColoreService) { }
+  constructor(private srvAssociaColore: AssociaColoreService, private srvProdotto: ProdottoService, private srvColore: ColoriService) { }
 
   ngOnInit(): void {
-    this.srvAssociaColore.visualizzaListaProdotti();
-    this.srvAssociaColore.visualizzaListaColori();
+    this.srvProdotto.lista();
+    this.srvColore.lista();
   }
 
   cercaProdotto() {
-    this.srvAssociaColore.cercaProdotto(this.ricerca);
+    this.srvProdotto.cerca(this.ricerca);
   }
 
   chiediSelezione(prodotto: Prodotto) {

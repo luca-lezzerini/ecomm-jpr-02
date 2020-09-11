@@ -23,6 +23,12 @@ public class AssociaImballoDto implements Tokenizabile {
         this.prodotto = prodotto;
     }
 
+    public AssociaImballoDto(Imballo imballo, Prodotto prodotto, Token token) {
+        this.imballo = imballo;
+        this.prodotto = prodotto;
+        this.token = token;
+    }
+
     public Imballo getImballo() {
         return imballo;
     }
