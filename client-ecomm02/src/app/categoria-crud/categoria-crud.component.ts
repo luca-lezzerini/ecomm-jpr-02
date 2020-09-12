@@ -146,4 +146,9 @@ export class CategoriaCRUDComponent implements OnInit {
     this.mem.paginaCorrente++;
     this.mem.lista();
   }
+
+  paginaPrima(){
+    this.mem.paginaCorrente--;
+    this.mem.lista();
+  }
 }
