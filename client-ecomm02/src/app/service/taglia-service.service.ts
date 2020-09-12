@@ -78,12 +78,12 @@ export class TagliaServiceService {
   associaTagliaService() {
     this.associatagliaDto.token = this.tokenService.token;
   console.log("sto nel servizio associa taglia");
-  let o : Observable<AssociaTagliaDto> = 
-  this.http.post<AssociaTagliaDto>(this.url + "/associa-taglia", this.associatagliaDto);
-  o.subscribe(risp => {this.listaService();
-  //this.tokenService.token=risp.token;
+  let o : Observable<TagliaListDto> = 
+  this.http.post<TagliaListDto>(this.url + "/associa-taglia", this.associatagliaDto);
+  o.subscribe(risp => {
+  this.taglie = risp.taglie;
+  this.tokenService.token=risp.token;
   })
-
   }
 
 

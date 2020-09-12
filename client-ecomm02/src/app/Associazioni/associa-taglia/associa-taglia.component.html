@@ -1,6 +1,6 @@
 <input type="text" [(ngModel)]="ricerca.ricerca" placeholder="Ricerca">
 <button (click)="cercaProdotto()">Cerca</button>
-<h2>prodotto selezionato: {{memP.prodottoForm.descrizione}}</h2>
+<h2>prodotto selezionato: {{memT.associatagliaDto.prodotto.descrizione}}</h2>
 <table>
     <thead>
         <tr>
@@ -8,7 +8,7 @@
             <th>Descrizione</th>
             <th>Peso</th>
             <th>Prezzo</th>
-
+            <th>(Taglia associata)</th>
         </tr>
     </thead>
     <tbody>
@@ -17,8 +17,8 @@
             <td>{{item.descrizione}}</td>
             <td>{{item.peso}}</td>
             <td>{{item.prezzo}}</td>
+            <td>{{item.taglia.descrizione}}</td>
             <td><button (click)="seleziona(item)">SELEZIONA</button></td>
-
         </tr>
     </tbody>
 </table>
@@ -33,7 +33,7 @@
     <tr *ngFor="let i of memT.taglie; index as x">
         <td>{{i.descrizione}}</td>
         <td>{{i.sigla}}</td>
-        <td *ngIf="memT.associatagliaDto.taglia == null || memT.associatagliaDto.taglia.id != i.id"><button class="pointer" (click)="associataglia(i, x)">Associa</button></td>
-
+        <td *ngIf="memT.associatagliaDto.prodotto.taglia.descrizione != i.descrizione">
+            <button class="pointer" (click)="associataglia(i, x)">Associa</button></td>
     </tr>
 </table>

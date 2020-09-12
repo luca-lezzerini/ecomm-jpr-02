@@ -15,35 +15,26 @@ export class AssociaTagliaComponent implements OnInit {
 
   ricerca: RicercaDto = new RicercaDto();
   stateVisualizza = false;
-  stateControllo : boolean;
-  indexTaglia : number
-
+  stateControllo: boolean;
+  indexTaglia: number;
 
   constructor(public memT: TagliaServiceService, public memP: ProdottoService, private router: Router) { }
 
   ngOnInit() {
-    this.memP.lista();
     this.memT.taglie = this.memT.listaService();
+    this.memP.lista();
   }
 
   seleziona(prodotto: Prodotto): void {
     this.stateVisualizza = true;
-    this.memT.associatagliaDto.prodotto = Object.assign({}, prodotto);
-    if (prodotto.taglia == null) {
-      this.stateControllo = true;
-    } else {
-      this.stateControllo = false;
-
-    }
-    
+    this.memT.associatagliaDto.prodotto = Object.assign({}, prodotto);    
   }
 
-  associataglia(taglia: Taglia, n : number) {
-
+  associataglia(taglia: Taglia, n: number) {
     this.indexTaglia = n;
     this.memT.associatagliaDto.taglia = Object.assign({}, taglia);
-    console.log(this.memT.associatagliaDto);
-    this.memT.associaTagliaService();
+    this.memT.associaTagliaService(); 
+    window.location.reload();      
   }
 
   cercaProdotto() {
