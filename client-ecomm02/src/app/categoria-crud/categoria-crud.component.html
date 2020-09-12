@@ -15,6 +15,12 @@
     <p [hidden]="msgCategoriaNonValida">Digitare una categoria valida</p>
 </div>
 <br>
+Ho trovato {{mem.numeroTotaleElementi}} risultati
+<br>
+<button *ngIf="mem.paginaCorrente > 1">-</button>
+{{mem.paginaCorrente}}
+<button *ngIf="mem.paginaCorrente < mem.numeroTotalePagine"
+(click)="paginaDopo()">+</button>
 <div *ngIf="tabellaState">
     <table *ngIf="mem.categorie.length > 0">
         <tr>

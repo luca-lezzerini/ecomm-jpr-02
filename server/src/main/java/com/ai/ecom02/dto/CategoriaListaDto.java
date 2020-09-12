@@ -17,6 +17,9 @@ public class CategoriaListaDto implements Tokenizabile {
 
     private List<Categoria> listaCategoriaDto;
     private Token token;
+    private Long numeroTotaleElementi;
+    private Integer numeroTotalePagine;
+    private Integer paginaCorrente;
 
     public CategoriaListaDto() {
     }
@@ -43,5 +46,31 @@ public class CategoriaListaDto implements Tokenizabile {
     public void setToken(Token t) {
         token = t;
     }
+
+    public Long getNumeroTotaleElementi() {
+        return numeroTotaleElementi;
+    }
+
+    public void setNumeroTotaleElementi(Long numeroTotaleElementi) {
+        this.numeroTotaleElementi = numeroTotaleElementi;
+    }
+
+    public Integer getNumeroTotalePagine() {
+        return numeroTotalePagine;
+    }
+
+    public void setNumeroTotalePagine(Integer numeroTotalePagine) {
+        this.numeroTotalePagine = numeroTotalePagine;
+    }
+
+    public Integer getPaginaCorrente() {
+        return paginaCorrente;
+    }
+
+    public void setPaginaCorrente(Integer paginaCorrente) {
+        this.paginaCorrente = paginaCorrente;
+    }
+    
+    
 
 }

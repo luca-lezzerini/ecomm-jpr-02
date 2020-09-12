@@ -10,6 +10,7 @@ import com.ai.ecom02.dto.AssociaCategoriaListaDto;
 import com.ai.ecom02.dto.CategoriaDto;
 import com.ai.ecom02.dto.CategoriaListaDto;
 import com.ai.ecom02.dto.RicercaDto;
+import com.ai.ecom02.model.Categoria;
 import com.ai.ecom02.model.Prodotto;
 import com.ai.ecom02.model.Token;
 import com.ai.ecom02.service.CategoriaService;
@@ -19,6 +20,9 @@ import com.ai.ecom02.service.SecurityService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -75,7 +79,15 @@ public class CategoriaController {
         if (categoriaDto != null) {
             Token token = categoriaDto.getToken();
             Token t = securityService.retrieveToken(token);
-            lista = new CategoriaListaDto(categoriaService.getLista(), t);
+            Pageable p = PageRequest.of(
+                    categoriaDto.getPaginaCorrente() - 1,
+                    25
+            );
+            Page<Categoria> pagina = categoriaService.getLista(p);
+            lista = new CategoriaListaDto(pagina.getContent(), t);
+            lista.setNumeroTotaleElementi(pagina.getTotalElements());
+            lista.setNumeroTotalePagine(pagina.getTotalPages());
+            lista.setPaginaCorrente(categoriaDto.getPaginaCorrente());
             return lista;
         }
         log.info("lista non trovata");
@@ -156,14 +168,14 @@ public class CategoriaController {
             log.info("passo i parametri" + associaCategoriaDto.getProdotto().getDescrizione());
             Prodotto p = prodottoService.findById(associaCategoriaDto.getProdotto());
             p.setCategoria(associaCategoriaDto.getCategoria());
-            prodottoService.update(p);        
+            prodottoService.update(p);
             lista = new AssociaCategoriaListaDto(t, prodottoService.findById(associaCategoriaDto.getProdotto()), categoriaService.getLista());
             log.info("creo risposta " + prodottoService.findById(associaCategoriaDto.getProdotto()) + t);
             return lista;
         }
         log.error("impossibile associare la categoria al prodotto");
         lista.setToken(associaCategoriaDto.getToken());
-        lista = new AssociaCategoriaListaDto(t, null , categoriaService.getLista() );
+        lista = new AssociaCategoriaListaDto(t, null, categoriaService.getLista());
         return lista;
     }
 }

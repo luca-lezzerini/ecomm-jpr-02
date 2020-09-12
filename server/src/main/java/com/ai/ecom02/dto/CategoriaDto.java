@@ -16,6 +16,7 @@ public class CategoriaDto implements Tokenizabile{
     
     private Categoria categoria;
     private Token token;
+    private Integer paginaCorrente;
 
     public CategoriaDto(Categoria categoriaDto, Token token) {
         this.categoria = categoriaDto;
@@ -43,6 +44,14 @@ public class CategoriaDto implements Tokenizabile{
     @Override
     public void setToken(Token t) {
         token = t;
+    }
+
+    public Integer getPaginaCorrente() {
+        return paginaCorrente;
+    }
+
+    public void setPaginaCorrente(Integer paginaCorrente) {
+        this.paginaCorrente = paginaCorrente;
     }
     
     

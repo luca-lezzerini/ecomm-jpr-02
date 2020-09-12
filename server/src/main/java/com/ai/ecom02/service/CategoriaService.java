@@ -5,10 +5,11 @@
  */
 package com.ai.ecom02.service;
 
-import com.ai.ecom02.dto.CategoriaDto;
 import com.ai.ecom02.dto.RicercaDto;
 import com.ai.ecom02.model.Categoria;
 import java.util.List;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 /**
  *
@@ -20,6 +21,8 @@ public interface CategoriaService {
     Categoria addCat(Categoria categoria);
 
     List<Categoria> getLista();
+    
+    Page<Categoria> getLista(Pageable p);
 
     List<Categoria> removeCat(Long id);
 

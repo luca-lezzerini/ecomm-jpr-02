@@ -5,4 +5,5 @@ export class CategoriaDto {
 
     token: Token;
     categoria: Categoria;
+    paginaCorrente: number;
 }

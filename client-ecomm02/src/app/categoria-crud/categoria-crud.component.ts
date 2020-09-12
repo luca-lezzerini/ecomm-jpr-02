@@ -22,6 +22,8 @@ export class CategoriaCRUDComponent implements OnInit {
   categoriaSelezionata: number;
   direzioneOrdinamento = "asc";
 
+
+
   constructor(public mem: CategoriaServiceService) { }
 
   ngOnInit() {
@@ -138,5 +140,10 @@ export class CategoriaCRUDComponent implements OnInit {
       this.direzioneOrdinamento = "asc";
       this.mem.categorie.sort((a, b) => (a.descrizione > b.descrizione ? -1 : 1))
     }
+  }
+
+  paginaDopo() {
+    this.mem.paginaCorrente++;
+    this.mem.lista();
   }
 }
