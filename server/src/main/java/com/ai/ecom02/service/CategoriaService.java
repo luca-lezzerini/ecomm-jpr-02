@@ -27,6 +27,8 @@ public interface CategoriaService {
     List<Categoria> removeCat(Long id);
 
     List<Categoria> findCat(RicercaDto ricerca);
+
+    Page<Categoria> findCat(RicercaDto ricerca, Pageable p);
     
     List<Categoria> updateCat(Categoria categoria);
 }

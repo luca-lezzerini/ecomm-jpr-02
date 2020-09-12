@@ -15,6 +15,7 @@ public class RicercaDto implements Tokenizabile {
 
     private String ricerca;
     private Token token;
+    private Integer paginaCorrente;
 
     public RicercaDto() {
     }
@@ -39,6 +40,14 @@ public class RicercaDto implements Tokenizabile {
     @Override
     public void setToken(Token t) {
         token = t;
+    }
+
+    public Integer getPaginaCorrente() {
+        return paginaCorrente;
+    }
+
+    public void setPaginaCorrente(Integer paginaCorrente) {
+        this.paginaCorrente = paginaCorrente;
     }
 
 }

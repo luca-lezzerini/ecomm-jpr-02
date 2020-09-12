@@ -144,11 +144,11 @@ export class CategoriaCRUDComponent implements OnInit {
 
   paginaDopo() {
     this.mem.paginaCorrente++;
-    this.mem.lista();
+    this.searchCriteria();
   }
 
-  paginaPrima(){
+  paginaPrima() {
     this.mem.paginaCorrente--;
-    this.mem.lista();
+    this.searchCriteria();
   }
 }

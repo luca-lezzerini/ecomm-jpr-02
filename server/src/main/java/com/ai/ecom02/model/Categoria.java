@@ -5,6 +5,7 @@
  */
 package com.ai.ecom02.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -16,7 +17,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-import org.hibernate.annotations.Fetch;
 
 /**
  *
@@ -32,7 +32,8 @@ public class Categoria implements Serializable {
     @Column(unique = true)                  //-> Creo le colonne della TABELLA (descrizione)
     private String descrizione;
 
-    @OneToMany(mappedBy = "categoria", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "categoria", fetch = FetchType.LAZY)
+    @JsonIgnoreProperties(value = "categoria", allowSetters = true)
     List<Prodotto> prodotti = new ArrayList<>();
 
     public Categoria() {

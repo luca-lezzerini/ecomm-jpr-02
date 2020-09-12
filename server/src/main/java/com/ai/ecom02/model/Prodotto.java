@@ -1,7 +1,5 @@
 package com.ai.ecom02.model;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
 import javax.persistence.Column;
@@ -39,23 +37,28 @@ public class Prodotto implements Serializable {
             
     @ManyToOne
     @JoinColumn(referencedColumnName = "id")
+    @JsonIgnoreProperties(value = "prodotti", allowSetters = true)
     private Imballo imballo;
             
     @ManyToOne
     @JoinColumn(referencedColumnName = "id")        
+    @JsonIgnoreProperties(value = "prodotti", allowSetters = true)
     private Colore colore;
     
     @ManyToOne
     @JoinColumn(referencedColumnName = "id")
+    @JsonIgnoreProperties(value = "prodotti", allowSetters = true)
     private Offerta offerta;
     
     @ManyToOne
     @JoinColumn(referencedColumnName = "id")
+    @JsonIgnoreProperties(value = "prodotti", allowSetters = true)
     private Spedizione spedizione;
     
     
     @ManyToOne
     @JoinColumn(referencedColumnName = "id")
+    @JsonIgnoreProperties(value = "prodotti", allowSetters = true)
     private Categoria categoria;   
 
     

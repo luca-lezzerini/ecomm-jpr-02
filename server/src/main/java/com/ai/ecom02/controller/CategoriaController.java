@@ -126,7 +126,12 @@ public class CategoriaController {
         if (ricercaDto != null) {
             Token token = ricercaDto.getToken();
             Token t = securityService.retrieveToken(token);
-            lista = new CategoriaListaDto(categoriaService.findCat(ricercaDto), t);
+            Pageable p = PageRequest.of(ricercaDto.getPaginaCorrente() - 1, 25);
+            Page<Categoria> ris = categoriaService.findCat(ricercaDto, p);
+            lista = new CategoriaListaDto(ris.getContent(), t);
+            lista.setNumeroTotaleElementi(ris.getTotalElements());
+            lista.setNumeroTotalePagine(ris.getTotalPages());
+            lista.setPaginaCorrente(ricercaDto.getPaginaCorrente());
             return lista;
         }
         log.error("ricerca non presente");

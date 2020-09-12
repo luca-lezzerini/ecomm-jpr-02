@@ -4,6 +4,7 @@ export class RicercaDto {
 
     ricerca: string = "";
     token: Token;
+    paginaCorrente: number;
 
     
 }

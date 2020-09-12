@@ -72,4 +72,10 @@ public class CategoriaServiceImpl implements CategoriaService {
         return getLista();
     }
 
+    @Override
+    public Page<Categoria> findCat(RicercaDto ricerca, Pageable p) {
+        Page<Categoria> c = repCategoria.findByDescrizioneLike("%" + ricerca.getRicerca() + "%", p);
+        return c;
+    }
+
 }

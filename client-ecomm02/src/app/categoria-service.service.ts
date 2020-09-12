@@ -59,12 +59,18 @@ export class CategoriaServiceService {
 
   cerca(): RicercaDto[] {
     console.log("Siamo in cerca e ricerca vale ", this.ricerca);
+    this.ricerca.paginaCorrente = this.paginaCorrente;
     let o: Observable<CategoriaListaDto> =
-      this.http.post<CategoriaListaDto>(this.url + '/cerca-categoria/', this.ricerca)
+      this.http.post<CategoriaListaDto>(
+        this.url + '/cerca-categoria/',
+        this.ricerca);
     o.subscribe(risp => {
       console.log(risp);
       this.categorie = risp.listaCategoriaDto;
       this.tokenSrv.token = risp.token;
+      this.numeroTotaleElementi = risp.numeroTotaleElementi;
+      this.numeroTotalePagine = risp.numeroTotalePagine;
+      this.paginaCorrente = risp.paginaCorrente;
       console.log("Finito cerca");
     });
     return this.ricerche;
