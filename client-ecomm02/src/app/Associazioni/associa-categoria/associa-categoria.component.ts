@@ -14,41 +14,30 @@ export class AssociaCategoriaComponent implements OnInit {
 
   associaStato = false;
   associativa = false;
-  nascondiButton = false;
   searchState = true;
   
-
-
   constructor(private srvProdotto: ProdottoService, public mem: CategoriaServiceService, public memcat: SrvAssociaCategoriaService) { }
 
   ngOnInit() {
     this.srvProdotto.lista();
-    this.associativa = false;
   }
 
-  seleziona(item: Prodotto){
+  seleziona(item: Prodotto) {
     this.associaStato = true;
     this.associativa = true;
     this.memcat.prodottoSelezionato = item;
-    this.mem.lista();
-    this.nascondiButton = false;
+    this.mem.categorie = this.mem.lista();
   }
 
-  cercaProdotto(){
+  cercaProdotto() {
     this.memcat.cerca();
   }
 
-  associa(c: Categoria){
+  associa(c: Categoria) {
     console.log("sono in associa", c);
     this.memcat.categoriaAssociata.categoria = c;
-    if(this.memcat.categoriaAssociata.categoria != null){
-      console.log("sto passando i parametri da associare");
-      this.memcat.associaCat(this.memcat.categoriaAssociata.categoria);
-      console.log("La categoria è ",this.memcat.categoriaAssociata.categoria);
-    } else {
-      this.nascondiButton = false;
-      console.log("categoria Associata false!");
-    }
+    console.log("sto passando i parametri da associare");
+    this.memcat.associaCat(this.memcat.categoriaAssociata.categoria);
   }
 
 }

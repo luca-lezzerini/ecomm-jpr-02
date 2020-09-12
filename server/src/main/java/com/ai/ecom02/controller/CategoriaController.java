@@ -158,7 +158,7 @@ public class CategoriaController {
             p.setCategoria(associaCategoriaDto.getCategoria());
             prodottoService.update(p);        
             lista = new AssociaCategoriaListaDto(t, prodottoService.findById(associaCategoriaDto.getProdotto()), categoriaService.getLista());
-            log.info("creo risposta" + prodottoService.findById(associaCategoriaDto.getProdotto()) + t);
+            log.info("creo risposta " + prodottoService.findById(associaCategoriaDto.getProdotto()) + t);
             return lista;
         }
         log.error("impossibile associare la categoria al prodotto");

@@ -5,7 +5,8 @@
     <button (click)="cercaProdotto()">Cerca</button>
 </div>
 <br>
-<h3 *ngIf="associaStato">Prodotto selezionato:{{memcat.prodottoSelezionato.codice}} - {{memcat.prodottoSelezionato.descrizione}}</h3>
+<h3 *ngIf="associaStato">Prodotto selezionato:{{memcat.prodottoSelezionato.codice}} -
+    {{memcat.prodottoSelezionato.descrizione}}</h3>
 
 <table *ngIf="srvProdotto.listaProdotti.length > 0">
     <thead>
@@ -28,7 +29,7 @@
 </table>
 <h3 *ngIf="srvProdotto.listaProdotti.length === 0">Nessun prodotto disponibile</h3>
 <br>
-<h3>Categoria da associare</h3>
+<h3 *ngIf="associativa">Categoria da associare</h3>
 <table *ngIf="associativa">
     <thead>
         <tr>
@@ -39,7 +40,12 @@
     <tbody>
         <tr *ngFor="let cat of mem.categorie; index as i">
             <td>{{cat.descrizione}}</td>
-            <td><button [hidden]="nascondiButton" (click)="associa(cat)">Associa</button></td>
+            <td *ngIf="memcat.prodottoSelezionato.categoria == null || memcat.prodottoSelezionato.categoria.id !=  cat.id; else visibile ">
+                <button (click)="associa(cat)">Associa</button>
+            </td>
+            <ng-template #visibile>
+                <td><button (click)="associa(cat)" disabled>Associa</button></td>
+            </ng-template>
         </tr>
     </tbody>
 </table>
