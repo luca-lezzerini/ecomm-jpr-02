@@ -1,6 +1,6 @@
 export class Spedizione { 
-        public id: string;
-        public codice: string;
-        public nome: string;
-        public prezzoKg: number;
+        id: string;
+        codice: string;
+        nome: string;
+        prezzoKg: number;
 }

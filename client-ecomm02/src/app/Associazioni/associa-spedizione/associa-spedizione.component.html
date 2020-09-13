@@ -1,0 +1,51 @@
+<h1>ASSOCIA SPEDIZIONE</h1>
+<br>
+<div class="check-element animate-show-hide" *ngIf="searchState">
+    <input type="text" [(ngModel)]="memsped.ricerca.ricerca" placeholder="Cerca prodotto">
+    <button (click)="cercaProdotto()">Cerca</button>
+</div>
+<br>
+<h3 *ngIf="associaStato">Spedizione selezionata:{{memsped.prodottoSelezionato.codice}} -
+    {{memsped.prodottoSelezionato.nome}}</h3>
+<table *ngIf="srvProdotto.listaProdotti.length > 0">
+    <thead>
+        <tr>
+            <th>Codice</th>
+            <th>Descrizione</th>
+            <th>Peso</th>
+            <th>Prezzo</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor=" let item of srvProdotto.listaProdotti ">
+            <td>{{item.codice}}</td>
+            <td>{{item.descrizione}}</td>
+            <td>{{item.peso}}kg</td>
+            <td>{{item.prezzo}}€</td>
+            <td><button (click)="seleziona(item)">Seleziona</button></td>
+        </tr>
+    </tbody>
+</table>
+<h3 *ngIf="srvProdotto.listaProdotti.length === 0">Nessun prodotto disponibile</h3>
+<br>
+<h3 *ngIf="associativa">Categoria da associare</h3>
+<table *ngIf="associativa">
+    <thead>
+        <tr>
+            <td>Codice</td>
+            <td>Nome</td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor = "let sped of meme.spedizioni; index as i">
+            <td>{{sped.codice}}</td>
+            <td>{{sped.nome}}</td>
+            <td *ngIf = "memsped.prodottoSelezionato.spedizione == null || memsped.prodottoSelezionato.spedizione.id != sped.id; else visibile">
+                <button (click)="associa(sped)">Associa</button>
+            </td>
+            <ng-template #visibile>
+                <td><button (click)="associa(sped)" disabled>Associa</button></td>
+            </ng-template>
+        </tr>
+    </tbody>
+</table>

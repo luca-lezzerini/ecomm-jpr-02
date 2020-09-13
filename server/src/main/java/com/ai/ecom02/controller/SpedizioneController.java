@@ -5,21 +5,21 @@
  */
 package com.ai.ecom02.controller;
 
+import com.ai.ecom02.dto.AssociaSpedizioneDto;
+import com.ai.ecom02.dto.AssociaSpedizioneListaDto;
 import com.ai.ecom02.dto.RicercaDto;
 import com.ai.ecom02.dto.SpedizioneDto;
 import com.ai.ecom02.dto.SpedizioneListaDto;
-import com.ai.ecom02.model.Spedizione;
+import com.ai.ecom02.model.Prodotto;
 import com.ai.ecom02.model.Token;
+import com.ai.ecom02.service.ProdottoService;
 import com.ai.ecom02.service.SecurityService;
 import com.ai.ecom02.service.SpedizioneService;
-import java.util.List;
-import java.util.Optional;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -38,6 +38,9 @@ public class SpedizioneController {
 
     @Autowired
     SpedizioneService spedizioneService;
+    
+    @Autowired
+    ProdottoService prodottoService;
 
     private static Logger log = LoggerFactory.getLogger(SpedizioneController.class);
 
@@ -141,5 +144,28 @@ public class SpedizioneController {
             lista.setToken(spedizioneDto.getToken());
             return lista;
         }
+    }
+    
+    @RequestMapping(value = {"/associa-spedizioni"})
+    @ResponseBody
+    public AssociaSpedizioneListaDto associaSpedizione(
+            @RequestBody AssociaSpedizioneDto associaSpedizioneDto
+    ){
+        AssociaSpedizioneListaDto lista = new AssociaSpedizioneListaDto();
+        log.info("richiesta di associazione spedizione");
+        Token token = associaSpedizioneDto.getToken();
+        Token t = securityService.retrieveToken(token);
+        if(associaSpedizioneDto != null){
+            log.info("Passo i parametri " + associaSpedizioneDto.getProdotto().getDescrizione());
+            Prodotto p = prodottoService.findById(associaSpedizioneDto.getProdotto());
+            p.setSpedizione(associaSpedizioneDto.getSpedizione());
+            prodottoService.update(p);
+            lista = new AssociaSpedizioneListaDto(p, spedizioneService.getLista(), t);
+            return lista;
+        }
+        log.error("Impossibile associare la spedizione");
+        lista.setToken(associaSpedizioneDto.getToken());
+        lista = new AssociaSpedizioneListaDto(null, spedizioneService.getLista(), t);
+        return lista;
     }
 }
