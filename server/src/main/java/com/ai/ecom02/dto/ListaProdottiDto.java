@@ -11,8 +11,8 @@ public class ListaProdottiDto {
     public ListaProdottiDto() {
     }
 
-    public ListaProdottiDto(List<Prodotto> listaProdotto, Token token) {
-        this.listaProdotti = listaProdotto;
+    public ListaProdottiDto(List<Prodotto> listaProdotti, Token token) {
+        this.listaProdotti = listaProdotti;
         this.token = token;
     }
 
