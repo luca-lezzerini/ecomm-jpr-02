@@ -2,12 +2,13 @@
 <div>
     <span>
         <input type="text" [(ngModel)]="ricerca.ricerca" placeholder="Ricerca">
-        <button (click)="cercaProdotto(ricerca)">Cerca</button>
+        <button (click)="cercaProdotto()">Cerca</button>
     </span>
 </div>
-<h3>Prodotti da selezionare</h3>
+<h3 *ngIf="state == 'ricerca'">Prodotti da selezionare : </h3>
+<h3 *ngIf="state == 'seleziona'">Prodotto Selezionato {{prodottoSelezionato.descrizione}} - {{prodottoSelezionato.descrizione}}</h3>
 <div>
-    <table>
+    <table *ngIf="srvAssOff.listaDeiProdotti.length > 0">
         <thead>
             <tr>
                 <th>Codice</th>
@@ -18,36 +19,37 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let item of srvAssOff.listaDeiProdotti">
-                <td>{{item.codice}}</td>
-                <td>{{item.descrizione}}</td>
-                <td>{{item.peso}}</td>
-                <td>{{item.prezzo}}</td>
-                <td><button>Seleziona</button></td>
+            <tr *ngFor="let prodottoSelezionato of srvAssOff.listaDeiProdotti">
+                <td>{{prodottoSelezionato.codice}}</td>
+                <td>{{prodottoSelezionato.descrizione}}</td>
+                <td>{{prodottoSelezionato.peso}}</td>
+                <td>{{prodottoSelezionato.prezzo}}</td>
+                <td><button (click)="selezionaProdotto(prodottoSelezionato)">Seleziona</button></td>
             </tr>
         </tbody>
     </table>
+    <h3 *ngIf="srvAssOff.listaDeiProdotti.length === 0">Nessun record trovato</h3>
 </div>
 <br>
-<h3>Offerta da associare</h3>
-<div>
-<table>
-    <thead>
-        <tr>
-            <th>Codice</th>
-            <th>Descrizione</th>
-            <th>Sconto</th>
-            <th></th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let item of srvAssOff.listaDelleOfferte">
-            <td>{{item.codice}}</td>
-            <td>{{item.descrizione}}</td>
-            <td>{{item.scontoPercentuale}}</td>
-            <td><button>Associa</button></td>
-        </tr>
-    </tbody>
-</table>
+<div *ngIf="state == 'seleziona'">
+    <h3>Offerta da associare</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Codice</th>
+                <th>Descrizione</th>
+                <th>Sconto</th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of srvAssOff.listaDelleOfferte">
+                <td>{{item.codice}}</td>
+                <td>{{item.descrizione}}</td>
+                <td>{{item.scontoPercentuale}}</td>
+                <td><button (click)= "chiediAssociazione(item , prodottoSelezionato)">Associa</button></td>
+            </tr>
+        </tbody>
+    </table>
 </div>

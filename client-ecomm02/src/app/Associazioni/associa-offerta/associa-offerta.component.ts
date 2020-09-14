@@ -1,3 +1,4 @@
+import { ProdottoService } from 'src/app/prodotto.service';
 import { ListaOfferteDto } from './../../dto/lista-offerte-dto';
 import { AssociaOffertaService } from './../../AssociazioniService/associa-offerta.service';
 import { RicercaDto } from './../../dto/ricerca-dto';
@@ -18,8 +19,10 @@ export class AssociaOffertaComponent implements OnInit {
   listaOfferte: Offerta[] = [];
   ricerca: RicercaDto = new RicercaDto();
   listaDeiProdotti: Prodotto[];
+  prodotto: Prodotto;
+  prodottoSelezionato = new Prodotto();
   state = 'ricerca';
-  constructor(private srvAssOff: AssociaOffertaService) { }
+  constructor(private srvAssOff: AssociaOffertaService, private srvProdotto: ProdottoService) { }
   
   
   ngOnInit(): void {
@@ -29,4 +32,14 @@ export class AssociaOffertaComponent implements OnInit {
   cercaProdotto() {
     this.srvAssOff.cercaProdotti(this.ricerca);
   }
+
+  selezionaProdotto(prodotto: Prodotto){
+    this.state = 'seleziona';
+    this.prodottoSelezionato = prodotto;
+  }
+  chiediAssociazione(offerta: Offerta){
+    this.srvAssOff.associa(this.prodotto, offerta);
+
+  }
 }
+
