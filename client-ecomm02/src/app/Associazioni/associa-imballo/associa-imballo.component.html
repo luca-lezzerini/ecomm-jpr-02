@@ -22,3 +22,18 @@
         </tr>
     </tbody>
 </table>
+<span *ngIf="state === true">
+    <h2>Imballo da associare:</h2>
+    <table>
+        <tr>
+            <th>Descrizione</th>
+            <th>Sigla</th>
+            <th>Associa</th>
+        </tr>
+        <tr *ngFor="let i of mem.imballo; index as x">
+            <td>{{i.descrizione}}</td>
+            <td>{{i.costo}}</td>
+            <td><button class="pointer" (click)="associaImballo(i)">Associa</button></td>
+        </tr>
+    </table>
+</span>

@@ -1,18 +1,22 @@
 package com.ai.ecom02.service;
 
 import com.ai.ecom02.model.Imballo;
+import com.ai.ecom02.model.Prodotto;
 import java.util.List;
 
 public interface ImballoService {
 
-    public Imballo add(Imballo imballo);
+    Imballo add(Imballo imballo);
 
-    public void delete(Imballo imballo);
+    void delete(Imballo imballo);
 
-    public Imballo update(Imballo imballo);
+    Imballo update(Imballo imballo);
 
-    public List<Imballo> getAll();
+    List<Imballo> getAll();
 
-    public Imballo findById(Imballo imballo);
+    Imballo findById(Imballo imballo);
 
+    void associaImballo(Prodotto prodotto, Imballo imballo);
+
+    void dissociaImballo(Prodotto prodotto);
 }

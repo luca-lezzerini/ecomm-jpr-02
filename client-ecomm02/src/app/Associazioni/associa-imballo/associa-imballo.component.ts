@@ -8,6 +8,7 @@ import { AssociaImballoDto } from 'src/app/dto/associa-imballo-dto';
 import { Imballo } from 'src/app/model/imballo';
 import { Token } from '@angular/compiler/src/ml_parser/lexer';
 
+
 @Component({
   selector: 'app-associa-imballo',
   templateUrl: './associa-imballo.component.html',
@@ -19,21 +20,23 @@ export class AssociaImballoComponent implements OnInit {
 
   ngOnInit(): void {
     this.srvProdotto.lista();
+    this.mem.imballi;
   }
 
   ricerca: RicercaDto = new RicercaDto();
-  state = 'ricerca';
-
+  state = 'false';
 
   cercaProdotto() {
     this.srvProdotto.cerca(this.ricerca);
   }
 
   seleziona(prodotto: Prodotto): void {
+    console.log("sono in seleziona" + this.state)
     this.srvProdotto.prodottoForm = Object.assign({}, prodotto);
+    this.state = 'true';
   }
 
-  associa(imballo: Imballo) {
+  associaImballo(imballo: Imballo) {
     this.mem.associaImballoDto.imballo = Object.assign({}, imballo);
     this.mem.bindingImballoService();
   }

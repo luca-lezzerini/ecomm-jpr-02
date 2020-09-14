@@ -3,6 +3,7 @@ package com.ai.ecom02.service.impl;
 import com.ai.ecom02.dto.RicercaDto;
 import com.ai.ecom02.model.Imballo;
 import com.ai.ecom02.model.Prodotto;
+import com.ai.ecom02.model.Taglia;
 import com.ai.ecom02.repository.RepImballo;
 import com.ai.ecom02.repository.RepProdotto;
 import java.util.List;
@@ -14,7 +15,6 @@ import com.ai.ecom02.service.ImballoService;
  *
  * @author Francesco
  */
-
 @Service
 public class ImballoServiceImpl implements ImballoService {
 
@@ -54,15 +54,31 @@ public class ImballoServiceImpl implements ImballoService {
         return repImballo.findByDescrizione("%" + ricerca.getRicerca() + "%");
     }
 
+    @Override
     public void associaImballo(Prodotto prodotto, Imballo imballo) {
+        // recuperiamo i record aggiornati dal database
         imballo = repImballo.getOne(imballo.getId());
         prodotto = repProdotto.getOne(prodotto.getId());
+        // aggiorniamo l`associazione lato prodotto
         prodotto.setImballo(imballo);
+        prodotto = repProdotto.save(prodotto);
+        // aggiorniamo l`associazione lato taglia
         List<Prodotto> listaP = imballo.getProdotti();
         listaP.add(prodotto);
-        repImballo.save(imballo);
-        repProdotto.save(prodotto);
-//        associa convine che ritorni findAll e quindi sia void
+        imballo = repImballo.save(imballo);
     }
 
+    @Override
+    public void dissociaImballo(Prodotto prodotto) {
+        // recupero prodotto
+        prodotto = repProdotto.getOne(prodotto.getId());
+        Imballo i = prodotto.getImballo();
+        // dissociamo lato prodotto
+        prodotto.setTaglia(null);
+        Prodotto pp = repProdotto.save(prodotto);
+        // dissociamo lato imballo
+        List<Prodotto> listaP = i.getProdotti();
+        listaP.removeIf(p -> pp.getId().equals(p.getId()));
+        i = repImballo.save(i);
+    }
 }
