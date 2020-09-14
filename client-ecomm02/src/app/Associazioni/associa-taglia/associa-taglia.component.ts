@@ -41,6 +41,11 @@ export class AssociaTagliaComponent implements OnInit {
     window.location.reload();      
     console.log(this.memT.taglie)
   }
+  dissociataglia() {
+
+    this.memT.dissociaTagliaService();
+    window.location.reload();  
+  }
 
   cercaProdotto() {
     this.memP.cerca(this.ricerca);
