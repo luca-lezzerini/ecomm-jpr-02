@@ -86,6 +86,17 @@ export class TagliaServiceService {
   })
   }
 
+  dissociaTagliaService() {
+    this.associatagliaDto.token = this.tokenService.token;
+  console.log("sto nel servizio dissocia taglia");
+  let o : Observable<TagliaListDto> = 
+  this.http.post<TagliaListDto>(this.url + "/dissocia-taglia", this.associatagliaDto);
+  o.subscribe(risp => {
+  this.taglie = risp.taglie;
+  this.tokenService.token=risp.token;
+  })
+  }
+
 
 
 }

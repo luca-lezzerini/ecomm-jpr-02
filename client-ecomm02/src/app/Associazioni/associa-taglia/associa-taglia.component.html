@@ -33,7 +33,11 @@
     <tr *ngFor="let i of memT.taglie; index as x">
         <td>{{i.descrizione}}</td>
         <td>{{i.sigla}}</td>
-        <td *ngIf="memT.associatagliaDto.prodotto.taglia == null || memT.associatagliaDto.prodotto.taglia.descrizione != i.descrizione">
+        <td *ngIf="memT.associatagliaDto.prodotto.taglia == null || memT.associatagliaDto.prodotto.taglia.descrizione != i.descrizione; else changeButton">
             <button class="pointer" (click)="associataglia(i, x)">Associa</button></td>
+        <ng-template #changeButton>
+            <td><button class="pointer" (click)="dissociataglia()">Dissocia</button></td>
+        </ng-template>
+
     </tr>
 </table>

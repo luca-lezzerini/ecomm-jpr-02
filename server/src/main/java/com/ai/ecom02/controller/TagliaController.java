@@ -103,6 +103,16 @@ public class TagliaController {
         TagliaDtoList dtl = new TagliaDtoList(lista, t);
         return dtl;
     }
+    @RequestMapping(value = {"/dissocia-taglia"})
+    @ResponseBody
+    public TagliaDtoList dissociaTaglia(@RequestBody AssociaTagliaDto dto) {
+        Token token = dto.getToken();
+        Token t = securityService.retrieveToken(token);
+        srvTaglia.dissociaTaglia(dto.getProdotto());  
+        List<Taglia> lista = srvTaglia.getAll();
+        TagliaDtoList dtl = new TagliaDtoList(lista, t);
+        return dtl;
+    }
     
     
 }
