@@ -27,14 +27,19 @@ export class AssociaTagliaComponent implements OnInit {
 
   seleziona(prodotto: Prodotto): void {
     this.stateVisualizza = true;
-    this.memT.associatagliaDto.prodotto = Object.assign({}, prodotto);    
+    this.memT.associatagliaDto.prodotto = Object.assign({}, prodotto);
+    console.log(this.memT.associatagliaDto.prodotto);  
+    this.memT.listaService();  
+    console.log(this.memP.listaProdotti)
   }
 
   associataglia(taglia: Taglia, n: number) {
     this.indexTaglia = n;
     this.memT.associatagliaDto.taglia = Object.assign({}, taglia);
+    console.log(this.memT.associatagliaDto.taglia);
     this.memT.associaTagliaService(); 
     window.location.reload();      
+    console.log(this.memT.taglie)
   }
 
   cercaProdotto() {

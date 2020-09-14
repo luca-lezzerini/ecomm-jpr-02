@@ -58,10 +58,11 @@ public class TagliaServiceImpl implements TagliaService {
         prodotto = repProdotto.getOne(prodotto.getId());
         //aggiorniamo l'associazione lato prodotto
         prodotto.setTaglia(taglia);
-        prodotto = repProdotto.save(prodotto);
+        Prodotto pp = repProdotto.save(prodotto);
         //aggiorniamo l'associazione lato taglia
 //        taglia.getProdotti().add(prodotto);
         List<Prodotto> listaP = taglia.getProdotti();
+        listaP.removeIf(x -> (x.getId().equals(pp.getId())));
         listaP.add(prodotto);
         taglia = repTaglia.save(taglia);
 
