@@ -20,14 +20,14 @@ import org.springframework.stereotype.Repository;
 @Repository                                                                 // equivalente del Dao: serve per comunicare con il database       
 public interface RepOfferta extends JpaRepository<Offerta, Long> {       // vuole il tipo dell entita e il tipo della chiave primaria
 
-    public Offerta findByCodice(String codice);
+    Offerta findByCodice(String codice);
 
-    public List<Offerta> findByCodiceLike(String codice);
+    List<Offerta> findByCodiceLike(String codice);
 
-    public Offerta findByDescrizione(String descrizione);
+    Offerta findByDescrizione(String descrizione);
 
-    public List<Offerta> findByDescrizioneLike(String descrizione);
+    List<Offerta> findByDescrizioneLike(String descrizione);
     
     @Query("SELECT o FROM Offerta o WHERE codice LIKE :str OR descrizione LIKE :str")
-    public List<Offerta> findByDescrizioneOrCodiceLike(@Param("str") String str);
+    List<Offerta> findByDescrizioneOrCodiceLike(@Param("str") String str);
 }
