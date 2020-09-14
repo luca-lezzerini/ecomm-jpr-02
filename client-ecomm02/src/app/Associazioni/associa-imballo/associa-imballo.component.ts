@@ -1,3 +1,4 @@
+import { ListaProdottiDto } from './../../dto/lista-prodotti-dto';
 import { Component, OnInit } from '@angular/core';
 import { ProdottoService } from 'src/app/prodotto.service';
 import { ImballoServiceService } from 'src/app/service/imballo-service.service';
@@ -20,7 +21,7 @@ export class AssociaImballoComponent implements OnInit {
 
   ngOnInit(): void {
     this.srvProdotto.lista();
-    this.mem.imballi;
+    this.mem.imballi = this.mem.listaImballoService();
   }
 
   ricerca: RicercaDto = new RicercaDto();
@@ -31,9 +32,9 @@ export class AssociaImballoComponent implements OnInit {
   }
 
   seleziona(prodotto: Prodotto): void {
-    console.log("sono in seleziona" + this.state)
-    this.srvProdotto.prodottoForm = Object.assign({}, prodotto);
     this.state = 'true';
+    console.log("sono in seleziona" + this.state)
+    this.mem.associaImballoDto.prodotto = Object.assign({}, prodotto);
   }
 
   associaImballo(imballo: Imballo) {
