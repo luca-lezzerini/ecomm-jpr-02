@@ -16,6 +16,9 @@ public class SpedizioneListaDto implements Tokenizabile{
     
     private List<Spedizione> listaSpedizioneDto;
     private Token token;
+    private Long numeroTotaleElementi;
+    private Integer numeroTotalePagine;
+    private Integer paginaCorrente;
 
     public SpedizioneListaDto() {
     }
@@ -42,6 +45,28 @@ public class SpedizioneListaDto implements Tokenizabile{
     public void setToken(Token t) {
         this.token = t;
     }
-    
-    
+
+    public Long getNumeroTotaleElementi() {
+        return numeroTotaleElementi;
+    }
+
+    public void setNumeroTotaleElementi(Long numeroTotaleElementi) {
+        this.numeroTotaleElementi = numeroTotaleElementi;
+    }
+
+    public Integer getNumeroTotalePagine() {
+        return numeroTotalePagine;
+    }
+
+    public void setNumeroTotalePagine(Integer numeroTotalePagine) {
+        this.numeroTotalePagine = numeroTotalePagine;
+    }
+
+    public Integer getPaginaCorrente() {
+        return paginaCorrente;
+    }
+
+    public void setPaginaCorrente(Integer paginaCorrente) {
+        this.paginaCorrente = paginaCorrente;
+    }
 }

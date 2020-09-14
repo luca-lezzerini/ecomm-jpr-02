@@ -13,6 +13,8 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 /**
@@ -43,6 +45,16 @@ public class SpedizioneServiceImpl implements SpedizioneService {
         return repSpedizione.findAll();
     }
 
+    @Override
+    public Page<Spedizione> getLista(Pageable p) {
+        return repSpedizione.findAll(p);
+    }
+
+    @Override
+    public Page<Spedizione> findSped(String ricerca, Pageable p) {
+        return repSpedizione.findByCodiceLikeOrNomeLike("%" + ricerca + "%", "%" + ricerca + "%", p);
+    }
+    
     @Override
     public List<Spedizione> removeSped(Long id) {
         repSpedizione.deleteById(id);

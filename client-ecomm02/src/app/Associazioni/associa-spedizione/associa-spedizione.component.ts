@@ -37,7 +37,7 @@ export class AssociaSpedizioneComponent implements OnInit {
     this.memsped.spedizioneAssociata.spedizione = s;
     console.log("sto associando la spedizione: ", s);
     this.memsped.associaSped(this.memsped.spedizioneAssociata.spedizione);
-
+    this.meme.lista();
   }
 
 }

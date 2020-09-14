@@ -92,7 +92,9 @@ export class CategoriaServiceService {
     this.categoriaDto.categoria = categTemp;
     this.categoriaDto.token = this.tokenSrv.token;
     let o: Observable<CategoriaListaDto> = this.http.post<CategoriaListaDto>(this.url + '/rimuovi-categoria/', this.categoriaDto)
-    o.subscribe(risp => { this.categorie = risp.listaCategoriaDto; this.tokenSrv.token = risp.token; })
+    o.subscribe(risp => { 
+      this.categorie = risp.listaCategoriaDto; 
+      this.tokenSrv.token = risp.token; })
     return this.categorie
   }
 }

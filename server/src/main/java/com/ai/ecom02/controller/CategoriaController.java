@@ -171,9 +171,9 @@ public class CategoriaController {
         Token t = securityService.retrieveToken(token);
         if (associaCategoriaDto != null) {
             log.info("passo i parametri" + associaCategoriaDto.getProdotto().getDescrizione());
-            Prodotto p = prodottoService.findById(associaCategoriaDto.getProdotto());
-            p.setCategoria(associaCategoriaDto.getCategoria());
-            prodottoService.update(p);
+            categoriaService.associaProdottoCat(associaCategoriaDto.getCategoria(), associaCategoriaDto.getProdotto());
+            //aggiorno associazione lato categoria
+            //categoriaService.dissociaProdottoCat(associaCategoriaDto.getProdotto());
             lista = new AssociaCategoriaListaDto(t, prodottoService.findById(associaCategoriaDto.getProdotto()), categoriaService.getLista());
             log.info("creo risposta " + prodottoService.findById(associaCategoriaDto.getProdotto()) + t);
             return lista;

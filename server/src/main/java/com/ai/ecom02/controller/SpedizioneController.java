@@ -11,6 +11,7 @@ import com.ai.ecom02.dto.RicercaDto;
 import com.ai.ecom02.dto.SpedizioneDto;
 import com.ai.ecom02.dto.SpedizioneListaDto;
 import com.ai.ecom02.model.Prodotto;
+import com.ai.ecom02.model.Spedizione;
 import com.ai.ecom02.model.Token;
 import com.ai.ecom02.service.ProdottoService;
 import com.ai.ecom02.service.SecurityService;
@@ -19,6 +20,9 @@ import com.ai.ecom02.service.SpedizioneService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -38,7 +42,7 @@ public class SpedizioneController {
 
     @Autowired
     SpedizioneService spedizioneService;
-    
+
     @Autowired
     ProdottoService prodottoService;
 
@@ -74,7 +78,15 @@ public class SpedizioneController {
         if (spedizioneDto != null) {
             Token token = spedizioneDto.getToken();
             Token t = securityService.retrieveToken(token);
-            lista = new SpedizioneListaDto(spedizioneService.getLista(), t);
+            Pageable p = PageRequest.of(
+                    spedizioneDto.getPaginaCorrente() - 1,
+                    25
+            );
+            Page<Spedizione> pagina = spedizioneService.getLista(p);
+            lista = new SpedizioneListaDto(pagina.getContent(), t);
+            lista.setNumeroTotaleElementi(pagina.getTotalElements());
+            lista.setNumeroTotalePagine(pagina.getTotalPages());
+            lista.setPaginaCorrente(spedizioneDto.getPaginaCorrente());
             return lista;
         } else {
             log.error("Lista non presente");
@@ -115,7 +127,12 @@ public class SpedizioneController {
         if (ricercaDto != null) {
             Token token = ricercaDto.getToken();
             Token t = securityService.retrieveToken(token);
-            lista = new SpedizioneListaDto(spedizioneService.findSped(ricercaDto.getRicerca()), t);
+            Pageable p = PageRequest.of(ricercaDto.getPaginaCorrente() - 1, 25);
+            Page<Spedizione> ris = spedizioneService.findSped(ricercaDto.getRicerca(), p);
+            lista = new SpedizioneListaDto(ris.getContent(), t);
+            lista.setNumeroTotaleElementi(ris.getTotalElements());
+            lista.setNumeroTotalePagine(ris.getTotalPages());
+            lista.setPaginaCorrente(ricercaDto.getPaginaCorrente());
             return lista;
         } else {
             log.error("Non ci sono spedizioni per la ricerca effettuata");
@@ -145,17 +162,17 @@ public class SpedizioneController {
             return lista;
         }
     }
-    
+
     @RequestMapping(value = {"/associa-spedizioni"})
     @ResponseBody
     public AssociaSpedizioneListaDto associaSpedizione(
             @RequestBody AssociaSpedizioneDto associaSpedizioneDto
-    ){
+    ) {
         AssociaSpedizioneListaDto lista = new AssociaSpedizioneListaDto();
         log.info("richiesta di associazione spedizione");
         Token token = associaSpedizioneDto.getToken();
         Token t = securityService.retrieveToken(token);
-        if(associaSpedizioneDto != null){
+        if (associaSpedizioneDto != null) {
             log.info("Passo i parametri " + associaSpedizioneDto.getProdotto().getDescrizione());
             Prodotto p = prodottoService.findById(associaSpedizioneDto.getProdotto());
             p.setSpedizione(associaSpedizioneDto.getSpedizione());

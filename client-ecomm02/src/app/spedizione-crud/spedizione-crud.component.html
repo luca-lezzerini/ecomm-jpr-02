@@ -15,7 +15,12 @@
     <button (click)="annulla()" [hidden]="nascondiButton">Annulla</button>
     <p [hidden]="msgSpedizioneNulla">Digitare una spedizione valida</p>
 </div>
-<br><br><br>
+<br>
+Ho trovato {{meme.numeroTotaleElementi}} risultati
+<br>
+<button *ngIf="meme.paginaCorrente > 1" (click)="paginaPrima()">-</button>
+{{meme.paginaCorrente}}
+<button *ngIf="meme.paginaCorrente < meme.numeroTotalePagine" (click)="paginaDopo()">+</button>
 <div *ngIf="tabellaState">
     <table *ngIf="meme.spedizioni.length > 0">
         <tr>

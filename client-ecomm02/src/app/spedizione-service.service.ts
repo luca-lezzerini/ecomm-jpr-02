@@ -21,6 +21,10 @@ export class SpedizioneServiceService {
   spedizioneDto: SpedizioneDto = new SpedizioneDto();
   spedizioneListaDto: SpedizioneListaDto = new SpedizioneListaDto();
 
+  numeroTotaleElementi: number = 0;
+  paginaCorrente: number = 1;
+  numeroTotalePagine: number = 0;
+
   constructor(private http: HttpClient, private tokenSrv: TokenService) { }
 
   addSpedizione() {
@@ -39,23 +43,31 @@ export class SpedizioneServiceService {
   }
   cerca(): RicercaDto[] {
     console.log("Siamo in cerca e ricerca vale ", this.ricerca);
+    this.ricerca.paginaCorrente = this.paginaCorrente;
     let obs: Observable<SpedizioneListaDto> =
       this.http.post<SpedizioneListaDto>(this.url + "/cerca-spedizione/", this.ricerca);
     obs.subscribe(risp => {
       console.log(risp);
       this.spedizioni = risp.listaSpedizioneDto;
       this.tokenSrv.token = risp.token;
+      this.numeroTotaleElementi = risp.numeroTotaleElementi;
+      this.numeroTotalePagine = risp.numeroTotalePagine;
+      this.paginaCorrente = risp.paginaCorrente;
       console.log("Finito cerca");
     });
     return this.ricerche;
   }
   lista(): Spedizione[] {
     this.spedizioneDto.token = this.tokenSrv.token;
+    this.spedizioneDto.paginaCorrente = this.paginaCorrente;
     let obs: Observable<SpedizioneListaDto> =
       this.http.post<SpedizioneListaDto>(this.url + "/lista-spedizioni/", this.spedizioneDto);
     obs.subscribe(risp => {
       this.spedizioni = risp.listaSpedizioneDto;
       this.tokenSrv.token = risp.token;
+      this.numeroTotaleElementi = risp.numeroTotaleElementi;
+      this.numeroTotalePagine = risp.numeroTotalePagine;
+      this.paginaCorrente = risp.paginaCorrente;
     });
     return this.spedizioni;
   }

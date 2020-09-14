@@ -5,5 +5,5 @@ export class SpedizioneDto {
 
     token: Token;
     spedizione: Spedizione;
-
+    paginaCorrente: number;
 }

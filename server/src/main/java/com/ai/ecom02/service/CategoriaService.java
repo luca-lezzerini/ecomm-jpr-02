@@ -7,6 +7,7 @@ package com.ai.ecom02.service;
 
 import com.ai.ecom02.dto.RicercaDto;
 import com.ai.ecom02.model.Categoria;
+import com.ai.ecom02.model.Prodotto;
 import java.util.List;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -31,4 +32,8 @@ public interface CategoriaService {
     Page<Categoria> findCat(RicercaDto ricerca, Pageable p);
     
     List<Categoria> updateCat(Categoria categoria);
+    
+    void associaProdottoCat(Categoria categoria, Prodotto prodotto);
+    
+    void dissociaProdottoCat(Prodotto prodotto);
 }

@@ -36,7 +36,8 @@ export class SrvAssociaCategoriaService {
     let o: Observable<AssociaCategoriaListaDto> =
       this.http.post<AssociaCategoriaListaDto>(this.url + '/associa-categorie/', this.categoriaAssociata);
     o.subscribe(risp => {
-      this.prodottoSelezionato = risp.prodotto;
+      this.prodottoSelezionato= risp.prodotto;
+      this.categorie = risp.categorie;
       this.tokenSrv.token = risp.token;
     })
   }

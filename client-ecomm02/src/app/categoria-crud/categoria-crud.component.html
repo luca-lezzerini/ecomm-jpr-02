@@ -17,11 +17,9 @@
 <br>
 Ho trovato {{mem.numeroTotaleElementi}} risultati
 <br>
-<button *ngIf="mem.paginaCorrente > 1"
-    (click)="paginaPrima()">-</button>
+<button *ngIf="mem.paginaCorrente > 1" (click)="paginaPrima()">-</button>
 {{mem.paginaCorrente}}
-<button *ngIf="mem.paginaCorrente < mem.numeroTotalePagine"
-(click)="paginaDopo()">+</button>
+<button *ngIf="mem.paginaCorrente < mem.numeroTotalePagine" (click)="paginaDopo()">+</button>
 <div *ngIf="tabellaState">
     <table *ngIf="mem.categorie.length > 0">
         <tr>

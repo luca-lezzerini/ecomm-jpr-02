@@ -7,7 +7,9 @@ package com.ai.ecom02.service.impl;
 
 import com.ai.ecom02.dto.RicercaDto;
 import com.ai.ecom02.model.Categoria;
+import com.ai.ecom02.model.Prodotto;
 import com.ai.ecom02.repository.RepCategoria;
+import com.ai.ecom02.repository.RepProdotto;
 import com.ai.ecom02.service.CategoriaService;
 import java.util.List;
 
@@ -29,6 +31,8 @@ public class CategoriaServiceImpl implements CategoriaService {
 
     @Autowired
     RepCategoria repCategoria;
+    @Autowired
+    RepProdotto repProdotto;
 
     @Override
     public Categoria addCat(Categoria categoria) {
@@ -76,6 +80,30 @@ public class CategoriaServiceImpl implements CategoriaService {
     public Page<Categoria> findCat(RicercaDto ricerca, Pageable p) {
         Page<Categoria> c = repCategoria.findByDescrizioneLike("%" + ricerca.getRicerca() + "%", p);
         return c;
+    }
+
+    @Override
+    public void associaProdottoCat(Categoria categoria, Prodotto prodotto) {
+        prodotto = repProdotto.getOne(prodotto.getId());
+        categoria = repCategoria.getOne(categoria.getId());
+        prodotto.setCategoria(categoria);
+        Prodotto pp = repProdotto.save(prodotto);
+        List<Prodotto> lista = categoria.getProdotti();
+        lista.removeIf(x -> x.getId().equals(pp.getId()));
+        lista.add(prodotto);
+        repCategoria.save(categoria);
+    }
+
+    @Override
+    public void dissociaProdottoCat(Prodotto prodotto) {
+        prodotto = repProdotto.getOne(prodotto.getId());
+        Categoria cat = prodotto.getCategoria();
+        prodotto.setCategoria(null);
+        Prodotto prod = repProdotto.save(prodotto);
+        List<Prodotto> lista = cat.getProdotti();
+        lista.removeIf(pp -> prod.getId().equals(pp.getId()));
+        repCategoria.save(cat);
+        //ritorna la categoria che aveva un prodotto associato, ma senza il prodotto
     }
 
 }

@@ -38,6 +38,7 @@ export class AssociaCategoriaComponent implements OnInit {
     this.memcat.categoriaAssociata.categoria = c;
     console.log("sto passando i parametri da associare");
     this.memcat.associaCat(this.memcat.categoriaAssociata.categoria);
+    this.mem.lista();
   }
 
 }

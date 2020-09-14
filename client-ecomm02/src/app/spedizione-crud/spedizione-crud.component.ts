@@ -126,4 +126,14 @@ export class SpedizioneCRUDComponent implements OnInit {
     this.msgSpedizioneNulla = true;
   }
 
+  paginaDopo() {
+    this.meme.paginaCorrente++;
+    this.searchCriteria();
+  }
+
+  paginaPrima() {
+    this.meme.paginaCorrente--;
+    this.searchCriteria();
+  }
+
 }

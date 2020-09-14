@@ -5,9 +5,10 @@
  */
 package com.ai.ecom02.repository;
 
-import com.ai.ecom02.dto.RicercaDto;
 import com.ai.ecom02.model.Spedizione;
 import java.util.List;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -32,6 +33,8 @@ public interface RepSpedizione extends JpaRepository<Spedizione, Long> {
 //    );
     List<Spedizione> findByCodiceLikeOrNomeLike(String codice, String nome);
 
+    Page<Spedizione> findByCodiceLikeOrNomeLike(String codice, String nome, Pageable p);
+    
     @Query("SELECT s FROM Spedizione s WHERE s.codice like :codice or s.nome like :nome")
     List<Spedizione> ricercaPerChiaveParziale(
             @Param("codice") String codice,

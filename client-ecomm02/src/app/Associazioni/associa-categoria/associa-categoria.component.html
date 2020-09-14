@@ -5,7 +5,7 @@
     <button (click)="cercaProdotto()">Cerca</button>
 </div>
 <br>
-<h3 *ngIf="associaStato">Prodotto selezionato:{{memcat.prodottoSelezionato.codice}} -
+<h3 *ngIf="associaStato">Prodotto selezionato: {{memcat.prodottoSelezionato.codice}} -
     {{memcat.prodottoSelezionato.descrizione}}</h3>
 
 <table *ngIf="srvProdotto.listaProdotti.length > 0">

@@ -88,4 +88,14 @@ public class Categoria implements Serializable {
         return "Categoria{" + "id=" + id + ", descrizione=" + descrizione + '}';
     }
 
+    public List<Prodotto> getProdotti() {
+        return prodotti;
+    }
+
+    public void setProdotti(List<Prodotto> prodotti) {
+        this.prodotti = prodotti;
+    }
+    
+    
+
 }

@@ -16,6 +16,7 @@ public class SpedizioneDto implements Tokenizabile{
     
     private Spedizione spedizione;
     private Token token;
+    private Integer paginaCorrente;
 
     public SpedizioneDto() {
     }
@@ -42,7 +43,12 @@ public class SpedizioneDto implements Tokenizabile{
     public void setToken(Token t) {
         token = t;
     }
-    
-    
-    
+
+    public Integer getPaginaCorrente() {
+        return paginaCorrente;
+    }
+
+    public void setPaginaCorrente(Integer paginaCorrente) {
+        this.paginaCorrente = paginaCorrente;
+    }
 }
