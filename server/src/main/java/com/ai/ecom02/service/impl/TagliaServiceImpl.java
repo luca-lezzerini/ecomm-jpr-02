@@ -13,7 +13,6 @@ import com.ai.ecom02.service.TagliaService;
  *
  * @author Francesco
  */
-
 @Service
 public class TagliaServiceImpl implements TagliaService {
 
@@ -52,14 +51,34 @@ public class TagliaServiceImpl implements TagliaService {
         return repTaglia.findByDescrizioneLikeOrSiglaLike("%" + ricerca + "%", "%" + ricerca0 + "%");
     }
 
+    @Override
     public void associaTaglia(Prodotto prodotto, Taglia taglia) {
+        //recupariamo i record aggiornati dal database
         taglia = repTaglia.getOne(taglia.getId());
         prodotto = repProdotto.getOne(prodotto.getId());
+        //aggiorniamo l'associazione lato prodotto
         prodotto.setTaglia(taglia);
+        prodotto = repProdotto.save(prodotto);
+        //aggiorniamo l'associazione lato taglia
+//        taglia.getProdotti().add(prodotto);
         List<Prodotto> listaP = taglia.getProdotti();
         listaP.add(prodotto);
-        repTaglia.save(taglia);
-        repProdotto.save(prodotto);
+        taglia = repTaglia.save(taglia);
+
     }
 
+    @Override
+    public void dissociaTaglia(Prodotto prodotto) {
+
+        prodotto = repProdotto.getOne(prodotto.getId());
+        Taglia t = prodotto.getTaglia();
+        //dissociamo lato prodotto
+        prodotto.setTaglia(null);
+        Prodotto pp = repProdotto.save(prodotto);
+        //dissociamo lato taglia
+        List<Prodotto> listP = t.getProdotti();
+        listP.removeIf(p -> pp.getId().equals(p.getId()));
+        t = repTaglia.save(t);
+
+    }
 }

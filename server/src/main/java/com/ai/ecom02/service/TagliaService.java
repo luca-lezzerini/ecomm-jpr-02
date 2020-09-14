@@ -1,18 +1,23 @@
 package com.ai.ecom02.service;
 
+import com.ai.ecom02.model.Prodotto;
 import com.ai.ecom02.model.Taglia;
 import java.util.List;
 
 public interface TagliaService {
 
-    public Taglia add(Taglia taglia);
+    Taglia add(Taglia taglia);
 
-    public void delete(Taglia taglia);
+    void delete(Taglia taglia);
 
-    public Taglia update(Taglia taglia);
+    Taglia update(Taglia taglia);
 
-    public List<Taglia> getAll();
+    List<Taglia> getAll();
 
-    public Taglia findById(Taglia taglia);
+    Taglia findById(Taglia taglia);
+
+    void associaTaglia(Prodotto prodotto, Taglia taglia);
+    
+    void dissociaTaglia(Prodotto prodotto);
 
 }

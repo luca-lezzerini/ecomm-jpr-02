@@ -95,7 +95,7 @@ public class TagliaController {
     }
     @RequestMapping(value = {"/associa-taglia"})
     @ResponseBody
-    public TagliaDtoList associaImballo(@RequestBody AssociaTagliaDto dto) {
+    public TagliaDtoList associaTaglia(@RequestBody AssociaTagliaDto dto) {
         Token token = dto.getToken();
         Token t = securityService.retrieveToken(token);
         srvTaglia.associaTaglia(dto.getProdotto(), dto.getTaglia());  
