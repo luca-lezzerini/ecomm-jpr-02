@@ -34,7 +34,7 @@
         <tr *ngFor="let i of mem.imballo; index as x">
             <td>{{i.descrizione}}</td>
             <td>{{i.costo}}</td>
-            <td *ngIf="mem.associaImballo.prodotto.imballo.descrizione != i.descrizione" >
+            <td *ngIf="mem.associaImballo.prodotto.imballo == null || mem.associaImballo.prodotto.imballo.descrizione != i.descrizione" >
                 <button class="pointer" (click)="associaImballo(i, x)">Associa</button></td>
         </tr>
     </table>
