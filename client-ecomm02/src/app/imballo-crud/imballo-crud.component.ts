@@ -10,21 +10,22 @@ import { ImballoDto } from '../dto/imballo-dto';
   templateUrl: "./imballo-crud.component.html",
   styleUrls: ["./imballo-crud.component.css"],
 })
+
 export class ImballoCrudComponent implements OnInit {
   state = "ricerca"; // inizializza state ricerca
   state2 = ""; // questo state serve a permettere al codice di mostrare due state contemporaneamente
-  imballoSelezionato: number; // viene dichiarata la variabile
+  imballoSelezionato: number; // viene dichiarata la variabile di appoggio per selezionare un elemento dalla tabella visualizzata
   msg = ""; //inizializza messaggio di errore
 
-  constructor(private router: Router, public mem: ImballoServiceService) {}
+  constructor(private router: Router, public mem: ImballoServiceService) { }
 
   ngOnInit(): void {
     this.mem.imballi = this.mem.listaImballoService();
   }
+
   /* 
      Questo metodo viene chiamato dal bottone aggiungi
      cambia lo state aggiungi
-     azzera campo di ricerca
      svuota messaggio di errore
   */
   addImballo() {
@@ -32,6 +33,7 @@ export class ImballoCrudComponent implements OnInit {
     this.state2 = "";
     this.msg = "";
   }
+
   /*
     Questo metodo viene chiamato dal bottone modifica
     cambia lo state modifica
@@ -47,14 +49,15 @@ export class ImballoCrudComponent implements OnInit {
     this.mem.imballoMod.imballo = Object.assign({}, imballo);
     this.msg = "";
   }
+
   /*
      Questo metodo viene chiamato dal bottone rimuovi
      rimuove oggetto dalla tabella 
      ritorna lo state ricerca
   */
   removeImballo(imballo: Imballo) {
-    this.mem.removeImballoService();
-    console.log("imballo eliminato");
+    console.log("sei in removeImballo");
+    this.mem.removeImballoService();    
     this.mem.imballoMod = new ImballoDto();
     this.state = "ricerca";
   }
@@ -83,29 +86,32 @@ export class ImballoCrudComponent implements OnInit {
     if (this.state == "aggiungi") {
       console.log(this.mem.imballoMod);
       if (
-        this.mem.imballoMod.imballo.descrizione
+        this.mem.imballoMod.imballo.descrizione && 
+        this.mem.imballoMod.imballo.costo
       ) {
         this.mem.addImballoService();
         this.mem.imballoMod = new ImballoDto();
         this.state = "ricerca";
       } else {
         this.state = "aggiungi";
-        this.msg = "riempire tutti i campi!";
+        this.msg = "Riempire tutti i campi!";
       }
     } else if (this.state == "modifica") {
       console.log("Siamo in confirm - modifica");
       if (
-        this.mem.imballoMod.imballo.descrizione 
+        this.mem.imballoMod.imballo.descrizione && 
+        this.mem.imballoMod.imballo.costo
       ) {
         this.mem.updateImballoService(this.mem.imballoMod);
         this.mem.imballoMod = new ImballoDto();
         this.state = "ricerca";
       } else {
         this.state = "modifica";
-        this.msg = "riempire tutti i campi!";
+        this.msg = "Riempire tutti i campi!";
       }
     }
   }
+
   /* 
     Questo metodo viene chiamato dal bottone chiudi
     ritorna lo state ricerca
@@ -114,6 +120,7 @@ export class ImballoCrudComponent implements OnInit {
     this.state = "ricerca";
     this.mem.imballoMod = new ImballoDto();
   }
+
   /*
      Questo metodo viene chiamato dal bottone ricerca
      -->se il campo ricerca non è vuoto
@@ -129,6 +136,7 @@ export class ImballoCrudComponent implements OnInit {
       this.mem.listaImballoService();
     }
   }
+
   /*
      Questo metodo viene quando viene selezionato un oggetto nella tabella
      -->se lo state non è aggiungi 
@@ -142,6 +150,7 @@ export class ImballoCrudComponent implements OnInit {
       this.mem.imballoVis = Object.assign({}, imballo);
     }
   }
+
   /*
      Questo metodo viene chiamato dal bottone elimina 
      serve a prendere l'oggetto da eliminare 

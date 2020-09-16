@@ -24,7 +24,6 @@ export class ImballoServiceService {
   ricerca: RicercaDto = new RicercaDto();
   associaImballoDto: AssociaImballoDto = new AssociaImballoDto();
 
-
   constructor(private http: HttpClient, public tokenService: TokenService) { }
 
   addImballoService() {
@@ -84,10 +83,24 @@ export class ImballoServiceService {
   }
 
   bindingImballoService() {
-    let o: Observable<AssociaImballoDto> =
-      this.http.post<AssociaImballoDto>(this.url + '/associa-imballo', this.associaImballoDto)
+    this.associaImballoDto.token = this.tokenService.token;
+    console.log("sto nel servizio associa imballo");
+    let o: Observable<ImballoListDto> =
+      this.http.post<ImballoListDto>(this.url + '/associa-imballo', this.associaImballoDto)
     o.subscribe(risp => {
       this.findImballoService();
+      this.tokenService.token = risp.token;
+    })
+  }
+
+  unbindingImballoService() {
+    this.associaImballoDto.token = this.tokenService.token;
+    console.log("sto nel servizio dissocia imballo");
+    let o: Observable<ImballoListDto> =
+      this.http.post<ImballoListDto>(this.url + '/dissocia-imballo', this.associaImballoDto)
+    o.subscribe(risp => {
+      this.findImballoService();
+      this.tokenService.token = risp.token;
     })
   }
 }

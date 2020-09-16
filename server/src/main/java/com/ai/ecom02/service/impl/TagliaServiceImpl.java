@@ -18,6 +18,7 @@ public class TagliaServiceImpl implements TagliaService {
 
     @Autowired
     RepTaglia repTaglia;
+    
     @Autowired
     RepProdotto repProdotto;
 

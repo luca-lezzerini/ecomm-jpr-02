@@ -1,13 +1,11 @@
-import { ListaProdottiDto } from './../../dto/lista-prodotti-dto';
 import { Component, OnInit } from '@angular/core';
 import { ProdottoService } from 'src/app/prodotto.service';
 import { ImballoServiceService } from 'src/app/service/imballo-service.service';
 import { Router } from '@angular/router';
 import { RicercaDto } from 'src/app/dto/ricerca-dto';
 import { Prodotto } from 'src/app/model/prodotto';
-import { AssociaImballoDto } from 'src/app/dto/associa-imballo-dto';
 import { Imballo } from 'src/app/model/imballo';
-import { Token } from '@angular/compiler/src/ml_parser/lexer';
+
 
 
 @Component({
@@ -17,6 +15,10 @@ import { Token } from '@angular/compiler/src/ml_parser/lexer';
 })
 export class AssociaImballoComponent implements OnInit {
 
+  ricerca: RicercaDto = new RicercaDto();
+  state = false;
+  indexImballo: number;
+
   constructor(private router: Router, public srvProdotto: ProdottoService, public mem: ImballoServiceService) { }
 
   ngOnInit(): void {
@@ -24,21 +26,26 @@ export class AssociaImballoComponent implements OnInit {
     this.mem.imballi = this.mem.listaImballoService();
   }
 
-  ricerca: RicercaDto = new RicercaDto();
-  state = 'false';
-
   cercaProdotto() {
     this.srvProdotto.cerca(this.ricerca);
   }
 
   seleziona(prodotto: Prodotto): void {
-    this.state = 'true';
+    this.state = true;
     console.log("sono in seleziona" + this.state)
     this.mem.associaImballoDto.prodotto = Object.assign({}, prodotto);
+    this.mem.listaImballoService();
   }
 
-  associaImballo(imballo: Imballo) {
+  associaImballo(imballo: Imballo, n: number) {
+    this.indexImballo = n;
     this.mem.associaImballoDto.imballo = Object.assign({}, imballo);
     this.mem.bindingImballoService();
+    window.location.reload();
+  }
+
+  dissociaImballo(){
+    this.mem.unbindingImballoService();
+    window.location.reload();
   }
 }

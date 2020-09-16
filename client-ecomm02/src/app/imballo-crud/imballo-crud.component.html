@@ -15,7 +15,8 @@
         <input type="text"
             [(ngModel)]="mem.ricerca.ricerca"
             placeholder="imballo" hidden>
-        <button class="pointer" (click)="findImballo()" hidden>Cerca</button>&nbsp;
+        <button class="pointer" (click)="findImballo()" hidden>Cerca</button>
+        &nbsp;
         <button class="pointer" id="aggiungi" (click)="addImballo()" hidden>Aggiungi</button>
     </span>
     <span *ngIf="state =='aggiungi'">
@@ -31,7 +32,8 @@
             <br>
             <h2 class="colortext">{{msg}}</h2>
             <br>
-            <button class="pointer" id="conferma" (click)="confirm()">Conferma</button>&nbsp;
+            <button class="pointer" id="conferma" (click)="confirm()">Conferma</button>
+            &nbsp;
             <button class="pointer" id="annulla" (click)="close()">Annulla</button>
             <br>
             <br>
@@ -42,13 +44,16 @@
         nuova descrizione: <input type="text"
             [(ngModel)]="mem.imballoMod.imballo.descrizione"
             placeholder="descrizione">
+        &nbsp;
         nuovo costo: <input type="number"
             [(ngModel)]="mem.imballoMod.imballo.costo"
-            placeholder="costo">&nbsp;
+            placeholder="costo">
+        &nbsp;
         <br>
         <h2 class="colortext">{{msg}}</h2>
         <br>
-        <button class="pointer" (click)="confirm()">Conferma modifica</button>&nbsp;
+        <button class="pointer" (click)="confirm()">Conferma modifica</button>
+        &nbsp;
         <button class="pointer" (click)="close()">Annulla</button>
         <br>
         <br>
@@ -84,7 +89,7 @@
     </div>
     <br>
     <br>
-    <table *ngIf="state == 'ricerca' && mem.imballi.length > 0">
+    <table *ngIf="state == 'ricerca' && mem.imballi.length> 0">
         <tr>
             <th>Descrizione</th>
             <th>Costo</th>
@@ -94,7 +99,7 @@
         <tr *ngFor="let i of mem.imballi; index as x">
             <td class="pointer" (click)="view(i, x)">{{i.descrizione}}</td>
             <td class="pointer" (click)="view(i, x)">{{i.costo}}</td>
-            <td><button class="pointer" (click)="updateImballo(i, x)">Modifica</button>&nbsp;</td>
+            <td><button class="pointer" (click)="updateImballo(i, x)">Modifica</button></td>
             <td><button class="pointer" (click)="canRemove(i, x)">Rimuovi</button></td>
         </tr>
     </table>

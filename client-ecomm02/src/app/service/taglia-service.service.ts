@@ -17,86 +17,91 @@ export class TagliaServiceService {
   taglia: TagliaDto = new TagliaDto();
   taglie: Taglia[] = [];
   tagliaMod: TagliaDto = new TagliaDto();
-  tagliaVis : TagliaDto = new TagliaDto()
+  tagliaVis: TagliaDto = new TagliaDto()
   ricerca: RicercaDto = new RicercaDto();
-  associatagliaDto : AssociaTagliaDto = new AssociaTagliaDto();
-
+  associaTagliaDto: AssociaTagliaDto = new AssociaTagliaDto();
   private url = "http://localhost:8080";
 
   constructor(private http: HttpClient, public tokenService: TokenService) { }
 
   addTagliaService() {
     console.log("Siamo in addTaglia e la taglia vale ",
-     this.tagliaMod)
+      this.tagliaMod)
     let o: Observable<TagliaListDto>
-    = this.http.post<TagliaListDto>(
-      this.url + '/add-taglia', this.tagliaMod);
-    o.subscribe(risp => { //this.taglie = risp.taglie;
+      = this.http.post<TagliaListDto>(
+        this.url + '/add-taglia', this.tagliaMod);
+    o.subscribe(risp => {
       this.findTagliaService();
-      this.tokenService.token=risp.token; });
+      this.tokenService.token = risp.token;
+    });
   }
 
   updateTagliaService(tagliaMod: TagliaDto) {
     console.log("In updateTaglia ", tagliaMod);
     let o: Observable<TagliaListDto> =
-     this.http.post<TagliaListDto>(
-       this.url + '/update-taglia', tagliaMod);
-    o.subscribe(risp => { this.findTagliaService();
-      this.tokenService.token=risp.token; });
+      this.http.post<TagliaListDto>(
+        this.url + '/update-taglia', tagliaMod);
+    o.subscribe(risp => {
+      this.findTagliaService();
+      this.tokenService.token = risp.token;
+    });
 
   }
 
-  removeTagliaService(){
+  removeTagliaService() {
     let o: Observable<TagliaListDto> =
-    this.http.post<TagliaListDto>(
-      this.url + '/delete-taglia',this.tagliaMod);
-    o.subscribe(risp => { this.taglie = risp.taglie;
-      this.tokenService.token=risp.token; });
-      console.log("taglia eliminata");
+      this.http.post<TagliaListDto>(
+        this.url + '/delete-taglia', this.tagliaMod);
+    o.subscribe(risp => {
+      this.taglie = risp.taglie;
+      this.tokenService.token = risp.token;
+    });
+    console.log("taglia eliminata");
     return this.taglie;
   }
 
   listaService(): Taglia[] {
     let o: Observable<TagliaListDto> =
-    this.http.post<TagliaListDto>(
-      this.url + '/list-taglia', this.tagliaMod);
-    o.subscribe(risp => { this.taglie = risp.taglie;
-      this.tokenService.token=risp.token; });
+      this.http.post<TagliaListDto>(
+        this.url + '/list-taglia', this.tagliaMod);
+    o.subscribe(risp => {
+      this.taglie = risp.taglie;
+      this.tokenService.token = risp.token;
+    });
     return this.taglie;
   }
 
   findTagliaService() {
-    this.ricerca.token =null;
+    this.ricerca.token = null;
     let o: Observable<TagliaListDto>
-    = this.http.post<TagliaListDto>(
-      this.url + '/find-taglia', this.ricerca);
-    o.subscribe(risp => { this.taglie = risp.taglie;
-      this.tokenService.token=risp.token; });
+      = this.http.post<TagliaListDto>(
+        this.url + '/find-taglia', this.ricerca);
+    o.subscribe(risp => {
+      this.taglie = risp.taglie;
+      this.tokenService.token = risp.token;
+    });
     return this.taglie;
   }
 
   associaTagliaService() {
-    this.associatagliaDto.token = this.tokenService.token;
-  console.log("sto nel servizio associa taglia");
-  let o : Observable<TagliaListDto> = 
-  this.http.post<TagliaListDto>(this.url + "/associa-taglia", this.associatagliaDto);
-  o.subscribe(risp => {
-  this.taglie = risp.taglie;
-  this.tokenService.token=risp.token;
-  })
+    this.associaTagliaDto.token = this.tokenService.token;
+    console.log("sto nel servizio associa taglia");
+    let o: Observable<TagliaListDto> =
+      this.http.post<TagliaListDto>(this.url + "/associa-taglia", this.associaTagliaDto);
+    o.subscribe(risp => {
+      this.taglie = risp.taglie;
+      this.tokenService.token = risp.token;
+    })
   }
 
   dissociaTagliaService() {
-    this.associatagliaDto.token = this.tokenService.token;
-  console.log("sto nel servizio dissocia taglia");
-  let o : Observable<TagliaListDto> = 
-  this.http.post<TagliaListDto>(this.url + "/dissocia-taglia", this.associatagliaDto);
-  o.subscribe(risp => {
-  this.taglie = risp.taglie;
-  this.tokenService.token=risp.token;
-  })
+    this.associaTagliaDto.token = this.tokenService.token;
+    console.log("sto nel servizio dissocia taglia");
+    let o: Observable<TagliaListDto> =
+      this.http.post<TagliaListDto>(this.url + "/dissocia-taglia", this.associaTagliaDto);
+    o.subscribe(risp => {
+      this.taglie = risp.taglie;
+      this.tokenService.token = risp.token;
+    })
   }
-
-
-
 }

@@ -93,6 +93,7 @@ public class TagliaController {
         TagliaDtoList dt = new TagliaDtoList(listaTaglia, t);
         return dt;
     }
+    
     @RequestMapping(value = {"/associa-taglia"})
     @ResponseBody
     public TagliaDtoList associaTaglia(@RequestBody AssociaTagliaDto dto) {
@@ -103,6 +104,7 @@ public class TagliaController {
         TagliaDtoList dtl = new TagliaDtoList(lista, t);
         return dtl;
     }
+    
     @RequestMapping(value = {"/dissocia-taglia"})
     @ResponseBody
     public TagliaDtoList dissociaTaglia(@RequestBody AssociaTagliaDto dto) {
@@ -112,7 +114,5 @@ public class TagliaController {
         List<Taglia> lista = srvTaglia.getAll();
         TagliaDtoList dtl = new TagliaDtoList(lista, t);
         return dtl;
-    }
-    
-    
+    }   
 }

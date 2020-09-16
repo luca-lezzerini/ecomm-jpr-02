@@ -17,7 +17,7 @@ public interface RepImballo extends JpaRepository<Imballo, Long> {
 
     List<Imballo> findByDescrizioneLike(String descrizione);
 
-    List<Imballo> findByDescrizioneLikeOrCostoLike(String string, String string0);
+    List<Imballo> findByDescrizioneLikeOrCostoLike(String ricerca, String ricerca0);
 
     @Query("SELECT i FROM Imballo i WHERE descrizione LIKE :str")
     List<Imballo> findByDescrizione(@Param("str") String str);

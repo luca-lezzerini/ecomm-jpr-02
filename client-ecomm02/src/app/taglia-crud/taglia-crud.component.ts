@@ -10,13 +10,14 @@ import { TagliaServiceService } from '../service/taglia-service.service';
   templateUrl: "./taglia-crud.component.html",
   styleUrls: ["./taglia-crud.component.css"],
 })
+
 export class TagliaCrudComponent implements OnInit {
   state = "ricerca";
   state2 = "";
   tagliaSelezionata: number;
   msg = "";
 
-  constructor(private router: Router, public memT: TagliaServiceService) {}
+  constructor(private router: Router, public memT: TagliaServiceService) { }
 
   ngOnInit(): void {
     this.memT.taglie = this.memT.listaService();
@@ -25,15 +26,14 @@ export class TagliaCrudComponent implements OnInit {
   /* 
      Questo metodo viene chiamato dal bottone aggiungi
      cambia lo state aggiungi
-     azzera campo di ricerca
      svuota messaggio di errore
   */
   addTaglia() {
     this.state = "aggiungi";
     this.state2 = "";
-    this.memT.ricerca.ricerca = "";
     this.msg = "";
   }
+
   /*
     Questo metodo viene chiamato dal bottone modifica
     cambia lo state modifica
@@ -49,6 +49,7 @@ export class TagliaCrudComponent implements OnInit {
     this.memT.tagliaMod.taglia = Object.assign({}, taglia);
     this.msg = "";
   }
+
   /*
      Questo metodo viene chiamato dal bottone rimuovi
      rimuove oggetto dalla tabella 
@@ -60,6 +61,7 @@ export class TagliaCrudComponent implements OnInit {
     this.memT.tagliaMod = new TagliaDto();
     this.state = "ricerca";
   }
+
   /*
      Questo metodo viene chiamato dal bottone ricerca
      -->se il campo ricerca non è vuoto
@@ -76,6 +78,7 @@ export class TagliaCrudComponent implements OnInit {
       this.memT.listaService();
     }
   }
+
   /*
      Questo metodo viene chiamato dal bottone conferma 
     -->se lo state aggiungi
@@ -108,7 +111,7 @@ export class TagliaCrudComponent implements OnInit {
         this.state = "ricerca";
       } else {
         this.state = "aggiungi";
-        this.msg = "riempire tutti i campi!";
+        this.msg = "Riempire tutti i campi!";
       }
     } else if (this.state == "modifica") {
       console.log("Siamo in confirm - modifica");
@@ -121,10 +124,11 @@ export class TagliaCrudComponent implements OnInit {
         this.state = "ricerca";
       } else {
         this.state = "modifica";
-        this.msg = "riempire tutti i campi!";
+        this.msg = "Riempire tutti i campi!";
       }
     }
   }
+
   /* 
     Questo metodo viene chiamato dal bottone chiudi
     ritorna lo state ricerca
@@ -133,6 +137,7 @@ export class TagliaCrudComponent implements OnInit {
     this.state = "ricerca";
     this.memT.tagliaMod = new TagliaDto();
   }
+
   /*
      Questo metodo viene quando viene selezionato un oggetto nella tabella
      -->se lo state non è aggiungi 
@@ -146,6 +151,7 @@ export class TagliaCrudComponent implements OnInit {
       this.memT.tagliaVis = Object.assign({}, t);
     }
   }
+
   /*
      Questo metodo viene chiamato dal bottone elimina 
      serve a prendere l'oggetto da eliminare 

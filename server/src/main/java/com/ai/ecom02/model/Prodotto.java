@@ -30,33 +30,32 @@ public class Prodotto implements Serializable {
     @Column
     private Double prezzo;
     
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(referencedColumnName = "id")
     @JsonIgnoreProperties(value = "prodotti", allowSetters = true)
     private Taglia taglia;
             
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(referencedColumnName = "id")
     @JsonIgnoreProperties(value = "prodotti", allowSetters = true)
     private Imballo imballo;
             
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(referencedColumnName = "id")        
     @JsonIgnoreProperties(value = "prodotti", allowSetters = true)
     private Colore colore;
     
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(referencedColumnName = "id")
     @JsonIgnoreProperties(value = "prodotti", allowSetters = true)
     private Offerta offerta;
     
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(referencedColumnName = "id")
     @JsonIgnoreProperties(value = "prodotti", allowSetters = true)
-    private Spedizione spedizione;
+    private Spedizione spedizione;    
     
-    
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(referencedColumnName = "id")
     @JsonIgnoreProperties(value = "prodotti", allowSetters = true)
     private Categoria categoria;   

@@ -23,20 +23,21 @@ export class AssociaTagliaComponent implements OnInit {
   ngOnInit() {
     this.memT.taglie = this.memT.listaService();
     this.memP.lista();
+    console.log(this.stateVisualizza);
   }
 
   seleziona(prodotto: Prodotto): void {
     this.stateVisualizza = true;
-    this.memT.associatagliaDto.prodotto = Object.assign({}, prodotto);
-    console.log(this.memT.associatagliaDto.prodotto);  
+    this.memT.associaTagliaDto.prodotto = Object.assign({}, prodotto);
+    console.log(this.stateVisualizza);  
     this.memT.listaService();  
     console.log(this.memP.listaProdotti)
   }
 
   associataglia(taglia: Taglia, n: number) {
     this.indexTaglia = n;
-    this.memT.associatagliaDto.taglia = Object.assign({}, taglia);
-    console.log(this.memT.associatagliaDto.taglia);
+    this.memT.associaTagliaDto.taglia = Object.assign({}, taglia);
+    console.log(this.memT.associaTagliaDto.taglia);
     this.memT.associaTagliaService(); 
     window.location.reload();      
     console.log(this.memT.taglie)

@@ -1,6 +1,7 @@
+<h1>Associa TAGLIA</h1>
 <input type="text" [(ngModel)]="ricerca.ricerca" placeholder="Ricerca">
 <button (click)="cercaProdotto()">Cerca</button>
-<h2>prodotto selezionato: {{memT.associatagliaDto.prodotto.descrizione}}</h2>
+<h2>prodotto selezionato: {{memT.associaTagliaDto.prodotto.descrizione}}</h2>
 <table>
     <thead>
         <tr>
@@ -8,36 +9,37 @@
             <th>Descrizione</th>
             <th>Peso</th>
             <th>Prezzo</th>
-
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor=" let item of memP.listaProdotti ">
+        <tr *ngFor="let item of memP.listaProdotti">
             <td>{{item.codice}}</td>
             <td>{{item.descrizione}}</td>
             <td>{{item.peso}}</td>
             <td>{{item.prezzo}}</td>
-
             <td><button (click)="seleziona(item)">SELEZIONA</button></td>
         </tr>
     </tbody>
 </table>
-
-<h2>taglia da associare:</h2>
-<table *ngIf="stateVisualizza == true">
-    <tr>
-        <th>Descrizione</th>
-        <th>Sigla</th>
-        <th>Associa</th>
-    </tr>
-    <tr *ngFor="let i of memT.taglie; index as x">
-        <td>{{i.descrizione}}</td>
-        <td>{{i.sigla}}</td>
-        <td *ngIf="memT.associatagliaDto.prodotto.taglia == null || memT.associatagliaDto.prodotto.taglia.descrizione != i.descrizione; else changeButton">
-            <button class="pointer" (click)="associataglia(i, x)">Associa</button></td>
-        <ng-template #changeButton>
-            <td><button class="pointer" (click)="dissociataglia()">Dissocia</button></td>
-        </ng-template>
-
-    </tr>
-</table>
+<span *ngIf="stateVisualizza == true">
+    <h2>Taglia da associare:</h2>
+    <table>
+        <tr>
+            <th>Descrizione</th>
+            <th>Sigla</th>
+            <th>Associa</th>
+        </tr>
+        <tr *ngFor="let i of memT.taglie; index as x">
+            <td>{{i.descrizione}}</td>
+            <td>{{i.sigla}}</td>
+            <td *ngIf="memT.associaTagliaDto.prodotto.taglia == null ||
+                memT.associaTagliaDto.prodotto.taglia.descrizione !=
+                i.descrizione;
+                else changeButton">
+                <button class="pointer" (click)="associataglia(i, x)">Associa</button></td>
+            <ng-template #changeButton>
+                <td><button class="pointer" (click)="dissociataglia()">Dissocia</button></td>
+            </ng-template>
+        </tr>
+    </table>
+</span>

@@ -1,10 +1,12 @@
 package com.ai.ecom02.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -19,7 +21,7 @@ import javax.persistence.OneToMany;
 public class Imballo implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     @Column
@@ -28,7 +30,8 @@ public class Imballo implements Serializable {
     @Column
     private Double costo;
     
-    @OneToMany(mappedBy = "imballo")
+    @OneToMany(fetch = FetchType.LAZY , mappedBy = "imballo")
+    @JsonIgnoreProperties(value = "imballo", allowSetters = true)
     private List<Prodotto> prodotti = new ArrayList<>();
 
     public Imballo(Long id, String descrizione, Double costo) {

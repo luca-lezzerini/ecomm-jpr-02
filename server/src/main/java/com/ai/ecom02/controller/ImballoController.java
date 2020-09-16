@@ -5,7 +5,6 @@ import com.ai.ecom02.dto.ImballoDto;
 import com.ai.ecom02.dto.ImballoDtoList;
 import com.ai.ecom02.dto.RicercaDto;
 import com.ai.ecom02.model.Imballo;
-import com.ai.ecom02.model.Prodotto;
 import com.ai.ecom02.model.Token;
 import com.ai.ecom02.service.SecurityService;
 import com.ai.ecom02.service.impl.ImballoServiceImpl;
@@ -32,7 +31,7 @@ public class ImballoController {
 
     @Autowired
     ImballoServiceImpl srvImballo;
-    
+
     @Autowired
     ProdottoServiceImpl srvProdotto;
 
@@ -97,14 +96,26 @@ public class ImballoController {
         ImballoDtoList dx = new ImballoDtoList(listaImballo, t);
         return dx;
     }
-    
-    //FIXME cosi non ritorna il token; la lista la puo gestire da solo il client.
+
     @RequestMapping(value = {"/associa-imballo"})
     @ResponseBody
-    public void associaImballo(@RequestBody AssociaImballoDto dto) {
+    public ImballoDtoList associaImballo(@RequestBody AssociaImballoDto dto) {
         Token token = dto.getToken();
         Token t = securityService.retrieveToken(token);
-        srvImballo.associaImballo(dto.getProdotto(), dto.getImballo());   
+        srvImballo.associaImballo(dto.getProdotto(), dto.getImballo());
+        List<Imballo> lista = srvImballo.getAll();
+        ImballoDtoList dtl = new ImballoDtoList(lista, t);
+        return dtl;
     }
 
+    @RequestMapping(value = {"/dissocia-imballo"})
+    @ResponseBody
+    public ImballoDtoList dissociaImballo(@RequestBody AssociaImballoDto dto) {
+        Token token = dto.getToken();
+        Token t = securityService.retrieveToken(token);
+        srvImballo.dissociaImballo(dto.getProdotto());
+        List<Imballo> lista = srvImballo.getAll();
+        ImballoDtoList dtl = new ImballoDtoList(lista, t);
+        return dtl;
+    }
 }

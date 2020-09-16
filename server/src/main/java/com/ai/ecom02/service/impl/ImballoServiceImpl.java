@@ -3,7 +3,6 @@ package com.ai.ecom02.service.impl;
 import com.ai.ecom02.dto.RicercaDto;
 import com.ai.ecom02.model.Imballo;
 import com.ai.ecom02.model.Prodotto;
-import com.ai.ecom02.model.Taglia;
 import com.ai.ecom02.repository.RepImballo;
 import com.ai.ecom02.repository.RepProdotto;
 import java.util.List;
@@ -15,6 +14,7 @@ import com.ai.ecom02.service.ImballoService;
  *
  * @author Francesco
  */
+
 @Service
 public class ImballoServiceImpl implements ImballoService {
 
@@ -61,9 +61,10 @@ public class ImballoServiceImpl implements ImballoService {
         prodotto = repProdotto.getOne(prodotto.getId());
         // aggiorniamo l`associazione lato prodotto
         prodotto.setImballo(imballo);
-        prodotto = repProdotto.save(prodotto);
+        Prodotto pp= repProdotto.save(prodotto);
         // aggiorniamo l`associazione lato taglia
         List<Prodotto> listaP = imballo.getProdotti();
+        listaP.removeIf(x -> (x.getId().equals(pp.getId())));
         listaP.add(prodotto);
         imballo = repImballo.save(imballo);
     }

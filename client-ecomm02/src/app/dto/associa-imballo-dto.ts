@@ -1,9 +1,9 @@
 import { Imballo } from './../model/imballo';
-import { Token } from '@angular/compiler/src/ml_parser/lexer';
 import { Prodotto } from '../model/prodotto';
+import { Token } from './token';
 
 export class AssociaImballoDto {
-    prodotto: Prodotto;
-    imballo: Imballo;
-    token: Token;
+    prodotto: Prodotto = new Prodotto();
+    imballo: Imballo = new Imballo();
+    token: Token = new Token();
 }

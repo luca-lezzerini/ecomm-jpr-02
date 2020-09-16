@@ -22,7 +22,7 @@ import javax.persistence.OneToMany;
 public class Taglia implements Serializable{
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     @Column
@@ -31,7 +31,7 @@ public class Taglia implements Serializable{
     @Column
     private String sigla;
     
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "taglia")
+    @OneToMany(fetch = FetchType.LAZY , mappedBy = "taglia")
     @JsonIgnoreProperties(value = "taglia", allowSetters = true)
     private List<Prodotto> prodotti = new ArrayList<>();
 

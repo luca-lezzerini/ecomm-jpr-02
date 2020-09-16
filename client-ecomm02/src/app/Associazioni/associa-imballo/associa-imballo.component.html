@@ -1,8 +1,7 @@
-
 <h1>Associa IMBALLO</h1>
 <input type="text" [(ngModel)]="ricerca.ricerca" placeholder="Ricerca">
 <button (click)="cercaProdotto()">Cerca</button>
-<h2>prodotto selezionato: {{srvProdotto.prodottoForm.descrizione}}</h2>
+<h2>prodotto selezionato: {{mem.associaImballoDto.prodotto.descrizione}}</h2>
 <table>
     <thead>
         <tr>
@@ -18,7 +17,6 @@
             <td>{{item.descrizione}}</td>
             <td>{{item.peso}}</td>
             <td>{{item.prezzo}}</td>
-            <!-- <td>{{item.imballo.descrizione}}</td> -->
             <td><button (click)="seleziona(item)">SELEZIONA</button></td>
         </tr>
     </tbody>
@@ -28,14 +26,19 @@
     <table>
         <tr>
             <th>Descrizione</th>
-            <th>Sigla</th>
+            <th>Costo</th>
             <th>Associa</th>
         </tr>
-        <tr *ngFor="let i of mem.imballo; index as x">
+        <tr *ngFor="let i of mem.imballi; index as x">
             <td>{{i.descrizione}}</td>
             <td>{{i.costo}}</td>
-            <td *ngIf="mem.associaImballo.prodotto.imballo == null || mem.associaImballo.prodotto.imballo.descrizione != i.descrizione" >
+            <td *ngIf="mem.associaImballoDto.prodotto.imballo == null ||
+                mem.associaImballoDto.prodotto.imballo.descrizione != i.descrizione;
+                else changeButton">
                 <button class="pointer" (click)="associaImballo(i, x)">Associa</button></td>
+                <ng-template #changeButton>
+                    <td><button class="pointer" (click)="dissociaImballo()">Dissocia</button></td>
+                </ng-template>
         </tr>
     </table>
 </span>
