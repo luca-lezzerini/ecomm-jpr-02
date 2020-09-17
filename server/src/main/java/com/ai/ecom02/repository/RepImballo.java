@@ -24,7 +24,7 @@ public interface RepImballo extends JpaRepository<Imballo, Long> {
 
 //    @Query("SELECT i FROM Imballo i WHERE descrizione LIKE :str")
 //    List<Imballo> findByDescrizione(@Param("str") String str);
-    
+     
     @Query("SELECT i FROM Imballo i WHERE descrizione LIKE :str")
     Imballo findByDescrizione(@Param("str") String str);
 
