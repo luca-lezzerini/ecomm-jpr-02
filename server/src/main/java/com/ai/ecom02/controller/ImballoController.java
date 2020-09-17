@@ -92,7 +92,7 @@ public class ImballoController {
     ) {
         Token t = ricerca.getToken();
         t = securityService.retrieveToken(t);
-        List<Imballo> listaImballo = srvImballo.findByDescrizione(ricerca);
+        List<Imballo> listaImballo = srvImballo.findByDescrizioneLike(ricerca);
         ImballoDtoList dx = new ImballoDtoList(listaImballo, t);
         return dx;
     }

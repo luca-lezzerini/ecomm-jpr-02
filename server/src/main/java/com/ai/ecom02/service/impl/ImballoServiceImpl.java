@@ -50,8 +50,12 @@ public class ImballoServiceImpl implements ImballoService {
         return repImballo.save(imballo);
     }
 
-    public List<Imballo> findByDescrizione(RicercaDto ricerca) {
+    public Imballo findByDescrizione(RicercaDto ricerca) {
         return repImballo.findByDescrizione("%" + ricerca.getRicerca() + "%");
+    }
+    
+    public List<Imballo> findByDescrizioneLike(RicercaDto ricerca) {
+        return repImballo.findByDescrizioneLike(ricerca.getRicerca());
     }
 
     @Override
