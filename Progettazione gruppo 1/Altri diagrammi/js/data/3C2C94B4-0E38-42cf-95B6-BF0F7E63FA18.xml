@@ -1,0 +1,8 @@
+tocTab[tocTab.length] = new Array("0.2.3:1", "", "Caso uso Giulio", "EARoot/EA2/EA3/EA93.htm", "180.png", "12", "0", "", "Use Case diagram0","{A99CC148-8B56-4f0c-8899-BEF0E058CD45}");
+tocTab[tocTab.length] = new Array("0.2.3:2", "", "Assegnazione corriere", "EARoot/EA2/EA3/EA96.htm", "7.png", "E233", "0", "", "UseCase0","{A8A2E463-B9EF-4fb7-890A-ED21AAE6E827}");
+tocTab[tocTab.length] = new Array("0.2.3:3", "", "controllo disponibilità prodotto", "EARoot/EA2/EA3/EA97.htm", "7.png", "E231", "0", "", "UseCase0","{574F82BD-3927-4188-AA17-49ED76E730C3}");
+tocTab[tocTab.length] = new Array("0.2.3:4", "", "Corriere", "EARoot/EA2/EA3/EA98.htm", "6.png", "E230", "0", "", "Actor0","{1D0CE7FE-BB34-4418-8D8A-6E2DBDECF65C}");
+tocTab[tocTab.length] = new Array("0.2.3:5", "", "Imballaggio", "EARoot/EA2/EA3/EA99.htm", "7.png", "E232", "0", "", "UseCase0","{43BA07F5-B1C7-484b-82F9-A65061907C92}");
+tocTab[tocTab.length] = new Array("0.2.3:6", "", "Magazzino", "EARoot/EA2/EA3/EA100.htm", "6.png", "E229", "0", "", "Actor0","{AB91A428-DEE9-45f3-B2A9-E8C8B9E6A5EB}");
+tocTab[tocTab.length] = new Array("0.2.3:7", "", "Recapito del pacco ", "EARoot/EA2/EA3/EA101.htm", "7.png", "E234", "0", "", "UseCase0","{46B26B46-D551-48b2-9BF8-DD28F527F65E}");
+tocTab[tocTab.length] = new Array("0.2.3:8", "", "Use Case1", "EARoot/EA2/EA3/EA102.htm", "7.png", "E235", "0", "", "UseCase0","{D7D32392-628F-4efa-839A-97854020ABD2}");

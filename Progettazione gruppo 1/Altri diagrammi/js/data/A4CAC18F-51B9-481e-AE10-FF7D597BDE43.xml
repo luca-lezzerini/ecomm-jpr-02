@@ -1,0 +1,11 @@
+tocTab[tocTab.length] = new Array("0.2.6.2:1", "", "Cliente", "EARoot/EA2/EA6/EA2/EA146.htm", "180.png", "15", "0", "", "Use Case diagram0","{A81772BC-B3BA-4560-82A4-029DA98EE90D}");
+tocTab[tocTab.length] = new Array("0.2.6.2:2", "", "Aggiunta a lista desideri", "EARoot/EA2/EA6/EA2/EA149.htm", "7.png", "E320", "0", "", "UseCase0","{DE2DA3BE-6368-4cbb-B74B-7308D42591C3}");
+tocTab[tocTab.length] = new Array("0.2.6.2:3", "", "Aggiunta al carrello", "EARoot/EA2/EA6/EA2/EA150.htm", "7.png", "E319", "0", "", "UseCase0","{74B71AD8-D17B-479b-8C51-32DEC65BD21A}");
+tocTab[tocTab.length] = new Array("0.2.6.2:4", "", "Cliente", "EARoot/EA2/EA6/EA2/EA151.htm", "6.png", "E254", "0", "", "Actor0","{9D625F66-D267-40e2-8CF9-4ED41B6F1A89}");
+tocTab[tocTab.length] = new Array("0.2.6.2:5", "", "Contattare assistenza", "EARoot/EA2/EA6/EA2/EA152.htm", "7.png", "E321", "0", "", "UseCase0","{E4344FF7-6CA7-4b0c-A1E0-B0730288BC1C}");
+tocTab[tocTab.length] = new Array("0.2.6.2:6", "", "Login", "EARoot/EA2/EA6/EA2/EA153.htm", "7.png", "E317", "0", "", "UseCase0","{8DB2D815-EA55-4ee9-9883-57EDF9886CA7}");
+tocTab[tocTab.length] = new Array("0.2.6.2:7", "", "Ricerca prodotti ", "EARoot/EA2/EA6/EA2/EA154.htm", "7.png", "E318", "0", "", "UseCase0","{DD515B04-8C88-4711-B8E2-650A5D604F69}");
+tocTab[tocTab.length] = new Array("0.2.6.2:8", "", "Richiesta reso", "EARoot/EA2/EA6/EA2/EA155.htm", "7.png", "E255", "0", "", "UseCase0","{D714EA81-2590-4ffd-BC0A-5C4F682E8669}");
+tocTab[tocTab.length] = new Array("0.2.6.2:9", "", "Checkout", "EARoot/EA2/EA6/EA2/EA156.htm", "7.png", "E257", "0", "", "UseCase0","{8CE62632-10F1-4ac7-983E-2984D09FA465}");
+tocTab[tocTab.length] = new Array("0.2.6.2:10", "", "Gestione acquisti", "EARoot/EA2/EA6/EA2/EA157.htm", "7.png", "E258", "0", "", "UseCase0","{8D6495AC-BAE6-43c3-ADA2-42C5F91FD7D7}");
+tocTab[tocTab.length] = new Array("0.2.6.2:11", "", "Richiesta annullamento ordine", "EARoot/EA2/EA6/EA2/EA158.htm", "7.png", "E256", "0", "", "UseCase0","{357B3407-DC4C-423d-BF41-2B1D0DB7EC93}");

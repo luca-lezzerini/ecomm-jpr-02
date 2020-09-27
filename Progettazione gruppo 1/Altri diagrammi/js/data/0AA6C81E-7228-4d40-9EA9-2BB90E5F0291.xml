@@ -1,0 +1,17 @@
+tocTab[tocTab.length] = new Array("0.5:1", "", "Processi", "EARoot/EA5/EA356.htm", "189.png", "5", "0", "", "Analysis diagram0","{0D290E9E-AFD6-48ff-B3B5-9855706E190F}");
+tocTab[tocTab.length] = new Array("0.5:2", "", "«EndEvent» EndEvent1", "EARoot/EA5/EA359.htm", "4C9380A5-0_EndEvent.png", "E84", "0", "", "Event0","{09189CA9-B599-4511-BC59-F05106035A62}");
+tocTab[tocTab.length] = new Array("0.5:3", "", "«Pool» Mail client ", "EARoot/EA5/EA360.htm", "116.png", "E83", "0", "", "ActivityPartition0","{C4060755-4F73-4837-91C1-27E437DD46D2}");
+tocTab[tocTab.length] = new Array("0.5:4", "", "«Message» Message1", "EARoot/EA5/EA361.htm", "4C9380A5-0_Message.png", "E77", "0", "", "Class0","{48A26246-F710-4000-BD94-D636BB91E088}");
+tocTab[tocTab.length] = new Array("0.5:5", "", "«Message» Message2", "EARoot/EA5/EA362.htm", "4C9380A5-0_Message.png", "E79", "0", "", "Class0","{721A84C4-4662-46f4-8D0A-3298173DD09A}");
+tocTab[tocTab.length] = new Array("0.5:6", "", "«OutputSet» OutputSet1", "EARoot/EA5/EA363.htm", "5.png", "E80", "0", "", "Class0","{0D8BA2C6-6148-4f8a-91FC-2577BE86D773}");
+tocTab[tocTab.length] = new Array("0.5:7", "", "«Pool» Pool1", "EARoot/EA5/EA364.htm", "116.png", "E78", "0", "", "ActivityPartition0","{D2943785-E0B0-48a7-8C3E-579B535BDF7E}");
+tocTab[tocTab.length] = new Array("0.5:8", "", "«Pool» Sito Web", "EARoot/EA5/EA365.htm", "116.png", "E82", "0", "", "ActivityPartition0","{E4D644F3-3EA0-4c08-A3A3-19B11247A403}");
+tocTab[tocTab.length] = new Array("0.5:9", "", "«StartEvent» Cliente decide di registrarsi", "EARoot/EA5/EA366.htm", "4C9380A5-0_StartEvent.png", "E73", "E82", "", "Event0","{F792992C-AA6C-44a8-9974-5BA2203FBFD4}");
+tocTab[tocTab.length] = new Array("0.5:10", "", "«StartEvent» Cliente non registrato decide di comprare", "EARoot/EA5/EA367.htm", "4C9380A5-0_StartEvent.png", "E74", "E82", "", "Event0","{3E690132-49BF-47de-BF84-C5C61E5BB52C}");
+tocTab[tocTab.length] = new Array("0.5:11", "", "«Activity» Il portale richiede una mail e password (validi)", "EARoot/EA5/EA368.htm", "4C9380A5-0_Activity.png", "E72", "E82", "", "Activity0","{E8C92D6A-0D47-4224-A6F6-F1FC1AA8D3A3}");
+tocTab[tocTab.length] = new Array("0.5:12", "", "«DataObject» Mail con link di conferma", "EARoot/EA5/EA369.htm", "4C9380A5-0_DataObject.png", "E81", "E82", "", "Artifact0","{B9414C78-225E-4199-A4AB-6321754471C4}");
+tocTab[tocTab.length] = new Array("0.5:13", "", "«Activity» Mostra homepage del sito con cliente loggato", "EARoot/EA5/EA370.htm", "4C9380A5-0_Activity.png", "E87", "E82", "", "Activity0","{FE8CF66F-43F8-446f-8E12-013D34A46BA0}");
+tocTab[tocTab.length] = new Array("0.5:14", "", "«Activity» Richiesta di conferma email", "EARoot/EA5/EA371.htm", "4C9380A5-0_Activity.png", "E76", "E82", "", "Activity0","{7BA713F0-5639-4a3d-8ED4-F747A6CC3A32}");
+tocTab[tocTab.length] = new Array("0.5:15", "", "«Gateway» rispetta i requisiti?", "EARoot/EA5/EA372.htm", "56.png", "E75", "E82", "", "Decision0","{CC066AB4-2A38-4582-96A4-6E005B305CC1}");
+tocTab[tocTab.length] = new Array("0.5:16", "", "«Activity» Cliente apre mail e conferma tramite link", "EARoot/EA5/EA373.htm", "4C9380A5-0_Activity.png", "E85", "E83", "", "Activity0","{51F52A83-51AF-4707-9CBC-DA5936D815DD}");
+tocTab[tocTab.length] = new Array("0.5:17", "", "«EndEvent» Mail Confermata", "EARoot/EA5/EA374.htm", "4C9380A5-0_EndEvent.png", "E86", "E83", "", "Event0","{E0B51BB7-A167-4139-908F-F4A41B0D81D0}");

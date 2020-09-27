@@ -1,0 +1,9 @@
+tocTab[tocTab.length] = new Array("0.2.6.6:1", "", "UffAcquisti", "EARoot/EA2/EA6/EA6/EA200.htm", "180.png", "18", "0", "", "Use Case diagram0","{0078FC3A-2EA5-441f-8F05-A7F4D9C4A78B}");
+tocTab[tocTab.length] = new Array("0.2.6.6:2", "", "Contattare Fornitore", "EARoot/EA2/EA6/EA6/EA203.htm", "7.png", "E280", "0", "", "UseCase0","{464B8AAB-D241-4a4c-A210-3BC6B7F46FD1}");
+tocTab[tocTab.length] = new Array("0.2.6.6:3", "", "Login con privilegi", "EARoot/EA2/EA6/EA6/EA204.htm", "7.png", "E284", "0", "", "UseCase0","{04B16E90-8C15-43c1-A9BD-A3C6869AC56E}");
+tocTab[tocTab.length] = new Array("0.2.6.6:4", "", "Login con privilegi", "EARoot/EA2/EA6/EA6/EA205.htm", "7.png", "E283", "0", "", "UseCase0","{9365CDB8-92AB-46d7-B6E5-11FD5FC78CBD}");
+tocTab[tocTab.length] = new Array("0.2.6.6:5", "", "Ordinazione i prodotti necessari", "EARoot/EA2/EA6/EA6/EA206.htm", "7.png", "E281", "0", "", "UseCase0","{B0278D13-7809-4f07-9AA5-84528D2B803A}");
+tocTab[tocTab.length] = new Array("0.2.6.6:6", "", "Organizzazione anagrafica fornitori", "EARoot/EA2/EA6/EA6/EA207.htm", "7.png", "E286", "0", "", "UseCase0","{1BA846C2-1B6B-48d3-9DE7-A0C832362026}");
+tocTab[tocTab.length] = new Array("0.2.6.6:7", "", "Uff.Acquisti", "EARoot/EA2/EA6/EA6/EA208.htm", "6.png", "E279", "0", "", "Actor0","{4084EF01-564E-4ec8-9D64-496330416436}");
+tocTab[tocTab.length] = new Array("0.2.6.6:8", "", "vedere schede dei fornitori", "EARoot/EA2/EA6/EA6/EA209.htm", "7.png", "E285", "0", "", "UseCase0","{240959EC-2E81-4ed9-82DD-EBA1F7B7A06F}");
+tocTab[tocTab.length] = new Array("0.2.6.6:9", "", "Visualizzare lista di prodotti necessari", "EARoot/EA2/EA6/EA6/EA210.htm", "7.png", "E282", "0", "", "UseCase0","{D56B90A7-3ED3-4fdb-B7A9-492526E21626}");

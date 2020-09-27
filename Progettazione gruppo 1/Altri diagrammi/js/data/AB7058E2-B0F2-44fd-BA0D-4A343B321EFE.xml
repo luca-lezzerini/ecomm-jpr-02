@@ -1,0 +1,9 @@
+tocTab[tocTab.length] = new Array("0.2.5:1", "", "Caso uso Michele", "EARoot/EA2/EA5/EA118.htm", "180.png", "13", "0", "", "Use Case diagram0","{35B2E4D5-ABA6-440b-9A1A-DB29312753B8}");
+tocTab[tocTab.length] = new Array("0.2.5:2", "", "AssCliente", "EARoot/EA2/EA5/EA121.htm", "6.png", "E238", "0", "", "Actor0","{D9B933F9-00E7-4129-9D31-5673F4192F3C}");
+tocTab[tocTab.length] = new Array("0.2.5:3", "", "Cliente", "EARoot/EA2/EA5/EA122.htm", "6.png", "E236", "0", "", "Actor0","{DC22C4D7-4B47-4d45-B9EC-0981D1720EED}");
+tocTab[tocTab.length] = new Array("0.2.5:4", "", "Contatta magazziniere", "EARoot/EA2/EA5/EA123.htm", "7.png", "E242", "0", "", "UseCase0","{5E0F2CF5-3A34-4bbc-8CA6-8ADCC9FDA02F}");
+tocTab[tocTab.length] = new Array("0.2.5:5", "", "Magazziniere", "EARoot/EA2/EA5/EA124.htm", "6.png", "E241", "0", "", "Actor0","{4967B51E-58A0-4602-9063-E7E1C65250EE}");
+tocTab[tocTab.length] = new Array("0.2.5:6", "", "Organizza imballaggio reso", "EARoot/EA2/EA5/EA125.htm", "7.png", "E243", "0", "", "UseCase0","{8B7FC416-4B2E-4e9f-9690-75BEE7444C53}");
+tocTab[tocTab.length] = new Array("0.2.5:7", "", "Presa carico richiesta reso", "EARoot/EA2/EA5/EA126.htm", "7.png", "E239", "0", "", "UseCase0","{3E5864F3-579C-4b82-A8AE-1C120FA991D9}");
+tocTab[tocTab.length] = new Array("0.2.5:8", "", "richiesta reso", "EARoot/EA2/EA5/EA127.htm", "7.png", "E237", "0", "", "UseCase0","{B9C8AC18-E171-48b9-91B1-6844B97AE57D}");
+tocTab[tocTab.length] = new Array("0.2.5:9", "", "Use Case1", "EARoot/EA2/EA5/EA128.htm", "7.png", "E240", "0", "", "UseCase0","{0F46302B-7211-415c-9145-6A8D8F999672}");

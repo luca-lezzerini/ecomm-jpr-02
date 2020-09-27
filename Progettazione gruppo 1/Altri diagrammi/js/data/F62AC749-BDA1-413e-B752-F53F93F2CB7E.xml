@@ -1,0 +1,6 @@
+tocTab[tocTab.length] = new Array("0.2.6.1", "1", "AssClienti", "EARoot/EA2/EA6/EA1/EA138.htm", "4.png", "", "", "{092A5F04-1D0F-43c8-8EFE-67900456A435}", "Package");
+tocTab[tocTab.length] = new Array("0.2.6.2", "1", "Cliente", "EARoot/EA2/EA6/EA2/EA148.htm", "4.png", "", "", "{A4CAC18F-51B9-481e-AE10-FF7D597BDE43}", "Package");
+tocTab[tocTab.length] = new Array("0.2.6.3", "1", "Magazziniere", "EARoot/EA2/EA6/EA3/EA161.htm", "4.png", "", "", "{024A9446-9F83-4422-BDDE-ECA0AB8618E4}", "Package");
+tocTab[tocTab.length] = new Array("0.2.6.4", "1", "RespCatalogo", "EARoot/EA2/EA6/EA4/EA180.htm", "4.png", "", "", "{2820DBC0-DE8E-4c4d-818F-88CAF5AF0864}", "Package");
+tocTab[tocTab.length] = new Array("0.2.6.5", "1", "RespOrdini", "EARoot/EA2/EA6/EA5/EA193.htm", "4.png", "", "", "{F03131A8-BB31-455d-8587-D8B027038E55}", "Package");
+tocTab[tocTab.length] = new Array("0.2.6.6", "1", "UffAcquisti", "EARoot/EA2/EA6/EA6/EA202.htm", "4.png", "", "", "{F7F66327-886C-43a1-B5B5-13E74E5259F0}", "Package");

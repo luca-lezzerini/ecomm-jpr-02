@@ -1,0 +1,7 @@
+tocTab[tocTab.length] = new Array("0.2.6.5:1", "", "RespOrdini", "EARoot/EA2/EA6/EA5/EA191.htm", "180.png", "19", "0", "", "Use Case diagram0","{F40C5094-CBCC-4825-A0CC-9A4FBBE32F9E}");
+tocTab[tocTab.length] = new Array("0.2.6.5:2", "", "Login con privilegi", "EARoot/EA2/EA6/EA5/EA194.htm", "7.png", "E314", "0", "", "UseCase0","{DC381946-FCBE-4f41-8967-76E4A4E2CAEE}");
+tocTab[tocTab.length] = new Array("0.2.6.5:3", "", "Annullamento ordine", "EARoot/EA2/EA6/EA5/EA195.htm", "7.png", "E292", "0", "", "UseCase0","{93ACE144-D279-4309-A7C9-10ADFAFA10E9}");
+tocTab[tocTab.length] = new Array("0.2.6.5:4", "", "Autorizzazione ordine", "EARoot/EA2/EA6/EA5/EA196.htm", "7.png", "E294", "0", "", "UseCase0","{E27055BC-ED40-4e49-A0B2-036D87F5B38B}");
+tocTab[tocTab.length] = new Array("0.2.6.5:5", "", "Comunicazione riguardante l&#39;ordine per il magazziniere", "EARoot/EA2/EA6/EA5/EA197.htm", "7.png", "E293", "0", "", "UseCase0","{47BAE50F-F388-40bc-B50C-89AD2D8A7F86}");
+tocTab[tocTab.length] = new Array("0.2.6.5:6", "", "Gestione ordine", "EARoot/EA2/EA6/EA5/EA198.htm", "7.png", "E295", "0", "", "UseCase0","{2B557619-9F22-4e8b-A6D5-CB7635FB120A}");
+tocTab[tocTab.length] = new Array("0.2.6.5:7", "", "Resp. ordini", "EARoot/EA2/EA6/EA5/EA199.htm", "6.png", "E291", "0", "", "Actor0","{47F5450D-5DA1-4386-95FB-FD53DF92DA86}");

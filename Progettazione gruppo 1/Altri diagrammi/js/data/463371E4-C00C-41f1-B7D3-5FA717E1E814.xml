@@ -1,0 +1,11 @@
+tocTab[tocTab.length] = new Array("0.1:1", "", "Analisi Contesto Interno", "EARoot/EA1/EA7.htm", "184.png", "1", "0", "", "Collaboration diagram0","{9596D14F-E5AF-4145-A1B7-EC1E280598A3}");
+tocTab[tocTab.length] = new Array("0.1:2", "", "AssistenzaClienti", "EARoot/EA1/EA10.htm", "25.png", "E7", "0", "", "Object0","{49C5AFE7-08B9-4d1d-9EE5-AB5F52A712CE}");
+tocTab[tocTab.length] = new Array("0.1:3", "", "Carrello", "EARoot/EA1/EA11.htm", "25.png", "E12", "0", "", "Object0","{76D3EC8A-2C55-41be-9FC8-52EC2FAE1A35}");
+tocTab[tocTab.length] = new Array("0.1:4", "", "GestioneMarketing", "EARoot/EA1/EA12.htm", "25.png", "E10", "0", "", "Object0","{2D3BC0E8-7F6B-4339-9C03-66C79E00CC52}");
+tocTab[tocTab.length] = new Array("0.1:5", "", "GestioniRecensioni", "EARoot/EA1/EA13.htm", "25.png", "E9", "0", "", "Object0","{23F30573-5BA1-49d4-A4A8-36AC16006E83}");
+tocTab[tocTab.length] = new Array("0.1:6", "", "GestorePagamenti", "EARoot/EA1/EA14.htm", "25.png", "E13", "0", "", "Object0","{ACC7184B-F40A-45d4-A6D3-9F348963A631}");
+tocTab[tocTab.length] = new Array("0.1:7", "", "Magazzino", "EARoot/EA1/EA15.htm", "25.png", "E6", "0", "", "Object0","{62477DB0-54F5-4a59-A99F-547C20EBCFDC}");
+tocTab[tocTab.length] = new Array("0.1:8", "", "ManutenzioneSito", "EARoot/EA1/EA16.htm", "25.png", "E11", "0", "", "Object0","{06F319F6-3315-4e36-AE2C-C6E0A564FCE3}");
+tocTab[tocTab.length] = new Array("0.1:9", "", "«boundary» Object1", "EARoot/EA1/EA17.htm", "25.png", "E3", "0", "", "Object0","{9F51849E-E085-4da4-8B18-2495BD87D8EB}");
+tocTab[tocTab.length] = new Array("0.1:10", "", "Portale", "EARoot/EA1/EA18.htm", "25.png", "E4", "0", "", "Object0","{52635F67-257D-4ac3-B7A0-9236CAA57A1B}");
+tocTab[tocTab.length] = new Array("0.1:11", "", "UfficioAmministrazione", "EARoot/EA1/EA20.htm", "25.png", "E8", "0", "", "Object0","{4C10353A-39C8-497a-8CAA-C9C5C86FA15C}");

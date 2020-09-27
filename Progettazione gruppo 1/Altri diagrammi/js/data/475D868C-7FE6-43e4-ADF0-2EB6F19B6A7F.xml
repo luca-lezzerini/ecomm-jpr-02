@@ -1,0 +1,5 @@
+tocTab[tocTab.length] = new Array("0.1", "1", "Analisi Contesto Interno", "EARoot/EA1/EA9.htm", "4.png", "", "", "{463371E4-C00C-41f1-B7D3-5FA717E1E814}", "Package");
+tocTab[tocTab.length] = new Array("0.2", "1", "Casi d&#39;uso", "EARoot/EA2/EA21.htm", "4.png", "", "", "{E22E4740-3D52-48ea-80BC-E21F1DB91F40}", "Package");
+tocTab[tocTab.length] = new Array("0.3", "1", "Collaborazione", "EARoot/EA3/EA253.htm", "4.png", "", "", "{9BF96ADE-8319-42d6-A57C-CF2C236731ED}", "Package");
+tocTab[tocTab.length] = new Array("0.4", "1", "Coreografie", "EARoot/EA4/EA299.htm", "4.png", "", "", "{C88804AD-A7CB-4dc6-A8EE-7DBBFC21C685}", "Package");
+tocTab[tocTab.length] = new Array("0.5", "1", "Processi - Login", "EARoot/EA5/EA358.htm", "4.png", "", "", "{0AA6C81E-7228-4d40-9EA9-2BB90E5F0291}", "Package");

@@ -1,0 +1,17 @@
+tocTab[tocTab.length] = new Array("0.2.6.3:1", "", "Magazziniere", "EARoot/EA2/EA6/EA3/EA159.htm", "180.png", "17", "0", "", "Use Case diagram0","{E1F95E13-8E06-47b0-A8F8-A6C66298B527}");
+tocTab[tocTab.length] = new Array("0.2.6.3:2", "", "Aggiunta prodotto di cui è stato effettuato un reso", "EARoot/EA2/EA6/EA3/EA162.htm", "7.png", "E316", "0", "", "UseCase0","{7F5AFCFD-47CA-4fe8-BB49-26321810CBB9}");
+tocTab[tocTab.length] = new Array("0.2.6.3:3", "", "Assegnazione corriere", "EARoot/EA2/EA6/EA3/EA163.htm", "7.png", "E276", "0", "", "UseCase0","{D67C375E-79D1-4144-AE26-7FC6903C94B6}");
+tocTab[tocTab.length] = new Array("0.2.6.3:4", "", "Conferma l&#39;arrivo dell ordine cliente", "EARoot/EA2/EA6/EA3/EA164.htm", "7.png", "E326", "0", "", "UseCase0","{BA11316E-3AF0-4ddc-982F-B2DE32954129}");
+tocTab[tocTab.length] = new Array("0.2.6.3:5", "", "Conferma l&#39;arrivo dell ordine fornitore", "EARoot/EA2/EA6/EA3/EA165.htm", "7.png", "E277", "0", "", "UseCase0","{3B1CC829-4906-4937-BD14-4D212FF99A3D}");
+tocTab[tocTab.length] = new Array("0.2.6.3:6", "", "Controllo disponibilità prodotto", "EARoot/EA2/EA6/EA3/EA166.htm", "7.png", "E274", "0", "", "UseCase0","{DD319419-F69B-4d85-A758-34982BD270F7}");
+tocTab[tocTab.length] = new Array("0.2.6.3:7", "", "Imballaggio", "EARoot/EA2/EA6/EA3/EA167.htm", "7.png", "E275", "0", "", "UseCase0","{B1CAF617-5DD3-41b1-A18C-5725539BE5AD}");
+tocTab[tocTab.length] = new Array("0.2.6.3:8", "", "Login Privilegiato", "EARoot/EA2/EA6/EA3/EA168.htm", "7.png", "E315", "0", "", "UseCase0","{4260E2BC-6BC0-4237-91F3-31B9C4239151}");
+tocTab[tocTab.length] = new Array("0.2.6.3:9", "", "Magazziniere", "EARoot/EA2/EA6/EA3/EA169.htm", "6.png", "E272", "0", "", "Actor0","{B313B6BA-0B73-4eaa-A8B3-22E303A8C588}");
+tocTab[tocTab.length] = new Array("0.2.6.3:10", "", "Magazziniere", "EARoot/EA2/EA6/EA3/EA170.htm", "6.png", "E270", "0", "", "Actor0","{CA909E9B-1477-400d-9E26-1D369C474B5C}");
+tocTab[tocTab.length] = new Array("0.2.6.3:11", "", "Organizza imballaggio reso", "EARoot/EA2/EA6/EA3/EA171.htm", "7.png", "E271", "0", "", "UseCase0","{CC5738CD-B9DC-4468-9B96-89B35684E432}");
+tocTab[tocTab.length] = new Array("0.2.6.3:12", "", "Organizza imballaggio reso", "EARoot/EA2/EA6/EA3/EA172.htm", "7.png", "E273", "0", "", "UseCase0","{8AD84515-89E4-453a-8BE8-0C61E221E71B}");
+tocTab[tocTab.length] = new Array("0.2.6.3:13", "", "Aggiornamento scorte", "EARoot/EA2/EA6/EA3/EA173.htm", "7.png", "E269", "0", "", "UseCase0","{F38A4051-E7DA-4f24-8B8E-1F73946F6436}");
+tocTab[tocTab.length] = new Array("0.2.6.3:14", "", "Aggiunta prodotto facente parte di un ordine annullato", "EARoot/EA2/EA6/EA3/EA174.htm", "7.png", "E266", "0", "", "UseCase0","{33ACC454-844F-4605-9AE0-932C31BE6302}");
+tocTab[tocTab.length] = new Array("0.2.6.3:15", "", "Gestione prodotti in magazzino", "EARoot/EA2/EA6/EA3/EA175.htm", "7.png", "E267", "0", "", "UseCase0","{03516A88-02F4-47fa-A400-8B543728B82D}");
+tocTab[tocTab.length] = new Array("0.2.6.3:16", "", "Magazziniere", "EARoot/EA2/EA6/EA3/EA176.htm", "6.png", "E265", "0", "", "Actor0","{B45151CF-50AE-4b93-A1D5-F1C6F5D535F1}");
+tocTab[tocTab.length] = new Array("0.2.6.3:17", "", "Rimozione prodotto facente parte di un ordine confermato", "EARoot/EA2/EA6/EA3/EA177.htm", "7.png", "E268", "0", "", "UseCase0","{79E245DE-0A96-4dfd-BA96-94E8155A9FFE}");

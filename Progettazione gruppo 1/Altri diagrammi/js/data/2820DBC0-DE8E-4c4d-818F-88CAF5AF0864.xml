@@ -1,0 +1,11 @@
+tocTab[tocTab.length] = new Array("0.2.6.4:1", "", "RespCatalogo", "EARoot/EA2/EA6/EA4/EA178.htm", "180.png", "23", "0", "", "Use Case diagram0","{82DA3A99-9E2D-4ce4-B067-B7EC28DD8F56}");
+tocTab[tocTab.length] = new Array("0.2.6.4:2", "", "Inserimento pubblicità dei prodotti ", "EARoot/EA2/EA6/EA4/EA181.htm", "7.png", "E308", "0", "", "UseCase0","{C83E4ADF-948A-466e-A389-290B7383DA3F}");
+tocTab[tocTab.length] = new Array("0.2.6.4:3", "", "Login con privilegi", "EARoot/EA2/EA6/EA4/EA182.htm", "7.png", "E307", "0", "", "UseCase0","{B798050A-0D23-4455-ACE1-49267257F5E0}");
+tocTab[tocTab.length] = new Array("0.2.6.4:4", "", "Modifica o aggiornamento  scheda prodotto (dati ed immagini)", "EARoot/EA2/EA6/EA4/EA183.htm", "7.png", "E323", "0", "", "UseCase0","{C0E050B8-6562-4c81-848C-474B23B43741}");
+tocTab[tocTab.length] = new Array("0.2.6.4:5", "", "Modificare aggiornare la scheda prodotto (dati ed immagini)", "EARoot/EA2/EA6/EA4/EA184.htm", "7.png", "E310", "0", "", "UseCase0","{306BDB72-8BC6-4cbc-A5AE-148E31E9BE99}");
+tocTab[tocTab.length] = new Array("0.2.6.4:6", "", "Organizzazione catalogo", "EARoot/EA2/EA6/EA4/EA185.htm", "7.png", "E313", "0", "", "UseCase0","{FBEAE5E7-39E8-4bb7-893E-B36D0461B318}");
+tocTab[tocTab.length] = new Array("0.2.6.4:7", "", "Registrazione un nuovo prodotto", "EARoot/EA2/EA6/EA4/EA186.htm", "7.png", "E311", "0", "", "UseCase0","{42AA7A7E-C290-41c3-B3B3-57A9E197390A}");
+tocTab[tocTab.length] = new Array("0.2.6.4:8", "", "RespCatalogo", "EARoot/EA2/EA6/EA4/EA187.htm", "6.png", "E306", "0", "", "Actor0","{59FE9111-8D2C-45d2-8784-E98EF192BE06}");
+tocTab[tocTab.length] = new Array("0.2.6.4:9", "", "Visualizzazione catalogo", "EARoot/EA2/EA6/EA4/EA188.htm", "7.png", "E312", "0", "", "UseCase0","{2DD05946-0548-4570-90BC-41BB3040AF23}");
+tocTab[tocTab.length] = new Array("0.2.6.4:10", "", "Visualizzazione le schede prodotto", "EARoot/EA2/EA6/EA4/EA189.htm", "7.png", "E309", "0", "", "UseCase0","{7F6D703E-DE0C-457a-9455-8B0260B838AF}");
+tocTab[tocTab.length] = new Array("0.2.6.4:11", "", "Visualizzazione le schede prodotto", "EARoot/EA2/EA6/EA4/EA190.htm", "7.png", "E322", "0", "", "UseCase0","{060ACBEB-C493-4191-8337-D4E33AFC16A3}");

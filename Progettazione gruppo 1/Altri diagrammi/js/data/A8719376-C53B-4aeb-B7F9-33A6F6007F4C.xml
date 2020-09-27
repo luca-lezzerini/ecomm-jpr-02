@@ -1,0 +1,13 @@
+tocTab[tocTab.length] = new Array("0.2.4:1", "", "Caso uso Marco", "EARoot/EA2/EA4/EA103.htm", "180.png", "11", "0", "", "Use Case diagram0","{7B164112-347F-4d01-8D8F-9FF82D750C7A}");
+tocTab[tocTab.length] = new Array("0.2.4:2", "", "Inserire pubblicità dei prodotti ", "EARoot/EA2/EA4/EA106.htm", "7.png", "E223", "0", "", "UseCase0","{F5A94FD5-EE98-40e9-988C-1191CCB5795F}");
+tocTab[tocTab.length] = new Array("0.2.4:3", "", "Login con privilegi", "EARoot/EA2/EA4/EA107.htm", "7.png", "E222", "0", "", "UseCase0","{79EECD85-1AFB-47ce-83DB-D350F0FEDB1C}");
+tocTab[tocTab.length] = new Array("0.2.4:4", "", "Login con privilegi", "EARoot/EA2/EA4/EA108.htm", "7.png", "E218", "0", "", "UseCase0","{298ACA78-E61F-405d-B50E-7563AF1D468B}");
+tocTab[tocTab.length] = new Array("0.2.4:5", "", "Modificare aggiornare la scheda prodotto (dati ed immagini)", "EARoot/EA2/EA4/EA109.htm", "7.png", "E225", "0", "", "UseCase0","{4BD82242-9F2C-423e-81AD-1B12B16F8C3E}");
+tocTab[tocTab.length] = new Array("0.2.4:6", "", "Modificare e aggiungere", "EARoot/EA2/EA4/EA110.htm", "7.png", "E220", "0", "", "UseCase0","{E0D22E2F-B9A8-470b-B267-F0483B829059}");
+tocTab[tocTab.length] = new Array("0.2.4:7", "", "Organizzare il catalogo", "EARoot/EA2/EA4/EA111.htm", "7.png", "E228", "0", "", "UseCase0","{24326F70-BBBF-41ca-AAD2-4439E16BB3D2}");
+tocTab[tocTab.length] = new Array("0.2.4:8", "", "Registrare un nuovo prodotto", "EARoot/EA2/EA4/EA112.htm", "7.png", "E226", "0", "", "UseCase0","{485CDACD-EFB0-45bd-B1A2-729C75C26132}");
+tocTab[tocTab.length] = new Array("0.2.4:9", "", "RespAcquisti", "EARoot/EA2/EA4/EA113.htm", "6.png", "E217", "0", "", "Actor0","{2D74ABD4-459F-433b-9BDF-1BC4442AD5AB}");
+tocTab[tocTab.length] = new Array("0.2.4:10", "", "RespCatalogo", "EARoot/EA2/EA4/EA114.htm", "6.png", "E221", "0", "", "Actor0","{2B38A137-6B7C-437f-A92C-4005B5CEE6CC}");
+tocTab[tocTab.length] = new Array("0.2.4:11", "", "Vedere le schede prodotto", "EARoot/EA2/EA4/EA115.htm", "7.png", "E224", "0", "", "UseCase0","{8E2B5FCA-EF34-4ba5-BB0F-1A2A8392987C}");
+tocTab[tocTab.length] = new Array("0.2.4:12", "", "vedere schede dei fornitori", "EARoot/EA2/EA4/EA116.htm", "7.png", "E219", "0", "", "UseCase0","{4CF23CA5-CA5C-4543-B698-A8FA1D5E0975}");
+tocTab[tocTab.length] = new Array("0.2.4:13", "", "Visionare catalogo", "EARoot/EA2/EA4/EA117.htm", "7.png", "E227", "0", "", "UseCase0","{66B27297-EA85-4f36-9057-4DECE5D5B7C7}");
