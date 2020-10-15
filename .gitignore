@@ -5,3 +5,4 @@ server/nbactions.xml
 server/src/main/resources/application.properties
 server/src/main/resources/application.properties
 *.properties
+.DS_Store
