@@ -8,17 +8,14 @@
 <!-- Form dati per aggiungi e modifica -->
 <div class="check-element animate-show-hide" *ngIf="aggiungiState || modificaState || visualizzaState">
     <h3>Form dati</h3>
-    <input type="text" [readonly]="disabilitaDescrizione" [(ngModel)]="mem.categTemp.descrizione"
-        placeholder="descrizione" (click)="disabilitaDesc()">
+    <input type="text" [readonly]="disabilitaDescrizione" [(ngModel)]="mem.categTemp.descrizione" placeholder="descrizione" (click)="disabilitaDesc()">
     <button (click)="conferma()" [hidden]="nascondiButton">Conferma</button>
     <button (click)="annulla()" [hidden]="nascondiButton">Annulla</button>
     <p [hidden]="msgCategoriaNonValida">Digitare una categoria valida</p>
 </div>
+<br> Ho trovato {{mem.numeroTotaleElementi}} risultati
 <br>
-Ho trovato {{mem.numeroTotaleElementi}} risultati
-<br>
-<button *ngIf="mem.paginaCorrente > 1" (click)="paginaPrima()">-</button>
-{{mem.paginaCorrente}}
+<button *ngIf="mem.paginaCorrente > 1" (click)="paginaPrima()">-</button> Pagina {{mem.paginaCorrente}}
 <button *ngIf="mem.paginaCorrente < mem.numeroTotalePagine" (click)="paginaDopo()">+</button>
 <div *ngIf="tabellaState">
     <table *ngIf="mem.categorie.length > 0">

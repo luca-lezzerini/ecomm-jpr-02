@@ -45,6 +45,7 @@ export class CategoriaCRUDComponent implements OnInit {
     this.nascondiButton = false;
     this.disabilitaDescrizione = false;
     this.mem.categTemp = new Categoria();
+    this.mem.lista();
   }
 
   conferma() {

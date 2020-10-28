@@ -37,7 +37,8 @@ export class CategoriaServiceService {
     o.subscribe(risp => {
       this.categorie = risp.listaCategoriaDto;
       this.tokenSrv.token = risp.token;
-    }); //inietto il token e dopo il ;
+    });
+    this.lista(); //inietto il token e dopo il ;
     // }
   }
 
@@ -95,6 +96,7 @@ export class CategoriaServiceService {
     o.subscribe(risp => { 
       this.categorie = risp.listaCategoriaDto; 
       this.tokenSrv.token = risp.token; })
+    this.lista();
     return this.categorie
   }
 }
