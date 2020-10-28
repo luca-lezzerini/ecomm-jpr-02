@@ -40,29 +40,19 @@
         </div>
     </span>
     <div *ngIf="state == 'modifica'" class="box">
-        <br>
-        nuova descrizione: <input type="text"
-            [(ngModel)]="mem.imballoMod.imballo.descrizione"
-            placeholder="descrizione">
-        &nbsp;
-        nuovo costo: <input type="number"
-            [(ngModel)]="mem.imballoMod.imballo.costo"
-            placeholder="costo">
-        &nbsp;
+        <br> nuova descrizione: <input type="text" [(ngModel)]="mem.imballoMod.imballo.descrizione" placeholder="descrizione"> &nbsp; nuovo costo: <input type="number" [(ngModel)]="mem.imballoMod.imballo.costo" placeholder="costo"> &nbsp;
         <br>
         <h2 class="colortext">{{msg}}</h2>
         <br>
-        <button class="pointer" (click)="confirm()">Conferma modifica</button>
-        &nbsp;
+        <button class="pointer" (click)="confirm()">Conferma modifica</button> &nbsp;
         <button class="pointer" (click)="close()">Annulla</button>
         <br>
         <br>
     </div>
     <div *ngIf="state == 'delete'" class="box">
-        <h2>Eliminare {{mem.imballoMod.imballo.descrizione}}, €
-            {{mem.imballoMod.imballo.costo}}?</h2>
-        <button class="pointer" (click)="removeImballo(mem.imballoMod.id)">Conferma</button>
-        &nbsp;
+        <h2>Eliminare {{mem.imballoMod.imballo.descrizione}}, € {{mem.imballoMod.imballo.costo}}?
+        </h2>
+        <button class="pointer" (click)="removeImballo(mem.imballoMod.id)">Conferma</button> &nbsp;
         <button class="pointer" (click)="close()">Annulla</button>
         <br>
         <br>
@@ -89,7 +79,7 @@
     </div>
     <br>
     <br>
-    <table *ngIf="state == 'ricerca' && mem.imballi.length> 0">
+    <table *ngIf="state == 'ricerca' && mem.imballi.length != 0">
         <tr>
             <th>Descrizione</th>
             <th>Costo</th>

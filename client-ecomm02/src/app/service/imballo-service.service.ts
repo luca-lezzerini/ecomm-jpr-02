@@ -40,8 +40,9 @@ export class ImballoServiceService {
   }
 
   listaImballoService(): Imballo[] {
-    this.imballoMod.token = this.tokenService.token;
-    let o: Observable<ImballoListDto> = this.http.post<ImballoListDto>(this.url + "/list-imballo", this.imballoMod)
+    //this.imballoMod.token = this.tokenService.token;
+    let o: Observable<ImballoListDto> = this.http.post<ImballoListDto>(
+      this.url + "/list-imballo", this.imballoMod);
     o.subscribe(risp => {
       this.imballi = risp.imballi;
       this.tokenService.token = risp.token;
@@ -70,6 +71,7 @@ export class ImballoServiceService {
       this.findImballoService();
       this.tokenService.token = risp.token;
     });
+    this.imballi = this.listaImballoService();
   }
 
   removeImballoService() {
