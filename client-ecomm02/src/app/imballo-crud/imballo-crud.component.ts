@@ -86,28 +86,26 @@ export class ImballoCrudComponent implements OnInit {
     if (this.state == "aggiungi") {
       console.log(this.mem.imballoMod);
       if (
-        this.mem.imballoMod.imballo.descrizione && 
-        this.mem.imballoMod.imballo.costo
+        this.mem.imballoMod.imballo.descrizione 
       ) {
         this.mem.addImballoService();
         this.mem.imballoMod = new ImballoDto();
         this.state = "ricerca";
       } else {
         this.state = "aggiungi";
-        this.msg = "Riempire tutti i campi!";
+        this.msg = "Riempire il campo descrizione!";
       }
     } else if (this.state == "modifica") {
       console.log("Siamo in confirm - modifica");
       if (
-        this.mem.imballoMod.imballo.descrizione && 
-        this.mem.imballoMod.imballo.costo
+        this.mem.imballoMod.imballo.descrizione 
       ) {
         this.mem.updateImballoService(this.mem.imballoMod);
         this.mem.imballoMod = new ImballoDto();
         this.state = "ricerca";
       } else {
         this.state = "modifica";
-        this.msg = "Riempire tutti i campi!";
+        this.msg = "Riempire il campo descrizione!";
       }
     }
   }
