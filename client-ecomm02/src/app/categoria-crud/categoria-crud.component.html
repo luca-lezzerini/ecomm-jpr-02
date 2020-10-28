@@ -13,12 +13,12 @@
     <button (click)="annulla()" [hidden]="nascondiButton">Annulla</button>
     <p [hidden]="msgCategoriaNonValida">Digitare una categoria valida</p>
 </div>
-<br> Ho trovato {{mem.numeroTotaleElementi}} risultati
-<br>
-<button *ngIf="mem.paginaCorrente > 1" (click)="paginaPrima()">-</button> Pagina {{mem.paginaCorrente}}
-<button *ngIf="mem.paginaCorrente < mem.numeroTotalePagine" (click)="paginaDopo()">+</button>
 <div *ngIf="tabellaState">
     <table *ngIf="mem.categorie.length > 0">
+        <br> Ho trovato {{mem.categorie.length}} risultati
+        <br>
+        <button *ngIf="mem.paginaCorrente > 1" (click)="paginaPrima()">-</button> Pagina {{mem.paginaCorrente}}
+        <button *ngIf="mem.paginaCorrente < mem.numeroTotalePagine" (click)="paginaDopo()">+</button>
         <tr>
             <th style="display:none;">ID</th>
             <th><button (click)="sortDescrizione()">Descrizione</button></th>
