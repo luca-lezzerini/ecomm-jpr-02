@@ -5,8 +5,8 @@
     <button (click)="cercaProdotto()">Cerca</button>
 </div>
 <br>
-<h3 *ngIf="associaStato">Spedizione selezionata:{{memsped.prodottoSelezionato.codice}} -
-    {{memsped.prodottoSelezionato.nome}}</h3>
+<h3 *ngIf="associaStato">Spedizione selezionata:{{memsped.prodottoSelezionato.codice}} - {{memsped.prodottoSelezionato.nome}}
+</h3>
 <table *ngIf="srvProdotto.listaProdotti.length > 0">
     <thead>
         <tr>
@@ -20,8 +20,8 @@
         <tr *ngFor=" let item of srvProdotto.listaProdotti ">
             <td>{{item.codice}}</td>
             <td>{{item.descrizione}}</td>
-            <td>{{item.peso}}kg</td>
-            <td>{{item.prezzo}}€</td>
+            <td>{{item.peso}} kg</td>
+            <td>€ {{item.prezzo}}</td>
             <td><button (click)="seleziona(item)">Seleziona</button></td>
         </tr>
     </tbody>
@@ -37,10 +37,10 @@
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor = "let sped of meme.spedizioni; index as i">
+        <tr *ngFor="let sped of meme.spedizioni; index as i">
             <td>{{sped.codice}}</td>
             <td>{{sped.nome}}</td>
-            <td *ngIf = "memsped.prodottoSelezionato.spedizione == null || memsped.prodottoSelezionato.spedizione.id != sped.id; else visibile">
+            <td *ngIf="memsped.prodottoSelezionato.spedizione == null || memsped.prodottoSelezionato.spedizione.id != sped.id; else visibile">
                 <button (click)="associa(sped)">Associa</button>
             </td>
             <ng-template #visibile>

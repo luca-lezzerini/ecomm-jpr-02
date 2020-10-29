@@ -20,7 +20,7 @@
         <tr *ngFor=" let item of srvProdotto.listaProdotti ">
             <td>{{item.codice}}</td>
             <td>{{item.descrizione}}</td>
-            <td>{{item.peso}}kg</td>
+            <td>{{item.peso}} kg</td>
             <td>€ {{item.prezzo}}</td>
             <td><button (click)="seleziona(item)">Seleziona</button></td>
         </tr>
