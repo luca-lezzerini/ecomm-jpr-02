@@ -21,7 +21,11 @@ export class OffertaService {
 
   lista(): void {
     const oss: Observable<ListaOfferteDto> = this.http.post<ListaOfferteDto> (this.urlPath + '/lista-offerte', this.listaDto);
-    const sub: Subscription = oss.subscribe(risp => { this.listaDto = risp;    this.listaOfferte = this.listaDto.listaOfferte; this.srvToken.token=this.listaDto.token; });
+    const sub: Subscription = oss.subscribe(risp => { 
+      this.listaDto = risp;    
+      this.listaOfferte = this.listaDto.listaOfferte; 
+      this.srvToken.token=this.listaDto.token; 
+    });
   }
 
   cerca(ricerca: RicercaDto): RicercaDto {

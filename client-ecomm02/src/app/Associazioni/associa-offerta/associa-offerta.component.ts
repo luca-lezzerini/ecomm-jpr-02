@@ -1,8 +1,7 @@
+import { OffertaService } from './../../offerta.service';
 import { ProdottoService } from 'src/app/prodotto.service';
-import { ListaOfferteDto } from './../../dto/lista-offerte-dto';
 import { AssociaOffertaService } from './../../AssociazioniService/associa-offerta.service';
 import { RicercaDto } from './../../dto/ricerca-dto';
-import { OffertaDto } from './../../dto/offerta-dto';
 import { Offerta } from './../../model/offerta';
 import { Component, OnInit } from '@angular/core';
 import { Prodotto } from 'src/app/model/prodotto';
@@ -13,32 +12,26 @@ import { Prodotto } from 'src/app/model/prodotto';
   styleUrls: ['./associa-offerta.component.css']
 })
 export class AssociaOffertaComponent implements OnInit {
-  offerta: Offerta;
-  offertaDto : OffertaDto;
-  listaDto: ListaOfferteDto;
-  listaOfferte: Offerta[] = [];
   ricerca: RicercaDto = new RicercaDto();
-  listaDeiProdotti: Prodotto[];
   prodotto: Prodotto;
-  prodottoSelezionato = new Prodotto();
   state = 'ricerca';
-  constructor(private srvAssOff: AssociaOffertaService, private srvProdotto: ProdottoService) { }
+  constructor(private srvAssOff: AssociaOffertaService, private srvProdotto: ProdottoService, private srvOfferta: OffertaService) { }
   
   
   ngOnInit(): void {
-    this.srvAssOff.listaProdotti();
-    this.srvAssOff.listaOfferte();
+    this.srvProdotto.lista();
+    this.srvOfferta.lista();
   }
   cercaProdotto() {
-    this.srvAssOff.cercaProdotti(this.ricerca);
+    this.srvProdotto.cerca(this.ricerca);
   }
 
   selezionaProdotto(prodotto: Prodotto){
     this.state = 'seleziona';
-    this.prodottoSelezionato = prodotto;
+    this.prodotto = prodotto;
   }
   chiediAssociazione(offerta: Offerta){
-    this.srvAssOff.associa(this.prodotto, offerta);
+    this.srvAssOff.associaOffertaProdotto(offerta, this.prodotto);
 
   }
 }

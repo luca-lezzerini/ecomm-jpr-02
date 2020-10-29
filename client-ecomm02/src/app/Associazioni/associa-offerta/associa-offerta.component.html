@@ -5,10 +5,10 @@
         <button (click)="cercaProdotto()">Cerca</button>
     </span>
 </div>
-<h3 *ngIf="state == 'ricerca'">Prodotti da selezionare : </h3>
-<h3 *ngIf="state == 'seleziona'">Prodotto Selezionato {{prodottoSelezionato.descrizione}} - {{prodottoSelezionato.descrizione}}</h3>
+<h3 *ngIf="state == 'ricerca'">Prodotti da selezionare: </h3>
+<h3 *ngIf="state == 'seleziona'">Prodotto Selezionato {{prodotto.codice}} - {{prodotto.descrizione}}</h3>
 <div>
-    <table *ngIf="srvAssOff.listaDeiProdotti.length > 0">
+    <table *ngIf="srvProdotto.listaProdotti.length > 0">
         <thead>
             <tr>
                 <th>Codice</th>
@@ -19,16 +19,16 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let prodottoSelezionato of srvAssOff.listaDeiProdotti">
-                <td>{{prodottoSelezionato.codice}}</td>
-                <td>{{prodottoSelezionato.descrizione}}</td>
-                <td>{{prodottoSelezionato.peso}}</td>
-                <td>{{prodottoSelezionato.prezzo}}</td>
-                <td><button (click)="selezionaProdotto(prodottoSelezionato)">Seleziona</button></td>
+            <tr *ngFor="let prodotto of srvProdotto.listaProdotti">
+                <td>{{prodotto.codice}}</td>
+                <td>{{prodotto.descrizione}}</td>
+                <td>{{prodotto.peso}}</td>
+                <td>{{prodotto.prezzo}}</td>
+                <td><button (click)="selezionaProdotto(prodotto)">Seleziona</button></td>
             </tr>
         </tbody>
     </table>
-    <h3 *ngIf="srvAssOff.listaDeiProdotti.length === 0">Nessun record trovato</h3>
+    <h3 *ngIf="srvProdotto.listaProdotti.length === 0">Nessun record trovato</h3>
 </div>
 <br>
 <div *ngIf="state == 'seleziona'">
@@ -44,11 +44,14 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let item of srvAssOff.listaDelleOfferte">
-                <td>{{item.codice}}</td>
-                <td>{{item.descrizione}}</td>
-                <td>{{item.scontoPercentuale}}</td>
-                <td><button (click)= "chiediAssociazione(item , prodottoSelezionato)">Associa</button></td>
+            <tr *ngFor="let offertaDaSelezionare of srvOfferta.listaOfferte">
+                <td>{{offertaDaSelezionare.codice}}</td>
+                <td>{{offertaDaSelezionare.descrizione}}</td>
+                <td>{{offertaDaSelezionare.scontoPercentuale}}</td>
+                <td *ngIf="prodotto.offerta == null || prodotto.offerta.id != offertaDaSelezionare.id; else other_content"><button (click)="chiediAssociazione(offertaDaSelezionare, prodotto)">Associa</button></td>
+                <ng-template #other_content>
+                    <td><button (click)="chiediAssociazione(offertaDaSelezionare, prodotto)" disabled>Associa</button></td>
+                </ng-template>
             </tr>
         </tbody>
     </table>
