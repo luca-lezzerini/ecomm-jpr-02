@@ -1,7 +1,6 @@
-import { OffertaDto } from './../dto/offerta-dto';
+import { Imballo } from 'src/app/model/imballo';
 import { Categoria } from './categoria';
 import { Colore } from './colore';
-import { Token } from '../dto/token';
 import { Taglia } from './taglia';
 import { Spedizione } from './spedizione';
 import { Offerta } from './offerta';
@@ -11,8 +10,9 @@ export class Prodotto {
     descrizione: String;
     peso: number;
     prezzo: number;   
-    colore: Colore; 
     categoria: Categoria;
+    colore: Colore; 
+    imballo: Imballo;
     taglia : Taglia;
     spedizione: Spedizione;
     offerta: Offerta;
