@@ -1,12 +1,12 @@
+import { ProdottoDto } from './../dto/prodotto-dto';
 import { TokenService } from './../token.service';
-import { AssociaCategoriaListaDto } from './../dto/associa-categoria-lista-dto';
 import { CategoriaServiceService } from './../categoria-service.service';
 import { RicercaDto } from './../dto/ricerca-dto';
 import { ProdottoService } from './../prodotto.service';
 import { Injectable } from '@angular/core';
 import { Prodotto } from '../model/prodotto';
 import { Categoria } from '../model/categoria';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { AssociaCategoriaDto } from '../dto/associa-categoria-dto';
 
@@ -15,31 +15,26 @@ import { AssociaCategoriaDto } from '../dto/associa-categoria-dto';
 })
 export class SrvAssociaCategoriaService {
 
-  private url = "http://localhost:8080";
+  private urlPath = "http://localhost:8080";
   categoria: Categoria = new Categoria();
-  categorie: Categoria[] = [];
-  prodottoSelezionato: Prodotto = new Prodotto();
+  prodottoForm: Prodotto = new Prodotto();
   ricerca: RicercaDto = new RicercaDto();
   categoriaAssociata: AssociaCategoriaDto = new AssociaCategoriaDto();
+  prodottoDto: ProdottoDto = new ProdottoDto();
 
-  constructor(public srvProdotto: ProdottoService, private tokenSrv: TokenService, public mem: CategoriaServiceService, private http: HttpClient) { }
+  constructor(public srvProdotto: ProdottoService, private srvToken: TokenService, public mem: CategoriaServiceService, private http: HttpClient) { }
 
-  cerca() {
-    this.srvProdotto.cerca(this.ricerca);
-  }
-
-  associaCat(c: Categoria) {
-    console.log("sto associando", c);
-    this.categoriaAssociata.prodotto = this.prodottoSelezionato;
-    this.categoriaAssociata.categoria = c;
-    this.categoriaAssociata.token = this.tokenSrv.token;
-    let o: Observable<AssociaCategoriaListaDto> =
-      this.http.post<AssociaCategoriaListaDto>(this.url + '/associa-categorie/', this.categoriaAssociata);
-    o.subscribe(risp => {
-      this.prodottoSelezionato= risp.prodotto;
-      this.categorie = risp.categorie;
-      this.tokenSrv.token = risp.token;
-    })
+  associaCategoriaProdotto(categoria: Categoria, prodotto: Prodotto) {
+    console.log("sto associando", categoria);
+      prodotto.categoria = categoria; 
+      this.prodottoDto.prodotto = prodotto;
+      this.prodottoDto.token = this.srvToken.token;
+      const oss: Observable<ProdottoDto> = this.http.post<ProdottoDto>(this.urlPath + '/prodotti-update', this.prodottoDto);
+      const sub: Subscription = oss.subscribe(risp => {
+        this.srvProdotto.lista();
+        this.srvToken.token = risp.token;
+      });
+      this.prodottoForm = new Prodotto();
   }
 
 }

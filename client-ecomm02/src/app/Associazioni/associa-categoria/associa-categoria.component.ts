@@ -1,3 +1,4 @@
+import { RicercaDto } from 'src/app/dto/ricerca-dto';
 import { Prodotto } from './../../model/prodotto';
 import { Categoria } from './../../model/categoria';
 import { CategoriaServiceService } from './../../categoria-service.service';
@@ -12,33 +13,35 @@ import { ProdottoService } from '../../prodotto.service';
 })
 export class AssociaCategoriaComponent implements OnInit {
 
+  prodotto = new Prodotto();
+  ricerca: RicercaDto = new RicercaDto();
   associaStato = false;
   associativa = false;
   searchState = true;
   
-  constructor(private srvProdotto: ProdottoService, public mem: CategoriaServiceService, public memcat: SrvAssociaCategoriaService) { }
+  constructor(private srvProdotto: ProdottoService, public srvCategoria: CategoriaServiceService, public memcat: SrvAssociaCategoriaService) { }
 
   ngOnInit() {
     this.srvProdotto.lista();
+    this.srvCategoria.lista();
   }
 
   seleziona(item: Prodotto) {
     this.associaStato = true;
     this.associativa = true;
-    this.memcat.prodottoSelezionato = item;
-    this.mem.categorie = this.mem.lista();
+    this.prodotto = item;
+    this.srvCategoria.categorie = this.srvCategoria.lista();
   }
 
   cercaProdotto() {
-    this.memcat.cerca();
+    this.srvProdotto.cerca(this.ricerca);
   }
 
-  associa(c: Categoria) {
-    console.log("sono in associa", c);
-    this.memcat.categoriaAssociata.categoria = c;
+  chiediAssocia(categoria: Categoria) {
+    console.log("sono in associa", categoria);
     console.log("sto passando i parametri da associare");
-    this.memcat.associaCat(this.memcat.categoriaAssociata.categoria);
-    this.mem.lista();
+    this.memcat.associaCategoriaProdotto(categoria, this.prodotto);
+    this.srvCategoria.lista();
   }
 
 }

@@ -1,12 +1,11 @@
 <h1>ASSOCIA CATEGORIA</h1>
 <br>
 <div class="check-element animate-show-hide" *ngIf="searchState">
-    <input type="text" [(ngModel)]="memcat.ricerca.ricerca" placeholder="Cerca prodotto">
+    <input type="text" [(ngModel)]="ricerca.ricerca" placeholder="Cerca prodotto">
     <button (click)="cercaProdotto()">Cerca</button>
 </div>
 <br>
-<h3 *ngIf="associaStato">Prodotto selezionato: {{memcat.prodottoSelezionato.codice}} -
-    {{memcat.prodottoSelezionato.descrizione}}</h3>
+<h3 *ngIf="associaStato">Prodotto selezionato: {{prodotto.codice}} - {{prodotto.descrizione}}</h3>
 
 <table *ngIf="srvProdotto.listaProdotti.length > 0">
     <thead>
@@ -22,7 +21,7 @@
             <td>{{item.codice}}</td>
             <td>{{item.descrizione}}</td>
             <td>{{item.peso}}kg</td>
-            <td>{{item.prezzo}}€</td>
+            <td>€ {{item.prezzo}}</td>
             <td><button (click)="seleziona(item)">Seleziona</button></td>
         </tr>
     </tbody>
@@ -38,13 +37,11 @@
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let cat of mem.categorie; index as i">
-            <td>{{cat.descrizione}}</td>
-            <td *ngIf="memcat.prodottoSelezionato.categoria == null || memcat.prodottoSelezionato.categoria.id !=  cat.id; else visibile ">
-                <button (click)="associa(cat)">Associa</button>
-            </td>
-            <ng-template #visibile>
-                <td><button (click)="associa(cat)" disabled>Associa</button></td>
+        <tr *ngFor="let categoriaDaSelezionare of srvCategoria.categorie">
+            <td>{{categoriaDaSelezionare.descrizione}}</td>
+            <td *ngIf="prodotto.categoria == null || prodotto.categoria.id != categoriaDaSelezionare.id; else other_content"><button (click)="chiediAssocia(categoriaDaSelezionare, prodotto)">Associa</button></td>
+            <ng-template #other_content>
+                <td><button (click)="chiediAssocia(categoriaDaSelezionare, prodotto)" disabled>Associa</button></td>
             </ng-template>
         </tr>
     </tbody>
