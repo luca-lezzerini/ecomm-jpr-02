@@ -1,5 +1,5 @@
-import { OffertaService } from './../../offerta.service';
-import { ProdottoService } from 'src/app/prodotto.service';
+import { OffertaService } from 'src/app/service/offerta.service';
+import { ProdottoService } from 'src/app/service/prodotto.service';
 import { AssociaOffertaService } from './../../AssociazioniService/associa-offerta.service';
 import { RicercaDto } from './../../dto/ricerca-dto';
 import { Offerta } from './../../model/offerta';

@@ -1,6 +1,6 @@
 import { Prodotto } from './../../model/prodotto';
 import { Router } from '@angular/router';
-import { ProdottoService } from './../../prodotto.service';
+import { ProdottoService } from 'src/app/service/prodotto.service';
 import { TagliaServiceService } from './../../service/taglia-service.service';
 import { Component, OnInit } from '@angular/core';
 import { RicercaDto } from 'src/app/dto/ricerca-dto';

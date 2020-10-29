@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { SrvAssociaSpedizioneService } from '../../AssociazioniService/srv-associa-spedizione.service';
 import { Prodotto } from '../../model/prodotto';
 import { Spedizione } from '../../model/spedizione';
-import { ProdottoService } from '../../prodotto.service';
-import { SpedizioneServiceService } from '../../spedizione-service.service';
+import { ProdottoService } from 'src/app/service/prodotto.service';
+import { SpedizioneServiceService } from 'src/app/service/spedizione-service.service';
 
 @Component({
   selector: 'app-associa-spedizione',

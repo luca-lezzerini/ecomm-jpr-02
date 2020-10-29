@@ -1,10 +1,10 @@
-import { RicercaDto } from './dto/ricerca-dto';
+import { RicercaDto } from 'src/app/dto/ricerca-dto';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { SpedizioneDto } from './dto/spedizione-dto';
-import { SpedizioneListaDto } from './dto/spedizione-lista-dto';
+import { SpedizioneDto } from 'src/app/dto/spedizione-dto';
+import { SpedizioneListaDto } from 'src/app/dto/spedizione-lista-dto';
 import { HttpClient } from '@angular/common/http';
-import { Spedizione } from './model/spedizione';
+import { Spedizione } from 'src/app/model/spedizione';
 import { TokenService } from './token.service';
 
 

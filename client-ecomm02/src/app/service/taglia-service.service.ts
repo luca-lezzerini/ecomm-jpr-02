@@ -3,7 +3,7 @@ import { Taglia } from './../model/taglia';
 import { Observable } from 'rxjs';
 import { TagliaListDto } from '../dto/taglia-list-dto';
 import { TagliaDto } from '../dto/taglia-dto';
-import { TokenService } from '../token.service';
+import { TokenService } from 'src/app/service/token.service';
 import { RicercaDto } from '../dto/ricerca-dto';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';

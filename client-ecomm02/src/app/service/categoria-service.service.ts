@@ -1,11 +1,11 @@
 import { TokenService } from './token.service';
-import { RicercaDto } from './dto/ricerca-dto';
-import { CategoriaDto } from './dto/categoria-dto';
-import { Categoria } from './model/categoria';
+import { RicercaDto } from 'src/app/dto/ricerca-dto';
+import { CategoriaDto } from 'src/app/dto/categoria-dto';
+import { Categoria } from 'src/app/model/categoria';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { CategoriaListaDto } from './dto/categoria-lista-dto';
+import { CategoriaListaDto } from 'src/app/dto/categoria-lista-dto';
 
 @Injectable({
   providedIn: 'root'

@@ -1,4 +1,4 @@
-import { ProdottoService } from './../prodotto.service';
+import { ProdottoService } from 'src/app/service/prodotto.service';
 import { Component, OnInit } from '@angular/core';
 import { Prodotto } from '../model/prodotto';
 import { RicercaDto } from './../dto/ricerca-dto';

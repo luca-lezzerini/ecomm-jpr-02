@@ -1,7 +1,7 @@
-import { ColoriDto } from './dto/colori-dto';
-import { Colore } from './model/colore';
-import { Injectable, ValueProvider } from '@angular/core';
-import { ColoreDto } from './dto/colore-dto';
+import { ColoriDto } from 'src/app/dto/colori-dto';
+import { Colore } from 'src/app/model/colore';
+import { Injectable } from '@angular/core';
+import { ColoreDto } from 'src/app/dto/colore-dto';
 import { HttpClient } from '@angular/common/http';
 import { Observable, Subscription } from 'rxjs';
 import { TokenService } from './token.service';

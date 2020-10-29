@@ -1,5 +1,4 @@
-import { CategoriaDto } from './../dto/categoria-dto';
-import { CategoriaServiceService } from './../categoria-service.service';
+import { CategoriaServiceService } from 'src/app/service/categoria-service.service';
 import { Component, OnInit } from '@angular/core';
 import { Categoria } from '../model/categoria';
 

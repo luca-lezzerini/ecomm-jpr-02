@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ProdottoService } from 'src/app/prodotto.service';
+import { ProdottoService } from 'src/app/service/prodotto.service';
 import { ImballoServiceService } from 'src/app/service/imballo-service.service';
 import { Router } from '@angular/router';
 import { RicercaDto } from 'src/app/dto/ricerca-dto';

@@ -1,8 +1,8 @@
 import { ProdottoDto } from './../dto/prodotto-dto';
-import { TokenService } from './../token.service';
-import { CategoriaServiceService } from './../categoria-service.service';
+import { TokenService } from 'src/app/service/token.service';
+import { CategoriaServiceService } from 'src/app/service/categoria-service.service';
 import { RicercaDto } from './../dto/ricerca-dto';
-import { ProdottoService } from './../prodotto.service';
+import { ProdottoService } from 'src/app/service/prodotto.service';
 import { Injectable } from '@angular/core';
 import { Prodotto } from '../model/prodotto';
 import { Categoria } from '../model/categoria';

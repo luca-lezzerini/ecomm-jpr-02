@@ -1,11 +1,11 @@
-import { ListaOfferteDto } from './dto/lista-offerte-dto';
+import { ListaOfferteDto } from 'src/app/dto/lista-offerte-dto';
 import { TokenService } from './token.service';
 import { Injectable } from '@angular/core';
-import { OffertaDto } from './dto/offerta-dto';
-import { RicercaDto } from './dto/ricerca-dto';
+import { OffertaDto } from 'src/app/dto/offerta-dto';
+import { RicercaDto } from 'src/app/dto/ricerca-dto';
 import { HttpClient } from '@angular/common/http';
 import { Observable, Subscription } from 'rxjs';
-import { Offerta } from './model/offerta';
+import { Offerta } from 'src/app/model/offerta';
 
 @Injectable({
   providedIn: 'root'

@@ -1,5 +1,5 @@
-import { ColoriService } from './../../colori.service';
-import { ProdottoService } from './../../prodotto.service';
+import { ColoriService } from 'src/app/service/colori.service';
+import { ProdottoService } from 'src/app/service/prodotto.service';
 import { Colore } from './../../model/colore';
 import { Prodotto } from './../../model/prodotto';
 import { RicercaDto } from './../../dto/ricerca-dto';

@@ -1,9 +1,9 @@
 import { Offerta } from './../model/offerta';
-import { OffertaService } from './../offerta.service';
-import { ProdottoService } from './../prodotto.service';
+import { OffertaService } from 'src/app/service/offerta.service';
+import { ProdottoService } from 'src/app/service/prodotto.service';
 import { ProdottoDto } from './../dto/prodotto-dto';
 import { Prodotto } from './../model/prodotto';
-import { TokenService } from './../token.service';
+import { TokenService } from 'src/app/service/token.service';
 import { HttpClient } from '@angular/common/http';
 import { Observable, Subscription } from 'rxjs';
 import { Injectable } from '@angular/core';

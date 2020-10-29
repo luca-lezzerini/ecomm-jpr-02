@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { SpedizioneDto } from '../dto/spedizione-dto';
-import { SpedizioneServiceService } from '../spedizione-service.service';
+import { SpedizioneServiceService } from 'src/app/service/spedizione-service.service';
 import { Spedizione } from '../model/spedizione';
 
 @Component({

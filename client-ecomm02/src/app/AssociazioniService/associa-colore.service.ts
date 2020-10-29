@@ -1,9 +1,9 @@
-import { ProdottoService } from './../prodotto.service';
-import { ColoriService } from './../colori.service';
+import { ProdottoService } from 'src/app/service/prodotto.service';
+import { ColoriService } from 'src/app/service/colori.service';
 import { ProdottoDto } from './../dto/prodotto-dto';
 import { Colore } from './../model/colore';
 import { Prodotto } from './../model/prodotto';
-import { TokenService } from './../token.service';
+import { TokenService } from 'src/app/service/token.service';
 import { HttpClient } from '@angular/common/http';
 import { Observable, Subscription } from 'rxjs';
 import { Injectable } from '@angular/core';

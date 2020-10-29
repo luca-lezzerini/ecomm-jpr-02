@@ -1,12 +1,12 @@
-import { TokenDto } from './dto/token-dto';
-import { ListaProdottiDto as ListaProdottiDto } from './dto/lista-prodotti-dto';
+import { TokenDto } from 'src/app/dto/token-dto';
+import { ListaProdottiDto as ListaProdottiDto } from 'src/app/dto/lista-prodotti-dto';
 import { TokenService } from './token.service';
 import { Injectable } from '@angular/core';
-import { ProdottoDto } from './dto/prodotto-dto';
-import { RicercaDto } from './dto/ricerca-dto';
+import { ProdottoDto } from 'src/app/dto/prodotto-dto';
+import { RicercaDto } from 'src/app/dto/ricerca-dto';
 import { HttpClient } from '@angular/common/http';
 import { Observable, Subscription } from 'rxjs';
-import { Prodotto } from './model/prodotto';
+import { Prodotto } from 'src/app/model/prodotto';
 
 @Injectable({
   providedIn: 'root'

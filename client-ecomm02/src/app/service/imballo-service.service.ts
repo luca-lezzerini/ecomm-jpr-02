@@ -1,5 +1,4 @@
 import { AssociaImballoDto } from './../dto/associa-imballo-dto';
-import { Prodotto } from './../model/prodotto';
 import { ImballoListDto } from '../dto/imballo-list-dto';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
@@ -7,8 +6,7 @@ import { Observable } from 'rxjs';
 import { Imballo } from '../model/imballo';
 import { ImballoDto } from '../dto/imballo-dto';
 import { RicercaDto } from '../dto/ricerca-dto';
-import { TokenService } from '../token.service';
-import { Token } from '@angular/compiler/src/ml_parser/lexer';
+import { TokenService } from 'src/app/service/token.service';
 
 @Injectable({
   providedIn: 'root'
