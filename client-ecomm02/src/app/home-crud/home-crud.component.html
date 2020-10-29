@@ -1,27 +1,27 @@
 <header>
-<h3>Portale E-Commerce Zappando</h3>
-<br>
-<input type="text" [(ngModel)]="mx.ricerca.ricerca"  placeholder="cerca">
-<button (click)="cercaProdotto()">Cerca</button>
-<br>
-<br>
-<br>
-<table *ngIf="mx.listaDeiProdotti.length > 0">
-    <tr>
-        <th style="display:none">ID</th>
-        <th>Codice</th>
-        <th>Descrizione</th>
-        <th>Peso</th>
-        <th>Prezzo</th>
-        <th></th>
-    </tr>
-    <tr *ngFor="let p of mx.listaDeiProdotti">
-        <td style="display:none">{{p.id}}</td>
-        <td>{{p.codice}}</td>
-        <td>{{p.descrizione}}</td>
-        <td>{{p.peso}}</td>
-        <td>{{p.prezzo}}€</td>
-        <td><button (click)="aggiungiAlCarrello()">Aggiungi al carrello</button></td>
-    </tr>
-</table>
+    <h3>Portale E-Commerce Zappando</h3>
+    <br>
+    <input type="text" [(ngModel)]="mx.ricerca.ricerca" placeholder="cerca">
+    <button (click)="cercaProdotto()">Cerca</button>
+    <br>
+    <br>
+    <br>
+    <table *ngIf="mx.listaDeiProdotti.length > 0">
+        <tr>
+            <th style="display:none">ID</th>
+            <th>Codice</th>
+            <th>Descrizione</th>
+            <th>Peso</th>
+            <th>Prezzo</th>
+            <th></th>
+        </tr>
+        <tr *ngFor="let p of mx.listaDeiProdotti">
+            <td style="display:none">{{p.id}}</td>
+            <td>{{p.codice}}</td>
+            <td>{{p.descrizione}}</td>
+            <td>{{p.peso}}</td>
+            <td>€ {{p.prezzo}}</td>
+            <td><button (click)="aggiungiAlCarrello()">Aggiungi al carrello</button></td>
+        </tr>
+    </table>
 </header>
