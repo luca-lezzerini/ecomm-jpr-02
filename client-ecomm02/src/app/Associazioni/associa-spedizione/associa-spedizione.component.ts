@@ -20,6 +20,7 @@ export class AssociaSpedizioneComponent implements OnInit {
 
   ngOnInit() {
     this.srvProdotto.lista();
+    this.meme.lista();
   }
 
   cercaProdotto(){
