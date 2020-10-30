@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { SrvAssociaSpedizioneService } from '../../AssociazioniService/srv-associa-spedizione.service';
+import { SrvAssociaSpedizioneService } from '../../associazioni-service/srv-associa-spedizione.service';
 import { Prodotto } from '../../model/prodotto';
 import { Spedizione } from '../../model/spedizione';
 import { ProdottoService } from 'src/app/service/prodotto.service';

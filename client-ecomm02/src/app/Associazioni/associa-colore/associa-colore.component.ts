@@ -3,7 +3,7 @@ import { ProdottoService } from 'src/app/service/prodotto.service';
 import { Colore } from './../../model/colore';
 import { Prodotto } from './../../model/prodotto';
 import { RicercaDto } from './../../dto/ricerca-dto';
-import { AssociaColoreService } from './../../AssociazioniService/associa-colore.service';
+import { AssociaColoreService } from './../../associazioni-service/associa-colore.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({

@@ -2,7 +2,7 @@ import { RicercaDto } from 'src/app/dto/ricerca-dto';
 import { Prodotto } from './../../model/prodotto';
 import { Categoria } from './../../model/categoria';
 import { CategoriaServiceService } from 'src/app/service/categoria-service.service';
-import { SrvAssociaCategoriaService } from './../../AssociazioniService/srv-associa-categoria.service';
+import { SrvAssociaCategoriaService } from './../../associazioni-service/srv-associa-categoria.service';
 import { Component, OnInit } from '@angular/core';
 import { ProdottoService } from 'src/app/service/prodotto.service';
 

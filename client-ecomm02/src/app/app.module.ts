@@ -12,12 +12,12 @@ import { HomeCRUDComponent } from './home-crud/home-crud.component';
 import { OffertaCrudComponent } from './offerta-crud/offerta-crud.component';
 import { ProdottoCrudComponent } from './prodotto-crud/prodotto-crud.component';
 import { TagliaCrudComponent } from './taglia-crud/taglia-crud.component';
-import { AssociaCategoriaComponent } from './Associazioni/associa-categoria/associa-categoria.component';
-import { AssociaColoreComponent } from './Associazioni/associa-colore/associa-colore.component';
-import { AssociaTagliaComponent } from './Associazioni/associa-taglia/associa-taglia.component';
-import { AssociaImballoComponent } from './Associazioni/associa-imballo/associa-imballo.component';
-import { AssociaOffertaComponent } from './Associazioni/associa-offerta/associa-offerta.component';
-import { AssociaSpedizioneComponent } from './Associazioni/associa-spedizione/associa-spedizione.component';
+import { AssociaCategoriaComponent } from './associazioni/associa-categoria/associa-categoria.component';
+import { AssociaColoreComponent } from './associazioni/associa-colore/associa-colore.component';
+import { AssociaTagliaComponent } from './associazioni/associa-taglia/associa-taglia.component';
+import { AssociaImballoComponent } from './associazioni/associa-imballo/associa-imballo.component';
+import { AssociaOffertaComponent } from './associazioni/associa-offerta/associa-offerta.component';
+import { AssociaSpedizioneComponent } from './associazioni/associa-spedizione/associa-spedizione.component';
 
 
 @NgModule({
