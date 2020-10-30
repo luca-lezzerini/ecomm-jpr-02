@@ -1,5 +1,6 @@
 package com.ai.ecom02.service;
 
+import com.ai.ecom02.dto.RicercaDto;
 import com.ai.ecom02.model.Imballo;
 import com.ai.ecom02.model.Prodotto;
 import java.util.List;
@@ -11,6 +12,8 @@ public interface ImballoService {
     void delete(Imballo imballo);
 
     Imballo update(Imballo imballo);
+    
+    List<Imballo> findByDescrizioneLike(RicercaDto ricerca);
 
     List<Imballo> getAll();
 
