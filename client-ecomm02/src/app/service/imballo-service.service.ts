@@ -38,7 +38,7 @@ export class ImballoServiceService {
   }
 
   listaImballoService(): Imballo[] {
-    //this.imballoMod.token = this.tokenService.token;
+    this.imballoMod.token = this.tokenService.token;
     let o: Observable<ImballoListDto> = this.http.post<ImballoListDto>(
       this.url + "/list-imballo", this.imballoMod);
     o.subscribe(risp => {
@@ -88,12 +88,13 @@ export class ImballoServiceService {
     let o: Observable<ImballoListDto> =
       this.http.post<ImballoListDto>(this.url + '/associa-imballo', this.associaImballoDto)
     o.subscribe(risp => {
+      this.listaImballoService();
       this.findImballoService();
       this.tokenService.token = risp.token;
     })
   }
 
-  unbindingImballoService() {
+  unbindingImballoService() { //Metodo non implementato nell'UI poiché non funzionante e non richiesto nei requisiti
     this.associaImballoDto.token = this.tokenService.token;
     console.log("sto nel servizio dissocia imballo");
     let o: Observable<ImballoListDto> =

@@ -18,5 +18,6 @@ public interface ImballoService {
 
     void associaImballo(Prodotto prodotto, Imballo imballo);
 
+    //Metodo non implementato nell'UI poiché non funzionante e non richiesto nei requisiti
     void dissociaImballo(Prodotto prodotto);
 }

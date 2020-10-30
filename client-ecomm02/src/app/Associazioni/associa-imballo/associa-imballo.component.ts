@@ -41,10 +41,11 @@ export class AssociaImballoComponent implements OnInit {
     this.indexImballo = n;
     this.mem.associaImballoDto.imballo = Object.assign({}, imballo);
     this.mem.bindingImballoService();
+    this.mem.listaImballoService();
     window.location.reload();
   }
 
-  dissociaImballo(){
+  dissociaImballo(){ //Metodo non implementato nell'UI poiché non funzionante e non richiesto nei requisiti
     this.mem.unbindingImballoService();
     window.location.reload();
   }

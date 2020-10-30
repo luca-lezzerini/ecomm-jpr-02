@@ -108,6 +108,7 @@ public class ImballoController {
         return dtl;
     }
 
+    //Metodo non implementato nell'UI poiché non funzionante e non richiesto nei requisiti
     @RequestMapping(value = {"/dissocia-imballo"})
     @ResponseBody
     public ImballoDtoList dissociaImballo(@RequestBody AssociaImballoDto dto) {

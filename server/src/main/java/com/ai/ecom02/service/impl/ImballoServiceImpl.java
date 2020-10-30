@@ -69,6 +69,7 @@ public class ImballoServiceImpl implements ImballoService {
         imballo = repImballo.save(imballo);
     }
 
+    //Metodo non implementato nell'UI poiché non funzionante e non richiesto nei requisiti
     @Override
     public void dissociaImballo(Prodotto prodotto) {
         // recupero prodotto
