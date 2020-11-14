@@ -11,9 +11,10 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.annotation.Rollback;
 import org.springframework.transaction.annotation.Transactional;
 
-@SpringBootTest
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 class Ecom02ApplicationTest {
 
     @Autowired
@@ -29,14 +30,14 @@ class Ecom02ApplicationTest {
     ImballoService srvImballo;
 
     @Test
-    void contextLoads() {
-
+    public void contextLoads() {
         System.out.println("siamo qui!");
     }
 
     @Test
     @Transactional
-    void testaInserimentoCategoria() {
+    @Rollback(false)
+    public void testaInserimentoCategoria() {
 
         //Creo un oggetto Categoria jeans.
         Categoria jeans = new Categoria();
@@ -69,7 +70,8 @@ class Ecom02ApplicationTest {
 
     @Test
     @Transactional
-    void testaInserimentoImballo() {
+    @Rollback(false)
+    public void testaInserimentoImballo() {
         //Creo un oggetto Imballo standardBis.
         Imballo standardBis = new Imballo();
         standardBis.setDescrizione("standardBis");
@@ -96,7 +98,8 @@ class Ecom02ApplicationTest {
 
     @Test
     @Transactional
-    void testaModificaImballo() {
+    @Rollback(false)
+    public void testaModificaImballo() {
         //Creo un oggetto Imballo standardBis.
         Imballo standardBis = new Imballo();
         standardBis.setDescrizione("standardBis");
